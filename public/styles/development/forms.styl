@@ -1,0 +1,98 @@
+// -----------------------------------------------------------------------------
+// @section Forms
+// -----------------------------------------------------------------------------
+
+fieldset
+  border none // @affected All browsers
+  margin 0
+  padding 0
+
+legend
+  //@extend h3
+  padding 0 // @bugfix Remove padding so people aren't caught out if they zero out fieldsets
+  max-width 100% // @affected IE
+  border 0 // @affected IE 8-11
+
+label:focus
+label:hover
+label:active
+label:checked
+  cursor pointer
+
+input[type="color"]
+  height 3em
+
+input:not([type="button"]):not([type="submit"]):not([type="range"])
+select
+  max-height 2.2em // @note Permet de contrôler la hauteur des champs invalides + les imput type date, color, etc...
+
+select
+  padding 1em // @affected Firefox
+  white-space nowrap
+  text-overflow ellipsis
+
+select:not([multiple])
+  -webkit-appearance none // @affected Chrome
+  -moz-appearance none // @affected Firefox
+  background-image $image004
+  background-repeat no-repeat
+  background-position right .5em center // calc(100% - .5em) 50%
+  background-size 1em 1em
+  border-radius 0 // @affected Chrome
+
+select[multiple]
+  min-height 5.6em
+
+textarea
+  min-height 10em // @note Propriété en lien avec 'resize'
+  max-height 50vh // @note Idem
+  resize vertical // @note Redimensionnement par l'utilisateur limité à la verticale
+  padding 1em
+  line-height 2
+
+button
+input
+select
+textarea
+  font-family inherit // @affected All browsers
+  font-size 100% // @affected All browsers
+  margin 0 // @affected Firefox 4+, Safari 5, and Chrome
+
+button
+input
+  line-height normal // @affected Firefox 4+
+  border-radius 0 // @affected Chrome 62+/OS X
+
+button
+select
+  text-transform none
+
+button
+:root input[type="button"], // @affected Android 4.0
+input[type="reset"]
+input[type="submit"]
+  -webkit-appearance button // @affected iOS
+  cursor pointer
+
+button::-moz-focus-inner
+input::-moz-focus-inner // @affected Firefox 4+
+  border 0
+  padding 0
+
+input[type="search"]
+  -webkit-appearance textfield // @affected Safari 5+
+
+input[type="search"]::-webkit-search-cancel-button
+input[type="search"]::-webkit-search-decoration
+  -webkit-appearance none // @affected Safari 5+
+
+textarea
+  overflow auto // @affected IE 8-9
+  vertical-align top
+
+button[disabled]
+html input[disabled]
+  cursor not-allowed
+
+::placeholder
+  color #777

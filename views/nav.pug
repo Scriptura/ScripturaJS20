@@ -1,0 +1,38 @@
+nav.nav(role='navigation')
+  .wrap
+    ul
+      li
+        if (url === '/')
+          span.active
+            span.icon-home.only-icon
+            span Home
+        else
+          a(href='/')
+            span.icon-home.only-icon
+            span Home
+      li
+        if (url === '/article/1')
+          span.active
+            span.icon-list2
+            | Article 1
+        else
+          a(href='/article/1')
+            span.icon-list2
+            | Article 1
+      li
+        if (url === '/person/Victor')
+          span.active
+            span.icon-user
+            | Person 1
+        else
+          a(href='/person/Victor')
+            span.icon-user
+            | Person 1
+      li
+        a(href='/404')
+          span.icon-warning
+          | Error 404
+      li.item-push
+        a(href='//github.com/Scriptura/ScripturaJS')
+          span.icon-github
+          | Repository

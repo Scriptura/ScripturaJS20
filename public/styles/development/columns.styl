@@ -1,0 +1,57 @@
+// -----------------------------------------------------------------------------
+// @section Columns
+// -----------------------------------------------------------------------------
+
+[class^="columns"]
+  column-gap 0
+
+[class^="columns"] > *
+  display inline-block
+  width 100%
+  word-wrap break-word
+
+@media (min-width $sizeXS)
+
+  .columns2
+  .columns3
+  .columns4
+    column-count 2
+
+  .columns5
+  .columns6
+    column-count 3
+
+@media (min-width $sizeS)
+
+  .columns3
+  .columns4
+    column-count 3
+
+  .columns5
+  .columns6
+    column-count 4
+
+@media (min-width $sizeL)
+
+  .columns4
+    column-count 4
+
+  .columns5
+    column-count 5
+
+  .columns6
+    column-count 6
+
+[class^="columns"].gap
+  column-gap $gap
+
+[class^="columns"].gap > *
+  margin-bottom $gap
+
+@media (min-width $sizeXS)
+
+  [class^="columns"].sizeSgap
+    column-gap $gap
+
+  [class^="columns"].sizeSgap > *
+    margin-bottom $gap

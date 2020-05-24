@@ -1,0 +1,28 @@
+// @subsection Summary
+// -----------------------------------------------------------------------------
+
+.summary
+  display flex
+  flex-wrap wrap
+  width 'calc(100% + %s)' % ($gutter)
+  margin-left - $gutter !important
+
+.summary > *
+  width 100%
+  margin-left $gutter !important
+  padding 0 // @note Si liste ul>li
+
+@media (min-width $sizeXS)
+
+  .summary > *
+    width 'calc(%s - %s)' % (floor(100% / 12 * 6, 2) $gutter)
+
+@media (min-width $sizeS)
+
+  .summary > *
+    width 'calc(%s - %s)' % (floor(100% / 12 * 4, 2) $gutter)
+
+@media (min-width $sizeL)
+
+  .summary > *
+    width 'calc(%s - %s)' % (floor(100% / 12 * 3, 2) $gutter)

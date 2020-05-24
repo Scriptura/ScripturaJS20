@@ -1,0 +1,132 @@
+// -----------------------------------------------------------------------------
+// @section	    Variables
+// @description Définition des variables globales
+// -----------------------------------------------------------------------------
+
+// @note @bugfix Téléscopages possible entre les variables stylus et certaines valeurs. Par convention le framework utilise donc '$' pour les variables. Cela permet aussi un meilleur repérage des variables dans le code.
+
+
+// @subsection  Options
+// @description Choix des $bundles
+// -----------------------------------------------------------------------------
+
+$bundleTemplate =            true
+// $bundleMasonry =             false
+$bundleColumns =             true
+// $bundleHidden =              true
+// $bundlePositions =           true
+// $bundleSizesBlocks =         true
+// $bundleRatios =              true
+// $bundleLangages =            true
+// $bundleZoom =                true
+// $bundleVerses =              true
+// $bundleDropCaps =            true
+// $bundleLetters =             false
+// $bundleHeadbands =           true
+// $bundleRibbons =             true
+$bundleLists =               true
+$bundleSummary =             true
+// $bundleNumberlists =         true
+// $bundleSeparators =          true
+// $bundleHighlight =           true
+// $bundleEmphasized =          true
+// $bundleEmphasizedMeta =      true
+// $bundleSurround =            true
+// $bundleMessagesBox =         true
+// $bundleImages =              true
+// $bundleCaptionSlides =       true
+// $bundleFocus =               true
+// $bundleGallery =             false
+// $bundleSlideshow =           true
+// $bundleMedias =              true
+// $bundlePlayers =             true
+// $bundleMaps =                true
+// $bundleGradients =           true
+$bundleForms =               true
+$bundleInputs =              true
+$bundleButtons =             true
+// $bundleSearch =              true
+// $bundleCheckbox =            true
+// $bundleSwitchs =             true
+// $bundleRanges =              true
+// $bundleProgress =            true
+// $bundleScrollTop =           true
+// $bundleAccordions =          true
+// $bundleTabs =                true
+// $bundleTables =              true
+// $bundlePopins =              true
+// $bundleTooltips =            true
+// $bundleMainNav =             true
+// $bundleLoginAvatar =         true
+// $bundleBreadcrumb =          true
+// $bundleAnchors =             true
+// $bundleLoaders =             true
+// $bundleDownloadLinks =       true
+// $bundleFooter =              true
+// $bundleArticles =            true
+// $bundleAside =               true
+// $bundleComments =            true
+// $bundleBox =                 true
+// $bundleRelationship =        true
+// $bundleUnveiling =           true
+// $bundleOrganizationalChart = true
+$bundleDemo =                true
+
+
+// @subsection  Grid
+// @description Configuration de la grille
+// -----------------------------------------------------------------------------
+
+$columns = 12                             // @note Nombre de colonnes
+$gutter = 1rem                            // @note Gouttière, largeur entre deux modules (en unité em/rem)
+$wrap = 90rem                             // @note Largeur maximale du contenu
+
+
+// @subsection  Breakpoints
+// @description Définition des points de rupture
+// -----------------------------------------------------------------------------
+
+// @bugfix Nécessité de préciser deux chiffres après la virgule pour éviter un décalage entre 'max-width' et 'min-width' (avec une unité pour éviter les arrondissements par les navigateurs)
+$sizeXS =   36.01rem
+$sizeS =    65.01rem
+$sizeL =    90.01rem
+$sizeXL =  120.01rem
+$sizeXXL = 140.01rem
+$sizeNav =  65.01rem // À caler sur la taille du contenu de '.nav-main ul'. @note Prévoir de la marge en raison des différences d'interprétation des fonts selon les navigateurs
+
+
+// @subsection  Fonts
+// @description Choix des polices de caractères à charger via @font-face
+// -----------------------------------------------------------------------------
+// @params 'false' si pas de font
+
+$fontName = 'Open Sans'
+$fontList = $fontName, Arial, Sans-Serif
+$fontFile = openSans-Regular
+$fontName2 = 'Noto Serif'
+$fontList2 = $fontName2, Georgia, Serif
+$fontFile2 = notoSerif-Regular
+
+
+// @subsection  Colors
+// @description Palette de référence pour le thème
+// -----------------------------------------------------------------------------
+
+$color0 = #333                            // couleur de fond
+$color1 = #e91e63 //#b03c57               // couleur dominante 1
+$color2 = #b9515d                         // couleur dominante 2
+$color4 = #7ca166                         // couleur secondaire (vert)
+$color5 = #c4823f //#bb7c3c               // couleur secondaire (orange)
+$color6 = #5a728a                         // couleur secondaire (bleu)
+$color7 = #f8fed8                         // couleur secondaire (jaune)
+$colorT = #fff                            // couleur du texte
+$colorG = $color0                         // gris de référence
+
+
+// @subsection Rounds
+// -----------------------------------------------------------------------------
+
+$r1 = .3rem                     // Boites
+$r2 = $r1                       // Éléments internes
+$r3 = false                     // Éléments d'informations
+$r4 = false                     // Bouttons

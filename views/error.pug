@@ -1,0 +1,19 @@
+extends layout
+
+block main
+  main
+    h1.h2= error.status + ' ' + message
+    //-pre #{error.stack}
+    pre.
+         OxxO
+        X oo X
+        X >< X
+         XXXX~<>
+       (..)(..)
+    .list-stripe-large.summary
+      a(href='/') Home
+      a(href='/article/1') Article page
+      a(href='/person/1') Person page
+      a(href='/user/1') User page
+      a(href='/place/1') Place page
+      a(href='/login') Login page

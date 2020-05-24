@@ -1,0 +1,14 @@
+extends layout
+
+block main
+  main
+    h1.h2= _name
+    form(action='/login' method='post')
+      .input
+        label Username :
+        input(type='text' name='username' placeholder='user')
+      .input
+        label Password :
+        input(type='password' name='password' placeholder='• • • • • • • •')
+      div
+        button.button Se connecter

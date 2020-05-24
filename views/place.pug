@@ -1,0 +1,102 @@
+extends layout
+
+block main
+  main
+    h1.h2= _name
+    ul
+      if _street
+      li Adresse : #{_street}, #{_postal_code}, #{_locality}
+      if _location
+        li Latitude : #{_location.y}
+      if _location
+        li Longitude : #{_location.x}
+      if _elevation
+        li Altitude : #{_elevation}
+    if _location
+      #map.map(style='height:50vh')
+      //- Serveurs de tuiles disponibles @see https://wiki.openstreetmap.org/wiki/Tile_servers
+      //- Alternative sympa : 'https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token=pk.eyJ1Ijoib2xpdmllcmMiLCJhIjoiY2s5dnNnZWoyMDIzNDNzb2Y1dmQ4MGNtMCJ9.m4U-wYcS4EPcKe9nVXIbUA'
+      //- Zoom de 0 à 18
+      //- @todo yarn add color -> color.lighten(0.2)
+      script.
+        const tileServer = 'https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token=pk.eyJ1Ijoib2xpdmllcmMiLCJhIjoiY2s5dnNnZWoyMDIzNDNzb2Y1dmQ4MGNtMCJ9.m4U-wYcS4EPcKe9nVXIbUA' //'https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png'
+          , attribution = '<a href="//www.openstreetmap.org/">OSM</a> | <a href="//www.mapbox.com/">Mapbox</a>'
+          , zoom = 15
+          , locations = [ // Data served on the backend side
+            {
+              "name": "#{_name}"
+              , "coords": [#{_location.y}, #{_location.x}]
+              , "color": "#ff654f"
+            }
+            /*
+            , {
+              "name": "Basilique du Sacré-Cœur"
+              , "coords": [48.886714, 2.343094]
+              , "color": "#ff4333"
+            }
+            */
+          ];
+      script(src='/scripts/mapPlace.js')
+      style.
+        #map {
+          width: 100%;
+          height: 100vh;
+          margin: auto;
+        }
+        .leaflet-popup-content-wrapper {
+          font-size: 0.9rem;
+          color: #777;
+          border-radius: 0.2rem;
+        }
+        .leaflet-control,
+        .leaflet-popup-content-wrapper,
+        .leaflet-popup-tip {
+          box-shadow: 0.5rem 0.5rem 2rem rgba(0,0,0,0.1);
+          box-shadow: 0.5rem 0.5rem 2rem rgba(0,0,0,0.1);
+        }
+        .leaflet-marker-pane {
+          animation: drop 1s ease;
+        }
+        .leaflet-shadow-pane {
+          animation: hide 1.5s;
+        }
+        @keyframes hide {
+          0% {
+            opacity: 0;
+          }
+          60% {
+            opacity: 0;
+          }
+          100% {
+            opacity: 1;
+          }
+        }
+        @keyframes drop {
+          0% {
+            transform: translate(0, -100vh);
+          }
+          50% {
+            transform: translate(0, 0);
+          }
+          75% {
+            transform: translate(0, -40px);
+          }
+          100% {
+            transform: translate(0, 0);
+          }
+        }
+    br
+    .list-stripe-large.summary
+      a(href='/place/1') Place 1
+      a(href='/place/2') Place 2
+      a(href='/place/3') Place 3
+      a(href='/place/4') Place 4
+      a(href='/place/5') Place 5 (pas d'infos GPS)
+      a(href='/place/6') Place 6
+      a(href='/place/7') Place 7
+      a(href='/place/8') Place 8
+      a(href='/place/9') Place 9
+      a(href='/place/10') Place 10
+      a(href='/place/11') Place 11 (request failed)
+      a(href='/place/xyz') Place xyz (incorrect path)
+      a(href='/') Home

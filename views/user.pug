@@ -1,0 +1,23 @@
+extends layout
+
+block main
+  main
+    h1.h2= _display_name
+    ul
+      li Id : #{_id}
+      li Username : #{_username}
+      li Password : #{_password}
+      if _email
+        li Email : #{_email}
+      li Inscrit depuis le : #{_creation}
+      if _revision
+        li Dernière revision du profil le : #{_revision}
+      if _last_login
+        li Dernière connexion le : #{_last_login}
+    br
+    br
+    .list-stripe-large.summary
+      a(href='/user/1') User 1
+      a(href='/user/2') User 2 (request failed)
+      a(href='/user/xyz') User xyz (incorrect path)
+      a(href='/') Home

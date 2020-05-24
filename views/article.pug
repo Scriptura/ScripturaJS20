@@ -1,0 +1,20 @@
+extends layout
+
+block main
+  main
+    h1.h2= _name
+    p!= _content
+    p
+      em
+        | Article créé le #{_creation}
+        if _revision
+          |, révisé le #{_revision}
+        |.
+    ul
+      li Title : #{_title}
+      li Meta description : #{_description }
+    br
+    .list-stripe-large.summary
+      a(href='/article/2') Article 2 (request failed)
+      a(href='/article/xyz') Article xyz (incorrect path)
+      a(href='/') Home
