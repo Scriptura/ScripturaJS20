@@ -116,7 +116,7 @@ CREATE TABLE __organization (
 
 CREATE TABLE __place (
   _id                 BIGSERIAL         NOT NULL,
-  _name               VARCHAR(60)       NULL,     -- nom pour un marker. Ne pas rendre cette donnée obligatoire (_place peut référencer un simple point de coordonnées GPS)
+  _name               VARCHAR(60)       NULL,     -- nom pour un marker ; ne pas rendre cette donnée obligatoire (_place peut référencer un simple point de coordonnées GPS)
   _street             VARCHAR(60)       NULL,     -- adresse
   _postal_code        VARCHAR(16)       NULL,     -- code postal, internationaux compris
   _locality           VARCHAR(64)       NULL,     -- localité
@@ -139,8 +139,7 @@ CREATE TABLE __post (
   _type               VARCHAR(255)      NULL,     -- article, page, etc...
   _slug               VARCHAR(255)      NULL,     -- slug propre à l'article, différent de l'url canonique, celle-ci étant reconstituée à partir le l'index par exemple
   _description        VARCHAR           NULL,     -- contenu utilisé pour la balise meta description
-  _author             BIGINT            NOT NULL, -- créateur du post (id de _user)
-  _contributors       VARCHAR(255)      NULL,     -- contributeurs à l'article (ids de _user en tableau)
+  _author_id          BIGINT            NOT NULL, -- créateur du post (contributeur principal)
   _status             SMALLINT          NOT NULL, -- publié, brouillon, refusé, poubelle
   _comments_status    BOOLEAN           NULL,     -- commentaires activés ou non
   _keywords           VARCHAR(255)      NULL,     -- mots-clefs pour le post
@@ -156,6 +155,7 @@ CREATE TABLE __media (
   _revision           TIMESTAMP         NULL,     -- date de révision
   _type               VARCHAR(255)      NULL,     -- .jpg, .ico, .svg, .mp3, .mp4
   _url                VARCHAR(255)      NULL,     -- url du fichier
+  _author_id          BIGINT            NOT NULL, -- auteur de l'upload
   _posts_id           BIGINT            NULL,     -- posts en lien (id de _posts)
   _description        VARCHAR(255)      NULL,
   CONSTRAINT __media_pkey PRIMARY KEY (_id)
@@ -167,9 +167,18 @@ CREATE TABLE __comment (
   _name               VARCHAR(255)      NULL,     -- titre du commentaire
   _creation           TIMESTAMP         NOT NULL, -- date de création
   _revision           TIMESTAMP         NULL,     -- date de révision
-  _author             SMALLINT          NOT NULL, -- id de l'utilisateur auteur du commentaire
-  _posts              SMALLINT          NOT NULL, -- post concerné
+  -- _author             SMALLINT          NOT NULL,
+  _post_id            SMALLINT          NOT NULL, -- post concerné
   CONSTRAINT __comment_pkey PRIMARY KEY (_id)
+);
+
+
+CREATE TABLE __author ( -- table de lien entre un item et son auteur ou ses contributeurs (__post, __media, __comment)
+  _id                 BIGSERIAL         NOT NULL,
+  _user_id            BIGINT            NOT NULL,
+  _post_id            BIGINT            NULL,
+  _media_id           BIGINT            NULL,
+  CONSTRAINT __post_pkey PRIMARY KEY (_id)
 );
 
 
@@ -247,6 +256,7 @@ GRANT SELECT ON __person TO PUBLIC;
 GRANT SELECT ON __organization TO PUBLIC;
 GRANT SELECT ON __place TO PUBLIC;
 GRANT SELECT ON __post TO PUBLIC;
+GRANT SELECT ON __contributor TO PUBLIC;
 GRANT SELECT ON __media TO PUBLIC;
 GRANT SELECT ON __comment TO PUBLIC;
 GRANT SELECT ON __keyword TO PUBLIC;
@@ -295,7 +305,7 @@ VALUES
   (10, 'Basilique Notre-Dame-de-la-Garde', 'Rue Fort du Sanctuaire', '13281', 'Marseille', 'Bouches-du-Rhône', 'France', POINT(5.371195, 43.284002), NULL, NULL);
 
 
-INSERT INTO __post ( _id, _name, _content, _creation, _revision, _description, _author, _status )
+INSERT INTO __post ( _id, _name, _content, _creation, _revision, _description, _author_id, _status )
 VALUES
   (1, 'La légende dorée', 'La Légende dorée (<em>Legenda aurea</em> en latin) est un ouvrage rédigé en latin entre 1261 et 1266 par Jacques de Voragine, dominicain et archevêque de Gênes, qui raconte la vie d''environ 150 saints ou groupes de saints, saintes et martyrs chrétiens, et, suivant les dates de l''année liturgique, certains événements de la vie du Christ et de la Vierge Marie.', '2020-04-16 19:10:25-07', '2020-04-16 20:15:22-01', 'La Légende dorée fut l''ouvrage le plus lu et le plus diffusé au Moyen Âge, juste après la Bible. Cette « légende des saints » (son titre originel) constitue en fait une encyclopédie de la vie chrétienne.', 2, 1);
 

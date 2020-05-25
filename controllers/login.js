@@ -40,7 +40,10 @@ router.post('/login',
   passport.authenticate('local', {
     successRedirect: '/'
     , failureRedirect: '/login'
+    , failureFlash: false
     , failureFlash: true
+    //, failureFlash: 'Identifiant ou mot de passe invalide.' //'Invalid username or password.'
+    //, successFlash: 'Welcome!'
   })
 )
 

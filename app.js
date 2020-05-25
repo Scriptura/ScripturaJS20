@@ -1,6 +1,6 @@
 'use strict'
 
-const settings = require('./settings/variables'),
+const vv = require('./settings/variables'),
       //uuid = require('uuid/v4'),
       createError = require('http-errors'),
       express = require('express'),
@@ -13,6 +13,8 @@ const settings = require('./settings/variables'),
       favicon = require('serve-favicon'),
       robots = require('express-robots-txt'),
       useragent = require('express-useragent'),
+      //flash = require('connect-flash'), // @todo en test. En lien avec Passeport.js
+      //session = require('express-session'), // @todo idem
       // yarn add :
       // passport
       // express-validator
@@ -33,7 +35,7 @@ app.set('view engine', 'pug') // Choix du moteur de template.
 // Option 'pretty' dépréciée par Pug, en effet l'identation peut créer des espaces blancs conduisant à des différences d'interprétation subtiles
 // @see https://pugjs.org/api/reference.html#options
 // @toto Option utilisée pour l'instant car pratique pour contrôler le code de sortie
-if(settings.dev) app.locals.pretty = true
+if(vv.dev) app.locals.pretty = true
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
@@ -44,6 +46,9 @@ app.use(compression()) // Compression deflate et gzip.
 app.use(bodyParser.urlencoded({ extended: false })) // parse application/x-www-form-urlencoded
 app.use(bodyParser.json()) // parse application/json
 app.use(useragent.express())
+
+//app.use(flash()) // @todo En test
+//app.use(express.session({ secret : 'keyboard cat' })) // @todo Idem
 
 // Dispatcher :
 
@@ -93,7 +98,7 @@ app.use(function(err, req, res, next) { // Gestionnaire d'erreurs.
 
   // Render the error page.
   res.status(err.status || 500)
-  res.render('error', {_title: '404 | ' + settings.siteName})
+  res.render('error', {_title: '404 | ' + vv.siteName})
 })
 
 module.exports = app
