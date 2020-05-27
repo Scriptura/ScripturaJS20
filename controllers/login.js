@@ -3,13 +3,21 @@
 const vv = require('../settings/variables'),
       express = require('express'),
       router = express.Router(),
+      session = require('express-session'),
+      flash = require('connect-flash'),
       passport = require('passport'),
       LocalStrategy = require('passport-local').Strategy,
       { getLogin } = require('../models/login')
 
 const username = getLogin._username
+router.use(flash())
 
+// @documentation :
+// @see https://github.com/jwalton/passport-api-docs
 passport.use(new LocalStrategy(
+  //{
+  //  usernameField: 'email'
+  //}
   function(username, password, done) {
     User.findOne({ username: username }, function(err, user) {
       if (err) { return done(err) }

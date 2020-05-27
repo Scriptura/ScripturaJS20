@@ -37,11 +37,13 @@
     "autoprefixer-stylus": "^1.0.0",
     "browser-sync": "^2.26.7",
     "eslint": "^7.0.0",
-    "stylus": "^0.54.7"
+    "stylus": "^0.54.7",
+    "uglify": "^0.1.5"
   },
   "scripts": {
     "start": "NODE_ENV=production yarn go",
-    "dev": "yarn stylusmin | yarn stylusexp | yarn bs | yarn go",
+    "dev": "yarn scriptsmin | yarn stylusmin | yarn stylusexp | yarn bs | yarn go",
+    "scriptsmin": "uglifyjs public/scripts/development/main.js -o public/scripts/main.js -c -m --source-map",
     "stylusmin": "stylus -u autoprefixer-stylus -w public/styles/development/main.styl -o public/styles/main.css -c -m",
     "stylusexp": "stylus -u autoprefixer-stylus -w public/styles/development/main.styl -o public/styles/expanded/main.css",
     "bs": "browser-sync start --proxy 'localhost:3000' --port 9001 --reload-debounce 2000 --files 'public' 'views' --no-notify",
