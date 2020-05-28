@@ -14,4 +14,20 @@ const getUser = async (username) => await db.one('SELECT * FROM public.__user WH
     return data
   })
 
-module.exports = { getUser: getUser }
+  const postUser = async () => await db.one('INSERT INTO public.__user (_username, _password) VALUES ($1, $2) RETURNING _username', [
+    req.body._username.toLowerCase()
+    , req.body.user_password // @todo Crypter avec argon2
+  ])
+  .then(data => {
+    //console.log(data)
+    return data
+  })
+  .catch(error => {
+    console.log(error)
+    return data
+  })
+
+module.exports = {
+  getUser: getUser
+  , postUser: postUser
+}

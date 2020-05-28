@@ -29,6 +29,10 @@ router.use(
 )
 router.use(
   '/',
+  require('./register')
+)
+router.use(
+  '/',
   require('./os')
 )
   router.use(

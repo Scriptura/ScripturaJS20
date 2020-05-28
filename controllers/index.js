@@ -7,8 +7,8 @@ const vv = require('../settings/variables'),
 router.get('/', (req, res, next) => { // GET home page
   res.render('index', {
     _title: vv.siteName
-    , _meta_description: vv.siteName + ', page d\'accueil'
     , _name: vv.siteName
+    , _description: vv.siteName + ', page d\'accueil'
   })
 })
 
