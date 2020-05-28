@@ -1,7 +1,6 @@
 'use strict'
 
 const vv = require('../settings/variables'),
-      //db = require('../database'),
       express = require('express'),
       router = express.Router()
 

@@ -1,40 +1,34 @@
 'use strict'
 
 const vv = require('../settings/variables'),
+      db = require('../database/db'),
+      User = require('../models/user'),
       express = require('express'),
       router = express.Router(),
       session = require('express-session'),
       flash = require('connect-flash'),
       passport = require('passport'),
-      LocalStrategy = require('passport-local').Strategy,
-      { getLogin } = require('../models/login')
+      LocalStrategy = require('passport-local').Strategy
 
-const username = getLogin._username
-router.use(flash())
+router.use(flash()) // @todo
 
 // @documentation :
 // @see https://github.com/jwalton/passport-api-docs
+// https://stackoverflow.com/questions/51086775/passportjs-and-user-creation-with-postgres
 passport.use(new LocalStrategy(
-  //{
-  //  usernameField: 'email'
-  //}
-  function(username, password, done) {
-    User.findOne({ username: username }, function(err, user) {
-      if (err) { return done(err) }
+  function(req, username, password, done) {
+    User.getUser({ username: username }, function(err, user) {
+      if (err) { return done(err); }
       if (!user) {
-        return done(null, false, {
-          message: 'Incorrect username.'
-        })
+        return done(null, false, { message: 'Incorrect username.' });
       }
       if (!user.validPassword(password)) {
-        return done(null, false, {
-          message: 'Incorrect password.'
-        })
+        return done(null, false, { message: 'Incorrect password.' });
       }
-      return done(null, user)
-    })
+      return done(null, user);
+    });
   }
-))
+));
 
 router.get('/login', (req, res, next) => { // GET home page
   res.render('login', {

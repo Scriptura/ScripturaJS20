@@ -24,9 +24,9 @@ const vv = require('./settings/variables'),
       // sharp
       // svgo
       // imagemin-webp
-      app = express() // Instantiation
-
-const hostname = 'http://localhost:3000' // @todo À requêter dynamiquement...
+      app = express(), // Instantiation
+      hostname = 'http://localhost:3000', // @todo À requêter dynamiquement...
+      routesDispatcher = require(path.join(__dirname, 'controllers', 'routesDispatcher'))
 
 app.use(helmet()) // Protection des entêtes @see https://helmetjs.github.io/
 app.use(morgan('dev')) // Info sur les logs en console.
@@ -47,51 +47,13 @@ app.use(bodyParser.urlencoded({ extended: false })) // parse application/x-www-f
 app.use(bodyParser.json()) // parse application/json
 app.use(useragent.express())
 
-//app.use(flash()) // @todo En test
-//app.use(express.session({ secret : 'keyboard cat' })) // @todo Idem
+app.use('/', routesDispatcher) // Redirige vers le répartiteur des routes
 
-// Dispatcher :
-
-const controllers = path.join(__dirname, 'controllers')
-//require(path.join(__dirname, 'controllers', 'dispatcher'))
-app.use(
-  '/',
-  require(path.join(controllers, 'index'))
-)
-app.use(
-  '/',
-  require(path.join(controllers, 'article'))
-)
-app.use(
-  '/',
-  require(path.join(controllers, 'person'))
-)
-app.use(
-  '/',
-  require(path.join(controllers, 'user'))
-)
-app.use(
-  '/',
-  require(path.join(controllers, 'place'))
-)
-app.use(
-  '/',
-  require(path.join(controllers, 'login'))
-)
-app.use(
-  '/',
-  require(path.join(controllers, 'os'))
-)
-app.use(
-  '/',
-  require(path.join(controllers, 'styleGuide'))
-)
-
-app.use(function(req, res, next) { // catch 404 and forward to error handler
+app.use((req, res, next) => { // catch 404 and forward to error handler
   next(createError(404))
 })
 
-app.use(function(err, req, res, next) { // Gestionnaire d'erreurs.
+app.use((err, req, res, next) => { // Gestionnaire d'erreurs.
   // Set locals, only providing error in development.
   res.locals.message = err.message
   res.locals.error = req.app.get('env') === 'development' ? err : {}
