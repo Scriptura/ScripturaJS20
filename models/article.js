@@ -11,7 +11,7 @@ const getArticle = async (id) => await db.one('SELECT * FROM public.__post WHERE
   })
   .catch(error => {
     console.log(error)
-    return data
+    next()
   })
 
 module.exports = {getArticle: getArticle}

@@ -13,8 +13,4 @@ block main
     ul
       li Title : #{_title}
       li Meta description : #{_description }
-    br
-    .list-stripe-large.summary
-      a(href='/article/2') Article 2 (request failed)
-      a(href='/article/xyz') Article xyz (incorrect path)
-      a(href='/') Home
+    include includes/links
