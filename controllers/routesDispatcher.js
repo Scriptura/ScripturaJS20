@@ -1,43 +1,44 @@
 'use strict'
 
-const express = require('express'),
+const path = require('path'),
+      express = require('express'),
       router = express.Router()
 
 router.use(
   '/',
-  require('./index')
+  require(path.join(__dirname, 'index'))
 )
 router.use(
   '/',
-  require('./article')
+  require(path.join(__dirname, 'article'))
 )
 router.use(
   '/',
-  require('./person')
+  require(path.join(__dirname, 'person'))
 )
 router.use(
   '/',
-  require('./user')
+  require(path.join(__dirname, 'user'))
 )
 router.use(
   '/',
-  require('./place')
+  require(path.join(__dirname, 'place'))
 )
 router.use(
   '/',
-  require('./login')
+  require(path.join(__dirname, 'login'))
 )
 router.use(
   '/',
-  require('./register')
+  require(path.join(__dirname, 'register'))
 )
 router.use(
   '/',
-  require('./os')
+  require(path.join(__dirname, 'os'))
 )
   router.use(
   '/',
-  require('./styleGuide')
+  require(path.join(__dirname, 'styleGuide'))
 )
 
 module.exports = router
