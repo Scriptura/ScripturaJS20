@@ -6,10 +6,11 @@ block main
     form(action='/login' method='post')
       .input
         label Username :
-        input(type='text' name='username' placeholder='user')
+        input(type='text' name='username' placeholder='user' autocorrect='off' autocapitalize='off' spellcheck='false')
       .input
         label Password :
-        input(type='password' name='password' placeholder='• • • • • • • •')
+        input#test(type='password' name='password' placeholder='• • • • • • • •')
+        a.see-password(href='#')
       div
         button.button Se connecter
       //- attribute html5: required='required'

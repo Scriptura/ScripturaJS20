@@ -495,6 +495,7 @@ main {
 [class*="list-stripe"] > a:active {
   background-color: Orange;
   box-shadow: 0.5rem 0.5rem 2rem rgba(0,0,0,0.25);
+  outline: none;
   -webkit-animation: animList 0.1s ease-in-out;
           animation: animList 0.1s ease-in-out;
 }
@@ -518,8 +519,6 @@ fieldset {
 }
 legend {
   padding: 0;
-  max-width: 100%;
-  border: 0;
 }
 label:focus,
 label:hover,
@@ -542,10 +541,6 @@ select {
 select:not([multiple]) {
   -webkit-appearance: none;
   -moz-appearance: none;
-  background-image: $image004;
-  background-repeat: no-repeat;
-  background-position: right 0.5em center;
-  background-size: 1em 1em;
   border-radius: 0;
 }
 select[multiple] {
@@ -582,11 +577,6 @@ input[type="submit"] {
   -webkit-appearance: button;
   cursor: pointer;
 }
-button::-moz-focus-inner,
-input::-moz-focus-inner {
-  border: 0;
-  padding: 0;
-}
 input[type="search"] {
   -webkit-appearance: textfield;
 }
@@ -617,45 +607,51 @@ html input[disabled] {
 ::placeholder {
   color: #777;
 }
-form > div,
-form fieldset > div {
+form > .input,
+form fieldset > .input {
   width: 100%;
-  margin: 1em 0;
+  margin: 1em 0 1em;
 }
-@media (min-width: 36.01rem) {
-  form [class^="columns"] > div {
-    padding-bottom: 0;
-  }
+.input label {
+  display: inline-block;
+  margin-bottom: 0.5rem;
 }
-[class*="input"] input:not([type="button"]),
-[class*="input"] select,
-[class*="input"] textarea {
+.input input:not([type="button"]),
+.input select,
+.input textarea {
   width: 100%;
   padding: 0.4em 1em;
   background-color: #444;
   border: 0.1em solid #444;
 }
 .input input,
-[class*="input"] select,
-[class*="input"] textarea {
+.input select,
+.input textarea {
+  color: currentColor;
   border-radius: 0.3rem;
 }
-[class*="input"].disabled label {
+.input input:not([type="button"]):focus,
+.input select:focus,
+.input textarea:focus {
+  outline: none;
+  border: 0.1rem solid #000;
+}
+.input.disabled label {
   color: #777;
 }
-[class*="input"].disabled input {
-  background: $colorBG052a repeating-linear-gradient(-45deg, #777, #aaa 1px, transparent 1px, transparent 6px) repeat;
+.input.disabled input {
+  background: #444 repeating-linear-gradient(-45deg, #777, #aaa 1px, transparent 1px, transparent 6px) repeat;
   background-size: 8px 8px;
   cursor: not-allowed;
 }
-[class*="input"].invalid input,
-[class*="input"].invalid select,
-[class*="input"].invalid textarea {
+.input.invalid input,
+.input.invalid select,
+.input.invalid textarea {
   background-color: #f00;
   border-color: #f00;
   background-position: right 0.7em center;
 }
-[class*="input"].invalid :not(:focus) {
+.input.invalid :not(:focus) {
   -webkit-animation: animInvalidInput 2s infinite;
           animation: animInvalidInput 2s infinite;
 }
@@ -669,56 +665,57 @@ form fieldset > div {
   font-style: normal;
   margin-right: 0.5em;
 }
-[class*="input"].invalid :focus + p::before {
+.input.invalid :focus + p::before {
   -webkit-animation: animBlink 2s infinite;
           animation: animBlink 2s infinite;
 }
-[class*="input"] :required,
-[class*="input"] .required {
+.input :required,
+.input .required {
   background-repeat: no-repeat;
   background-position: right 0.5em center;
   background-size: 1em 1em;
 }
-[class*="input"] :required:focus,
-[class*="input"] .required:focus {
+.input :required:focus,
+.input .required:focus {
   background-image: none;
 }
-.input-password {
+.input {
   position: relative;
 }
-.input-password [type="checkbox"] {
+.input [type="password"] + a {
   position: absolute;
-  bottom: 0.7em;
-  right: 0;
-  width: 1em !important;
-  margin: 0 1em 0 0;
-  cursor: pointer;
+  top: 2.5rem;
+  right: 1rem;
+  display: block;
+  width: 1rem;
+  height: 1rem;
+  color: #777;
 }
-.input-password input:not([type="checkbox"]) {
-  padding-right: 3em;
-  border-radius: 0.3rem;
+.input [type="password"] + a:focus,
+.input [type="password"] + a:hover,
+.input [type="password"] + a:active {
+  color: Orange;
+  text-decoration: none;
+  outline: none;
 }
-@-webkit-keyframes animInvalidInput {
-  0% {
-    border-color: #777;
-  }
-  50% {
-    border-color: Orange;
-  }
-  100% {
-    border-color: #000;
-  }
+.input [type="password"] + a:after {
+  content: '👁';
+  display: block;
+  width: 1rem;
+  height: 1rem;
+  line-height: 1;
 }
-@keyframes animInvalidInput {
-  0% {
-    border-color: #777;
-  }
-  50% {
-    border-color: Orange;
-  }
-  100% {
-    border-color: #000;
-  }
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-text-fill-color: #ddd;
+  -webkit-box-shadow: 0 0 0px 1000px #222 inset;
 }
 .button {
   overflow: hidden;
@@ -753,4 +750,26 @@ form fieldset > div {
 }
 .button-group > * {
   margin-right: 1em;
+}
+@-webkit-keyframes animInvalidInput {
+  0% {
+    border-color: #777;
+  }
+  50% {
+    border-color: Orange;
+  }
+  100% {
+    border-color: #000;
+  }
+}
+@keyframes animInvalidInput {
+  0% {
+    border-color: #777;
+  }
+  50% {
+    border-color: Orange;
+  }
+  100% {
+    border-color: #000;
+  }
 }

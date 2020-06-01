@@ -5,13 +5,13 @@ block main
     h1.h2= _name
     form(action='/register' method='post')
       .input
-        label Créez un nom d'utilisateur :
-        input(type='text' name='username' placeholder='user')
+        label Créez un nom d'utilisateur
+        input(type='text' name='username' placeholder='user' autocorrect='off' autocapitalize='off' spellcheck='false')
       .input
-        label Créez votre mot de passe :
+        label Créez votre mot de passe
         input(type='password' name='password' placeholder='• • • • • • • •')
       .input
-        label Réentrez votre mot de passe :
+        label Réentrez votre mot de passe
         input(type='password' name='password2' placeholder='• • • • • • • •')
       div
         button.button Enregistrer

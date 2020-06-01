@@ -1,3 +1,5 @@
+'use strict';
+
 // -----------------------------------------------------------------------------
 // @section     Support
 // @description Détecte les supports et ajoute des classes dans le tag html
@@ -12,19 +14,17 @@ function jsDetect() { // Vérification de la présence de Javascript (Vanilla js
 }
 jsDetect();
 
-function touchDetect() { // Vérification du support de touch (Vanilla js)
-  var supports = ( function() {
-    var html = document.documentElement,
-      touch = 'ontouchstart' in window || navigator.msMaxTouchPoints;
-    if (touch) {
-      html.classList.add( 'touch' );
-      return { touch: true };
-    }
-    else {
-      html.classList.add( 'no-touch' );
-      return { touch: false };
-    }
-  } )();
+function touchDetect() { // Vérification du support de touch
+  var html = document.documentElement,
+    touch = 'ontouchstart' in window || navigator.msMaxTouchPoints;
+  if (touch) {
+    html.classList.add( 'touch' );
+    return { touch: true };
+  }
+  else {
+    html.classList.add( 'no-touch' );
+    return { touch: false };
+  }
 }
 touchDetect();
 
@@ -65,10 +65,10 @@ protected();
 // @note Par défaut, tous les liens externes conduisent à l'ouverture d'un nouvel onglet, sauf les liens de téléchargement
 
 function externalLinks() {
-  var anchors = document.querySelectorAll( 'a' );
-  for( var i = 0, len = anchors.length; i < len; i++ ) {
-    if ( anchors[i].hostname !== window.location.hostname ) {
-      anchors[i].setAttribute( 'target', '_blank' );
+  var anchors = document.querySelectorAll('a');
+  for(var i = 0, len = anchors.length; i < len; i++) {
+    if (anchors[i].hostname !== window.location.hostname) {
+      anchors[i].setAttribute('target', '_blank');
      }
   }
 }
@@ -81,7 +81,7 @@ externalLinks();
 // -----------------------------------------------------------------------------
 
 function cmdPrint() {
-  var p = document.getElementsByClassName( 'cmd-print' );
+  var p = document.getElementsByClassName('cmd-print');
   function startPrint(){
     window.print();
     return false;
@@ -91,3 +91,11 @@ function cmdPrint() {
   }
 }
 cmdPrint();
+
+
+// -----------------------------------------------------------------------------
+// @section     Readable Password
+// @description Permutation du type permettant de voir les mots de passe en clair
+// -----------------------------------------------------------------------------
+
+
