@@ -682,7 +682,7 @@ form fieldset > .input {
 .input {
   position: relative;
 }
-.input [type="password"] + a {
+.see-password {
   position: absolute;
   top: 2.5rem;
   right: 1rem;
@@ -691,14 +691,14 @@ form fieldset > .input {
   height: 1rem;
   color: #777;
 }
-.input [type="password"] + a:focus,
-.input [type="password"] + a:hover,
-.input [type="password"] + a:active {
+.see-password:focus,
+.see-password:hover,
+.see-password:active {
   color: Orange;
   text-decoration: none;
   outline: none;
 }
-.input [type="password"] + a:after {
+.see-password::after {
   content: '👁';
   display: block;
   width: 1rem;

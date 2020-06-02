@@ -186,7 +186,7 @@ form fieldset > .input
 .input
   position relative
 
-.input [type="password"] + a // @todo A compléter et tester
+.see-password // @todo A compléter et tester
   position absolute
   top 2.5rem
   right 1rem
@@ -197,14 +197,14 @@ form fieldset > .input
   //background-color Orange
   //transform translate(20rem, -1.6rem)
 
-.input [type="password"] + a:focus
-.input [type="password"] + a:hover
-.input [type="password"] + a:active
+.see-password:focus
+.see-password:hover
+.see-password:active
   color Orange
   text-decoration none
   outline none
 
-.input [type="password"] + a:after
+.see-password::after
   content '👁'
   display block
   width 1rem

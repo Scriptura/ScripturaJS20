@@ -5,10 +5,10 @@ block main
     h1.h2= _name
     form(action='/login' method='post')
       .input
-        label Username :
+        label Utilisateur :
         input(type='text' name='username' placeholder='user' autocorrect='off' autocapitalize='off' spellcheck='false')
       .input
-        label Password :
+        label Mot de passe :
         input#test(type='password' name='password' placeholder='• • • • • • • •')
         a.see-password(href='#')
       div

@@ -98,4 +98,31 @@ cmdPrint();
 // @description Permutation du type permettant de voir les mots de passe en clair
 // -----------------------------------------------------------------------------
 
+// ES6:
+const inputs = document.querySelectorAll('.input [type=password]');
+for (const input of inputs) {
+  input.insertAdjacentHTML('afterend', '<button type="button">see</button>');
+}
 
+const buttons = document.querySelectorAll('.input [type=password] + button');
+for (const button of buttons) {
+  button.onclick = () => {
+    let input = button.previousElementSibling,
+        typeAttr = input.type === 'password'? 'text' : 'password';
+    input.type = typeAttr;
+  }
+}
+
+/*
+// ES5:
+Array.prototype.slice.call(document.querySelectorAll('.input [type="password"]')).forEach(function(input){
+  input.insertAdjacentHTML('afterend', '<button type="button">toggle password</button>');
+});
+Array.prototype.slice.call(document.querySelectorAll('input[type="password"] + button')).forEach(function(button){
+    button.addEventListener('click', event => {
+        var input = button.previousElementSibling,
+            typeAttr = input.type === 'password'? 'text' : 'password';
+        input.type = typeAttr;
+    });
+});
+*/

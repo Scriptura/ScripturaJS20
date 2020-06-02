@@ -31,6 +31,7 @@
     "pg-promise": "^10.4.2",
     "pug": "^2.0.0-beta11",
     "serve-favicon": "^2.5.0",
+    "uglify-es": "^3.3.9",
     "url": "^0.11.0",
     "uuid": "^7.0.3"
   },
@@ -40,8 +41,7 @@
     "browser-sync": "^2.26.7",
     "eslint": "^7.0.0",
     "purgecss": "^2.2.1",
-    "stylus": "^0.54.7",
-    "uglify": "^0.1.5"
+    "stylus": "^0.54.7"
   },
   "scripts": {
     "start": "NODE_ENV=production yarn go",
