@@ -6,15 +6,14 @@ block main
     form(action='/register' method='post')
       .input
         label Créez un nom d'utilisateur
-        input(type='text' name='username' placeholder='user' autocorrect='off' autocapitalize='off' spellcheck='false')
-      .input
+        input(type='text' name='username' placeholder='user' autocorrect='off' autocapitalize='off' spellcheck='false' required='required')
+      .input-see-password
         label Créez votre mot de passe
-        input(type='password' name='password' placeholder='• • • • • • • •')
-      .input
+        input(type='password' name='password' placeholder='• • • • • • • •' required='required')
+      .input-see-password
         label Réentrez votre mot de passe
-        input(type='password' name='password2' placeholder='• • • • • • • •')
+        input(type='password' name='password2' placeholder='• • • • • • • •' required='required')
       div
         button.button Enregistrer
-      //- attribute html5: required='required'
       br
       include includes/links

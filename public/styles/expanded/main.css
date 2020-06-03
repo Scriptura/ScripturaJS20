@@ -122,7 +122,7 @@ blockquote footer::after {
   content: '.';
 }
 q {
-  quotes: "\201C" "\201D" "\2018" "\2019";
+  quotes: '\201C' '\201D' '\2018' '\2019';
 }
 code,
 kbd,
@@ -155,39 +155,39 @@ img {
   max-width: 100%;
   border-style: none;
 }
-[class*="thumbnail"] {
+[class*=thumbnail] {
   width: 100%;
 }
 @media (min-width: 36.01rem) {
-  [class*="thumbnail"] {
+  [class*=thumbnail] {
     max-width: 22.5rem;
   }
 }
-[class^="figure"] {
+[class^=figure] {
   width: 100%;
   padding: 0.5em;
   background-color: $colorBG036;
 }
-[class^="figure"] figcaption {
+[class^=figure] figcaption {
   padding-top: 0.5em;
   text-align: center;
 }
-[class^="figure"] + [class^="figure"] {
+[class^=figure] + [class^=figure] {
   margin-top: 2em;
 }
 @media (min-width: 65.01rem) {
-  [class*="-alignleft"] {
+  [class*=-alignleft] {
     float: left;
     margin-right: 1em;
   }
-  [class*="-alignright"] {
+  [class*=-alignright] {
     float: right;
     margin-left: 1em;
   }
-  [class*="-align"] ~ h2,
-  [class*="-align"] ~ h3,
-  [class*="-align"] ~ hr,
-  [class*="-align"] ~ aside {
+  [class*=-align] ~ h2,
+  [class*=-align] ~ h3,
+  [class*=-align] ~ hr,
+  [class*=-align] ~ aside {
     clear: both;
   }
 }
@@ -258,22 +258,22 @@ select {
   text-transform: none;
 }
 button,
-[type="button"],
-[type="reset"],
-[type="submit"] {
+[type=button],
+[type=reset],
+[type=submit] {
   -webkit-appearance: button;
 }
 button::-moz-focus-inner,
-[type="button"]::-moz-focus-inner,
-[type="reset"]::-moz-focus-inner,
-[type="submit"]::-moz-focus-inner {
+[type=button]::-moz-focus-inner,
+[type=reset]::-moz-focus-inner,
+[type=submit]::-moz-focus-inner {
   border-style: none;
   padding: 0;
 }
 button:-moz-focusring,
-[type="button"]:-moz-focusring,
-[type="reset"]:-moz-focusring,
-[type="submit"]:-moz-focusring {
+[type=button]:-moz-focusring,
+[type=reset]:-moz-focusring,
+[type=submit]:-moz-focusring {
   outline: 1px dotted ButtonText;
 }
 fieldset {
@@ -293,20 +293,20 @@ progress {
 textarea {
   overflow: auto;
 }
-[type="checkbox"],
-[type="radio"] {
+[type=checkbox],
+[type=radio] {
   box-sizing: border-box;
   padding: 0;
 }
-[type="number"]::-webkit-inner-spin-button,
-[type="number"]::-webkit-outer-spin-button {
+[type=number]::-webkit-inner-spin-button,
+[type=number]::-webkit-outer-spin-button {
   height: auto;
 }
-[type="search"] {
+[type=search] {
   -webkit-appearance: textfield;
   outline-offset: -2px;
 }
-[type="search"]::-webkit-search-decoration {
+[type=search]::-webkit-search-decoration {
   -webkit-appearance: none;
 }
 ::-webkit-file-upload-button {
@@ -372,14 +372,14 @@ main {
   grid-area: footer;
   background-color: #e91e63;
 }
-[tabindex="-1"]:focus:not(:focus-visible) {
+[tabindex=-1]:focus:not(:focus-visible) {
   outline: 0 !important;
 }
-[class^="columns"] {
+[class^=columns] {
   -moz-column-gap: 0;
        column-gap: 0;
 }
-[class^="columns"] > * {
+[class^=columns] > * {
   display: inline-block;
   width: 100%;
   word-wrap: break-word;
@@ -423,19 +423,19 @@ main {
          column-count: 6;
   }
 }
-[class^="columns"].gap {
+[class^=columns].gap {
   -moz-column-gap: $gap;
        column-gap: $gap;
 }
-[class^="columns"].gap > * {
+[class^=columns].gap > * {
   margin-bottom: $gap;
 }
 @media (min-width: 36.01rem) {
-  [class^="columns"].sizeSgap {
+  [class^=columns].sizeSgap {
     -moz-column-gap: $gap;
          column-gap: $gap;
   }
-  [class^="columns"].sizeSgap > * {
+  [class^=columns].sizeSgap > * {
     margin-bottom: $gap;
   }
 }
@@ -465,41 +465,41 @@ main {
     width: calc(25% - 1rem);
   }
 }
-[class*="list"],
-[class*="list"] > * {
+[class*=list],
+[class*=list] > * {
   padding-left: 0;
 }
-[class*="list"] li {
+[class*=list] li {
   display: block;
 }
-[class*="list-stripe"] > a {
+[class*=list-stripe] > a {
   display: block;
   text-decoration: none;
 }
-[class*="list-stripe"] {
+[class*=list-stripe] {
   margin: 0;
 }
-:root [class*="list-stripe"] > * {
+:root [class*=list-stripe] > * {
   margin: 0.5em 0;
   padding: 0.3em 1em;
 }
-[class*="list-stripe"] > * {
+[class*=list-stripe] > * {
   background-color: #474747;
   box-shadow: 0.5rem 0.5rem 2rem rgba(0,0,0,0.1);
 }
-[class*="list-stripe"] > a {
+[class*=list-stripe] > a {
   color: inherit;
 }
-[class*="list-stripe"] > a:focus,
-[class*="list-stripe"] > a:hover,
-[class*="list-stripe"] > a:active {
+[class*=list-stripe] > a:focus,
+[class*=list-stripe] > a:hover,
+[class*=list-stripe] > a:active {
   background-color: Orange;
   box-shadow: 0.5rem 0.5rem 2rem rgba(0,0,0,0.25);
   outline: none;
   -webkit-animation: animList 0.1s ease-in-out;
           animation: animList 0.1s ease-in-out;
 }
-:root [class*="list-stripe-large"] > * {
+:root [class*=list-stripe-large] > * {
   padding: 0.5em 1em;
 }
 @-webkit-keyframes animList {
@@ -526,10 +526,10 @@ label:active,
 label:checked {
   cursor: pointer;
 }
-input[type="color"] {
+input[type=color] {
   height: 3em;
 }
-input:not([type="button"]):not([type="submit"]):not([type="range"]),
+input:not([type=button]):not([type=submit]):not([type=range]),
 select {
   max-height: 2.2em;
 }
@@ -571,17 +571,17 @@ select {
   text-transform: none;
 }
 button,
-:root input[type="button"],
-input[type="reset"],
-input[type="submit"] {
+:root input[type=button],
+input[type=reset],
+input[type=submit] {
   -webkit-appearance: button;
   cursor: pointer;
 }
-input[type="search"] {
+input[type=search] {
   -webkit-appearance: textfield;
 }
-input[type="search"]::-webkit-search-cancel-button,
-input[type="search"]::-webkit-search-decoration {
+input[type=search]::-webkit-search-cancel-button,
+input[type=search]::-webkit-search-decoration {
   -webkit-appearance: none;
 }
 textarea {
@@ -607,51 +607,51 @@ html input[disabled] {
 ::placeholder {
   color: #777;
 }
-form > .input,
-form fieldset > .input {
+form > [class*=input],
+form fieldset > [class*=input] {
   width: 100%;
   margin: 1em 0 1em;
 }
-.input label {
+[class*=input] label {
   display: inline-block;
   margin-bottom: 0.5rem;
 }
-.input input:not([type="button"]),
-.input select,
-.input textarea {
+[class*=input] input:not([type=button]),
+[class*=input] select,
+[class*=input] textarea {
   width: 100%;
   padding: 0.4em 1em;
   background-color: #444;
   border: 0.1em solid #444;
 }
-.input input,
-.input select,
-.input textarea {
+[class*=input] input,
+[class*=input] select,
+[class*=input] textarea {
   color: currentColor;
   border-radius: 0.3rem;
 }
-.input input:not([type="button"]):focus,
-.input select:focus,
-.input textarea:focus {
+[class*=input] input:not([type=button]):focus,
+[class*=input] select:focus,
+[class*=input] textarea:focus {
   outline: none;
   border: 0.1rem solid #000;
 }
-.input.disabled label {
+[class*=input].disabled label {
   color: #777;
 }
-.input.disabled input {
+[class*=input].disabled input {
   background: #444 repeating-linear-gradient(-45deg, #777, #aaa 1px, transparent 1px, transparent 6px) repeat;
   background-size: 8px 8px;
   cursor: not-allowed;
 }
-.input.invalid input,
-.input.invalid select,
-.input.invalid textarea {
+[class*=input].invalid input,
+[class*=input].invalid select,
+[class*=input].invalid textarea {
   background-color: #f00;
   border-color: #f00;
   background-position: right 0.7em center;
 }
-.input.invalid :not(:focus) {
+[class*=input].invalid :not(:focus) {
   -webkit-animation: animInvalidInput 2s infinite;
           animation: animInvalidInput 2s infinite;
 }
@@ -665,45 +665,31 @@ form fieldset > .input {
   font-style: normal;
   margin-right: 0.5em;
 }
-.input.invalid :focus + p::before {
+[class*=input].invalid :focus + p::before {
   -webkit-animation: animBlink 2s infinite;
           animation: animBlink 2s infinite;
 }
-.input :required,
-.input .required {
+[class*=input] :required,
+[class*=input] .required {
   background-repeat: no-repeat;
   background-position: right 0.5em center;
   background-size: 1em 1em;
 }
-.input :required:focus,
-.input .required:focus {
+[class*=input] :required:focus,
+[class*=input] .required:focus {
   background-image: none;
 }
-.input {
+.input-see-password {
   position: relative;
 }
-.see-password {
+.input-see-password button {
   position: absolute;
-  top: 2.5rem;
+  top: 2.1rem;
   right: 1rem;
-  display: block;
-  width: 1rem;
-  height: 1rem;
+  height: 2rem;
   color: #777;
-}
-.see-password:focus,
-.see-password:hover,
-.see-password:active {
-  color: Orange;
-  text-decoration: none;
-  outline: none;
-}
-.see-password::after {
-  content: '👁';
-  display: block;
-  width: 1rem;
-  height: 1rem;
-  line-height: 1;
+  background-color: transparent;
+  border: none;
 }
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
@@ -722,7 +708,6 @@ select:-webkit-autofill:focus {
   margin-bottom: 1em;
   padding: 0 1em;
   line-height: 2;
-  font-weight: 300;
   white-space: nowrap;
   text-overflow: ellipsis;
   color: #fff;

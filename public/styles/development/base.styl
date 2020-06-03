@@ -126,7 +126,7 @@ blockquote footer::after
   content '.'
 
 q
-  quotes "\201C" "\201D" "\2018" "\2019" // Harmonisation des citations.
+  quotes '\201C' '\201D' '\2018' '\2019' // Harmonisation des citations.
 
 code
 kbd
@@ -160,27 +160,24 @@ sup
 // -----------------------------------------------------------------------------
 
 img
-  vertical-align middle // @Note Évite un décalage possible de l'élément suivant
+  vertical-align middle // Évite un décalage possible de l'élément suivant
   //width 100% // @bugfix @todo Depuis l'introduction des attributs 'srcset' et 'sizes' la largeur ne doit plus dépendre de l'image par défaut
   height auto
   max-width 100%
   border-style none // @bugfix Remove the border on images inside links @affected IE 10.
 
-// figure
-//   margin 0 // @bugfix @affected IE 8-9 and Safari 5
-
-[class*="thumbnail"]
-  width 100% // @note Important à appliquer pour le responsive si le width n'est pas définit préalablement
+[class*=thumbnail]
+  width 100% // Important à appliquer pour le responsive si le width n'est pas définit préalablement
 
 @media (min-width $sizeXS)
 
-  [class*="thumbnail"]
+  [class*=thumbnail]
     max-width ($wrap / 4)
 
 // @subsection Figures
 // -----------------------------------------------------------------------------
 
-[class^="figure"]
+[class^=figure]
   //vertical-align middle
   width 100%
   padding .5em
@@ -188,11 +185,11 @@ img
   background-color $colorBG036
   ifBoxShadow($colorBS036)
 
-[class^="figure"] figcaption
+[class^=figure] figcaption
   padding-top .5em
   text-align center
 
-[class^="figure"] + [class^="figure"]
+[class^=figure] + [class^=figure]
   margin-top 2em
 
 // @subsection .align
@@ -200,19 +197,19 @@ img
 
 @media (min-width $sizeS)
 
-  [class*="-alignleft"]
+  [class*=-alignleft]
     float left
     margin-right 1em
 
-  [class*="-alignright"]
+  [class*=-alignright]
     float right
     margin-left 1em
 
-  [class*="-align"] ~ h2
-  [class*="-align"] ~ h3
-  [class*="-align"] ~ hr
-  [class*="-align"] ~ aside
-    clear both // @Note Ciblage de certains éléments faisants suite à une image flotante @todo Le margin-top de ces éléments n'est pas pris en compte sous l'image...
+  [class*=-align] ~ h2
+  [class*=-align] ~ h3
+  [class*=-align] ~ hr
+  [class*=-align] ~ aside
+    clear both // Ciblage de certains éléments faisants suite à une image flotante @todo Le margin-top de ces éléments n'est pas pris en compte sous l'image...
 
 
 // -----------------------------------------------------------------------------
@@ -249,7 +246,7 @@ if $bundleMedias
   video[poster]
     width 100% !important
 
-  .video // @note Classe '.video' prévue pour les sources vidéos extérieures au site
+  .video // Classe '.video' prévue pour les sources vidéos extérieures au site
     position relative
     padding-bottom 56.25% // Ratio 16:9 par défaut
 
@@ -285,22 +282,22 @@ select
   text-transform none // @bugfix Remove the inheritance of text transform @affected Edge, Firefox, and IE.
 
 button
-[type="button"]
-[type="reset"]
-[type="submit"]
+[type=button]
+[type=reset]
+[type=submit]
   -webkit-appearance button // @bugfix Correct the inability to style clickable types @affected iOS and Safari.
 
 button::-moz-focus-inner
-[type="button"]::-moz-focus-inner
-[type="reset"]::-moz-focus-inner
-[type="submit"]::-moz-focus-inner
+[type=button]::-moz-focus-inner
+[type=reset]::-moz-focus-inner
+[type=submit]::-moz-focus-inner
   border-style none // @bugfix Remove the inner border @affected Firefox.
   padding 0 // @bugfix Remove the inner padding @affected Firefox.
 
 button:-moz-focusring
-[type="button"]:-moz-focusring
-[type="reset"]:-moz-focusring
-[type="submit"]:-moz-focusring
+[type=button]:-moz-focusring
+[type=reset]:-moz-focusring
+[type=submit]:-moz-focusring
   outline 1px dotted ButtonText // @bugfix Restore the focus styles unset by the previous rule.
 
 fieldset
@@ -320,20 +317,20 @@ progress
 textarea
   overflow auto // @bugfix Remove the default vertical scrollbar @affected IE 10+
 
-[type="checkbox"]
-[type="radio"]
+[type=checkbox]
+[type=radio]
   box-sizing border-box // @bugfix @tofo A évaluer.
   padding 0 // @bugfix Remove the padding @affected IE 10.
 
-[type="number"]::-webkit-inner-spin-button
-[type="number"]::-webkit-outer-spin-button
+[type=number]::-webkit-inner-spin-button
+[type=number]::-webkit-outer-spin-button
   height auto // @bugfix Correct the cursor style of increment and decrement buttons @affected Chrome.
 
-[type="search"]
+[type=search]
   -webkit-appearance textfield // @bugfix Correct the odd appearance @affected Chrome and Safari.
   outline-offset -2px // @bugfix Correct the outline style @affected Safari.
 
-[type="search"]::-webkit-search-decoration
+[type=search]::-webkit-search-decoration
   -webkit-appearance none // @bugfix Remove the inner padding @affected Chrome and Safari on macOS.
 
 ::-webkit-file-upload-button
@@ -355,21 +352,15 @@ template
 svg
   fill currentcolor // Par défaut le svg est ainsi considéré comme une icône fonte correspondant à la couleur du texte.
 
-// @subsection  Context classes
-// @desctiption Classes contextuelles
-// -----------------------------------------------------------------------------
-
 
 // -----------------------------------------------------------------------------
 // @section     Protected
 // @description Protège partiellement le texte en empêchant sa sélection
 // -----------------------------------------------------------------------------
 
-// @see https://developer.mozilla.org/fr/docs/Web/CSS/user-select
-// @note Règle css confortée par JavaScript @see main.js
-
 .protected
   user-select none
+
 
 // -----------------------------------------------------------------------------
 // @section     On a line
@@ -380,6 +371,7 @@ svg
   overflow hidden
   white-space nowrap
   text-overflow ellipsis
+
 
 // -----------------------------------------------------------------------------
 // @section     Maps

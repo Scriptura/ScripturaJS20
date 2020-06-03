@@ -71,11 +71,12 @@ const cmdPrint = (() => {
 // -----------------------------------------------------------------------------
 
 const readablePassword = (() => {
-  const inputs = document.querySelectorAll('.input [type=password]');
+  const el = '.input-see-password';
+  const inputs = document.querySelectorAll(el + ' [type=password]');
   for (const input of inputs) {
     input.insertAdjacentHTML('afterend', '<button type="button">see</button>');
   }
-  const buttons = document.querySelectorAll('.input [type=password] + button');
+  const buttons = document.querySelectorAll(el + ' button');
   for (const button of buttons) {
     button.onclick = () => {
       let input = button.previousElementSibling,
