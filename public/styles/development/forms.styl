@@ -189,11 +189,19 @@ form fieldset > [class*=input]
 .input-see-password button
   position absolute
   top 2.1rem
-  right 1rem
+  right .5rem
   height 2rem
   color #777
   background-color transparent
   border none
+
+.input-see-password button:focus
+  outline none
+
+.input-see-password button:focus
+.input-see-password button:hover
+.input-see-password button:active
+  color Orange
 
 // @note Code intéresant si couplé à des regex :
 //[class*=input] :invalid:focus
