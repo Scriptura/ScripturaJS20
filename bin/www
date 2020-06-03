@@ -55,7 +55,7 @@ function onListening() { // Event listener for HTTP server "listening" event.
 }
 
 function logSuccess() {
-  console.log( // For change Node.js console font color @see https://stackoverflow.com/questions/9781218
+  console.log(
     '\x1b[32m' + '\n' +
     '     OxxO' + '\n' +
     '    X oo X' + '\n' +

@@ -11,7 +11,6 @@ const getUser = async (username) => await db.one('SELECT * FROM public.__user WH
   })
   .catch(error => {
     console.log(error)
-    next()
   })
 
   const postUser = async (username, password) => await db.one('INSERT INTO public.__user (_username, _password) VALUES ($1, $2) RETURNING _username', [username, password])
@@ -21,7 +20,6 @@ const getUser = async (username) => await db.one('SELECT * FROM public.__user WH
   })
   .catch(error => {
     console.log(error)
-    next()
   })
 
 module.exports = {

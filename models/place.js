@@ -11,7 +11,6 @@ const getPlace = async (id) => await db.one('SELECT * FROM public.__place WHERE 
   })
   .catch(error => {
     console.log(error)
-    next()
   })
 
 module.exports = { getPlace: getPlace }

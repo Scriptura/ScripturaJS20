@@ -11,7 +11,6 @@ const getPerson = async (id) => await db.one('SELECT * FROM public.__person WHER
   })
   .catch(error => {
     console.log(error)
-    next()
   })
 
 module.exports = { getPerson: getPerson }
