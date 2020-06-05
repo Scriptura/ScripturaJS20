@@ -1,0 +1,29 @@
+// -----------------------------------------------------------------------------
+// @section     Scroll top
+// @description Défilement vers le haut
+// -----------------------------------------------------------------------------
+
+.scroll-top
+  //display none // @note apparition de l'élément au scrool de la page via JS
+  position fixed
+  bottom 0
+  right 0
+  z-index 4000
+  height 3rem
+  width 3rem
+  background-color transparent
+  border none
+  outline none
+
+.scroll-top.hide
+  //fill Red
+  display none
+
+.scroll-top svg
+  height 2rem
+  width 2rem
+  fill #000
+  opacity .5
+
+.scroll-top:focus svg
+  fill #aaa

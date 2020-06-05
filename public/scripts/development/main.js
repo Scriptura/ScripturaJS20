@@ -9,8 +9,7 @@
 
 const jsDetect = (() => { // Vérification de la présence de Javascript
   const el = document.querySelector('html');
-  el.classList.remove('no-js');
-  el.classList.add('js');
+  el.classList.replace('no-js', 'js');
 })();
 
 const touchDetect = (() => { // Vérification du support de touch
@@ -86,3 +85,44 @@ const readablePassword = (() => {
   }
 })();
 
+
+// -----------------------------------------------------------------------------
+// @section     Body Index
+// @description Ajout d'un ID sur le body pour permettre un ciblage de retour en haut
+// -----------------------------------------------------------------------------
+
+//const bodyIndex = (() => {
+//  document.body.id = 'index';
+//})();
+
+// -----------------------------------------------------------------------------
+// @section     Scroll To Top
+// @description Défilement vers le haut
+// -----------------------------------------------------------------------------
+
+const scrollToTop = (() => {
+  const footer = document.querySelector('footer');
+  const arrow = '<button class="scroll-top"><svg><path d="M20 32v-16l6 6 6-6-16-16-16 16 6 6 6-6v16z"/></svg></button>'; // Ajouter l'attribut `xmlns="http://www.w3.org/2000/svg"` pour un svg valide ; mais à partir du moment où il s'agit d'une injection js et où tous les navigateurs l'interprêtent quand même, est-ce bien nécessaire ?
+  footer.insertAdjacentHTML('beforeEnd', arrow);
+  const item = document.querySelector('.scroll-top');
+  item.classList.add('hide');
+  const position = () => { // @see http://jsfiddle.net/smc8ofgg/
+    const yy = window.innerHeight; // @note Remarque UX : le scroll de la hauteur totale d'une fenêtre semble bien adapté avant de voir apparaitre le bouton, une valeur en dessous ne se justifie ni sur mobile, ni sur desktop
+    let y = window.scrollY;
+    if (y > yy) {
+      item.classList.remove('hide');
+    } else {
+      item.classList.add('hide');
+    }
+  };
+  window.addEventListener('scroll', position);
+  const scroll = () => { // @see https://stackoverflow.com/questions/15935318/smooth-scroll-to-top/55926067
+    const c = document.documentElement.scrollTop; // `|| document.body.scrollTop`
+    if (c > 0) {
+      window.requestAnimationFrame(scroll);
+      window.scrollTo(0, c - c / 8);
+      //window.scrollTo({top: 0, behavior: 'smooth'}); // Option moderne mais avec un effet de rendu moindre que celle retenue
+    }
+  };
+  item.addEventListener('click', scroll, false);
+})();

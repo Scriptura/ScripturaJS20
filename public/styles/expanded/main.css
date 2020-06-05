@@ -766,3 +766,26 @@ select:-webkit-autofill:focus {
     border-color: #000;
   }
 }
+.scroll-top {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  z-index: 4000;
+  height: 3rem;
+  width: 3rem;
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+.scroll-top.hide {
+  display: none;
+}
+.scroll-top svg {
+  height: 2rem;
+  width: 2rem;
+  fill: #000;
+  opacity: 0.5;
+}
+.scroll-top:focus svg {
+  fill: #aaa;
+}
