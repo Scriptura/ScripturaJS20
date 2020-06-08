@@ -7,9 +7,9 @@ block main
       .input
         label Utilisateur :
         input(type='text' name='username' placeholder='user' autocorrect='off' autocapitalize='off' spellcheck='false' required='required')
-      .input-see-password
+      .input
         label Mot de passe :
-        input(type='password' name='password' placeholder='• • • • • • • •' required='required')
+        input.see-password(type='password' name='password' placeholder='• • • • • • • •' required='required')
       div
         button.button Se connecter
       include includes/links

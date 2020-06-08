@@ -31,6 +31,37 @@ const touchDetect = (() => { // Vérification du support de touch
 
 
 // -----------------------------------------------------------------------------
+// @section     Fade In / Fade Out
+// @description Gestion des liens externes au site
+// -----------------------------------------------------------------------------
+
+const fadeOut = (el, duration) => {
+  el.style.opacity = 1;
+  (function fade() {
+    if ((el.style.opacity -= 30 / duration) < 0) {
+      el.style.opacity = 0; // reset la valeur négative assignée par la décrémentation
+      el.style.display = 'none';
+    } else {
+      requestAnimationFrame(fade);
+    }
+  })();
+}
+
+const fadeIn = (el, duration) => {
+  el.style.opacity = 0;
+  el.style.display = 'block';
+  (function fade() {
+    let op = parseFloat(el.style.opacity);
+    if (!((op += 30 / duration) > 1)) {
+      el.style.opacity = op;
+      requestAnimationFrame(fade);
+    }
+    if (op > .99) el.style.opacity = 1; // reset la valeur aproximative assignée par l'incrémentation'
+  })();
+}
+
+
+// -----------------------------------------------------------------------------
 // @section     External links
 // @description Gestion des liens externes au site
 // -----------------------------------------------------------------------------
@@ -70,18 +101,16 @@ const cmdPrint = (() => {
 // -----------------------------------------------------------------------------
 
 const readablePassword = (() => {
-  const el = '.input-see-password';
-  const inputs = document.querySelectorAll(el + ' [type=password]');
+  const inputs = document.querySelectorAll('.see-password');
   for (const input of inputs) {
+    //input.parentNode.style.position = 'relative';
+    input.parentNode.classList.add('relative'); // Dans la visée d'appliquer un style
     input.insertAdjacentHTML('afterend', '<button type="button">see</button>');
-  }
-  const buttons = document.querySelectorAll(el + ' button');
-  for (const button of buttons) {
-    button.onclick = () => {
-      let input = button.previousElementSibling,
-          typeAttr = input.type === 'password'? 'text' : 'password';
+    const button = input.nextElementSibling;
+    button.addEventListener('click', () => {
+      const typeAttr = input.type === 'password'? 'text' : 'password';
       input.type = typeAttr;
-    }
+    }, false);
   }
 })();
 
@@ -92,7 +121,7 @@ const readablePassword = (() => {
 // -----------------------------------------------------------------------------
 
 //const bodyIndex = (() => {
-//  document.body.id = 'index';
+//  document.body.id = 'index';'use strict';
 //})();
 
 // -----------------------------------------------------------------------------
@@ -107,7 +136,7 @@ const scrollToTop = (() => {
   const item = document.querySelector('.scroll-top');
   item.classList.add('hide');
   const position = () => { // @see http://jsfiddle.net/smc8ofgg/
-    const yy = window.innerHeight; // @note Remarque UX : le scroll de la hauteur totale d'une fenêtre semble bien adapté avant de voir apparaitre le bouton, une valeur en dessous ne se justifie ni sur mobile, ni sur desktop
+    const yy = window.innerHeight / 2;
     let y = window.scrollY;
     if (y > yy) {
       item.classList.remove('hide');
@@ -121,8 +150,8 @@ const scrollToTop = (() => {
     if (c > 0) {
       window.requestAnimationFrame(scroll);
       window.scrollTo(0, c - c / 8);
-      //window.scrollTo({top: 0, behavior: 'smooth'}); // Option moderne mais avec un effet de rendu moindre que celle retenue
     }
+    //window.scrollTo({top: 0, behavior: 'smooth'}); // Option moderne mais avec un effet de rendu moindre que celle retenue
   };
   item.addEventListener('click', scroll, false);
 })();
