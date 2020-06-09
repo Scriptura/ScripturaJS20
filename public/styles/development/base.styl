@@ -216,126 +216,34 @@ img
 // @section     Medias
 // @description Audio, vidéo et Caneva
 // -----------------------------------------------------------------------------
-if $bundleMedias
 
-  audio
-  video
-  canvas
-  //display inline-block // @bugfix @affected IE 9
-    width 100%
-    ifBoxShadow($colorBS0401)
+audio
+video
+canvas
+//display inline-block // @bugfix @affected IE 9
+  width 100%
+  ifBoxShadow($colorBS0401)
 
-  audio
-  video
-  .video
-    background-color $colorBG041 // @bugfix @affected Google Maps, tag 'canvas' @note Pas de background prédéfinit sur tag 'canvas', afin d'éviter les conflits
-    ifBoxShadow($colorBS041)
+audio
+video
+.video
+  background-color $colorBG041 // @bugfix @affected Google Maps, tag 'canvas' @note Pas de background prédéfinit sur tag 'canvas', afin d'éviter les conflits
+  ifBoxShadow($colorBS041)
 
-  audio
-  video
-    outline none // @affected Firefox
+audio
+video
+  outline none // @affected Firefox
 
-  audio
-    height 2rem // @bugfix @affected All browsers @note Nécessaire au positionnement
+audio
+  height 2rem // @bugfix @affected All browsers @note Nécessaire au positionnement
   //padding 0 0 .5rem // @bugfix @affected Chrome
 
-  audio:not([controls])
-    display none // @affected All browsers @note Affichage de l'audio sans contrôle
-    height 0 // @bugfix @affected iOS 5
+audio:not([controls])
+  display none // @affected All browsers @note Affichage de l'audio sans contrôle
+  height 0 // @bugfix @affected iOS 5
 
-  video[poster]
-    width 100% !important
-
-  .video // Classe '.video' prévue pour les sources vidéos extérieures au site
-    position relative
-    padding-bottom 56.25% // Ratio 16:9 par défaut
-
-  .video iframe
-  .video embed
-  .video object
-    position absolute
-
-
-// -----------------------------------------------------------------------------
-// @section Forms
-// -----------------------------------------------------------------------------
-
-:focus::placeholder
-  color transparent
-
-button
-input
-optgroup
-select
-textarea
-  font-family inherit // @bugfix Change the font styles @affected All browsers
-  font-size 100% // @bugfix Change the font styles @affected All browsers.
-  line-height 1.15 // @bugfix Change the font styles @affected All browsers.
-  margin 0 // @bugfix Remove the margin @affected Firefox and Safari.
-
-button
-input
-  overflow visible // @bugfix Show the overflow @affected Edge.
-
-button
-select
-  text-transform none // @bugfix Remove the inheritance of text transform @affected Edge, Firefox, and IE.
-
-button
-[type=button]
-[type=reset]
-[type=submit]
-  -webkit-appearance button // @bugfix Correct the inability to style clickable types @affected iOS and Safari.
-
-button::-moz-focus-inner
-[type=button]::-moz-focus-inner
-[type=reset]::-moz-focus-inner
-[type=submit]::-moz-focus-inner
-  border-style none // @bugfix Remove the inner border @affected Firefox.
-  padding 0 // @bugfix Remove the inner padding @affected Firefox.
-
-button:-moz-focusring
-[type=button]:-moz-focusring
-[type=reset]:-moz-focusring
-[type=submit]:-moz-focusring
-  outline 1px dotted ButtonText // @bugfix Restore the focus styles unset by the previous rule.
-
-fieldset
-  padding 0.35em 0.75em 0.625em // @bugfix Correct the padding @affected Firefox.
-
-legend
-  box-sizing border-box // @bugfix Correct the text wrapping @affected Edge and IE.
-  color inherit // @bugfix Correct the color inheritance from `fieldset` elements @affected IE.
-  display table // @bugfix Correct the text wrapping @affected Edge and IE.
-  max-width 100% // @bugfix Correct the text wrapping @affected Edge and IE.
-  padding 0 // @bugfix Remove the padding so developers are not caught out when they zero out `fieldset` elements @affected All browsers.
-  white-space normal // @bugfix Correct the text wrapping @affected Edge and IE.
-
-progress
-  vertical-align baseline // @bugfix Add the correct vertical alignment @affected Chrome, Firefox, and Opera.
-
-textarea
-  overflow auto // @bugfix Remove the default vertical scrollbar @affected IE 10+
-
-[type=checkbox]
-[type=radio]
-  box-sizing border-box // @bugfix @tofo A évaluer.
-  padding 0 // @bugfix Remove the padding @affected IE 10.
-
-[type=number]::-webkit-inner-spin-button
-[type=number]::-webkit-outer-spin-button
-  height auto // @bugfix Correct the cursor style of increment and decrement buttons @affected Chrome.
-
-[type=search]
-  -webkit-appearance textfield // @bugfix Correct the odd appearance @affected Chrome and Safari.
-  outline-offset -2px // @bugfix Correct the outline style @affected Safari.
-
-[type=search]::-webkit-search-decoration
-  -webkit-appearance none // @bugfix Remove the inner padding @affected Chrome and Safari on macOS.
-
-::-webkit-file-upload-button
-  -webkit-appearance button // @bugfix Correct the inability to style clickable types @affected iOS and Safari.
-  font inherit // @bugfix Change font properties to `inherit` @affected Safari.
+video[poster]
+  width 100% !important
 
 details
   display block // @bugfix Add the correct display @affected Edge, IE 10+, and Firefox.
@@ -351,32 +259,3 @@ template
 
 svg
   fill currentcolor // Par défaut le svg est ainsi considéré comme une icône fonte correspondant à la couleur du texte.
-
-
-// -----------------------------------------------------------------------------
-// @section     Protected
-// @description Protège partiellement le texte en empêchant sa sélection
-// -----------------------------------------------------------------------------
-
-.protected
-  user-select none
-
-
-// -----------------------------------------------------------------------------
-// @section     On a line
-// @description Texte sur une ligne sans dépassement
-// -----------------------------------------------------------------------------
-
-.onaline
-  overflow hidden
-  white-space nowrap
-  text-overflow ellipsis
-
-
-// -----------------------------------------------------------------------------
-// @section     Maps
-// @description Cartes
-// -----------------------------------------------------------------------------
-
-.map
-  background-color #000

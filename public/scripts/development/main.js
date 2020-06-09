@@ -94,6 +94,45 @@ const cmdPrint = (() => {
   }
 })();
 
+// -----------------------------------------------------------------------------
+// @section     Select and copy code
+// @description Sélection et copie des informations d'un bloc de code
+// -----------------------------------------------------------------------------
+
+// @see https://stackoverflow.com/questions/985272/selecting-text-in-an-element-akin-to-highlighting-with-your-mouse
+
+const selectText = (node) => {
+  console.log(node);
+  const documentBody = document.body;
+  if (documentBody.createTextRange) {
+    const range = documentBody.createTextRange();
+    range.moveToElementText(node);
+    range.select();
+  } else if (window.getSelection) {
+    const selection = window.getSelection();
+    const range = document.createRange();
+    range.selectNodeContents(node);
+    selection.removeAllRanges();
+    selection.addRange(range);
+  } else {
+    console.warn('Could not select text in node: Unsupported browser.');
+  }
+}
+
+const selectAndCopy = (() => {
+  const els = document.querySelectorAll('[data-select]');
+  for (const el of els) {
+    el.parentNode.classList.add('relative'); // Classe utilitaire pour le css
+    el.insertAdjacentHTML('afterend', '<button type="button">select & copy</button>');
+    const button = el.nextElementSibling;
+    button.addEventListener('click', () => {
+      const node = el;
+      selectText(node);
+      document.execCommand('copy');
+    });
+  }
+})();
+
 
 // -----------------------------------------------------------------------------
 // @section     Readable Password
@@ -101,10 +140,9 @@ const cmdPrint = (() => {
 // -----------------------------------------------------------------------------
 
 const readablePassword = (() => {
-  const inputs = document.querySelectorAll('.see-password');
+  const inputs = document.querySelectorAll('.input [type=password]');
   for (const input of inputs) {
-    //input.parentNode.style.position = 'relative';
-    input.parentNode.classList.add('relative'); // Dans la visée d'appliquer un style
+    input.parentNode.classList.add('relative'); // Classe utilitaire pour le css
     input.insertAdjacentHTML('afterend', '<button type="button">see</button>');
     const button = input.nextElementSibling;
     button.addEventListener('click', () => {

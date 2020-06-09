@@ -3,13 +3,18 @@
 // -----------------------------------------------------------------------------
 
 fieldset
-  border none // @affected All browsers
   margin 0
+  //padding 0.35em 0.75em 0.625em // @bugfix Correct the padding @affected Firefox.
   padding 0
+  border none
 
 legend
-  //@extend h3
-  padding 0 // @bugfix Remove padding so people aren't caught out if they zero out fieldsets
+  box-sizing border-box // @bugfix Correct the text wrapping @affected Edge and IE.
+  color inherit // @bugfix Correct the color inheritance from `fieldset` elements @affected IE.
+  display table // @bugfix Correct the text wrapping @affected Edge and IE.
+  max-width 100% // @bugfix Correct the text wrapping @affected Edge and IE.
+  padding 0 // @bugfix Remove the padding so developers are not caught out when they zero out `fieldset` elements @affected All browsers.
+  white-space normal // @bugfix Correct the text wrapping @affected Edge and IE.
 
 label:focus
 label:hover
@@ -17,8 +22,49 @@ label:active
 label:checked
   cursor pointer
 
-input[type=color]
-  height 3em
+button
+input
+optgroup
+select
+textarea
+  font-family inherit // @bugfix Change the font styles @affected All browsers
+  font-size 100% // @bugfix Change the font styles @affected All browsers.
+  line-height 1.15 // @bugfix Change the font styles @affected All browsers.
+  margin 0 // @bugfix Remove the margin @affected Firefox and Safari.
+
+button
+input
+  overflow visible // @bugfix Show the overflow @affected Edge.
+  //line-height normal // @affected Firefox 4+.
+  //border-radius 0 // @affected Chrome 62+/OS X.
+
+//button[disabled]
+//html input[disabled]
+//  cursor not-allowed
+
+button
+select
+  text-transform none // @bugfix Remove the inheritance of text transform @affected Edge, Firefox, and IE.
+
+button
+[type=button]
+[type=reset]
+[type=submit]
+  -webkit-appearance button // @bugfix Correct the inability to style clickable types @affected iOS and Safari.
+  //cursor pointer
+
+button::-moz-focus-inner
+[type=button]::-moz-focus-inner
+[type=reset]::-moz-focus-inner
+[type=submit]::-moz-focus-inner
+  border-style none // @bugfix Remove the inner border @affected Firefox.
+  padding 0 // @bugfix Remove the inner padding @affected Firefox.
+
+button:-moz-focusring
+[type=button]:-moz-focusring
+[type=reset]:-moz-focusring
+[type=submit]:-moz-focusring
+  outline 1px dotted ButtonText // @bugfix Restore the focus styles unset by the previous rule.
 
 input:not([type=button]):not([type=submit]):not([type=range])
 select
@@ -41,54 +87,49 @@ select:not([multiple])
 select[multiple]
   min-height 5.6em
 
-textarea
-  min-height 10em // @note Propriété en lien avec 'resize'
-  max-height 50vh // @note Idem
-  resize vertical // @note Redimensionnement par l'utilisateur limité à la verticale
-  padding 1em
-  line-height 2
-
-button
-input
-select
-textarea
-  font-family inherit // @affected All browsers
-  font-size 100% // @affected All browsers
-  margin 0 // @affected Firefox 4+, Safari 5, and Chrome
-
-button
-input
-  line-height normal // @affected Firefox 4+
-  border-radius 0 // @affected Chrome 62+/OS X
-
-button
-select
-  text-transform none
-
-button
-:root input[type=button], // @affected Android 4.0
-input[type=reset]
-input[type=submit]
-  -webkit-appearance button // @affected iOS
-  cursor pointer
-
-input[type=search]
-  -webkit-appearance textfield // @affected Safari 5+
-
-input[type=search]::-webkit-search-cancel-button
-input[type=search]::-webkit-search-decoration
-  -webkit-appearance none // @affected Safari 5+
+progress
+  vertical-align baseline // @bugfix Add the correct vertical alignment @affected Chrome, Firefox, and Opera.
 
 textarea
-  overflow auto // @affected IE 8-9
-  vertical-align top
+  overflow auto // @bugfix Remove the default vertical scrollbar @affected IE 10+
 
-button[disabled]
-html input[disabled]
-  cursor not-allowed
+[type=checkbox]
+[type=radio]
+  box-sizing border-box // @bugfix @tofo A évaluer.
+  padding 0 // @bugfix Remove the padding @affected IE 10.
+
+[type=number]::-webkit-inner-spin-button
+[type=number]::-webkit-outer-spin-button
+  height auto // @bugfix Correct the cursor style of increment and decrement buttons @affected Chrome.
+
+[type=search]
+  -webkit-appearance textfield // @bugfix Correct the odd appearance @affected Chrome and Safari.
+  outline-offset -2px // @bugfix Correct the outline style @affected Safari.
+
+[type=search]::-webkit-search-decoration
+  -webkit-appearance none // @bugfix Remove the inner padding @affected Chrome and Safari on macOS.
+
+::-webkit-file-upload-button
+  -webkit-appearance button // @bugfix Correct the inability to style clickable types @affected iOS and Safari.
+  font inherit // @bugfix Change font properties to `inherit` @affected Safari.
+
+input:-webkit-autofill // @note Préremplissage des champs par le navigateur @affected Chrome
+input:-webkit-autofill:hover
+input:-webkit-autofill:focus
+textarea:-webkit-autofill
+textarea:-webkit-autofill:hover
+textarea:-webkit-autofill:focus
+select:-webkit-autofill
+select:-webkit-autofill:hover
+select:-webkit-autofill:focus
+  -webkit-text-fill-color #ddd
+  -webkit-box-shadow 0 0 0px 1000px #222 inset
 
 ::placeholder
   color #777
+
+:focus::placeholder
+  color transparent
 
 
 // @subsection Inputs
@@ -122,12 +163,23 @@ form fieldset > [class*=input]
   color currentColor
   border-radius $r2
 
+[class*=input] textarea
+  min-height 10em // @note Propriété en lien avec 'resize'
+  max-height 50vh // @note Idem
+  resize vertical // @note Redimensionnement par l'utilisateur limité à la verticale
+  padding 1em
+  line-height 2
+
 [class*=input] input:not([type=button]):focus
 [class*=input] select:focus
 [class*=input] textarea:focus
   outline none
   border .1rem solid #000
   //border-radius $r2
+
+[class*=input] [type=color]
+  height 3em
+  padding 0
 
 [class*=input].disabled label
   color #777
@@ -140,31 +192,26 @@ form fieldset > [class*=input]
 [class*=input].invalid input
 [class*=input].invalid select
 [class*=input].invalid textarea
-  background-color #f00
-  border-color #f00
+  //border-color #f00
   background-position right .7em center // @note Révision de l'emplacement de l'astérisque si champ obligatoire
 
 [class*=input].invalid :not(:focus)
-//[class*=input].invalid input:not(:focus)
-//[class*=input].invalid select:not(:focus)
-//[class*=input].invalid textarea:not(:focus)
   animation animInvalidInput 2s infinite
 
 @keyframes animInvalidInput
   0%
-    border-color #777
+    border-color inherrit
   50%
     border-color Orange
   100%
-    border-color #000
+    border-color inherrit
 
 .invalid p
   font-style italic
   color Orange
 
 .invalid p::before
-  content '\EA5A'
-  //font-family GlyphIcons
+  content '!'
   font-size .8em
   font-style normal
   margin-right .5em
@@ -183,10 +230,7 @@ form fieldset > [class*=input]
 [class*=input] .required:focus
   background-image none
 
-.input.relative
-  position relative
-
-.see-password + button
+.input input + button // @note Pour les champ password ; ceux-ci ne peuvent être nommés via leur attribut car ce denier peut changer en 'text'
   position absolute
   top 2.1rem
   right .5rem
@@ -195,12 +239,12 @@ form fieldset > [class*=input]
   background-color transparent
   border none
 
-.see-password + button:focus
+.input input + button:focus
   outline none
 
-.see-password + button:focus
-.see-password + button:hover
-.see-password + button:active
+.input input + button:focus
+.input input + button:hover
+.input input + button:active
   color Orange
 
 // @note Code intéresant si couplé à des regex :
@@ -208,18 +252,6 @@ form fieldset > [class*=input]
   // background-color #f2dede !important
 //[class*=input] :valid:focus
   // background-color #dff0d8
-
-input:-webkit-autofill
-input:-webkit-autofill:hover
-input:-webkit-autofill:focus
-textarea:-webkit-autofill
-textarea:-webkit-autofill:hover
-textarea:-webkit-autofill:focus
-select:-webkit-autofill
-select:-webkit-autofill:hover
-select:-webkit-autofill:focus // @note Préremplissage des champs par le navigateur @affected Chrome
-  -webkit-text-fill-color #ddd
-  -webkit-box-shadow 0 0 0px 1000px #222 inset
 
 
 // @subsection Buttons

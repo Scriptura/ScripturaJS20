@@ -1,0 +1,27 @@
+// -----------------------------------------------------------------------------
+// @section     Utilities
+// @description Clases css utilitaires, dans un but de CSS atomique
+// -----------------------------------------------------------------------------
+
+.relative // @description Classe ajouté en js sur des éléments parents
+  position relative
+
+.protected // @description Protège partiellement le texte en empêchant sa sélection
+  user-select none
+
+.onaline // @description Texte sur une ligne sans dépassement
+  overflow hidden
+  white-space nowrap
+  text-overflow ellipsis
+
+.map // @description Fond pour les cartes
+  background-color #000
+
+.video // @description Classe '.video' prévue pour les sources vidéos extérieures au site
+  position relative
+  padding-bottom 56.25% // Ratio 16:9 par défaut
+
+.video iframe
+.video embed
+.video object
+  position absolute
