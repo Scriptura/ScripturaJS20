@@ -230,7 +230,10 @@ form fieldset > [class*=input]
 [class*=input] .required:focus
   background-image none
 
-.input input + button // @note Pour les champ password ; ceux-ci ne peuvent être nommés via leur attribut car ce denier peut changer en 'text'
+.input-password
+  position relative
+
+.input-password button
   position absolute
   top 2.1rem
   right .5rem
@@ -239,12 +242,12 @@ form fieldset > [class*=input]
   background-color transparent
   border none
 
-.input input + button:focus
+.input-password button:focus
   outline none
 
-.input input + button:focus
-.input input + button:hover
-.input input + button:active
+.input-password button:focus
+.input-password button:hover
+.input-password button:active
   color Orange
 
 // @note Code intéresant si couplé à des regex :

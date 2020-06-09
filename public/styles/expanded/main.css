@@ -21,6 +21,12 @@ html {
   background-color: #333;
   font-family: 'Open Sans', Arial, Sans-Serif;
   line-height: 1.5;
+  scroll-behavior: smooth;
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
 ::-moz-selection {
   background-color: rgba(255,111,125,0.5);
@@ -648,7 +654,10 @@ form fieldset > [class*=input] {
 [class*=input] .required:focus {
   background-image: none;
 }
-.input input + button {
+.input-password {
+  position: relative;
+}
+.input-password button {
   position: absolute;
   top: 2.1rem;
   right: 0.5rem;
@@ -657,12 +666,12 @@ form fieldset > [class*=input] {
   background-color: transparent;
   border: none;
 }
-.input input + button:focus {
+.input-password button:focus {
   outline: none;
 }
-.input input + button:focus,
-.input input + button:hover,
-.input input + button:active {
+.input-password button:focus,
+.input-password button:hover,
+.input-password button:active {
   color: Orange;
 }
 .button {

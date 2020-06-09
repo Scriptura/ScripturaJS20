@@ -1,23 +1,28 @@
 // -----------------------------------------------------------------------------
 // @section     Utilities
-// @description Clases css utilitaires, dans un but de CSS atomique
+// @description Clases utilitaires pour CSS atomique
 // -----------------------------------------------------------------------------
 
-.relative // @description Classe ajouté en js sur des éléments parents
+// @description Classe ajouté en js sur des éléments parents
+.relative
   position relative
 
-.protected // @description Protège partiellement le texte en empêchant sa sélection
+// @description Protège partiellement le texte en empêchant sa sélection
+.protected
   user-select none
 
-.onaline // @description Texte sur une ligne sans dépassement
+// @description Texte sur une ligne sans dépassement
+.onaline
   overflow hidden
   white-space nowrap
   text-overflow ellipsis
 
-.map // @description Fond pour les cartes
+// @description Fond pour les cartes
+.map
   background-color #000
 
-.video // @description Classe '.video' prévue pour les sources vidéos extérieures au site
+// @description Classe prévue pour les sources vidéos extérieures au site
+.video
   position relative
   padding-bottom 56.25% // Ratio 16:9 par défaut
 

@@ -24,6 +24,11 @@ html
   background-color #333
   font-family $fontList // Georgia, Serif
   line-height 1.5 //1.15 // @bugfix Correct the line height @affected All browsers.
+  scroll-behavior smooth // Défilement fluide. @todo En conflit avec script retour vers le haut...
+
+@media (prefers-reduced-motion: reduce) // Désactivation du défilement fluide si réduction des animations dans les préférences utilisateur du navigateur @see https://developer.mozilla.org/fr/docs/Web/CSS/scroll-behavior#Accessibilité
+  html
+    scroll-behavior auto
 
 ::selection
   background-color rgba(255, 111, 125, .5)

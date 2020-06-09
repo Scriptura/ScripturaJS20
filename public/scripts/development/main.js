@@ -142,7 +142,7 @@ const selectAndCopy = (() => {
 const readablePassword = (() => {
   const inputs = document.querySelectorAll('.input [type=password]');
   for (const input of inputs) {
-    input.parentNode.classList.add('relative'); // Classe utilitaire pour le css
+    input.parentNode.classList.replace('input', 'input-password'); // Classe utilitaire pour le css
     input.insertAdjacentHTML('afterend', '<button type="button">see</button>');
     const button = input.nextElementSibling;
     button.addEventListener('click', () => {
@@ -154,22 +154,13 @@ const readablePassword = (() => {
 
 
 // -----------------------------------------------------------------------------
-// @section     Body Index
-// @description Ajout d'un ID sur le body pour permettre un ciblage de retour en haut
-// -----------------------------------------------------------------------------
-
-//const bodyIndex = (() => {
-//  document.body.id = 'index';'use strict';
-//})();
-
-// -----------------------------------------------------------------------------
 // @section     Scroll To Top
 // @description Défilement vers le haut
 // -----------------------------------------------------------------------------
 
 const scrollToTop = (() => {
   const footer = document.querySelector('footer');
-  const arrow = '<button class="scroll-top"><svg><path d="M20 32v-16l6 6 6-6-16-16-16 16 6 6 6-6v16z"/></svg></button>'; // Ajouter l'attribut `xmlns="http://www.w3.org/2000/svg"` pour un svg valide ; mais à partir du moment où il s'agit d'une injection js et où tous les navigateurs l'interprêtent quand même, est-ce bien nécessaire ?
+  const arrow = '<button class="scroll-top"><svg><path d="M20 32v-16l6 6 6-6-16-16-16 16 6 6 6-6v16z"/></svg></button>'; // Ajouter l'attribut `xmlns="http://www.w3.org/2000/svg"` pour un svg valide ; mais à partir du moment où il s'agit d'une injection js et où tous les navigateurs l'interprêtent correctement, est-ce bien nécessaire ?
   footer.insertAdjacentHTML('beforeEnd', arrow);
   const item = document.querySelector('.scroll-top');
   item.classList.add('hide');
@@ -184,12 +175,21 @@ const scrollToTop = (() => {
   };
   window.addEventListener('scroll', position);
   const scroll = () => { // @see https://stackoverflow.com/questions/15935318/smooth-scroll-to-top/55926067
-    const c = document.documentElement.scrollTop; // `|| document.body.scrollTop`
+    // @note Script avec un effet sympa mais en conflit avec la règle CSS scroll-behavior:smooth, la règle CSS doit donc être désactivée pour la durée du script :
+    const c = document.documentElement.scrollTop || document.body.scrollTop,
+          html = document.querySelector('html'),
+          sb = window.getComputedStyle(html,null).getPropertyValue('scroll-behavior');
+    if (sb != 'auto') html.style.scrollBehavior = 'auto';
     if (c > 0) {
       window.requestAnimationFrame(scroll);
       window.scrollTo(0, c - c / 8);
     }
-    //window.scrollTo({top: 0, behavior: 'smooth'}); // Option moderne mais avec un effet de rendu moindre que celle retenue
+    if (sb != 'auto') html.style.scrollBehavior = ''; // Inline style with js removed
   };
   item.addEventListener('click', scroll, false);
 })();
+
+// @note L'effet behavior:smooth pourrait simplement être défini ainsi en JS (sans conflit avec CSS) :
+//window.scrollTo({top: 0, behavior: 'smooth'});
+// Solution avec une définition scroll-behavior:smooth dans le CSS :
+//window.scrollTo({top: 0});
