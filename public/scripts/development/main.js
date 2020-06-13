@@ -122,7 +122,7 @@ const selectText = (node) => {
 const selectAndCopy = (() => {
   const els = document.querySelectorAll('[data-select]');
   for (const el of els) {
-    el.parentNode.classList.add('relative'); // Classe utilitaire pour le css
+    el.parentElement.classList.add('relative'); // Classe utilitaire pour le css
     el.insertAdjacentHTML('afterend', '<button type="button">select & copy</button>');
     const button = el.nextElementSibling;
     button.addEventListener('click', () => {
@@ -142,7 +142,7 @@ const selectAndCopy = (() => {
 const readablePassword = (() => {
   const inputs = document.querySelectorAll('.input [type=password]');
   for (const input of inputs) {
-    input.parentNode.classList.replace('input', 'input-password'); // Classe utilitaire pour le css
+    input.parentElement.classList.replace('input', 'input-password'); // Classe utilitaire pour le css
     input.insertAdjacentHTML('afterend', '<button type="button">see</button>');
     const button = input.nextElementSibling;
     button.addEventListener('click', () => {
@@ -175,7 +175,7 @@ const scrollToTop = (() => {
   };
   window.addEventListener('scroll', position);
   const scroll = () => { // @see https://stackoverflow.com/questions/15935318/smooth-scroll-to-top/55926067
-    // @note Script avec un effet sympa mais en conflit avec la règle CSS scroll-behavior:smooth, la règle CSS doit donc être désactivée pour la durée du script :
+    // @note Script avec un effet sympa mais en conflit avec la règle CSS scroll-behavior:smooth, celle-ci doit donc être désactivée pour la durée du script :
     const c = document.documentElement.scrollTop || document.body.scrollTop,
           html = document.querySelector('html'),
           sb = window.getComputedStyle(html,null).getPropertyValue('scroll-behavior');
