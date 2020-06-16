@@ -193,3 +193,28 @@ const scrollToTop = (() => {
 //window.scrollTo({top: 0, behavior: 'smooth'});
 // Solution avec une définition scroll-behavior:smooth dans le CSS :
 //window.scrollTo({top: 0});
+
+
+// -----------------------------------------------------------------------------
+// @section     Accordions
+// @description Menus accordéons
+// -----------------------------------------------------------------------------
+
+const accordion = (() => {
+  const detailss = document.querySelectorAll('.accordion details');
+  for (const details of detailss) {
+    let summary = details.firstElementChild,
+        content = details.lastElementChild;
+    summary.outerHTML = '<button type="button" class="accordion-summary">' + summary.innerHTML + '</button>';
+    content.outerHTML = '<div class="accordion-content">' + content.innerHTML + '</div>';
+    details.outerHTML = '<div class="accordion-details">' + details.innerHTML + '</div>'; // L'élément parent doit être traité en dernier.
+  }
+  const accordionSummarys = document.querySelectorAll('.accordion-summary');
+  for (const accordionSummary of accordionSummarys) accordionSummary.addEventListener('click', () => {
+    accordionSummary.parentElement.classList.toggle('open');
+    const accordionContent = accordionSummary.nextElementSibling;
+    const height = accordionContent.style.maxHeight === accordionContent.scrollHeight + 'px' ? null : accordionContent.scrollHeight + 'px';
+    accordionContent.style.maxHeight = height;
+  });
+})();
+

@@ -1,0 +1,53 @@
+.accordion
+  box-shadow .5rem .5rem 2rem rgba(0, 0, 0, .25)
+
+.accordion summary
+.accordion .accordion-summary
+  padding 1rem
+  color #fff
+  background Tomato linear-gradient(to top, rgba(0, 0, 0, .1), rgba(255, 255, 255, .05))
+  cursor pointer
+  outline none
+
+.accordion summary::-webkit-details-marker
+  display none
+
+.accordion .accordion-summary
+  display block
+  width 100%
+  font-family Arial
+  font-size 1rem
+  text-align left
+  border none
+
+.accordion > * > :first-child:focus
+.accordion > * > :first-child:hover
+.accordion > * > :first-child:active
+  background-color Orange
+
+.accordion .open button
+.accordion:focus
+.accordion:hover
+  background-color Orange
+
+.accordion > * > :first-child::before
+  content '\002B'
+  font-weight bold
+  float right
+  margin-left 5px
+
+.accordion details[open] summary::before
+.accordion .open .accordion-summary::before
+  content '\2212'
+
+//.accordion details[open] summary::-webkit-details-marker
+
+.accordion > * > :last-child
+  padding 0 1rem
+  color #555
+  background-color #f8f7f5
+  overflow hidden
+  transition max-height 0.2s ease-out
+
+.accordion .accordion-content
+  max-height 0
