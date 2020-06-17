@@ -203,18 +203,25 @@ const scrollToTop = (() => {
 const accordion = (() => {
   const detailss = document.querySelectorAll('.accordion details');
   for (const details of detailss) {
-    let summary = details.firstElementChild,
-        content = details.lastElementChild;
+    const summary = details.firstElementChild,
+          content = details.lastElementChild;
     summary.outerHTML = '<button type="button" class="accordion-summary">' + summary.innerHTML + '</button>';
     content.outerHTML = '<div class="accordion-content">' + content.innerHTML + '</div>';
-    details.outerHTML = '<div class="accordion-details">' + details.innerHTML + '</div>'; // L'élément parent doit être traité en dernier.
+    const html = details.innerHTML,
+          wrapper = document.createElement('div');
+    wrapper.classList.add('accordion-details');
+    if (details.open) wrapper.classList.add('open');
+    details.parentNode.insertBefore(wrapper, details);
+    wrapper.appendChild(details).insertAdjacentHTML('afterend', html);
+    details.parentElement.removeChild(details);
+    //wrapper.children[1].style.maxHeight = window.getComputedStyle(wrapper.children[1], null).getPropertyValue('maxHeight');
+    if (wrapper.classList.contains('open')) wrapper.children[1].style.maxHeight = 'inherit';
   }
   const accordionSummarys = document.querySelectorAll('.accordion-summary');
   for (const accordionSummary of accordionSummarys) accordionSummary.addEventListener('click', () => {
     accordionSummary.parentElement.classList.toggle('open');
     const accordionContent = accordionSummary.nextElementSibling;
-    const height = accordionContent.style.maxHeight === accordionContent.scrollHeight + 'px' ? null : accordionContent.scrollHeight + 'px';
-    accordionContent.style.maxHeight = height;
+    if (accordionContent.style.maxHeight) accordionContent.style.maxHeight = null;
+    else accordionContent.style.maxHeight = accordionContent.scrollHeight + 'px';
   });
 })();
-
