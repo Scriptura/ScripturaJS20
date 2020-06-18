@@ -1,11 +1,14 @@
 'use strict'
 
-const express = require('express'),
+const vv = require('../settings/variables'),
+      express = require('express'),
       router = express.Router()
 
 router.get('/styleGuide', function(req, res, next) {
   res.render('styleGuide', {
-    title: 'Style Guide'
+    _title: 'Style Guide | ' + vv.siteName
+    , _name: 'Style Guide'
+    , _description: 'Style Guide for ' + vv.siteName
   })
 })
 

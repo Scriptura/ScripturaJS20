@@ -200,6 +200,9 @@ const scrollToTop = (() => {
 // @description Menus accordéons
 // -----------------------------------------------------------------------------
 
+// @documentation :
+// 1. 'inherit' évite une animation au chargement de la page, il est donc nécessaire, la valeur doit cependant être passée en pixels pour le calcul de l'animation. D'où la double déclaration.
+
 const accordion = (() => {
   const detailss = document.querySelectorAll('.accordion details');
   for (const details of detailss) {
@@ -214,8 +217,11 @@ const accordion = (() => {
     details.parentNode.insertBefore(wrapper, details);
     wrapper.appendChild(details).insertAdjacentHTML('afterend', html);
     details.parentElement.removeChild(details);
-    //wrapper.children[1].style.maxHeight = window.getComputedStyle(wrapper.children[1], null).getPropertyValue('maxHeight');
-    if (wrapper.classList.contains('open')) wrapper.children[1].style.maxHeight = 'inherit';
+    if (wrapper.classList.contains('open')) {
+      const wrapperContent = wrapper.children[1];
+      wrapperContent.style.maxHeight = 'inherit'; // 1
+      wrapperContent.style.maxHeight = wrapperContent.scrollHeight + 'px'; // 1
+    }
   }
   const accordionSummarys = document.querySelectorAll('.accordion-summary');
   for (const accordionSummary of accordionSummarys) accordionSummary.addEventListener('click', () => {
