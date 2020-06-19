@@ -791,6 +791,7 @@ form fieldset > [class*=input] {
   background-color: transparent;
   border: none;
   outline: none;
+  cursor: pointer;
 }
 .scroll-top.hide {
   display: none;

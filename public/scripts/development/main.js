@@ -1,12 +1,13 @@
-'use strict';
+'use strict'
 
 // -----------------------------------------------------------------------------
 // @section     Support
 // @description Détecte les supports et ajoute des classes dans le tag html
 // -----------------------------------------------------------------------------
 
+// @documentation Performance pour les selecteurs @see https://jsbench.me/d7kbm759bb/1
 const jsDetect = (() => {
-  const html = document.documentElement
+  const html = document.documentElement // 1
   html.classList.replace('no-js', 'js')
 })()
 
@@ -23,6 +24,11 @@ const touchDetect = (() => {
 // @section     Utilities
 // @description Utilitaires consommables pour les autres fonctions
 // -----------------------------------------------------------------------------
+
+// @documentation Performance pour le script @see https://jsbench.me/trkbm71304/
+//const siblings = el => {
+//  for (const sibling of el.parentElement.children) if (sibling !== el) sibling.classList.add('color')
+//}
 
 const fadeOut = (el, duration) => {
   el.style.opacity = 1
@@ -136,38 +142,41 @@ const readablePassword = (() => {
 // @description Défilement vers le haut
 // -----------------------------------------------------------------------------
 
+// 1. Ajouter l'attribut `xmlns="http://www.w3.org/2000/svg"` pour un svg valide ; mais à partir du moment où il s'agit d'une injection js et où tous les navigateurs l'interprêtent correctement, est-ce bien nécessaire ?
+// 2. @see http://jsfiddle.net/smc8ofgg/
+// 3. @see https://stackoverflow.com/questions/15935318/smooth-scroll-to-top/55926067
+// 4. @note Script avec un effet sympa mais en conflit avec la règle CSS scroll-behavior:smooth, celle-ci doit donc être désactivée pour la durée du script.
 const scrollToTop = (() => {
   const footer = document.querySelector('footer')
-  const arrow = '<button class="scroll-top"><svg><path d="M20 32v-16l6 6 6-6-16-16-16 16 6 6 6-6v16z"/></svg></button>' // Ajouter l'attribut `xmlns="http://www.w3.org/2000/svg"` pour un svg valide ; mais à partir du moment où il s'agit d'une injection js et où tous les navigateurs l'interprêtent correctement, est-ce bien nécessaire ?
+  const arrow = '<button class="scroll-top"><svg><path d="M20 32v-16l6 6 6-6-16-16-16 16 6 6 6-6v16z"/></svg></button>' // 1
   footer.insertAdjacentHTML('beforeEnd', arrow)
   const item = document.querySelector('.scroll-top')
   item.classList.add('hide')
-  const position = () => { // @see http://jsfiddle.net/smc8ofgg/
+  const position = () => { // 2
     const yy = window.innerHeight / 2
     let y = window.scrollY
     if (y > yy) item.classList.remove('hide')
     else item.classList.add('hide')
   }
   window.addEventListener('scroll', position)
-  const scroll = () => { // @see https://stackoverflow.com/questions/15935318/smooth-scroll-to-top/55926067
-    // @note Script avec un effet sympa mais en conflit avec la règle CSS scroll-behavior:smooth, celle-ci doit donc être désactivée pour la durée du script :
+  const scroll = () => { // 3
     const c = document.documentElement.scrollTop || document.body.scrollTop,
           html = document.querySelector('html'),
           sb = window.getComputedStyle(html,null).getPropertyValue('scroll-behavior')
-    if (sb != 'auto') html.style.scrollBehavior = 'auto'
+    if (sb != 'auto') html.style.scrollBehavior = 'auto' // 4
     if (c > 0) {
       window.requestAnimationFrame(scroll)
       window.scrollTo(0, c - c / 8)
     }
-    if (sb != 'auto') html.style.scrollBehavior = '' // Inline style with js removed
-  };
+    if (sb != 'auto') html.style.scrollBehavior = ''
+  }
   item.addEventListener('click', scroll, false)
 })()
 
-// @note L'effet behavior:smooth pourrait simplement être défini ainsi en JS (sans conflit avec CSS) :
-//window.scrollTo({top: 0, behavior: 'smooth'});
+// @note L'effet behavior:smooth pourrait simplement être défini ainsi en JS (sans conflit avec CSS mais second choix pour l'animation) :
+//window.scrollTo({top: 0, behavior: 'smooth'})
 // Solution avec une définition scroll-behavior:smooth dans le CSS :
-//window.scrollTo({top: 0});
+//window.scrollTo({top: 0})
 
 
 // -----------------------------------------------------------------------------
@@ -189,21 +198,32 @@ const accordion = (() => {
           wrapper = document.createElement('div')
     wrapper.classList.add('accordion-details')
     if (details.open) wrapper.classList.add('open')
-    details.parentNode.insertBefore(wrapper, details)
+    details.parentElement.insertBefore(wrapper, details)
     wrapper.appendChild(details).insertAdjacentHTML('afterend', html)
     details.parentElement.removeChild(details)
     if (wrapper.classList.contains('open')) {
-      const wrapperContent = wrapper.children[1]
-      wrapperContent.style.maxHeight = 'inherit' // 1
-      wrapperContent.style.maxHeight = wrapperContent.scrollHeight + 'px' // 1
+      const accordionContent = wrapper.children[1]
+      accordionContent.style.maxHeight = 'inherit' // 1
+      accordionContent.style.maxHeight = accordionContent.scrollHeight + 'px' // 1
     }
   }
   const accordionSummarys = document.querySelectorAll('.accordion-summary')
+  const singleTab = true //accordionSummarys[0].parentElement.parentElement.classList.contains('.single-tab')
+  //console.log(accordionSummarys[0].parentElement.parentElement.classList.contains('.single-tab'))
   for (const accordionSummary of accordionSummarys) accordionSummary.addEventListener('click', () => {
     accordionSummary.parentElement.classList.toggle('open')
+    if (singleTab) siblings(accordionSummary.parentElement)
     const accordionContent = accordionSummary.nextElementSibling
     if (accordionContent.style.maxHeight) accordionContent.style.maxHeight = null
     else accordionContent.style.maxHeight = accordionContent.scrollHeight + 'px'
   })
+  const siblings = el => {
+    for (const sibling of el.parentElement.children) {
+      if (sibling !== el) {
+        sibling.classList.remove('open')
+        sibling.lastElementChild.style.maxHeight = null
+      }
+    }
+  }
 })()
 
