@@ -184,8 +184,14 @@ const scrollToTop = (() => {
 // @description Menus accordéons
 // -----------------------------------------------------------------------------
 
+// @params, deux options :
+// @option 'open' : onglet ouvert par défaut ; à définir sur l'élément <details> via l'attribut 'open' (comportement html natif)
+// @option 'singleTab' : un seul onglet s'ouvre à la fois ; à définir sur la div.accordion via l'attribut data-singletab
+
 // @documentation :
-// 1. 'inherit' évite une animation au chargement de la page, il est donc nécessaire, la valeur doit cependant être passée en pixels pour le calcul de l'animation. D'où la double déclaration.
+// 1. Option 'open'
+// 2. 'inherit' évite une animation au chargement de la page, il est donc nécessaire, la valeur doit cependant être passée en pixels pour le calcul de l'animation. D'où la double déclaration.
+// 3. Option 'singleTab'
 
 const accordion = (() => {
   const detailss = document.querySelectorAll('.accordion details')
@@ -197,21 +203,20 @@ const accordion = (() => {
     const html = details.innerHTML,
           wrapper = document.createElement('div')
     wrapper.classList.add('accordion-details')
-    if (details.open) wrapper.classList.add('open')
+    if (details.open) wrapper.dataset.open = 'open' //.classList.add('open') // 1
     details.parentElement.insertBefore(wrapper, details)
     wrapper.appendChild(details).insertAdjacentHTML('afterend', html)
     details.parentElement.removeChild(details)
-    if (wrapper.classList.contains('open')) {
+    if (wrapper.dataset.open == 'open') {
       const accordionContent = wrapper.children[1]
-      accordionContent.style.maxHeight = 'inherit' // 1
-      accordionContent.style.maxHeight = accordionContent.scrollHeight + 'px' // 1
+      accordionContent.style.maxHeight = 'inherit' // 2
+      accordionContent.style.maxHeight = accordionContent.scrollHeight + 'px' // 2
     }
   }
   const accordionSummarys = document.querySelectorAll('.accordion-summary')
-  const singleTab = true //accordionSummarys[0].parentElement.parentElement.classList.contains('.single-tab')
-  //console.log(accordionSummarys[0].parentElement.parentElement.classList.contains('.single-tab'))
   for (const accordionSummary of accordionSummarys) accordionSummary.addEventListener('click', () => {
-    accordionSummary.parentElement.classList.toggle('open')
+    const singleTab = accordionSummary.parentElement.parentElement.dataset.singletab // 3
+    accordionSummary.parentElement.dataset.open ? 'open' : 'false'
     if (singleTab) siblings(accordionSummary.parentElement)
     const accordionContent = accordionSummary.nextElementSibling
     if (accordionContent.style.maxHeight) accordionContent.style.maxHeight = null
@@ -220,7 +225,7 @@ const accordion = (() => {
   const siblings = el => {
     for (const sibling of el.parentElement.children) {
       if (sibling !== el) {
-        sibling.classList.remove('open')
+        sibling.dataset.open = 'false'
         sibling.lastElementChild.style.maxHeight = null
       }
     }
