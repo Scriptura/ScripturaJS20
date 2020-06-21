@@ -203,11 +203,11 @@ const accordion = (() => {
     const html = details.innerHTML,
           wrapper = document.createElement('div')
     wrapper.classList.add('accordion-details')
-    if (details.open) wrapper.dataset.open = 'open' //.classList.add('open') // 1
+    if (details.open) wrapper.classList.add('open') // 1
     details.parentElement.insertBefore(wrapper, details)
     wrapper.appendChild(details).insertAdjacentHTML('afterend', html)
     details.parentElement.removeChild(details)
-    if (wrapper.dataset.open == 'open') {
+    if (wrapper.classList.contains('open')) {
       const accordionContent = wrapper.children[1]
       accordionContent.style.maxHeight = 'inherit' // 2
       accordionContent.style.maxHeight = accordionContent.scrollHeight + 'px' // 2
@@ -216,7 +216,7 @@ const accordion = (() => {
   const accordionSummarys = document.querySelectorAll('.accordion-summary')
   for (const accordionSummary of accordionSummarys) accordionSummary.addEventListener('click', () => {
     const singleTab = accordionSummary.parentElement.parentElement.dataset.singletab // 3
-    accordionSummary.parentElement.dataset.open ? 'open' : 'false'
+    accordionSummary.parentElement.classList.toggle('open')
     if (singleTab) siblings(accordionSummary.parentElement)
     const accordionContent = accordionSummary.nextElementSibling
     if (accordionContent.style.maxHeight) accordionContent.style.maxHeight = null
@@ -225,7 +225,7 @@ const accordion = (() => {
   const siblings = el => {
     for (const sibling of el.parentElement.children) {
       if (sibling !== el) {
-        sibling.dataset.open = 'false'
+        sibling.classList.remove('open')
         sibling.lastElementChild.style.maxHeight = null
       }
     }
