@@ -153,7 +153,7 @@ const scrollToTop = (() => {
   const item = document.querySelector('.scroll-top')
   item.classList.add('hide')
   const position = () => { // 2
-    const yy = window.innerHeight / 2
+    const yy = window.innerHeight // Hauteur totale d'une fenêtre avant apparition de la flèche.
     let y = window.scrollY
     if (y > yy) item.classList.remove('hide')
     else item.classList.add('hide')
@@ -161,7 +161,7 @@ const scrollToTop = (() => {
   window.addEventListener('scroll', position)
   const scroll = () => { // 3
     const c = document.documentElement.scrollTop || document.body.scrollTop,
-          html = document.querySelector('html'),
+          html = document.documentElement,
           sb = window.getComputedStyle(html,null).getPropertyValue('scroll-behavior')
     if (sb != 'auto') html.style.scrollBehavior = 'auto' // 4
     if (c > 0) {

@@ -543,9 +543,6 @@ select:-webkit-autofill:focus {
   -webkit-text-fill-color: #ddd;
   -webkit-box-shadow: 0 0 0px 1000px #222 inset;
 }
-::-webkit-input-placeholder {
-  color: #777;
-}
 ::-moz-placeholder {
   color: #777;
 }
@@ -557,9 +554,6 @@ select:-webkit-autofill:focus {
 }
 ::placeholder {
   color: #777;
-}
-:focus::-webkit-input-placeholder {
-  color: transparent;
 }
 :focus::-moz-placeholder {
   color: transparent;
