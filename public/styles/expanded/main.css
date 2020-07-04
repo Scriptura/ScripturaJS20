@@ -750,29 +750,27 @@ form fieldset > [class*=input] {
 .accordion > * > :first-child:active {
   background-color: Orange;
 }
-.accordion .open button,
-.accordion:focus,
-.accordion:hover {
-  background-color: Orange;
-}
 .accordion > * > :first-child::before {
   content: '\002B';
   font-weight: bold;
   float: right;
   margin-left: 5px;
 }
-.accordion details[open] summary::before,
-.accordion .open .accordion-summary::before {
-  content: '\2212';
+.accordion .open button {
+  background-color: Orange;
 }
 .accordion > * > :last-child {
   padding: 0 1rem;
   color: #555;
   background-color: #f8f7f5;
   overflow: hidden;
-  transition: max-height 0.2s ease-out;
+  transition: max-height 0.5s ease-out;
 }
-.accordion .accordion-content {
+.accordion details[open] summary::before,
+.accordion .open .accordion-summary::before {
+  content: '\2212';
+}
+.accordion .accordion-panel {
   max-height: 0;
 }
 .scroll-top {

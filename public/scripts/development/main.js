@@ -184,49 +184,117 @@ const scrollToTop = (() => {
 // @description Menus accordéons
 // -----------------------------------------------------------------------------
 
+// @documentation :
+// Le html d'origine est composée de details > summary + div :
+//.accordion
+//  details
+//    summary Title item
+//    div Content item
+// La première partie du script transforme ce code (difficile à animer) en divs en récupérant les attributs de leur état d'origine (ouvert/fermé) :
+//.accordion
+//  .accordion-details
+//    .accordion-summary Title item
+//    .accordion-content Content item
+// La deuxième partie du code concerne les changements d'états des onglets/panneaux (ouvert/fermé).
+
 // @params, deux options :
 // @option 'open' : onglet ouvert par défaut ; à définir sur l'élément <details> via l'attribut 'open' (comportement html natif)
 // @option 'singleTab' : un seul onglet s'ouvre à la fois ; à définir sur la div.accordion via l'attribut data-singletab
 
-// @documentation :
 // 1. Option 'open'
 // 2. 'inherit' évite une animation au chargement de la page, il est donc nécessaire, la valeur doit cependant être passée en pixels pour le calcul de l'animation. D'où la double déclaration.
 // 3. Option 'singleTab'
 
+// Inspiration pour les rôles et les attributs aria :
+// @see https://www.w3.org/TR/wai-aria-practices-1.1/examples/accordion/accordion.html
+// @see https://jqueryui.com/accordion/
+// @see http://accessibility.athena-ict.com/aria/examples/tabpanel2.shtml
+
 const accordion = (() => {
-  const detailss = document.querySelectorAll('.accordion details')
-  for (const details of detailss) {
-    const summary = details.firstElementChild,
-          content = details.lastElementChild
-    summary.outerHTML = '<button type="button" class="accordion-summary">' + summary.innerHTML + '</button>'
-    content.outerHTML = '<div class="accordion-content">' + content.innerHTML + '</div>'
-    const html = details.innerHTML,
-          wrapper = document.createElement('div')
-    wrapper.classList.add('accordion-details')
-    if (details.open) wrapper.classList.add('open') // 1
-    details.parentElement.insertBefore(wrapper, details)
-    wrapper.appendChild(details).insertAdjacentHTML('afterend', html)
-    details.parentElement.removeChild(details)
-    if (wrapper.classList.contains('open')) {
-      const accordionContent = wrapper.children[1]
-      accordionContent.style.maxHeight = 'inherit' // 2
-      accordionContent.style.maxHeight = accordionContent.scrollHeight + 'px' // 2
+  const transformationOfAccordions = (() => {
+    const accordions = document.querySelectorAll('.accordion')
+    for (const accordion of accordions) {
+      accordion.setAttribute('role', 'tablist')
     }
-  }
-  const accordionSummarys = document.querySelectorAll('.accordion-summary')
-  for (const accordionSummary of accordionSummarys) accordionSummary.addEventListener('click', () => {
-    const singleTab = accordionSummary.parentElement.parentElement.dataset.singletab // 3
-    accordionSummary.parentElement.classList.toggle('open')
-    if (singleTab) siblings(accordionSummary.parentElement)
-    const accordionContent = accordionSummary.nextElementSibling
-    if (accordionContent.style.maxHeight) accordionContent.style.maxHeight = null
-    else accordionContent.style.maxHeight = accordionContent.scrollHeight + 'px'
-  })
-  const siblings = el => {
+  })()
+  const transformationOfDetails = (() => {
+    const detailss = document.querySelectorAll('.accordion details')
+    for (const details of detailss) {
+      const html = details.innerHTML,
+            substitute = document.createElement('div')
+      substitute.classList.add('accordion-details')
+      if (details.open) {
+        substitute.classList.add('open') // 1
+      }
+      details.parentElement.insertBefore(substitute, details)
+      substitute.appendChild(details).insertAdjacentHTML('afterend', html)
+      details.parentElement.removeChild(details)
+    }
+  })()
+  const transformationOfSummarys = (() => {
+    const summarys = document.querySelectorAll('.accordion summary')
+    for (const summary of summarys) {
+      const html = summary.innerHTML,
+            substitute = document.createElement('button')
+      substitute.type = 'button'
+      substitute.classList.add('accordion-summary')
+      substitute.setAttribute('role', 'tab')
+      summary.parentElement.insertBefore(substitute, summary)
+      substitute.appendChild(summary).insertAdjacentHTML('afterend', html)
+      summary.parentElement.removeChild(summary)
+    }
+  })()
+  const transformationOfPannels = (() => {
+    const panels = document.querySelectorAll('.accordion > * > :last-child')
+    for (const panel of panels) {
+      panel.classList.add('accordion-panel')
+      panel.setAttribute('role', 'tabpanel')
+    }
+  })()
+  const stateManagement = (() => {
+    const detailss = document.querySelectorAll('.accordion-details')
+    for (const details of detailss) {
+      const accordionSummary = details.children[0],
+            accordionPanel = details.children[1]
+      if (details.classList.contains('open')) {
+        accordionSummary.setAttribute('aria-expanded', 'true')
+        accordionPanel.style.maxHeight = 'inherit' // 2
+        accordionPanel.style.maxHeight = accordionPanel.scrollHeight + 'px' // 2
+        accordionPanel.setAttribute('aria-hidden', 'false')
+      }
+      else {
+        accordionSummary.setAttribute('aria-expanded', 'false')
+        accordionPanel.setAttribute('aria-hidden', 'true')
+      }
+    }
+    const accordionSummarys = document.querySelectorAll('.accordion-summary')
+    for (const accordionSummary of accordionSummarys) accordionSummary.addEventListener('click', () => {
+      const singleTab = accordionSummary.parentElement.parentElement.dataset.singletab // 3
+      accordionSummary.parentElement.classList.toggle('open')
+      if (accordionSummary.parentElement.classList.contains('open'))
+        accordionSummary.setAttribute('aria-expanded', 'true')
+      else
+        accordionSummary.setAttribute('aria-expanded', 'false')
+      if (singleTab)
+        siblingStateManagement(accordionSummary.parentElement)
+      const accordionPanel = accordionSummary.nextElementSibling
+      if (accordionPanel.style.maxHeight) {
+        accordionPanel.style.maxHeight = null
+        accordionPanel.setAttribute('aria-hidden', 'true')
+      }
+      else {
+        accordionPanel.style.maxHeight = accordionPanel.scrollHeight + 'px'
+        accordionPanel.setAttribute('aria-hidden', 'false')
+      }
+    })
+  })()
+  const siblingStateManagement = el => {
     for (const sibling of el.parentElement.children) {
       if (sibling !== el) {
         sibling.classList.remove('open')
+        sibling.firstElementChild.setAttribute('aria-expanded', 'false')
         sibling.lastElementChild.style.maxHeight = null
+        sibling.lastElementChild.setAttribute('aria-hidden', 'true')
       }
     }
   }

@@ -269,6 +269,9 @@ GRANT SELECT ON __text_option TO PUBLIC;
 
 /*
 Alternative au code précédent ? :
+
+GRANT ALL privileges ON DATABASE scripturadb TO userName;
+
 DROP SCHEMA public CASCADE;
 CREATE SCHEMA public;
 GRANT ALL ON SCHEMA public TO postgres;
