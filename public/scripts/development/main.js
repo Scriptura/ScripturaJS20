@@ -233,12 +233,16 @@ const accordion = (() => {
   })()
   const transformationOfSummarys = (() => {
     const summarys = document.querySelectorAll('.accordion summary')
+    let i = 0
     for (const summary of summarys) {
+      i++
       const html = summary.innerHTML,
             substitute = document.createElement('button')
+      substitute.id = 'accordion-summary-' + i
       substitute.type = 'button'
       substitute.classList.add('accordion-summary')
       substitute.setAttribute('role', 'tab')
+      substitute.setAttribute('aria-controls', 'accordion-panel-' + i)
       summary.parentElement.insertBefore(substitute, summary)
       substitute.appendChild(summary).insertAdjacentHTML('afterend', html)
       summary.parentElement.removeChild(summary)
@@ -246,9 +250,13 @@ const accordion = (() => {
   })()
   const transformationOfPannels = (() => {
     const panels = document.querySelectorAll('.accordion > * > :last-child')
+    let i = 0
     for (const panel of panels) {
+      i++
+      panel.id = 'accordion-panel-' + i
       panel.classList.add('accordion-panel')
       panel.setAttribute('role', 'tabpanel')
+      panel.setAttribute('aria-labelledby', 'accordion-summary-' + i)
     }
   })()
   const stateManagement = (() => {
