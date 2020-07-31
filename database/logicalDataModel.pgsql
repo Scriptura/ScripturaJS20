@@ -8,8 +8,13 @@
 
 -- \i /../database/logicalDataModel.pgsql
 
+-- Les lignes de commande suivantes sont pour le dev :
 DROP DATABASE IF EXISTS scripturadb;
+DROP EXTENSION pgcrypto;
+
+
 CREATE DATABASE scripturadb;
+CREATE EXTENSION IF NOT EXISTS pgcrypto; -- module permettant la génération des UUID via la fonction gen_random_uuid() (alternative moins intéressante : le module uuid-ossp) ; la fonction sera native avec postresql 13, ce qui rendra pgcrypto inutile pour cette version
 
 
 \c scripturadb;
@@ -33,7 +38,8 @@ CREATE TABLE __preference (
 
 
 CREATE TABLE __user (
-  _id                 BIGSERIAL         NOT NULL, -- envisager de passer en UUID par la suite ?
+  _id                 BIGSERIAL         NOT NULL,
+  -- _id                 UUID              DEFAULT gen_random_uuid(), -- pour la v12 la fonction fait appel au module pgcrypto, en v13 la fonction sera native
   _person_id          BIGINT            NULL,     -- référence éventuelle à __person
   _username           VARCHAR(32)       NOT NULL, -- nom utilisateur ; "username" est le terme technique consacré, et non pas "user name"
   _password           CHAR(40)          NOT NULL, -- mot de passe crypté en SHA1
@@ -43,8 +49,8 @@ CREATE TABLE __user (
   _language           VARCHAR(5)        NULL,     -- choix de la langue (format code langue : ISO639-1 alpha-2 + ISO3166-1 alpha-2 ; ex : fr_FR)
   _visibility         BOOLEAN           NULL,     -- visibilité en ligne (pour un forum)
   _community          VARCHAR(40)       NULL,     -- appartenance à une communauté ou cercle
-  _site_style         BOOLEAN           NULL,     -- option de préférence graphique pour le site
-  _time_zone          CHAR(32)          NULL,     -- fuseau horaire (ex : Europe/Paris)
+  _site_style         BOOLEAN           NULL,     -- option de préférence graphique pour le site__contributorpe/Paris)
+  _time_zone          TIMESTAMP         NULL,
   _private_message    BOOLEAN           NULL,     -- autoriser les messages privés
   _creation           TIMESTAMP         NOT NULL, -- date de création du profil
   _revision           TIMESTAMP         NULL,     -- date de révision du profil
@@ -55,7 +61,7 @@ CREATE TABLE __user (
 
 
 CREATE TABLE __person (
-  _id                 BIGSERIAL         NOT NULL,
+  _id                 BIGSERIAL         NOT NULL, -- UUID ?
   _user_id            BIGINT            NULL,     -- référence éventuelle à __user
   _sexe               CHAR(1)           NULL,     -- selon la norme ISO/IEC 5218 ; inconnu : 0, homme : 1, femme : 2, non applicable : 9
   _given_name         VARCHAR(32)       NULL,     -- prénom
@@ -178,7 +184,7 @@ CREATE TABLE __author ( -- table de lien entre un item et son auteur ou ses cont
   _user_id            BIGINT            NOT NULL,
   _post_id            BIGINT            NULL,
   _media_id           BIGINT            NULL,
-  CONSTRAINT __post_pkey PRIMARY KEY (_id)
+  CONSTRAINT __author_pkey PRIMARY KEY (_id)
 );
 
 
@@ -256,7 +262,7 @@ GRANT SELECT ON __person TO PUBLIC;
 GRANT SELECT ON __organization TO PUBLIC;
 GRANT SELECT ON __place TO PUBLIC;
 GRANT SELECT ON __post TO PUBLIC;
-GRANT SELECT ON __contributor TO PUBLIC;
+GRANT SELECT ON __author TO PUBLIC;
 GRANT SELECT ON __media TO PUBLIC;
 GRANT SELECT ON __comment TO PUBLIC;
 GRANT SELECT ON __keyword TO PUBLIC;
@@ -267,23 +273,10 @@ GRANT SELECT ON __number_option TO PUBLIC;
 GRANT SELECT ON __text_option TO PUBLIC;
 
 
-/*
-Alternative au code précédent ? :
-
-GRANT ALL privileges ON DATABASE scripturadb TO userName;
-
-DROP SCHEMA public CASCADE;
-CREATE SCHEMA public;
-GRANT ALL ON SCHEMA public TO postgres;
-GRANT ALL ON SCHEMA public TO public;
-COMMENT ON SCHEMA public IS 'standard public schema';
-*/
-
-
 -- Donnée de remplissage à des fins de test :
 INSERT INTO __user (_id, _person_id, _username, _password, _email, _status, _display_name, _language, _visibility, _community, _site_style, _time_zone, _private_message, _creation, _revision, _last_login)
 VALUES
-  (1, 4, 'admin', 'root', 'admin@gmail.com', NULL, 4, 'fr_FR', true, NULL, NULL, NULL, NULL, '2005-05-07 19:37:25-07', '2017-07-17 07:08:25-07', '2020-05-03 10:10:25-07');
+  (00000000-0000-0000-0000-000000857031, 4, 'admin', 'root', 'admin@gmail.com', NULL, 4, 'fr_FR', true, NULL, NULL, NULL, NULL, '2005-05-07 19:37:25-07', '2017-07-17 07:08:25-07', '2020-05-03 10:10:25-07');
 
 
 INSERT INTO __person (_id, _user_id, _sexe, _given_name, _middle_name, _family_name, _usual_name, _nickname, _prefix, _suffix, _birth_date, _birth_place_id, _death_date, _death_place_id, _nationality, _place_id, _phone, _phone2, _email, _fax, _url, _occupation, _bias, _hobby, _organization_id, _award, _media_id, _devise, _description)
