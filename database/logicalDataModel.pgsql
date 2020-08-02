@@ -38,7 +38,7 @@ CREATE TABLE __preference (
 
 
 CREATE TABLE __user (
-  _id                 BIGSERIAL         NOT NULL,
+  _id                 UUID              NOT NULL,
   -- _id                 UUID              DEFAULT gen_random_uuid(), -- pour la v12 la fonction fait appel au module pgcrypto, en v13 la fonction sera native
   _person_id          BIGINT            NULL,     -- référence éventuelle à __person
   _username           VARCHAR(32)       NOT NULL, -- nom utilisateur ; "username" est le terme technique consacré, et non pas "user name"
@@ -276,7 +276,7 @@ GRANT SELECT ON __text_option TO PUBLIC;
 -- Donnée de remplissage à des fins de test :
 INSERT INTO __user (_id, _person_id, _username, _password, _email, _status, _display_name, _language, _visibility, _community, _site_style, _time_zone, _private_message, _creation, _revision, _last_login)
 VALUES
-  (00000000-0000-0000-0000-000000857031, 4, 'admin', 'root', 'admin@gmail.com', NULL, 4, 'fr_FR', true, NULL, NULL, NULL, NULL, '2005-05-07 19:37:25-07', '2017-07-17 07:08:25-07', '2020-05-03 10:10:25-07');
+  ('110e8400-e29b-11d4-a716-446655440000', 4, 'admin', 'root', 'admin@gmail.com', NULL, 4, 'fr_FR', true, NULL, NULL, NULL, NULL, '2005-05-07 19:37:25-07', '2017-07-17 07:08:25-07', '2020-05-03 10:10:25-07');
 
 
 INSERT INTO __person (_id, _user_id, _sexe, _given_name, _middle_name, _family_name, _usual_name, _nickname, _prefix, _suffix, _birth_date, _birth_place_id, _death_date, _death_place_id, _nationality, _place_id, _phone, _phone2, _email, _fax, _url, _occupation, _bias, _hobby, _organization_id, _award, _media_id, _devise, _description)
