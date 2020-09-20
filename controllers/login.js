@@ -1,10 +1,10 @@
 'use strict'
 
-const vv = require('../settings/variables'),
+const express = require('express'),
+      router = express.Router(),
+      vv = require('../settings/variables'),
       db = require('../database/db'),
       User = require('../models/user'),
-      express = require('express'),
-      router = express.Router(),
       session = require('express-session'),
       flash = require('connect-flash'),
       passport = require('passport'),

@@ -2,6 +2,4 @@
 
 const db = require('../database/db')
 
-//const getArticle = {data}
-
-module.exports = {getArticle: getArticle}
+module.exports = { getIndex: getIndex }

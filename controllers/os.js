@@ -1,8 +1,8 @@
 'use strict'
 
-const vv = require('../settings/variables'),
-      express = require('express'),
+const express = require('express'),
       router = express.Router(),
+      vv = require('../settings/variables'),
       os = require('os'),
       ip = require('ip')
 

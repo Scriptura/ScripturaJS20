@@ -14,4 +14,4 @@ const getArticle = async (id) => await db.one('SELECT * FROM public.__post WHERE
     return data
   })
 
-module.exports = {getArticle: getArticle}
+module.exports = { getArticle: getArticle }

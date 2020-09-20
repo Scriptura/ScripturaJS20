@@ -301,7 +301,7 @@ VALUES
   (10, 'Basilique Notre-Dame-de-la-Garde', 'Rue Fort du Sanctuaire', '13281', 'Marseille', 'Bouches-du-Rhône', 'France', POINT(5.371195, 43.284002), NULL, NULL);
 
 
-INSERT INTO __post ( _id, _name, _content, _creation, _revision, _description, _author_id, _status )
+INSERT INTO __post (_id, _name, _content, _creation, _revision, _description, _author_id, _status)
 VALUES
   (1, 'La légende dorée', 'La Légende dorée (<em>Legenda aurea</em> en latin) est un ouvrage rédigé en latin entre 1261 et 1266 par Jacques de Voragine, dominicain et archevêque de Gênes, qui raconte la vie d''environ 150 saints ou groupes de saints, saintes et martyrs chrétiens, et, suivant les dates de l''année liturgique, certains événements de la vie du Christ et de la Vierge Marie.', '2020-04-16 19:10:25-07', '2020-04-16 20:15:22-01', 'La Légende dorée fut l''ouvrage le plus lu et le plus diffusé au Moyen Âge, juste après la Bible. Cette « légende des saints » (son titre originel) constitue en fait une encyclopédie de la vie chrétienne.', 2, 1);
 

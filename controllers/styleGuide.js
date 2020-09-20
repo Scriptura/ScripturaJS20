@@ -1,8 +1,8 @@
 'use strict'
 
-const vv = require('../settings/variables'),
-      express = require('express'),
-      router = express.Router()
+const express = require('express'),
+      router = express.Router(),
+      vv = require('../settings/variables')
 
 router.get('/styleGuide', function(req, res, next) {
   res.render('styleGuide', {

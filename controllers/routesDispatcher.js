@@ -1,8 +1,8 @@
 'use strict'
 
-const path = require('path'),
-      express = require('express'),
-      router = express.Router()
+const express = require('express'),
+      router = express.Router(),
+      path = require('path')
 
 router.use(
   '/',

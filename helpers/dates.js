@@ -1,16 +1,15 @@
 'use strict'
 
-const moment = require('moment')
-moment.locale('fr')
+const { DateTime } = require('luxon')
 
-// https://momentjs.com/docs/#/displaying/format/
+// @see https://moment.github.io/luxon/demo/global.html
 
 const dateFormat = (date) => {
-  return moment(date).format('L') // dd/mm/yyyy
+  return DateTime.fromJSDate(date).setLocale('fr').toFormat('dd/MM/yyyy')
 }
 
 const dateTimeFormat = (date) => {
-  return moment(date).format('L HH:mm') // dd/mm/yyyy hh:mm
+  return DateTime.fromJSDate(date).setLocale('fr').toFormat('dd/MM/yyyy HH:mm')
 }
 
 module.exports = {

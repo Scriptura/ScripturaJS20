@@ -1,8 +1,8 @@
 'use strict'
 
-const vv = require('../settings/variables'),
-      express = require('express'),
+const express = require('express'),
       router = express.Router(),
+      vv = require('../settings/variables'),
       //argon2 = require('argon2'), // @see https://medium.com/analytics-vidhya/password-hashing-pbkdf2-scrypt-bcrypt-and-argon2-e25aaf41598e
       { postUser } = require('../models/user')
 
