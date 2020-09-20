@@ -549,9 +549,6 @@ select:-webkit-autofill:focus {
 :-ms-input-placeholder {
   color: #777;
 }
-::-ms-input-placeholder {
-  color: #777;
-}
 ::placeholder {
   color: #777;
 }
@@ -559,9 +556,6 @@ select:-webkit-autofill:focus {
   color: transparent;
 }
 :focus:-ms-input-placeholder {
-  color: transparent;
-}
-:focus::-ms-input-placeholder {
   color: transparent;
 }
 :focus::placeholder {
