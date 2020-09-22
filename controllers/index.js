@@ -10,7 +10,7 @@ router.get('/', (req, res, next) => { // GET home page
     _title: vv.siteName
     , _name: vv.siteName
     , _description: vv.siteName + ', page d\'accueil'
-    , _calendar: liturgicalCalendar.name
+    , _calendar: liturgicalCalendar().name
   })
 })
 
