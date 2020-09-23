@@ -41,16 +41,18 @@
   "devDependencies": {
     "autoprefixer": "^10.0.0",
     "autoprefixer-stylus": "^1.0.0",
+    "browser-sync": "^2.26.12",
     "eslint": "^7.9.0",
     "purgecss": "^2.3.0",
     "stylus": "^0.54.8"
   },
   "scripts": {
     "start": "NODE_ENV=production yarn go",
-    "dev": "yarn scriptsmin | yarn stylusmin | yarn stylusexp | yarn go",
+    "dev": "yarn scriptsmin | yarn stylusmin | yarn stylusexp | yarn bs | yarn go",
     "scriptsmin": "uglifyjs public/scripts/development/main.js -o public/scripts/main.js -c -m",
     "stylusmin": "stylus -u autoprefixer-stylus -w public/styles/development/main.styl -o public/styles/main.css -c -m",
     "stylusexp": "stylus -u autoprefixer-stylus -w public/styles/development/main.styl -o public/styles/expanded/main.css",
+    "bs": "browser-sync start --proxy 'localhost:3000' --port 9001 --reload-debounce 2000 --files 'public' 'views' --no-notify",
     "go": "nodemon ./bin/www"
   }
 }

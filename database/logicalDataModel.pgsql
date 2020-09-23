@@ -52,7 +52,7 @@ CREATE TABLE __user (
   _site_style         BOOLEAN           NULL,     -- option de préférence graphique pour le site__contributorpe/Paris)
   _time_zone          TIMESTAMP         NULL,
   _private_message    BOOLEAN           NULL,     -- autoriser les messages privés
-  _creation           TIMESTAMP         NOT NULL, -- date de création du profil
+  _creation           TIMESTAMP         NOT NULL, -- date de création du profil -- DEFAULT CURRENT_DATE
   _revision           TIMESTAMP         NULL,     -- date de révision du profil
   _last_login         TIMESTAMP         NULL,     -- dernière connection
   CONSTRAINT __user_pkey PRIMARY KEY (_id)
@@ -140,7 +140,7 @@ CREATE TABLE __post (
   _id                 BIGSERIAL         NOT NULL,
   _name               VARCHAR(255)      NOT NULL, -- titre
   _content            TEXT              NULL,     -- contenu
-  _creation           TIMESTAMP         NOT NULL, -- date de création
+  _creation           TIMESTAMP         NOT NULL, -- date de création -- DEFAULT CURRENT_DATE
   _revision           TIMESTAMP         NULL,     -- date de révision
   _type               VARCHAR(255)      NULL,     -- article, page, etc...
   _slug               VARCHAR(255)      NULL,     -- slug propre à l'article, différent de l'url canonique, celle-ci étant reconstituée à partir le l'index par exemple
@@ -171,7 +171,7 @@ CREATE TABLE __media (
 CREATE TABLE __comment (
   _id                 BIGSERIAL         NOT NULL,
   _name               VARCHAR(255)      NULL,     -- titre du commentaire
-  _creation           TIMESTAMP         NOT NULL, -- date de création
+  _creation           TIMESTAMP         NOT NULL, -- date de création -- DEFAULT CURRENT_DATE
   _revision           TIMESTAMP         NULL,     -- date de révision
   -- _author             SMALLINT          NOT NULL,
   _post_id            SMALLINT          NOT NULL, -- post concerné
@@ -218,7 +218,7 @@ CREATE TABLE __transaction (
   _client_id          BIGINT            NOT NULL, -- client (id de _users)
   _organization_id    BIGINT            NOT NULL, -- organisation marchande pour le produit (id de _organizations)
   _list               VARCHAR(255)      NULL,     -- liste de l'id des produits (NULL si en cours de commande)
-  _creation           TIMESTAMP         NOT NULL, -- date de la transaction
+  _creation           TIMESTAMP         NOT NULL, -- date de la transaction -- DEFAULT CURRENT_DATE
   _revision           TIMESTAMP         NULL,     -- date de révision de la transaction
   _purchase           TIMESTAMP         NULL,     -- date de validation de la transaction
   _billing            BIGINT            NULL,     -- id de l'adresse de facturation
@@ -233,7 +233,7 @@ CREATE TABLE __event (
   _begin              TIMESTAMP         NOT NULL, -- début de l'événement
   _end                TIMESTAMP         NULL,     -- fin de l'événement
   _description        TEXT              NULL,     -- description de l'événement
-  _creation           TIMESTAMP         NOT NULL, -- date de création de l'événement
+  _creation           TIMESTAMP         NOT NULL, -- date de création de l'événement -- DEFAULT CURRENT_DATE
   _revision           TIMESTAMP         NULL,     -- date de révision de l'événement
   CONSTRAINT __event_pkey PRIMARY KEY (_id)
 );

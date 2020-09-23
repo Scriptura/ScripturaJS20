@@ -4,8 +4,10 @@ block main
   main
     h1.h2= _name
     ul
-      if _street
-      li Adresse : #{_street}, #{_postal_code}, #{_locality}
+      if _street && _postal_code && _locality
+        li Adresse : #{_street}, #{_postal_code}, #{_locality}
+      else if _locality
+        li Ville : #{_locality}
       if _location
         li Latitude : #{_location.y}
       if _location
