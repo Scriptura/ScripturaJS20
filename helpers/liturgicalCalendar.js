@@ -4,10 +4,11 @@ const fs = require('fs'),
       json = './data/json/liturgicalCalendar.json',
       { DateTime } = require('luxon')
 
-const liturgicalCalendar = date => {
-  if (date === undefined) date = DateTime.local().toFormat('ddMM')
+const liturgicalCalendar = date => { // @param 'JJMM' ; default: current
   const data = JSON.parse(fs.readFileSync(json, 'utf8')),
-  result = data[date]
+        currentDate = DateTime.local().toFormat('ddMM')
+  if (date === undefined) date = currentDate
+  let result = data[date]
   if (result === undefined) result = {name: 'No data'}
   //console.log(date)
   return result

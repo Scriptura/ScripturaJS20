@@ -28,7 +28,7 @@ const vv = require('./settings/variables'),
       hostname = 'http://localhost:3000', // @todo À requêter dynamiquement...
       routesDispatcher = require(path.join(__dirname, 'controllers', 'routesDispatcher'))
 
-app.use(helmet()) // Protection des entêtes @see https://helmetjs.github.io/
+//app.use(helmet()) // Protection des en-têtes HTTP @see https://helmetjs.github.io/
 app.use(morgan('dev')) // Info sur les logs en console.
 app.set('views', path.join(__dirname, 'views')) // Racine pour les vues.
 app.set('view engine', 'pug') // Choix du moteur de template.
