@@ -6,7 +6,7 @@ block main
     p!= _content
     - var img = '/medias/images/demo/LotusMacro'
     - var alt = 'Lotus'
-    figure
+    figure.figure
       picture
         source(media='(min-width: 2000px)' srcset=img + '.jpg, ' + img + '.jpg 2x' sizes='100vw')
         source(media='(min-width: 1500px)' srcset=img + '2000.jpg, ' + img + '.jpg 2x' sizes='100vw')
