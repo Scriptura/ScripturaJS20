@@ -160,96 +160,6 @@ sub
 sup
   top -.5em // @bugfix Prevent `sub` and `sup` elements from affecting the line height @affected All browsers.
 
-// -----------------------------------------------------------------------------
-// @section Images
-// -----------------------------------------------------------------------------
-
-img
-  vertical-align middle // Évite un décalage possible de l'élément suivant
-  //width 100% // @bugfix @todo Depuis l'introduction des attributs 'srcset' et 'sizes' la largeur ne doit plus dépendre de l'image par défaut
-  height auto
-  max-width 100%
-  border-style none // @bugfix Remove the border on images inside links @affected IE 10.
-
-[class*=thumbnail]
-  width 100% // Important à appliquer pour le responsive si le width n'est pas définit préalablement
-
-@media (min-width $sizeXS)
-
-  [class*=thumbnail]
-    max-width ($wrap / 4)
-
-// @subsection Figures
-// -----------------------------------------------------------------------------
-
-[class^=figure]
-  //vertical-align middle
-  width 100%
-  padding .5em
-  ifColor($colorCL036)
-  background-color $colorBG036
-  ifBoxShadow($colorBS036)
-
-[class^=figure] figcaption
-  padding-top .5em
-  text-align center
-
-[class^=figure] + [class^=figure]
-  margin-top 2em
-
-// @subsection .align
-// -----------------------------------------------------------------------------
-
-@media (min-width $sizeS)
-
-  [class*=-alignleft]
-    float left
-    margin-right 1em
-
-  [class*=-alignright]
-    float right
-    margin-left 1em
-
-  [class*=-align] ~ h2
-  [class*=-align] ~ h3
-  [class*=-align] ~ hr
-  [class*=-align] ~ aside
-    clear both // Ciblage de certains éléments faisants suite à une image flotante @todo Le margin-top de ces éléments n'est pas pris en compte sous l'image...
-
-
-// -----------------------------------------------------------------------------
-// @section     Medias
-// @description Audio, vidéo et Caneva
-// -----------------------------------------------------------------------------
-
-audio
-video
-canvas
-//display inline-block // @bugfix @affected IE 9
-  width 100%
-  ifBoxShadow($colorBS0401)
-
-audio
-video
-.video
-  background-color $colorBG041 // @bugfix @affected Google Maps, tag 'canvas' @note Pas de background prédéfinit sur tag 'canvas', afin d'éviter les conflits
-  ifBoxShadow($colorBS041)
-
-audio
-video
-  outline none // @affected Firefox
-
-audio
-  height 2rem // @bugfix @affected All browsers @note Nécessaire au positionnement
-  //padding 0 0 .5rem // @bugfix @affected Chrome
-
-audio:not([controls])
-  display none // @affected All browsers @note Affichage de l'audio sans contrôle
-  height 0 // @bugfix @affected iOS 5
-
-video[poster]
-  width 100% !important
-
 details
   display block // @bugfix Add the correct display @affected Edge, IE 10+, and Firefox.
 
@@ -261,6 +171,3 @@ template
 
 [hidden]
   display none // @bugfix Add the correct display @affected IE 10.
-
-svg
-  fill currentcolor // Par défaut le svg est ainsi considéré comme une icône fonte correspondant à la couleur du texte.

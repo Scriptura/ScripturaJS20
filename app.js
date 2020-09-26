@@ -32,6 +32,7 @@ const vv = require('./settings/variables'),
 //@see https://helmetjs.github.io/
 
 //app.use(helmet())
+app.use(helmet({contentSecurityPolicy: false}))
 /*
 app.use(
   helmet.contentSecurityPolicy({
@@ -44,6 +45,7 @@ app.use(
   })
 )
 */
+
 
 app.use(morgan('dev')) // Info sur les logs en console.
 app.set('views', path.join(__dirname, 'views')) // Racine pour les vues.

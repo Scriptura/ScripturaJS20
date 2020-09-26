@@ -1,0 +1,33 @@
+
+// -----------------------------------------------------------------------------
+// @section     Medias
+// @description Audio, vidéo et Caneva
+// -----------------------------------------------------------------------------
+
+audio
+video
+canvas
+  //display inline-block // @bugfix @affected IE 9
+  width 100%
+  ifBoxShadow($colorBS0401)
+
+audio
+video
+.video
+  background-color $colorBG041 // @bugfix @affected Google Maps, tag 'canvas' @note Pas de background prédéfinit sur tag 'canvas', afin d'éviter les conflits
+  ifBoxShadow($colorBS041)
+
+audio
+video
+  outline none // @affected Firefox
+
+audio
+  height 2rem // @bugfix @affected All browsers @note Nécessaire au positionnement
+  //padding 0 0 .5rem // @bugfix @affected Chrome
+
+audio:not([controls])
+  display none // @affected All browsers @note Affichage de l'audio sans contrôle
+  height 0 // @bugfix @affected iOS 5
+
+video[poster]
+  width 100% !important
