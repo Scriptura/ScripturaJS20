@@ -32,20 +32,14 @@ const vv = require('./settings/variables'),
 //@see https://helmetjs.github.io/
 
 //app.use(helmet())
-app.use(helmet({contentSecurityPolicy: false}))
-/*
 app.use(
   helmet.contentSecurityPolicy({
     directives: {
-      defaultSrc: ["'self'"],
-      scriptSrc: ["'unsafe-inline'"],
-      objectSrc: ["'none'"],
-      upgradeInsecureRequests: [],
+      defaultSrc: ["'self' 'unsafe-inline' api.mapbox.com"],
+      imgSrc: ["'self' data: api.mapbox.com"]
     },
   })
 )
-*/
-
 
 app.use(morgan('dev')) // Info sur les logs en console.
 app.set('views', path.join(__dirname, 'views')) // Racine pour les vues.
