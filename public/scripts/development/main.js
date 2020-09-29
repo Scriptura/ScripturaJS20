@@ -308,3 +308,67 @@ const accordion = (() => {
   }
 })()
 
+
+// -----------------------------------------------------------------------------
+// @section     Figure focus
+// @description Zoom sur les images
+// -----------------------------------------------------------------------------
+
+const imageFocus = (() => {
+
+  const images = document.querySelectorAll('[class*=-focus]')
+
+  const addButtonEnlarge = (() => {
+    for (const image of images) {
+      const button = document.createElement('button'),
+            text = document.createTextNode('E')
+      image.appendChild(button).appendChild(text)
+      button.classList.add('icon-enlarge')
+    }
+  })()
+
+  const clickImage = (() => {
+    for (const image of images) image.addEventListener('click', () => {
+      cloneImage(image)
+      document.body.style.overflow = 'hidden'
+    })
+  })()
+
+  const cloneImage = image => {
+    const imgTag = image.querySelector('img')
+    let clone = imgTag.cloneNode(true)
+    document.body.appendChild(clone)
+    clone = wrapClone(clone)
+    clone = clickFocusRemove()
+  }
+
+  const wrapClone = el => {
+    const wrapper = document.createElement('div')
+    wrapper.classList.add('focus-off')
+    console.log(wrapper)
+    el.parentNode.insertBefore(wrapper, el)
+    wrapper.appendChild(el)
+    addButtonShrink()
+  }
+
+  const clickFocusRemove = () => {
+    const el = document.querySelector('.focus-off')
+          //, button = document.querySelector('.focus-off button')
+    el.addEventListener('click', () => {
+      el.parentNode.removeChild(el)
+      document.body.removeAttribute('style') // document.body.style.overflow = ''
+    })
+  }
+
+  const addButtonShrink = () => {
+    const el = document.querySelector('.focus-off'),
+          button = document.createElement('button'),
+          text = document.createTextNode('R')
+    el.appendChild(button).appendChild(text)
+    button.classList.add('icon-shrink')
+    button.focus()
+  }
+
+})()
+
+

@@ -36,7 +36,7 @@ app.use(
   helmet.contentSecurityPolicy({
     directives: {
       defaultSrc: ["'self' 'unsafe-inline' api.mapbox.com"],
-      imgSrc: ["'self' data: api.mapbox.com"]
+      imgSrc: ["'self' data: api.mapbox.com"] // autorisation des images
     },
   })
 )

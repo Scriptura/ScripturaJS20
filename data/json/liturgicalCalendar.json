@@ -1,8 +1,17 @@
 {
   "0000": {"name": "No data"},
-  "0509": {"name": "Test 1"},
-  "0609": {"name": "Test 2"},
-  "0709": {"name": "Test 3"},
+  "0101": {"name": "Ste Marie, Mère de Dieu"},
+  "0201": {"name": "Sts Basile de Césarée et Grégoire de Nazianze"},
+  "0301": {"name": "Sainte Geneviève"},
+  "0401": {"name": "Ste Angèle de Foligno"},
+  "0501": {"name": "St Jean Népomucène Neumann"},
+  "0601": {"name": "L'Epiphanie du Seigneur"},
+  "0701": {"name": "St Raymond de Penyafort"},
+  "0801": {"name": "St Lucien de Beauvais"},
+  "0901": {"name": "Bse Alix Le Clerc"},
+  "1001": {"name": "St Grégoire de Nysse"},
+  "1101": {"name": "St Paulin d'Aquilée"},
+  "1201": {"name": "Ste Marguerite Bourgeoys"},
   "0809": {
     "name": "Nativité de la Vierge Marie",
     "url": "https://www.aelf.org/2020-09-08/romain/messe"
@@ -10,5 +19,20 @@
   "2209": {
     "name": "S. Corneille, pape, et S. Cyprien, évêque, martyrs",
     "url": "https://www.aelf.org/2020-09-16/romain/messe"
-  }
+  },
+  "2709": {"name": "Saint Vincent de Paul"},
+  "2809": {"name": "Saint Venceslas"},
+  "2909": {"name": "Les saints Archanges"},
+  "3009": {"name": "Saint Jérôme"},
+  "0110": {"name": "Ste Thérèse de l'enfant Jésus"},
+  "0210": {"name": "Les saints Anges gardiens"},
+  "0310": {"name": "St Gérard de Brogne"},
+  "0410": {"name": "St François d'Assise"},
+  "0510": {"name": "Sainte Fleur"},
+  "0610": {"name": "Saint Bruno"},
+  "0710": {"name": "Sts Serge et Bacchus"},
+  "0810": {"name": "Sainte Réparate"},
+  "0910": {"name": "Saint Denis de Paris"},
+  "1010": {"name": "Sainte Telchide"},
+  "1110": {"name": "St Théophane l'Hymnographe"}
 }

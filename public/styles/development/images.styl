@@ -123,15 +123,59 @@ figure
 .js [class*=-focus] // @note Si jQuery activé
   position relative
   cursor zoom-in
-  transition .15s box-shadow, transform
+  transition .15s transform
 
-.js [class*=-focus]:focus
-.js [class*=-focus]:hover
-.js [class*=-focus]:active
-  z-index 30
-  ifBoxShadow($colorBS039)
+.js [class*="-focus"]:focus
+.js [class*="-focus"]:hover
+.js [class*="-focus"]:active
+.js [class*="-focus"]:focus-within
+  //z-index 30
+  box-shadow .5rem .5rem 2rem rgba(0, 0, 0, .3)
   transform scale(1.01)
 
+.js [class*="-focus"]:focus-within
+  background-color Orange
+
+[class*=-focus] button
+.focus-off button
+  position absolute
+  z-index 1
+  right $gutter
+  width 2rem
+  height 2rem
+  background-color Orange
+  border none
+  outline none
+  cursor zoom-in
+
+[class*=-focus] button
+  top $gutter
+  
+.focus-off
+  position fixed
+  display flex
+  align-items center
+  //justify-content center // @todo Nécessité de cette règle à évaluer...
+  z-index 4001 // @note Doit passer au dessus de tout autre élément, notamment le scroll top
+  top 0
+  left 0
+  bottom 0
+  right 0
+  padding 0
+  //color #aaa
+  //background-color #222 // @bugfix @affected Chrome mobile @note box-shadox sur l'image plutôt qu'un background sur le conteneur afin d'éviter un décalage d'environ 1px en bottom.
+  cursor zoom-out
+
+.focus-off img
+  margin auto
+  max-height 100vh
+  background-color #000 // @note Pour les .png transparents
+  box-shadow 0 0 0 1000rem #222
+
+.focus-off button
+  bottom $gutter
+
+/*
 [class*=-focus] [class*=icon]
 .focus-off [class*="icon"]
   position absolute
@@ -164,3 +208,4 @@ figure
   max-height 100vh
   background-color #000 // @note Pour les .png transparents
   box-shadow 0 0 0 1000rem $colorBS040
+*/

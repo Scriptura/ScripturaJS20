@@ -455,45 +455,53 @@ figure {
 .js [class*=-focus] {
   position: relative;
   cursor: zoom-in;
-  transition: 0.15s box-shadow, transform;
+  transition: 0.15s transform;
 }
-.js [class*=-focus]:focus,
-.js [class*=-focus]:hover,
-.js [class*=-focus]:active {
-  z-index: 30;
+.js [class*="-focus"]:focus,
+.js [class*="-focus"]:hover,
+.js [class*="-focus"]:active,
+.js [class*="-focus"]:focus-within {
+  box-shadow: 0.5rem 0.5rem 2rem rgba(0,0,0,0.3);
   transform: scale(1.01);
 }
-[class*=-focus] [class*=icon],
-.focus-off [class*="icon"] {
+.js [class*="-focus"]:focus-within {
+  background-color: Orange;
+}
+[class*=-focus] button,
+.focus-off button {
   position: absolute;
   z-index: 1;
   right: 1rem;
+  width: 2rem;
+  height: 2rem;
+  background-color: Orange;
+  border: none;
+  outline: none;
+  cursor: zoom-in;
 }
-[class*=-focus] [class*=icon] {
+[class*=-focus] button {
   top: 1rem;
-}
-.focus-off [class*=icon] {
-  bottom: 1rem;
 }
 .focus-off {
   position: fixed;
   display: flex;
+  align-items: center;
   z-index: 4001;
   top: 0;
   left: 0;
   bottom: 0;
   right: 0;
-  color: $colorCL040;
+  padding: 0;
   cursor: zoom-out;
 }
-.focus-off div {
-  max-width: 100%;
-  margin: auto;
-}
 .focus-off img {
+  margin: auto;
   max-height: 100vh;
   background-color: #000;
-  box-shadow: 0 0 0 1000rem $colorBS040;
+  box-shadow: 0 0 0 1000rem #222;
+}
+.focus-off button {
+  bottom: 1rem;
 }
 audio,
 video,
