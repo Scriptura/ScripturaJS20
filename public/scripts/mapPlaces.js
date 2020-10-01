@@ -1,4 +1,4 @@
-(function map() {
+const map = (() => {
   let markers = [];
 
   function getIcon(color) {

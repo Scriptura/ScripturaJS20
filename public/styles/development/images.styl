@@ -45,12 +45,12 @@ figure
 // @subsection Thumbnails
 // -----------------------------------------------------------------------------
 
-[class*=thumbnail]
+[class*=-thumbnail]
   width 100% // Important à appliquer pour le responsive si le width n'est pas définit préalablement
 
 @media (min-width $sizeXS)
 
-  [class*=thumbnail]
+  [class*=-thumbnail]
     max-width ($wrap / 4)
 
 
@@ -125,15 +125,15 @@ figure
   cursor zoom-in
   transition .15s transform
 
-.js [class*="-focus"]:focus
-.js [class*="-focus"]:hover
-.js [class*="-focus"]:active
-.js [class*="-focus"]:focus-within
+.js [class*=-focus]:focus
+.js [class*=-focus]:hover
+.js [class*=-focus]:active
+.js [class*=-focus]:focus-within
   //z-index 30
   box-shadow .5rem .5rem 2rem rgba(0, 0, 0, .3)
   transform scale(1.01)
 
-.js [class*="-focus"]:focus-within
+.js [class*=-focus]:focus-within
   background-color Orange
 
 [class*=-focus] button
@@ -161,7 +161,7 @@ figure
   left 0
   bottom 0
   right 0
-  padding 0
+  padding 0 // @note Annule une règle du template
   //color #aaa
   //background-color #222 // @bugfix @affected Chrome mobile @note box-shadox sur l'image plutôt qu'un background sur le conteneur afin d'éviter un décalage d'environ 1px en bottom.
   cursor zoom-out
