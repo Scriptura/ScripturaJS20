@@ -1,24 +1,23 @@
 'use strict'
 
 const fs = require('fs'),
-      json = './data/json/generalRomanCalendar.json',
+      general = './data/json/generalRomanCalendar.json',
+      european = './data/json/europeanRomanCalendar.json',
+      french = './data/json/frenchRomanCalendar.json',
       { DateTime } = require('luxon')
 
-const liturgicalCalendar = date => { // @param 'JJMM' ; default: current
-  const data = JSON.parse(fs.readFileSync(json, 'utf8')),
+const liturgicalCalendar = date => { // @param 'ddMM' ; default: current
+  const data1 = JSON.parse(fs.readFileSync(general, 'utf8')),
+        data2 = JSON.parse(fs.readFileSync(european, 'utf8')),
+        data3 = JSON.parse(fs.readFileSync(french, 'utf8')),
         currentDate = DateTime.local().toFormat('ddMM')
   if (typeof date === 'undefined') date = currentDate
-  let result = data[date]
-  if (typeof result === 'undefined') result = {name: 'No data'}
+  let result = data1[date]
+  result = data2[date]
+  result = data3[date]
+  if (typeof result === 'undefined') result = {name: 'De la férie'}
   //console.log(date)
   return result
 }
 
 module.exports = { liturgicalCalendar: liturgicalCalendar }
-
-
-/*
-  "3005": {
-    "name": "Sainte Jeanne d'Arc"
-  },
-*/
