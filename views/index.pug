@@ -6,7 +6,10 @@ block main
     //-img(src='/medias/images/TiLion1.3.svg', alt='Leo' style='width:10rem;transform:translate(-30px, 0)')
     include includes/tiLion
     include includes/links
-    if _calendar
+    if _calendar && _calendarUrl
+      p
+        a(href=_calendarUrl)!= _calendar
+    else if _calendar
       p!= _calendar
     else
       p no calendar

@@ -11,6 +11,7 @@ router.get('/', (req, res, next) => { // GET home page
     , _name: vv.siteName
     , _description: vv.siteName + ', page d\'accueil'
     , _calendar: liturgicalCalendar().name
+    , _calendarUrl: liturgicalCalendar().link
   })
 })
 

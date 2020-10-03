@@ -346,245 +346,226 @@
     "name": "Saint Benoît, abbé",
     "rank": "3"
   },
-  "1207": {
-    "name": "Saint Michel Maleinos"
-  },
   "1307": {
-    "name": "Saint Henri"
+    "name": "Saint Henri",
+    "rank": "4"
   },
   "1407": {
-    "name": "Saint Camille de Lellis"
+    "name": "Saint Camille de Lellis, prêtre",
+    "rank": "4"
   },
   "1507": {
-    "name": "Saint Bonaventure"
+    "name": "Saint Bonaventure, évêque et docteur de l'Église",
+    "rank": "3"
   },
   "1607": {
-    "name": "Sainte Marie Madeleine Postel"
-  },
-  "1707": {
-    "name": "Bienheureuses Carmélites de Compiègne"
-  },
-  "1807": {
-    "name": "Saint Arnoul"
-  },
-  "1907": {
-    "name": "Sainte Macrine"
+    "name": "Notre-Dame du Mont-Carmel",
+    "rank": "4"
   },
   "2007": {
-    "name": "Saint Elie"
+    "name": "Saint Apollinaire",
+    "rank": "4"
   },
   "2107": {
-    "name": "Saint Victor"
+    "name": " Saint Laurent de Brindisi, prêtre et docteur de l'Église",
+    "rank": "4"
   },
   "2207": {
-    "name": "Sainte Marie-Madeleine"
+    "name": "Sainte Marie-Madeleine, disciple du Seigneur",
+    "rank": "2"
   },
   "2307": {
-    "name": "Sainte Brigitte de Suède"
+    "name": "Sainte Brigitte de Suède, mère de famille puis religieuse",
+    "rank": "4"
   },
   "2407": {
-    "name": "Saints Boris et Gleb"
+    "name": "Saint Charbel Makhlouf, ermite",
+    "rank": "4"
   },
   "2507": {
-    "name": "Saint Jacques le Majeur"
+    "name": "Saint Jacques le Majeur, apôtre",
+    "rank": "2"
   },
   "2607": {
-    "name": "Saints Anne et Joachim"
-  },
-  "2707": {
-    "name": "Sainte Nathalie"
-  },
-  "2807": {
-    "name": "Saint Samson"
+    "name": "Saints Anne et Joachim, parents de la Vierge Marie",
+    "rank": "3"
   },
   "2907": {
-    "name": "Sainte Marthe"
+    "name": "Sainte Marthe",
+    "rank": "3"
   },
   "3007": {
-    "name": "Saint Pierre Chrysologue"
+    "name": "Saint Pierre Chrysologue, évêque et docteur de l'Église",
+    "rank": "4"
   },
   "3107": {
-    "name": "Saint Ignace de Loyola"
+    "name": "Saint Ignace de Loyola, prêtre, fondateur des jésuites",
+    "rank": "3"
   },
   "0108": {
-    "name": "Saint Alphonse de Liguori"
+    "name": "Saint Alphonse de Liguori, évêque et docteur de l'Église, fondateur des Rédemptoristes",
+    "rank": "3"
   },
   "0208": {
-    "name": "Saint Pierre Julien Eymard"
-  },
-  "0308": {
-    "name": "Saint Nicodème"
+    "name": "Saint Eusèbe de Verceil, évêque, ou Saint Pierre-Julien Eymard, prêtre, fondateur de la congrégation du Très-Saint-Sacrement",
+    "rank": "4"
   },
   "0408": {
-    "name": "Saint Jean-Marie Vianney"
+    "name": "Saint Jean-Marie Vianney, prêtre",
+    "rank": "3"
   },
   "0508": {
-    "name": "Saint Jean de Chozeba"
+    "name": "Dédicace de la Basilique Sainte-Marie-Majeure",
+    "rank": "4"
   },
   "0608": {
-    "name": "Saint Hormisdas"
+    "name": "Transfiguration du Seigneur",
+    "rank": "2"
   },
   "0708": {
-    "name": "Saint Gaétan"
+    "name": "Saint Sixte II, pape, et ses compagnons, martyrs, ou Saint Cajetan, prêtre",
+    "rank": "4"
   },
   "0808": {
-    "name": "Saint Dominique"
+    "name": "Saint Dominique, prêtre, fondateur des Frères Prêcheurs",
+    "rank": "3"
   },
   "0908": {
-    "name": "Sainte Thérèse-Bénédicte de la Croix"
+    "name": "Sainte Thérèse-Bénédicte de la Croix (Édith Stein), vierge et martyre, carmélite",
+    "rank": "4"
   },
   "1008": {
-    "name": "Saint Laurent"
+    "name": "Saint Laurent, diacre et martyr",
+    "rank": "2"
   },
   "1108": {
-    "name": "Sainte Claire d'Assise"
+    "name": "Sainte Claire d'Assise, vierge, fondatrice des Pauvres Dames ou Clarisses",
+    "rank": "3"
   },
   "1208": {
-    "name": "Sainte Jeanne de Chantal"
+    "name": "Sainte Jeanne-Françoise de Chantal, religieuse, fondatrice de la Visitation",
+    "rank": "4"
   },
   "1308": {
-    "name": "Saints Pontien et Hippolyte"
+    "name": "Saints Pontien, pape, et Hippolyte, prêtre, martyrs",
+    "rank": "4"
   },
   "1408": {
-    "name": "Saint Maximilien Kolbe"
+    "name": "Saint Maximilien Kolbe, prêtre et martyr, franciscain",
+    "rank": "3"
   },
   "1508": {
-    "name": "L'Assomption de la Mère de Dieu"
+    "name": "Assomption de la Bienheureuse Vierge Marie",
+    "rank": "2"
   },
   "1608": {
-    "name": "Saint Étienne"
-  },
-  "1708": {
-    "name": "Saint Dimitrios le Jeune"
-  },
-  "1808": {
-    "name": "Sainte Hélène"
+    "name": "Saint Étienne de Hongrie",
+    "rank": "4"
   },
   "1908": {
-    "name": "Saint Jean Eudes"
+    "name": "Saint Jean Eudes, prêtre, fondateur",
+    "rank": "4"
   },
   "2008": {
-    "name": "Saint Bernard"
+    "name": "Saint Bernard, abbé de Clairvaux et docteur de l'Église",
+    "rank": "3"
   },
   "2108": {
-    "name": "Saint Pie X"
+    "name": "Saint Pie X, pape",
+    "rank": "3"
   },
   "2208": {
-    "name": "Saint Symphorien"
+    "name": "Bienheureuse Vierge Marie Reine de l'univers",
+    "rank": "3"
   },
   "2308": {
-    "name": "Sainte Rose de Lima"
+    "name": "Sainte Rose de Lima, vierge, tertiaire dominicaine",
+    "rank": "4"
   },
   "2408": {
-    "name": "Saint Barthélemy"
+    "name": "Saint Barthélemy, apôtre",
+    "rank": "2"
   },
   "2508": {
-    "name": "Saint Louis"
-  },
-  "2608": {
-    "name": "Saint Césaire d'Arles"
+    "name": "Saint Louis, roi de France, ou Saint Joseph Calasanz, prêtre, fondateur",
+    "rank": "4"
   },
   "2708": {
-    "name": "Sainte Monique"
+    "name": "Sainte Monique",
+    "rank": "3"
   },
   "2808": {
-    "name": "Saint Augustin"
+    "name": "Saint Augustin, évêque et docteur de l'Église",
+    "rank": "3"
   },
   "2908": {
-    "name": "Décollation de Saint Jean-Baptiste"
-  },
-  "3008": {
-    "name": "Sainte Jeanne Jugan"
-  },
-  "3108": {
-    "name": "Saint Raymond Nonnat"
-  },
-  "0109": {
-    "name": "Saint Gilles"
-  },
-  "0209": {
-    "name": "Bienheureux martyrs des Carmes"
+    "name": "Décollation de Saint Jean-Baptiste, martyr",
+    "rank": "3"
   },
   "0309": {
-    "name": "Saint Grégoire le Grand"
-  },
-  "0409": {
-    "name": "Sainte Rosalie"
-  },
-  "0509": {
-    "name": "Saint Laurent Justinien"
-  },
-  "0609": {
-    "name": "Bienheureux Bertrand de Garrigues"
-  },
-  "0709": {
-    "name": "Saint Cloud"
+    "name": "Saint Grégoire le Grand, pape et docteur de l'Église",
+    "rank": "3"
   },
   "0809": {
-    "name": "La nativité de la Vierge Marie",
-    "url": "https://www.aelf.org/2020-09-08/romain/messe"
+    "name": "Nativité de la Vierge Marie",
+    "rank": "2",
+    "link": "https://www.aelf.org/2020-09-08/romain/messe"
   },
   "0909": {
-    "name": "Saint Pierre Claver"
-  },
-  "1009": {
-    "name": "Bienheureux Charles Spinola"
-  },
-  "1109": {
-    "name": "Saint Jean-Gabriel Perboyre"
+    "name": "Saint Pierre Claver, prêtre",
+    "rank": "4"
   },
   "1209": {
-    "name": "Saint Nom de la Bienheureuse Vierge Marie, Saint Guy d'Anderlecht"
+    "name": "Saint Nom de la Bienheureuse Vierge Marie",
+    "rank": "4"
   },
   "1309": {
-    "name": "Saint Jean Chrysostome"
+    "name": "Saint Jean Chrysostome, évêque et docteur de l'Église",
+    "rank": "3"
   },
   "1409": {
-    "name": "La Croix glorieuse"
+    "name": "La Croix glorieuse (Exaltation de la Sainte-Croix)",
+    "rank": "2"
   },
   "1509": {
-    "name": "Notre-Dame des Sept Douleurs, Sainte Catherine de Gênes"
+    "name": "Notre-Dame des Sept Douleurs",
+    "rank": "3"
   },
   "1609": {
-    "name": "Saints Cyprien et Corneille, pape",
-    "url": "https://www.aelf.org/2020-09-16/romain/messe"
+    "name": "Saints Corneille, pape, et Cyprien, évêque, martyrs",
+    "rank": "3",
+    "link": "https://www.aelf.org/2020-09-16/romain/messe"
   },
   "1709": {
-    "name": "Sainte Hildegarde de Bingen"
-  },
-  "1809": {
-    "name": "Saint Joseph de Cupertino"
+    "name": "Saint Robert Bellarmin, évêque et docteur de l'Église",
+    "rank": "4"
   },
   "1909": {
-    "name": "Saint Janvier"
+    "name": "Saint Janvier, évêque et martyr",
+    "rank": "4"
   },
   "2009": {
-    "name": "Saint André Kim"
+    "name": "Saint André Kim Taegon, prêtre, et Paul Chong Hasang et ses compagnons, martyrs",
+    "rank": "3"
   },
   "2109": {
     "name": "Saint Matthieu, apôtre et évangéliste",
     "rank": "2"
   },
-  "2209": {
-    "name": "Saint Maurice"
-  },
   "2309": {
-    "name": "Saint Constant"
-  },
-  "2409": {
-    "name": "Saint Silouane"
-  },
-  "2509": {
-    "name": "Saint Firmin d'Amiens"
+    "name": "Saint Padre Pio, prêtre",
+    "rank": "3"
   },
   "2609": {
-    "name": "Saints Côme et Damien"
+    "name": "Saints Côme et Damien, martyrs",
+    "rank": "3"
   },
   "2709": {
-    "name": "Saint Vincent de Paul"
+    "name": "Saint Vincent de Paul, prêtre",
+    "rank": "3"
   },
   "2809": {
-    "name": "Saint Venceslas, martyr",
+    "name": "Saint Venceslas, martyr ou Saints Lorenzo Ruiz et ses compagnons, martyrs",
     "rank": "4"
   },
   "2909": {
