@@ -16,4 +16,4 @@ const userFormat = (data) => { // Travaille sur l'initialisateur d'objet envoyé
   return data
 }
 
-module.exports = {userFormat: userFormat}
+module.exports = { userFormat: userFormat }

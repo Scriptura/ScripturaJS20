@@ -1,0 +1,27 @@
+'use strict'
+
+function integerDivision(dividend, divider) {
+  return Math.floor(dividend / divider)
+}
+
+const gregorian = year => {
+  const a = year % 19
+  const b = integerDivision(year, 100)
+  const c = year % 100
+  const d = integerDivision(b, 4)
+  const e = b % 4
+  const f = integerDivision(b + 8, 25)
+  const g = integerDivision(b - f + 1, 3)
+  const h = (19 * a + b - d - g + 15) % 30
+  const i = integerDivision(c, 4)
+  const k = c % 4
+  const l = (32 + 2 * e + 2 * i - h - k) % 7
+  const m = integerDivision(a + 11 * h + 22 * l, 451)
+  const month = integerDivision(h + l - 7 * m + 114, 31)
+  const day = ((h + l - 7 * m + 114) % 31) + 1
+
+  //return new Date(year, month - 1, day)
+  return ('0' + day).slice(-2) + ('0' + month).slice(-2)
+}
+
+module.exports = { gregorian: gregorian }

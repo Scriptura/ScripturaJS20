@@ -13,4 +13,4 @@ const placeFormat = (data) => { // Travaille sur l'initialisateur d'objet envoy√
   return data
 }
 
-module.exports = {placeFormat: placeFormat}
+module.exports = { placeFormat: placeFormat }
