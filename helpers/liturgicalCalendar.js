@@ -1,7 +1,7 @@
 'use strict'
 
 const fs = require('fs'),
-      json = './data/json/liturgicalCalendar.json',
+      json = './data/json/generalRomanCalendar.json',
       { DateTime } = require('luxon')
 
 const liturgicalCalendar = date => { // @param 'JJMM' ; default: current
@@ -15,3 +15,10 @@ const liturgicalCalendar = date => { // @param 'JJMM' ; default: current
 }
 
 module.exports = { liturgicalCalendar: liturgicalCalendar }
+
+
+/*
+  "3005": {
+    "name": "Sainte Jeanne d'Arc"
+  },
+*/
