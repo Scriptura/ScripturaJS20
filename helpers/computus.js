@@ -1,6 +1,13 @@
 'use strict'
 
-function integerDivision(dividend, divider) {
+// Inspired by @see https://github.com/rhnorskov/computus
+// Verification @see http://5ko.free.fr/fr/easter.php
+
+// @param {number} year
+// @returns {Date} computus
+// @example const computus = gregorian(1970)
+
+const integerDivision = (dividend, divider) => {
   return Math.floor(dividend / divider)
 }
 
@@ -24,4 +31,20 @@ const gregorian = year => {
   return ('0' + day).slice(-2) + ('0' + month).slice(-2)
 }
 
-module.exports = { gregorian: gregorian }
+const julian = year => {
+  const a = year % 4
+  const b = year % 7
+  const c = year % 19
+  const d = (19 * c + 15) % 30
+  const e = (2 * a + 4 * b - d + 34) % 7
+  const month = integerDivision(d + e + 114, 31)
+  const day = ((d + e + 114) % 31) + 1
+
+  //return new Date(year, month - 1, day + 13)
+  return ('0' + day).slice(-2) + ('0' + month).slice(-2) // ajouter 13 jours pour la date Orthodoxe basée sur le nouveau calendrier
+}
+
+module.exports = {
+  gregorian: gregorian,
+  julian: julian
+}

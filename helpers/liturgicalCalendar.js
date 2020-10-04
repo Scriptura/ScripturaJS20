@@ -5,23 +5,25 @@ const fs = require('fs'),
       european = './data/json/europeanRomanCalendar.json',
       french = './data/json/frenchRomanCalendar.json',
       { DateTime } = require('luxon'),
-      { gregorian } = require('../helpers/computus')
+      { gregorian, julian } = require('../helpers/computus')
 
-console.log(
-  gregorian(1918)
-)
+// @param 'ddMM' ; default: current
 
-const liturgicalCalendar = date => { // @param 'ddMM' ; default: current
+const liturgicalCalendar = date => {
   const data1 = JSON.parse(fs.readFileSync(general, 'utf8')),
         data2 = JSON.parse(fs.readFileSync(european, 'utf8')),
         data3 = JSON.parse(fs.readFileSync(french, 'utf8')),
-        currentDate = DateTime.local().toFormat('ddMM')
+        dt = DateTime.local(),
+        currentYear = dt.toFormat('yyyy'),
+        currentDate = 1204, //dt.toFormat('ddMM')
+        currentEaster = gregorian(currentYear)
   if (typeof date === 'undefined') date = currentDate
   let result = data1[date]
   result = data2[date]
   result = data3[date]
   if (typeof result === 'undefined') result = {name: 'De la férie'}
-  //console.log(date)
+  if (currentDate == currentEaster) result = {name: 'Pâques'}
+  //if (currentDate == currentEaster) result = {name: 'Lundi de Pâques'}
   return result
 }
 
