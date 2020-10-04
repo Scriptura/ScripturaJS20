@@ -1,7 +1,7 @@
 'use strict'
 
 // Inspired by @see https://github.com/rhnorskov/computus
-// Verification @see http://5ko.free.fr/fr/easter.php
+// Verification des dates de Pâques @see http://5ko.free.fr/fr/easter.php
 
 // @param {number} year
 // @returns {Date} computus
@@ -28,7 +28,8 @@ const gregorian = year => {
   const day = ((h + l - 7 * m + 114) % 31) + 1
 
   //return new Date(year, month - 1, day)
-  return ('0' + day).slice(-2) + ('0' + month).slice(-2)
+  //return new Date(year, month - 1, day + 1)
+  return parseInt(('0' + day).slice(-2) + ('0' + month).slice(-2), 10)
 }
 
 const julian = year => {
@@ -41,7 +42,7 @@ const julian = year => {
   const day = ((d + e + 114) % 31) + 1
 
   //return new Date(year, month - 1, day + 13)
-  return ('0' + day).slice(-2) + ('0' + month).slice(-2) // ajouter 13 jours pour la date Orthodoxe basée sur le nouveau calendrier
+  return parseInt(('0' + day).slice(-2) + ('0' + month).slice(-2), 10) // ajouter 13 jours pour la date Orthodoxe basée sur le nouveau calendrier
 }
 
 module.exports = {
