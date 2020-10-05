@@ -9,7 +9,7 @@ const express = require('express'),
 router.get('/os', (req, res, next) => {
   res.render('os', {
     _title: 'Os | ' + vv.siteName
-    , _meta_description: 'Information sur les données système et utilisateur'
+    , _description: 'Information sur les données système et utilisateur'
     , _name: 'Os'
     //, _site_url: process.env.PORT
     , _node_version: process.version.replace('v', '')

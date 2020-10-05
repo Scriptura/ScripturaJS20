@@ -1,5 +1,6 @@
 'use strict'
 
+// @note Essai de plugin, fonctionnel, mais remplacé par le module date-easter
 // Inspired by @see https://github.com/rhnorskov/computus
 // Verification des dates de Pâques @see http://5ko.free.fr/fr/easter.php
 

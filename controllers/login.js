@@ -33,7 +33,7 @@ passport.use(new LocalStrategy(
 router.get('/login', (req, res, next) => { // GET home page
   res.render('login', {
     _title: 'Login | ' + vv.siteName
-    , _meta_description: 'Page de connexion'
+    , _description: 'Page de connexion'
     , _name: 'Connexion'
   })
 })

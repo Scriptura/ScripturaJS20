@@ -1,0 +1,15 @@
+extends layout
+
+block main
+  main
+    h1.h2= _name
+    if _calendar && _calendarUrl
+      p
+        a(href=_calendarUrl)!= _calendar
+    else if _calendar
+      p!= _calendar
+    else
+      p no calendar
+    if _calendarRank
+      p= _calendarRank
+    include includes/links
