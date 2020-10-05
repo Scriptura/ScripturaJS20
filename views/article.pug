@@ -12,13 +12,12 @@ block main
       - var img = '/medias/images/demo/ColorfulLeaf'
       - var alt = 'Colorful leaf'
       include includes/picture
-    p
-      em
-        | Article créé le #{_creation}
-        if _revision
-          |, révisé le #{_revision}
-        |.
     ul
-      li Title : #{_title}
-      li Meta description : #{_description}
+      li Description : #{_description}
+      li
+        em
+          | Article créé le #{_creation}
+          if _revision
+            |, révisé le #{_revision}
+          |.
     include includes/links

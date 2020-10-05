@@ -339,7 +339,7 @@ const imageFocus = (() => {
     let clone = imgTag.cloneNode(true)
     document.body.appendChild(clone)
     clone = wrapClone(clone)
-    clone = clickFocusRemove()
+    clone = clickFocusRemove(image)
   }
 
   const wrapClone = el => {
@@ -351,12 +351,13 @@ const imageFocus = (() => {
     addButtonShrink()
   }
 
-  const clickFocusRemove = () => {
+  const clickFocusRemove = image => {
     const el = document.querySelector('.focus-off')
           //, button = document.querySelector('.focus-off button')
     el.addEventListener('click', () => {
       el.parentNode.removeChild(el)
       document.body.removeAttribute('style') // document.body.style.overflow = ''
+      image.querySelector('button').focus() // focus sur l'image cliquée au départ
     })
   }
 
