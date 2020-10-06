@@ -13,5 +13,35 @@ block main
     if _calendarRank
       p
         em= _calendarRank
-    div(style='background:url("medias/images/moons/' + _moonPhase + '.svg");background-size:cover;width:7rem;height:7rem')
+    div= _moonPhaseImg
+    if _moonPhase
+      div(style='width:5rem;height:5rem;color:#fff;')
+        style.
+          svg circle {
+            stroke: Tan;
+          }
+          svg path {
+            fill: Tan;
+          }
+        if _moonPhase == 0
+          //- style spécifique à cette image SVG
+          style.
+            svg circle {
+              fill: Peru;
+            }
+          include ../public/medias/images/moons/0.svg
+        if _moonPhase == 1
+          include ../public/medias/images/moons/1.svg
+        if _moonPhase == 2
+          include ../public/medias/images/moons/2.svg
+        if _moonPhase == 3
+          include ../public/medias/images/moons/3.svg
+        if _moonPhase == 4
+          include ../public/medias/images/moons/4.svg
+        if _moonPhase == 5
+          include ../public/medias/images/moons/5.svg
+        if _moonPhase == 6
+          include ../public/medias/images/moons/6.svg
+        if _moonPhase == 7
+          include ../public/medias/images/moons/7.svg
     include includes/links

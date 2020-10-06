@@ -2,7 +2,7 @@
 
 const vv = require('../settings/variables'),
       { liturgicalCalendar } = require('../helpers/liturgicalCalendar'),
-      { moonPhase } = require('../helpers/astronomy')
+      { moonPhase, moonPhaseImg } = require('../helpers/astronomy')
 
 const getCalendar = {
   _title: 'Calendar | ' + vv.siteName

@@ -3,7 +3,8 @@
 const SunCalc = require('suncalc')
 
 const moonPhase = date => {
-  return Math.round(SunCalc.getMoonIllumination(date).phase * 8)
+  const phase = Math.round(SunCalc.getMoonIllumination(date).phase * 8)
+  return phase
 }
 
 module.exports = { moonPhase: moonPhase }
