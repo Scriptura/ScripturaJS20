@@ -11,5 +11,7 @@ block main
     else
       p no calendar
     if _calendarRank
-      p= _calendarRank
+      p
+        em= _calendarRank
+    div(style='background:url("medias/images/moons/' + _moonPhase + '.svg");background-size:cover;width:10rem;height:10rem')
     include includes/links
