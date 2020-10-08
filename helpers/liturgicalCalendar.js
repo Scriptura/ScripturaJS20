@@ -63,12 +63,31 @@ const liturgicalCalendar = date => {
   if (currentDayMonth === currentEasterP68) result = {name: "Sacré-Cœur de Jésus", rank: "1"}
   //result = {name: "Christ Roi", rank: "1"}
 
+
+/* si dimanche, alors célébration le lundi 9 :
+  "0812": {
+    "name": "Immaculée Conception de la Bienheureuse Vierge Marie",
+    "color": "white",
+    "rank": "1"
+  }
+*/
+
+
+
   // Traducion des degrés de fête numérotés en language humain
   let rank = result.rank
-  if (rank == 1) result.rank = 'Solennité'
-  if (rank == 2) result.rank = 'Fête'
-  if (rank == 3) result.rank = 'Mémoire obligatoire'
-  if (rank == 4) result.rank = 'Mémoire facultative'
+  if (rank === '1') result.rank = 'Solennité'
+  if (rank === '2') result.rank = 'Fête'
+  if (rank === '3') result.rank = 'Mémoire obligatoire'
+  if (rank === '4') result.rank = 'Mémoire facultative'
+
+  // Gestion des couleurs liturgiques
+    let color = result.color
+    if (typeof result.color === 'undefined') result.color = '#777'
+    if (color === 'withe') result.color = '#ffffff'
+    if (color === 'red') result.color = '#ff0000' //'#bf2329'
+    if (color === 'purple') result.color = '#800080'
+    if (color === 'black') result.color = '#000000'
 
   return result
 }
