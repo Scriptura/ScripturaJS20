@@ -41,6 +41,8 @@ app.use(
   })
 )
 
+//app.set('etag', false)
+
 app.use(morgan('dev')) // Info sur les logs en console.
 app.set('views', path.join(__dirname, 'views')) // Racine pour les vues.
 app.set('view engine', 'pug') // Choix du moteur de template.

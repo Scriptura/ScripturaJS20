@@ -471,7 +471,9 @@
     "name": "Sainte Clotilde"
   },
   "0506": {
-    "name": "Saint Boniface"
+    "name": "Saint Boniface, évêque et martyr",
+    "color": "red",
+    "rank": "3"
   },
   "0606": {
     "name": "Saint Norbert"
