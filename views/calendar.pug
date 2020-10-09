@@ -4,7 +4,10 @@ block main
   main
     h1.h2= _name
     p
-      span(style='display:inline-block;height:1.1rem;width:1.1rem;margin:0 .5rem -1px 0;background-color:' + _calendarColor)
+      if _calendarColor
+        span(style='display:inline-block;height:1.1rem;width:1.1rem;margin:0 .5rem -1px 0;background-color:' + _calendarColor)
+      if _calendarColor2
+        span(style='display:inline-block;height:1.1rem;width:1.1rem;margin:0 .5rem -1px 0;background-color:' + _calendarColor2)
       if _calendar && _calendarUrl
         a(href=_calendarUrl)!= _calendar
       else if _calendar
@@ -16,18 +19,18 @@ block main
         em= _calendarRank
     div= _moonPhaseImg
     if _moonPhase
-      div(style='width:5rem;height:5rem;color:#fff')
+      .moon(style='width:2.5rem;height:2.5rem;margin: 0 0 .5rem -.3rem')
         style.
-          svg circle {
+          .moon svg circle {
             stroke: Tan;
           }
-          svg path {
+          .moon svg path {
             fill: Tan;
           }
         if _moonPhase == 0
           //- style spécifique à cette image SVG :
           style.
-            svg circle {
+            .moon svg circle {
               fill: Peru;
             }
           include ../public/medias/images/moons/0.svg

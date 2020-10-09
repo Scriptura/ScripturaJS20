@@ -47,7 +47,7 @@ const liturgicalCalendar = date => {
   if (currentDayMonth === currentEasterM4) result = {name: "Mercredi Saint"}
   if (currentDayMonth === currentEasterM3) result = {name: "Jeudi Saint"}
   if (currentDayMonth === currentEasterM2) result = {name: "Vendredi Saint"}
-  if (currentDayMonth === currentEasterM1) result = {name: "Samedi Saint"}
+  if (currentDayMonth === currentEasterM1) result = {name: "Samedi Saint", rank: "1"}
   if (currentDayMonth === currentEaster) result = {name: "Résurrection du Seigneur", rank: "1"}
   if (currentDayMonth === currentEasterP1) result = {name: "Lundi de l'octave Pâques"}
   if (currentDayMonth === currentEasterP2) result = {name: "Mardi de l'octave de Pâques"}
@@ -63,7 +63,7 @@ const liturgicalCalendar = date => {
   if (currentDayMonth === currentEasterP68) result = {name: "Sacré-Cœur de Jésus", rank: "1"}
   //result = {name: "Christ Roi", rank: "1"}
 
-
+// Epiphanie, Sainte Famille...
 /* si dimanche, alors célébration le lundi 9 :
   "0812": {
     "name": "Immaculée Conception de la Bienheureuse Vierge Marie",
@@ -82,12 +82,19 @@ const liturgicalCalendar = date => {
   if (rank === '4') result.rank = 'Mémoire facultative'
 
   // Gestion des couleurs liturgiques
-    let color = result.color
-    if (typeof result.color === 'undefined') result.color = '#777'
-    if (color === 'withe') result.color = '#ffffff'
-    if (color === 'red') result.color = '#ff0000' //'#bf2329'
-    if (color === 'purple') result.color = '#800080'
-    if (color === 'black') result.color = '#000000'
+  let color = result.color
+  if (typeof result.color === 'undefined') result.color = '#777'
+  if (color === 'withe') result.color = '#ffffff'
+  if (color === 'red') result.color = '#ff0000' //'#bf2329'
+  if (color === 'purple') result.color = '#800080'
+  if (color === 'black') result.color = '#000000'
+
+  let color2 = result.color2
+  if (typeof result.color2 === 'undefined') result.color2 = '#777'
+  if (color2 === 'withe') result.color2 = '#ffffff'
+  if (color2 === 'red') result.color2 = '#ff0000' //'#bf2329'
+  if (color2 === 'purple') result.color2 = '#800080'
+  if (color2 === 'black') result.color2 = '#000000'
 
   return result
 }

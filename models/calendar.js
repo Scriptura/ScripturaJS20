@@ -10,6 +10,7 @@ const getCalendar = {
   , _description: 'Informations disponibles pour les fonctions de calendrier'
   , _calendar: liturgicalCalendar().name
   , _calendarColor: liturgicalCalendar().color
+  , _calendarColor2: liturgicalCalendar().color2
   , _calendarRank: liturgicalCalendar().rank
   , _calendarUrl: liturgicalCalendar().link
   , _moonPhase: moonPhase(new Date)
