@@ -117,9 +117,17 @@ em
   font-style italic
 
 blockquote
+  position relative
   margin-left 0
   padding-left 1.5em
   border-left .5em solid $color1 //currentcolor
+
+blockquote::before
+  content '\275E' //'\275D' '\201C'
+  position absolute
+  bottom -3rem
+  font-size 4em
+  color $color1
 
 blockquote footer
   text-align right
