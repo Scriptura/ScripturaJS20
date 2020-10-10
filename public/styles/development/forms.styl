@@ -51,7 +51,7 @@ button
 [type=reset]
 [type=submit]
   -webkit-appearance button // @bugfix Correct the inability to style clickable types @affected iOS and Safari.
-  //cursor pointer
+  cursor pointer // @todo Test du 10.10.2020
 
 button::-moz-focus-inner
 [type=button]::-moz-focus-inner
@@ -275,7 +275,7 @@ form fieldset > [class*=input]
   outline 0
   border .5em solid #e91e63
   box-shadow 0 0.5rem 2rem rgba(0,0,0,.3)
-  cursor pointer
+  //cursor pointer
   background-image linear-gradient(to top,rgba(0,0,0,.1),rgba(255,255,255,.05))
   //border-radius $r4
   transition translateZ .1s linear

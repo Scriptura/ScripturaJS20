@@ -119,7 +119,7 @@ em
 blockquote
   margin-left 0
   padding-left 1.5em
-  border-left .5em solid currentcolor
+  border-left .5em solid $color1 //currentcolor
 
 blockquote footer
   text-align right
@@ -132,16 +132,6 @@ blockquote footer::after
 
 q
   quotes '\201C' '\201D' '\2018' '\2019' // Harmonisation des citations.
-
-code
-kbd
-samp
-  font-family monospace, monospace // @bugfix Correct the inheritance and scaling of font size @affected All browsers.
-  font-size 1em // @bugfix Correct the odd `em` font sizing @affected All browsers.
-  word-break break-all
-  //background-color darken($color1, 20)
-  border 1px solid darken($colorT, 50)
-  border-radius .2em
 
 small
   font-size 80% // @bugfix Add the correct font size @affected All browsers.

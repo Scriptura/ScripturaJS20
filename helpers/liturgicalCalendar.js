@@ -59,7 +59,7 @@ const liturgicalCalendar = date => {
   if (currentDayMonth === currentEasterP40) result = {name: "Ascension", rank: "1"}
   if (currentDayMonth === currentEasterP49) result = {name: "Pentecôte", rank: "1"}
   if (currentDayMonth === currentEasterP56) result = {name: "Sainte Trinité", rank: "1"}
-  //if (currentDayMonth === currentEasterP56) result = {name: "Très Saints Corps et Sang du Christ (Corpus Christi)", rank: "1"}
+  //if (currentDayMonth === currentEasterP56) result = {name: "Le Saint Sacrement", rank: "1"}
   if (currentDayMonth === currentEasterP68) result = {name: "Sacré-Cœur de Jésus", rank: "1"}
   //result = {name: "Christ Roi", rank: "1"}
 
@@ -71,8 +71,6 @@ const liturgicalCalendar = date => {
     "rank": "1"
   }
 */
-
-
 
   // Traducion des degrés de fête numérotés en language humain
   let rank = result.rank
@@ -86,14 +84,14 @@ const liturgicalCalendar = date => {
   if (typeof result.color === 'undefined') result.color = '#777'
   if (color === 'withe') result.color = '#ffffff'
   if (color === 'red') result.color = '#ff0000' //'#bf2329'
-  if (color === 'purple') result.color = '#800080'
+  if (color === 'purple') result.color = '#800080' //#9f15a7
   if (color === 'black') result.color = '#000000'
 
   let color2 = result.color2
   if (typeof result.color2 === 'undefined') result.color2 = '#777'
   if (color2 === 'withe') result.color2 = '#ffffff'
   if (color2 === 'red') result.color2 = '#ff0000' //'#bf2329'
-  if (color2 === 'purple') result.color2 = '#800080'
+  if (color2 === 'purple') result.color2 = '#800080' //#9f15a7
   if (color2 === 'black') result.color2 = '#000000'
 
   return result

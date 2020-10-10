@@ -116,7 +116,7 @@ em {
 blockquote {
   margin-left: 0;
   padding-left: 1.5em;
-  border-left: 0.5em solid currentcolor;
+  border-left: 0.5em solid #e91e63;
 }
 blockquote footer {
   text-align: right;
@@ -129,15 +129,6 @@ blockquote footer::after {
 }
 q {
   quotes: '\201C' '\201D' '\2018' '\2019';
-}
-code,
-kbd,
-samp {
-  font-family: monospace, monospace;
-  font-size: 1em;
-  word-break: break-all;
-  border: 1px solid #808080;
-  border-radius: 0.2em;
 }
 small {
   font-size: 80%;
@@ -166,6 +157,57 @@ template {
 }
 [hidden] {
   display: none;
+}
+code,
+kbd,
+samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+  word-break: break-all;
+  color: Tan;
+  border-radius: 0.2em;
+}
+:not(pre) > code {
+  padding: 0.2rem;
+  background-color: #262626;
+}
+pre {
+  padding: 1rem 0.5rem;
+  background-color: #262626;
+}
+pre code {
+  color: #aaa;
+}
+pre button {
+  position: absolute;
+  bottom: 0.5rem;
+  right: 0.5rem;
+  border: none;
+  color: Orange;
+  background-color: transparent;
+}
+pre button:focus,
+pre button:hover,
+pre button:active {
+  color: #fff;
+  outline: none;
+}
+pre button:focus::before,
+pre button:hover::before,
+pre button:active::before {
+  content: '> ';
+  -webkit-animation: blink 1s steps(2, start) infinite;
+          animation: blink 1s steps(2, start) infinite;
+}
+@-webkit-keyframes blink {
+  to {
+    visibility: hidden;
+  }
+}
+@keyframes blink {
+  to {
+    visibility: hidden;
+  }
 }
 .relative {
   position: relative;
@@ -502,6 +544,7 @@ figure {
 }
 .focus-off button {
   bottom: 1rem;
+  cursor: zoom-out;
 }
 audio,
 video,
@@ -569,6 +612,7 @@ button,
 [type=reset],
 [type=submit] {
   -webkit-appearance: button;
+  cursor: pointer;
 }
 button::-moz-focus-inner,
 [type=button]::-moz-focus-inner,
@@ -769,7 +813,6 @@ form fieldset > [class*=input] {
   outline: 0;
   border: 0.5em solid #e91e63;
   box-shadow: 0 0.5rem 2rem rgba(0,0,0,0.3);
-  cursor: pointer;
   background-image: linear-gradient(to top, rgba(0,0,0,0.1), rgba(255,255,255,0.05));
   transition: translateZ 0.1s linear;
 }

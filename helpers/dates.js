@@ -1,7 +1,6 @@
 'use strict'
 
 const { DateTime } = require('luxon')
-//import { DateTime } from 'luxon'
 
 // @see https://moment.github.io/luxon/docs/manual/formatting
 // @see https://moment.github.io/luxon/demo/global.html
