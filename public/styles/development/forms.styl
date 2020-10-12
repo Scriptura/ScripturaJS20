@@ -280,14 +280,18 @@ form fieldset > [class*=input]
   //border-radius $r4
   transition translateZ .1s linear
 
-.button:hover
 .button:focus
+.button:hover
   box-shadow 0 0.5rem 2rem rgba(0,0,0,0.3);
   transform translate(0, -.1em)
 
 .button:active
   box-shadow 0 0 0 #000
   transform translate(.1em, .4em)
+
+.button:focus
+  background-color Orange
+  border-color Orange
 
 .button-group
   display flex

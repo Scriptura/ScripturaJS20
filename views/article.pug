@@ -5,12 +5,16 @@ block main
     h1.h2= _name
     p!= _content
     figure.figure-focus-thumbnail
-      - var img = '/medias/images/demo/LotusMacro'
+      - var img = '/medias/images/demo/LotusTest'
       - var alt = 'Lotus'
       include includes/picture
     figure.figure-focus-thumbnail
       - var img = '/medias/images/demo/ColorfulLeaf'
       - var alt = 'Colorful leaf'
+      include includes/picture
+    figure.figure-focus-thumbnail
+      - var img = '/medias/images/demo/GrassLeaf'
+      - var alt = 'Grass leaf'
       include includes/picture
     ul
       li Description : #{_description}

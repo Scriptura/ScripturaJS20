@@ -142,28 +142,27 @@ const readablePassword = (() => {
 // @description Défilement vers le haut
 // -----------------------------------------------------------------------------
 
-// 1. Ajouter l'attribut `xmlns="http://www.w3.org/2000/svg"` pour un svg valide ; mais à partir du moment où il s'agit d'une injection js et où tous les navigateurs l'interprêtent correctement, est-ce bien nécessaire ?
-// 2. @see http://jsfiddle.net/smc8ofgg/
-// 3. @see https://stackoverflow.com/questions/15935318/smooth-scroll-to-top/55926067
-// 4. @note Script avec un effet sympa mais en conflit avec la règle CSS scroll-behavior:smooth, celle-ci doit donc être désactivée pour la durée du script.
+// 1. @see http://jsfiddle.net/smc8ofgg/
+// 2. @see https://stackoverflow.com/questions/15935318/smooth-scroll-to-top/55926067
+// 3. @note Script avec un effet sympa mais en conflit avec la règle CSS scroll-behavior:smooth, celle-ci doit donc être désactivée pour la durée du script.
 const scrollToTop = (() => {
   const footer = document.querySelector('footer')
-  const arrow = '<button class="scroll-top"><svg><path d="M20 32v-16l6 6 6-6-16-16-16 16 6 6 6-6v16z"/></svg></button>' // 1
+  const arrow = '<button type="button" class="scroll-top" tabindex="0"><svg xmlns="http://www.w3.org/2000/svg"><path d="M20 32v-16l6 6 6-6-16-16-16 16 6 6 6-6v16z"/></svg></button>'
   footer.insertAdjacentHTML('beforeEnd', arrow)
   const item = document.querySelector('.scroll-top')
   item.classList.add('hide')
-  const position = () => { // 2
+  const position = () => { // 1
     const yy = window.innerHeight // Hauteur totale d'une fenêtre avant apparition de la flèche.
     let y = window.scrollY
     if (y > yy) item.classList.remove('hide')
     else item.classList.add('hide')
   }
   window.addEventListener('scroll', position)
-  const scroll = () => { // 3
+  const scroll = () => { // 2
     const c = document.documentElement.scrollTop || document.body.scrollTop,
           html = document.documentElement,
           sb = window.getComputedStyle(html,null).getPropertyValue('scroll-behavior')
-    if (sb != 'auto') html.style.scrollBehavior = 'auto' // 4
+    if (sb != 'auto') html.style.scrollBehavior = 'auto' // 3
     if (c > 0) {
       window.requestAnimationFrame(scroll)
       window.scrollTo(0, c - c / 8)

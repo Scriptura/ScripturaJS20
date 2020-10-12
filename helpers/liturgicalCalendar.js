@@ -81,16 +81,18 @@ const liturgicalCalendar = date => {
 
   // Gestion des couleurs liturgiques
   let color = result.color
-  if (typeof result.color === 'undefined') result.color = '#777'
+  if (typeof result.color === 'undefined') result.color = 'green'
   if (color === 'withe') result.color = '#ffffff'
-  if (color === 'red') result.color = '#ff0000' //'#bf2329'
+  if (color === 'red') result.color = '#ff0000' //#bf2329
+  if (color === 'green') result.color = 'green' //#1e883f
   if (color === 'purple') result.color = '#800080' //#9f15a7
   if (color === 'black') result.color = '#000000'
 
   let color2 = result.color2
-  if (typeof result.color2 === 'undefined') result.color2 = '#777'
+  // Pas de couleurs par défaut
   if (color2 === 'withe') result.color2 = '#ffffff'
-  if (color2 === 'red') result.color2 = '#ff0000' //'#bf2329'
+  if (color2 === 'red') result.color2 = '#ff0000' //#bf2329
+  if (color === 'green') result.color = 'green' //#1e883f
   if (color2 === 'purple') result.color2 = '#800080' //#9f15a7
   if (color2 === 'black') result.color2 = '#000000'
 

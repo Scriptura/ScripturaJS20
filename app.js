@@ -3,7 +3,6 @@
 const vv = require('./settings/variables'),
       createError = require('http-errors'),
       path = require('path'),
-      //uuid = require('uuid/v4'),
       express = require('express'),
       helmet = require('helmet'),
       cookieParser = require('cookie-parser'),

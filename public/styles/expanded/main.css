@@ -184,20 +184,20 @@ pre {
   background-color: #262626;
 }
 pre code {
-  color: #aaa;
+  color: #777;
 }
 pre button {
   position: absolute;
   bottom: 0.5rem;
   right: 0.5rem;
   border: none;
-  color: Orange;
+  color: #777;
   background-color: transparent;
 }
 pre button:focus,
 pre button:hover,
 pre button:active {
-  color: #fff;
+  color: Orange;
   outline: none;
 }
 pre button:focus::before,
@@ -824,14 +824,18 @@ form fieldset > [class*=input] {
   background-image: linear-gradient(to top, rgba(0,0,0,0.1), rgba(255,255,255,0.05));
   transition: translateZ 0.1s linear;
 }
-.button:hover,
-.button:focus {
+.button:focus,
+.button:hover {
   box-shadow: 0 0.5rem 2rem rgba(0,0,0,0.3);
   transform: translate(0, -0.1em);
 }
 .button:active {
   box-shadow: 0 0 0 #000;
   transform: translate(0.1em, 0.4em);
+}
+.button:focus {
+  background-color: Orange;
+  border-color: Orange;
 }
 .button-group {
   display: flex;
@@ -923,7 +927,6 @@ form fieldset > [class*=input] {
   background-color: transparent;
   border: none;
   outline: none;
-  cursor: pointer;
 }
 .scroll-top.hide {
   display: none;
@@ -934,6 +937,8 @@ form fieldset > [class*=input] {
   fill: #000;
   opacity: 0.5;
 }
-.scroll-top:focus svg {
+.scroll-top:focus svg,
+.scroll-top:hover svg,
+.scroll-top:active svg {
   fill: #aaa;
 }
