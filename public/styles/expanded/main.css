@@ -519,6 +519,9 @@ figure {
 .js [class*=-focus]:focus-within {
   background-color: Orange;
 }
+[class*=-focus]:focus-within svg {
+  fill: Orange;
+}
 [class*=-focus] button,
 .focus-off button {
   position: absolute;
