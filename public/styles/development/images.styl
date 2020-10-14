@@ -120,7 +120,7 @@ figure
 // @subsection Focus
 // -----------------------------------------------------------------------------
 
-.js [class*=-focus] // @note Si jQuery activé
+.js [class*=-focus]
   position relative
   cursor zoom-in
   transition .15s transform
@@ -140,17 +140,19 @@ figure
 .focus-off button
   position absolute
   z-index 1
-  right $gutter
-  width 2rem
-  height 2rem
-  background-color Orange
+  padding 0
+  color #aaa
+  background-color Transparent
   border none
   outline none
   cursor zoom-in
 
 [class*=-focus] button
   top $gutter
-  
+  right $gutter
+  width 1.2rem
+  height 1.2rem
+
 .focus-off
   position fixed
   display flex
@@ -174,7 +176,15 @@ figure
 
 .focus-off button
   bottom $gutter
+  right $gutter
+  width 2rem
+  height 2rem
   cursor zoom-out
+
+[class*=-focus] button svg
+.focus-off button svg
+  width 100%
+  height 100%
 
 /*
 [class*=-focus] [class*=icon]

@@ -320,8 +320,9 @@ const imageFocus = (() => {
   const addButtonEnlarge = (() => {
     for (const image of images) {
       const button = document.createElement('button'),
-            text = document.createTextNode('E')
-      image.appendChild(button).appendChild(text)
+            icon = '<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024"><path d="M1024 0H608l160 160-192 192 96 96 192-192 160 160zm0 1024V608L864 768 672 576l-96 96 192 192-160 160zM0 1024h416L256 864l192-192-96-96-192 192L0 608zM0 0v416l160-160 192 192 96-96-192-192L416 0z"/></svg>'
+      button.insertAdjacentHTML('beforeEnd', icon)
+      image.appendChild(button)
       button.classList.add('icon-enlarge')
     }
   })()
@@ -363,8 +364,9 @@ const imageFocus = (() => {
   const addButtonShrink = () => {
     const el = document.querySelector('.focus-off'),
           button = document.createElement('button'),
-          text = document.createTextNode('R')
-    el.appendChild(button).appendChild(text)
+          icon = '<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024"><path d="M576 448h416L832 288l192-192-96-96-192 192L576 32zm0 128v416l160-160 192 192 96-96-192-192 160-160zm-128-.004H32l160 160-192 192 96 96 192-192 160 160zM448 448V32L288 192 96 0 0 96l192 192L32 448z"/></svg>'
+    button.insertAdjacentHTML('beforeEnd', icon)
+    el.appendChild(button)
     button.classList.add('icon-shrink')
     button.focus()
   }
