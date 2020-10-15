@@ -56,6 +56,14 @@ const fadeIn = (el, duration) => {
 }
 
 
+const injectSvgSprite = (targetElement, spriteId) => { // Injection d'un spite SVG
+  const svgFile = 'sprites', // chemin du fichier SVG
+        icon = '<svg><use xlink:href="/' + svgFile + '.svg#' + spriteId + '"></use></svg>'
+  //if (targetElement.querySelector('svg')) targetElement.removeChild(targetElement.querySelector('svg'))
+  targetElement.insertAdjacentHTML('beforeEnd', icon)
+}
+
+
 // -----------------------------------------------------------------------------
 // @section     External links
 // @description Gestion des liens externes au site
@@ -130,9 +138,23 @@ const readablePassword = (() => {
   const inputs = document.querySelectorAll('.input [type=password]')
   for (const input of inputs) {
     input.parentElement.classList.replace('input', 'input-password')
-    input.insertAdjacentHTML('afterend', '<button type="button">see</button>')
-    const button = input.nextElementSibling
-    button.addEventListener('click', () => input.type = input.type === 'password'? 'text' : 'password')
+    const button = document.createElement('button')
+    button.type = 'button'
+    button.title = 'See password'
+    input.parentElement.appendChild(button)
+    injectSvgSprite(button, 'eye')
+    button.addEventListener('click', () => {
+      button.removeChild(button.querySelector('svg'))
+      if (input.type === 'password') {
+        input.type = 'text'
+        button.title = 'Hide password'
+        injectSvgSprite(button, 'eye-blocked')
+      } else {
+        input.type = 'password'
+        button.title = 'See password'
+        injectSvgSprite(button, 'eye')
+      }
+    })
   }
 })()
 
@@ -148,10 +170,10 @@ const readablePassword = (() => {
 
 const scrollToTop = (() => {
   const footer = document.querySelector('footer'),
-        button = document.createElement('button'),
-        icon = '<svg><use xlink:href="/sprites.svg#arrow-up"></use></svg>'
+        button = document.createElement('button')
+  button.type = 'button'
   button.classList.add('scroll-top')
-  button.insertAdjacentHTML('beforeEnd', icon)
+  injectSvgSprite(button, 'arrow-up')
   footer.appendChild(button)
   const item = document.querySelector('.scroll-top')
   item.classList.add('hide')
@@ -323,27 +345,12 @@ const imageFocus = (() => {
 
   const addButtonEnlarge = (() => {
     for (const image of images) {
-      const button = document.createElement('button'),
-            icon = '<svg><use xlink:href="/sprites.svg#enlarge"></use></svg>'
-      button.insertAdjacentHTML('beforeEnd', icon)
+      const button = document.createElement('button')
+      injectSvgSprite(button, 'enlarge')
       image.appendChild(button)
       button.classList.add('icon-enlarge')
     }
   })()
-
-/*
-const addButtonEnlarge = (() => {
-  for (const image of images) {
-    const button = document.createElement('button'),
-          icon = document.createElement('svg'),
-          use = document.createElement('use')
-    button.classList.add('icon-enlarge')
-    use.setAttribute('xlink:href', '#enlarge')
-    icon.appendChild(use)
-    image.appendChild(button).appendChild(icon)
-  }
-})()
-*/
 
   const clickImage = (() => {
     for (const image of images) image.addEventListener('click', () => {
@@ -381,10 +388,9 @@ const addButtonEnlarge = (() => {
 
   const addButtonShrink = () => {
     const el = document.querySelector('.focus-off'),
-          button = document.createElement('button'),
-          icon = '<svg><use xlink:href="/sprites.svg#shrink"></use></svg>'
-    button.insertAdjacentHTML('beforeEnd', icon)
+          button = document.createElement('button')
     el.appendChild(button)
+    injectSvgSprite(button, 'shrink')
     button.classList.add('icon-shrink')
     button.focus()
   }
