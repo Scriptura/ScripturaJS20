@@ -145,10 +145,14 @@ const readablePassword = (() => {
 // 1. @see http://jsfiddle.net/smc8ofgg/
 // 2. @see https://stackoverflow.com/questions/15935318/smooth-scroll-to-top/55926067
 // 3. @note Script avec un effet sympa mais en conflit avec la règle CSS scroll-behavior:smooth, celle-ci doit donc être désactivée pour la durée du script.
+
 const scrollToTop = (() => {
-  const footer = document.querySelector('footer')
-  const arrow = '<button type="button" class="scroll-top" tabindex="0"><svg xmlns="http://www.w3.org/2000/svg"><path d="M20 32v-16l6 6 6-6-16-16-16 16 6 6 6-6v16z"/></svg></button>'
-  footer.insertAdjacentHTML('beforeEnd', arrow)
+  const footer = document.querySelector('footer'),
+        button = document.createElement('button'),
+        icon = '<svg><use xlink:href="/sprites.svg#arrow-up"></use></svg>'
+  button.classList.add('scroll-top')
+  button.insertAdjacentHTML('beforeEnd', icon)
+  footer.appendChild(button)
   const item = document.querySelector('.scroll-top')
   item.classList.add('hide')
   const position = () => { // 1
@@ -320,12 +324,26 @@ const imageFocus = (() => {
   const addButtonEnlarge = (() => {
     for (const image of images) {
       const button = document.createElement('button'),
-            icon = '<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024"><path d="M1024 0H608l160 160-192 192 96 96 192-192 160 160zm0 1024V608L864 768 672 576l-96 96 192 192-160 160zM0 1024h416L256 864l192-192-96-96-192 192L0 608zM0 0v416l160-160 192 192 96-96-192-192L416 0z"/></svg>'
+            icon = '<svg><use xlink:href="/sprites.svg#enlarge"></use></svg>'
       button.insertAdjacentHTML('beforeEnd', icon)
       image.appendChild(button)
       button.classList.add('icon-enlarge')
     }
   })()
+
+/*
+const addButtonEnlarge = (() => {
+  for (const image of images) {
+    const button = document.createElement('button'),
+          icon = document.createElement('svg'),
+          use = document.createElement('use')
+    button.classList.add('icon-enlarge')
+    use.setAttribute('xlink:href', '#enlarge')
+    icon.appendChild(use)
+    image.appendChild(button).appendChild(icon)
+  }
+})()
+*/
 
   const clickImage = (() => {
     for (const image of images) image.addEventListener('click', () => {
@@ -364,7 +382,7 @@ const imageFocus = (() => {
   const addButtonShrink = () => {
     const el = document.querySelector('.focus-off'),
           button = document.createElement('button'),
-          icon = '<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024"><path d="M576 448h416L832 288l192-192-96-96-192 192L576 32zm0 128v416l160-160 192 192 96-96-192-192 160-160zm-128-.004H32l160 160-192 192 96 96 192-192 160 160zM448 448V32L288 192 96 0 0 96l192 192L32 448z"/></svg>'
+          icon = '<svg><use xlink:href="/sprites.svg#shrink"></use></svg>'
     button.insertAdjacentHTML('beforeEnd', icon)
     el.appendChild(button)
     button.classList.add('icon-shrink')
@@ -372,5 +390,3 @@ const imageFocus = (() => {
   }
 
 })()
-
-
