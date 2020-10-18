@@ -4,18 +4,20 @@
 // @description Audio, vidéo et Caneva
 // -----------------------------------------------------------------------------
 
+// @note Classe `video` prévue pour les sources vidéos extérieures au site
+// @note Classe `map` pour les cartes
+
 audio
 video
 canvas
-  //display inline-block // @bugfix @affected IE 9
   width 100%
-  ifBoxShadow($colorBS0401)
+  box-shadow .5rem .5rem 2rem rgba(0, 0, 0, .2)
 
 audio
 video
 .video
-  background-color $colorBG041 // @bugfix @affected Google Maps, tag 'canvas' @note Pas de background prédéfinit sur tag 'canvas', afin d'éviter les conflits
-  ifBoxShadow($colorBS041)
+  background-color #000 // @bugfix @affected Google Maps, tag 'canvas' @note Pas de background prédéfinit sur tag 'canvas', afin d'éviter les conflits
+  box-shadow .5rem .5rem 2rem rgba(0, 0, 0, .2)
 
 audio
 video
@@ -31,3 +33,15 @@ audio:not([controls])
 
 video[poster]
   width 100% !important
+
+.video
+  position relative
+  padding-bottom 56.25% // Ratio 16:9 par défaut
+
+.video iframe
+.video embed
+.video object
+  position absolute
+
+.map
+  background-color #000

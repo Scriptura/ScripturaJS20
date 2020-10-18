@@ -118,8 +118,9 @@ const selectText = node => {
 const selectAndCopy = (() => {
   const els = document.querySelectorAll('[data-select]')
   for (const el of els) {
-    el.parentElement.classList.add('relative')
-    el.insertAdjacentHTML('afterend', '<button type="button">select & copy</button>')
+    el.parentElement.classList.add('pre')
+    const text = el.dataset.value
+    el.insertAdjacentHTML('afterend', '<button type="button">' + text + '</button>')
     const button = el.nextElementSibling
     button.addEventListener('click', () => {
       selectText(el)
@@ -173,6 +174,7 @@ const scrollToTop = (() => {
         button = document.createElement('button')
   button.type = 'button'
   button.classList.add('scroll-top')
+  //button.setAttribute('aria-label', 'Scroll to top')
   injectSvgSprite(button, 'arrow-up')
   footer.appendChild(button)
   const item = document.querySelector('.scroll-top')

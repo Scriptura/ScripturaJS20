@@ -140,6 +140,10 @@ blockquote footer::after {
 q {
   quotes: '\201C' '\201D' '\2018' '\2019';
 }
+mark {
+  color: currentColor;
+  background-color: #e91e63;
+}
 small {
   font-size: 80%;
 }
@@ -181,14 +185,15 @@ samp {
   padding: 0.2rem;
   background-color: #262626;
 }
-pre {
-  padding: 1rem 0.5rem;
+.pre {
+  position: relative;
+  padding: 1rem;
   background-color: #262626;
 }
-pre code {
+.pre code {
   color: #777;
 }
-pre button {
+.pre button {
   position: absolute;
   bottom: 0.5rem;
   right: 0.5rem;
@@ -196,15 +201,15 @@ pre button {
   color: #777;
   background-color: transparent;
 }
-pre button:focus,
-pre button:hover,
-pre button:active {
+.pre button:focus,
+.pre button:hover,
+.pre button:active {
   color: Orange;
   outline: none;
 }
-pre button:focus::before,
-pre button:hover::before,
-pre button:active::before {
+.pre button:focus::before,
+.pre button:hover::before,
+.pre button:active::before {
   content: '> ';
   -webkit-animation: blink 1s steps(2, start) infinite;
           animation: blink 1s steps(2, start) infinite;
@@ -232,18 +237,6 @@ pre button:active::before {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-}
-.map {
-  background-color: #000;
-}
-.video {
-  position: relative;
-  padding-bottom: 56.25%;
-}
-.video iframe,
-.video embed,
-.video object {
-  position: absolute;
 }
 body {
   display: grid;
@@ -573,11 +566,13 @@ audio,
 video,
 canvas {
   width: 100%;
+  box-shadow: 0.5rem 0.5rem 2rem rgba(0,0,0,0.2);
 }
 audio,
 video,
 .video {
-  background-color: $colorBG041;
+  background-color: #000;
+  box-shadow: 0.5rem 0.5rem 2rem rgba(0,0,0,0.2);
 }
 audio,
 video {
@@ -592,6 +587,18 @@ audio:not([controls]) {
 }
 video[poster] {
   width: 100% !important;
+}
+.video {
+  position: relative;
+  padding-bottom: 56.25%;
+}
+.video iframe,
+.video embed,
+.video object {
+  position: absolute;
+}
+.map {
+  background-color: #000;
 }
 fieldset {
   margin: 0;
@@ -813,7 +820,7 @@ form fieldset > [class*=input] {
   right: 0.5rem;
   width: 2.1rem;
   height: 2.1rem;
-  padding: 0.3rem;
+  padding: 0.5rem;
   color: #777;
   background-color: Transparent;
   border: none;
