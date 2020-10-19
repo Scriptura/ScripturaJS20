@@ -19,14 +19,21 @@ samp
   padding 1rem
   background-color darken($color0, 5) // => #262626
   //border-radius .2rem
+  box-shadow .5rem .5rem 2rem rgba(0, 0, 0, .25)
 
 .pre code
   color #777
 
+.pre code::before
+  position absolute
+  right 1rem
+  content '# Code' attr(data-code)
+
 .pre button
   position absolute
-  bottom .5rem
-  right .5rem
+  bottom 1rem
+  right 1rem
+  padding 0
   border none
   color #777
   background-color transparent

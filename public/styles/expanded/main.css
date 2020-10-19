@@ -189,14 +189,21 @@ samp {
   position: relative;
   padding: 1rem;
   background-color: #262626;
+  box-shadow: 0.5rem 0.5rem 2rem rgba(0,0,0,0.25);
 }
 .pre code {
   color: #777;
 }
+.pre code::before {
+  position: absolute;
+  right: 1rem;
+  content: '# Code' attr(data-code);
+}
 .pre button {
   position: absolute;
-  bottom: 0.5rem;
-  right: 0.5rem;
+  bottom: 1rem;
+  right: 1rem;
+  padding: 0;
   border: none;
   color: #777;
   background-color: transparent;
@@ -566,13 +573,12 @@ audio,
 video,
 canvas {
   width: 100%;
-  box-shadow: 0.5rem 0.5rem 2rem rgba(0,0,0,0.2);
 }
 audio,
 video,
 .video {
   background-color: #000;
-  box-shadow: 0.5rem 0.5rem 2rem rgba(0,0,0,0.2);
+  box-shadow: 0.5rem 0.5rem 2rem rgba(0,0,0,0.25);
 }
 audio,
 video {
@@ -861,7 +867,7 @@ form fieldset > [class*=input] {
   box-shadow: 0 0 0 #000;
   transform: translate(0.1em, 0.4em);
 }
-.button:focus {
+.button:focus-visible {
   background-color: Orange;
   border-color: Orange;
 }
