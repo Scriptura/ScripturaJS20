@@ -8,27 +8,35 @@
 [class*=list] li
   display block
 
-[class*=list-stripe] > a // Ne cible que les liens directs des listes améliorées.
-  display block
-  text-decoration none
-
 [class*=list-stripe]
   margin 0 // @note Si éléments <ul> ou <ol>
 
 :root [class*=list-stripe] > *
   margin .5em 0 // @bugfix Problème d'interprétation avec unité rem @affected Chrome.
+
+:root [class*=list-stripe]:not([class*=-links]) > *
+.list-stripe-links a
   padding .3em 1em
+
+:root [class*=list-stripe-large]:not([class*=-links]) > *
+.list-stripe-large-links a
+  padding .5em 1em
 
 [class*=list-stripe] > *
   background-color lighten($color0, 10%)
   box-shadow .5rem .5rem 2rem rgba(0, 0, 0, .1)
 
-[class*=list-stripe] > a
+[class*=-links] li
+  padding 0
+
+[class*=-links] a
+  display block
+  text-decoration none
   color inherit
 
-[class*=list-stripe] > a:focus
-[class*=list-stripe] > a:hover
-[class*=list-stripe] > a:active
+[class*=-links] :focus
+[class*=-links] :hover
+[class*=-links] :active
   background-color Orange
   box-shadow .5rem .5rem 2rem rgba(0, 0, 0, .25)
   outline none
@@ -37,6 +45,3 @@
 @keyframes animList
   50%
     transform scale(1.03) translateZ(0)
-
-:root [class*=list-stripe-large] > *
-  padding .5em 1em

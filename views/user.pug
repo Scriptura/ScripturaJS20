@@ -16,9 +16,12 @@ block main
         li Dernière connexion le : #{_last_login}
     br
     br
-    .list-stripe-large.summary
-      a(href='/user/admin') User admin
-      a(href='/user/test') User test (request failed)
-      a(href='/user/123') User xyz (incorrect path)
+    ul.list-stripe-large-links.summary
+      li
+        a(href='/user/admin') User admin
+      li
+        a(href='/user/test') User test (request failed)
+      li
+        a(href='/user/123') User xyz (incorrect path)
     br
     include includes/links

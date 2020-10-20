@@ -53,8 +53,10 @@ p {
 hr {
   overflow: visible;
   box-sizing: content-box;
-  height: 0;
+  height: 0.2rem;
   color: inherit;
+  background-color: #e91e63;
+  border: none;
 }
 h1,
 h2,
@@ -375,35 +377,40 @@ main {
 [class*=list] li {
   display: block;
 }
-[class*=list-stripe] > a {
-  display: block;
-  text-decoration: none;
-}
 [class*=list-stripe] {
   margin: 0;
 }
 :root [class*=list-stripe] > * {
   margin: 0.5em 0;
+}
+:root [class*=list-stripe]:not([class*=-links]) > *,
+.list-stripe-links a {
   padding: 0.3em 1em;
+}
+:root [class*=list-stripe-large]:not([class*=-links]) > *,
+.list-stripe-large-links a {
+  padding: 0.5em 1em;
 }
 [class*=list-stripe] > * {
   background-color: #474747;
   box-shadow: 0.5rem 0.5rem 2rem rgba(0,0,0,0.1);
 }
-[class*=list-stripe] > a {
+[class*=-links] li {
+  padding: 0;
+}
+[class*=-links] a {
+  display: block;
+  text-decoration: none;
   color: inherit;
 }
-[class*=list-stripe] > a:focus,
-[class*=list-stripe] > a:hover,
-[class*=list-stripe] > a:active {
+[class*=-links] :focus,
+[class*=-links] :hover,
+[class*=-links] :active {
   background-color: Orange;
   box-shadow: 0.5rem 0.5rem 2rem rgba(0,0,0,0.25);
   outline: none;
   -webkit-animation: animList 0.1s ease-in-out;
           animation: animList 0.1s ease-in-out;
-}
-:root [class*=list-stripe-large] > * {
-  padding: 0.5em 1em;
 }
 @-webkit-keyframes animList {
   50% {

@@ -58,12 +58,18 @@ block main
     p!= _description
     br
     br
-    .list-stripe-large.summary
-      a(href='/person/1') Person 1
-      a(href='/person/2') Person 2
-      a(href='/person/3') Person 3
-      a(href='/person/4') Person 4
-      a(href='/person/5') Person 5 (request failed)
-      a(href='/person/xyz') Person xyz (incorrect path)
+    ul.list-stripe-large-links.summary
+      li
+        a(href='/person/1') Person 1
+      li
+        a(href='/person/2') Person 2
+      li
+        a(href='/person/3') Person 3
+      li
+        a(href='/person/4') Person 4
+      li
+        a(href='/person/5') Person 5 (request failed)
+      li
+        a(href='/person/xyz') Person xyz (incorrect path)
     br
     include includes/links
