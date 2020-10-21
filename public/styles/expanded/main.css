@@ -550,7 +550,7 @@ figure {
   cursor: zoom-in;
   transition: 0.15s transform;
 }
-.js [class*=-focus]:focus,
+.js [class*=-focus]:focus-within,
 .js [class*=-focus]:hover {
   box-shadow: 0.5rem 0.5rem 2rem rgba(0,0,0,0.3);
   transform: scale(1.01);
@@ -558,7 +558,8 @@ figure {
 .js [class*=-focus]:focus-within {
   background-color: Orange;
 }
-[class*=-focus]:focus-within svg {
+.js [class*=-focus]:focus-within svg,
+.js [class*=-focus]:hover svg {
   fill: Orange;
 }
 [class*=-focus] button,
