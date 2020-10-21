@@ -57,8 +57,8 @@ const fadeIn = (el, duration) => {
 
 
 const injectSvgSprite = (targetElement, spriteId) => { // Injection d'un spite SVG
-  const svgFile = 'sprites', // chemin du fichier SVG
-        icon = '<svg><use xlink:href="/' + svgFile + '.svg#' + spriteId + '"></use></svg>'
+  const svgFile = '/medias/sprites/utils', // chemin du fichier SVG
+        icon = '<svg><use xlink:href="' + svgFile + '.svg#' + spriteId + '"></use></svg>'
   //if (targetElement.querySelector('svg')) targetElement.removeChild(targetElement.querySelector('svg'))
   targetElement.insertAdjacentHTML('beforeEnd', icon)
 }

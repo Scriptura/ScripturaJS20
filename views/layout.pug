@@ -20,15 +20,19 @@ html.no-js(lang='fr')
       script(src='/libraries/leaflet/leaflet.js')
   body
     block main
-      main
-    block aside
-      aside.aside aside
+    //-block aside
+      //-aside.aside aside
       //-include aside
     block nav
-      nav.nav(role='navigation') nav
+      nav.nav(role='navigation')
+        .wrap nav
       //-include nav
+    block breadcrumb
+      nav.breadcrumb( aria-label='Breadcrumb')
+        .wrap breadcrumb
     block footer
-      footer.footer footer
+      footer.footer
+        .wrap footer
         //-include footer
         noscript.noscript
           p.message-warning Javascript est désactivé sur votre navigateur, activez-le afin de bénéficier de toutes les fonctionnalités du site.

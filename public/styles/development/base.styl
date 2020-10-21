@@ -20,8 +20,8 @@
 html
   -webkit-text-size-adjust 100% // @bugfix Prevent adjustments of font size after orientation changes @affected iOS.
   //-webkit-tap-highlight-color Transparent // Change the default tap highlight to be completely transparent. @affected iOS.
-  color #fff
-  background-color #333
+  color $colorT
+  background-color $color0
   font-family $fontList // Georgia, Serif
   line-height 1.5 //1.15 // @bugfix Correct the line height @affected All browsers.
   scroll-behavior smooth // Défilement fluide. @todo En conflit avec script retour vers le haut...
@@ -43,8 +43,9 @@ a
 a:focus
 a:hover
 a:active
-  color $color1
-  text-decoration underline
+  color Orange
+  text-decoration underline Orange
+  outline none
 
 p
   margin-top .75em
@@ -73,6 +74,8 @@ h6
   margin-top 0 // @bugfix Retrait des marges top pour un meilleur contrôle.
   margin-bottom .67em
   font-family $fontList2
+  //color Tan
+  //text-shadow .5rem .5rem .5rem rgba(0, 0, 0, .1)
   // font-style
   // font-weight
   // line-height
