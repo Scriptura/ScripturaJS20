@@ -56,7 +56,26 @@ const fadeIn = (el, duration) => {
 }
 
 
-// Injection de spites SVG
+// -----------------------------------------------------------------------------
+// @section     Svg Processing
+// @description Ajout d'attrtibuts sur les SVG
+// -----------------------------------------------------------------------------
+
+// @note Appel du code via window.onload, le chargement de la page doit être complet avant d'appliquer le code.
+const svgProcessing = () => {
+  const svgs = document.querySelectorAll('svg')
+  for (const svg of svgs) {
+    svg.setAttribute('role', 'img')
+    svg.setAttribute('focusable', 'false')
+  }
+}
+
+
+// -----------------------------------------------------------------------------
+// @section     Sprites SVG
+// @description Injection de spites SVG
+// -----------------------------------------------------------------------------
+
 // @params :
 // - `targetElement` : élément cible
 // - `spriteId` : nom du sprite
@@ -77,7 +96,7 @@ const injectSvgSprite = (targetElement, spriteId, svgFile) => {
 // @note Par défaut tous les liens externes conduisent à l'ouverture d'un nouvel onglet, sauf les liens internes
 
 const externalLinks = (() => {
-  var anchors = document.querySelectorAll('a')
+  const anchors = document.querySelectorAll('a')
   for (const anchor of anchors) {
     if (anchor.hostname !== window.location.hostname) anchor.setAttribute('target', '_blank')
   }
@@ -124,9 +143,13 @@ const selectAndCopy = (() => {
   const els = document.querySelectorAll('[data-select]')
   for (const el of els) {
     el.parentElement.classList.add('pre')
-    const text = el.dataset.value
-    el.insertAdjacentHTML('afterend', '<button type="button">' + text + '</button>')
-    const button = el.nextElementSibling
+    const button = document.createElement('button'),
+          text = el.dataset.select
+    button.type = 'button'
+    el.appendChild(button)
+    button.title = text
+    button.ariaLabel = text
+    injectSvgSprite(button, 'copy')
     button.addEventListener('click', () => {
       selectText(el)
       document.execCommand('copy')
@@ -196,7 +219,7 @@ const scrollToTop = (() => {
         button = document.createElement('button')
   button.type = 'button'
   button.classList.add('scroll-top')
-  //button.setAttribute('aria-label', 'Scroll to top')
+  button.setAttribute('aria-label', 'Scroll to top')
   injectSvgSprite(button, 'arrow-up')
   footer.appendChild(button)
   const item = document.querySelector('.scroll-top')
@@ -420,3 +443,15 @@ const imageFocus = (() => {
   }
 
 })()
+
+
+// -----------------------------------------------------------------------------
+// @section     Window onload
+// @description Scripts lancés lorsque le chargement de la page est terminé
+// -----------------------------------------------------------------------------
+
+window.onload = () => {
+  svgProcessing()
+  //jsDetect()
+  //touchDetect()
+}
