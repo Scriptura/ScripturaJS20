@@ -62,10 +62,9 @@ const fadeIn = (el, duration) => {
 // - `spriteId` : nom du sprite
 // - `svgFile` : nom du fichier de sprite (`utils.svg` par défaut)
 const injectSvgSprite = (targetElement, spriteId, svgFile) => {
-  const path = '/medias/sprites/' // chemin du fichier SVG
+  const path = '/medias/sprites/' // Chemin des fichiers de sprites SVG
   if (svgFile === undefined) svgFile = 'utils'
   const icon = '<svg><use xlink:href="' + path + svgFile + '.svg#' + spriteId + '"></use></svg>'
-  //if (targetElement.querySelector('svg')) targetElement.removeChild(targetElement.querySelector('svg'))
   targetElement.insertAdjacentHTML('beforeEnd', icon)
 }
 
@@ -132,6 +131,23 @@ const selectAndCopy = (() => {
       selectText(el)
       document.execCommand('copy')
     })
+  }
+})()
+
+const addTitleCodeBlock = (() => {
+  const els = document.querySelectorAll('.pre')
+  for (const el of els) {
+    const item = document.createElement('div'),
+          span = document.createElement('span'),
+          reqText = el.children[0].dataset.code,
+          text = document.createTextNode(reqText)
+    //item.classList.add('pre-title')
+    el.appendChild(item)
+    injectSvgSprite(item, 'code')
+    if (reqText) {
+      span.appendChild(text)
+      item.appendChild(span)
+    }
   }
 })()
 
