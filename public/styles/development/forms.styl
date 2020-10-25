@@ -156,7 +156,7 @@ form fieldset > [class*=input]
   width 100%
   padding .4em 1em
   background-color #444
-  border .1em solid #444 //#222 // @note Permet d'anticiper le comportement des bordures colorées de '.invalid' en évitant des rattrapages en padding, aléatoires selon le type d'input
+  border .1em solid #444 //#222 // @note Permet d'anticiper le comportement des bordures colorées de '.invalid' en évitant des rattrapages en padding aléatoires selon le type d'input
 
 [class*=input] input
 [class*=input] select
@@ -197,28 +197,25 @@ form fieldset > [class*=input]
   background-position right .7em center // @note Révision de l'emplacement de l'astérisque si champ obligatoire
 
 [class*=input].invalid :not(:focus)
-  animation animInvalidInput 2s infinite
+  animation animInvalidInput 2s ease-in-out infinite
 
-@keyframes animInvalidInput
-  0%
-    border-color inherrit
-  50%
-    border-color Orange
-  100%
-    border-color inherrit
+.invalid svg
+  display inline
+  vertical-align middle
+  width 1rem
+  height 1rem
+  margin-right .5rem
 
 .invalid p
-  font-style italic
   color Orange
+  font-style italic
 
-.invalid p::before
-  content '!'
-  font-size .8em
-  font-style normal
-  margin-right .5em
+//.invalid :focus + p
+  //color Red
 
-[class*=input].invalid :focus + p::before
-  animation animBlink 2s infinite
+@keyframes animInvalidInput
+  50%
+    border-color Orange
 
 [class*=input] :required
 [class*=input] .required // @note '.required' pour éléments select, et fallback all browsers

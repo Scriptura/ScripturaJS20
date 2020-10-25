@@ -16,87 +16,88 @@ const liturgicalCalendar = date => {
         data3 = JSON.parse(fs.readFileSync(general, 'utf8')),
         dt = DateTime.local(),
         currentYear = dt.toFormat('yyyy'),
-        currentDayMonth = dt.toFormat('ddMM'),
+        currentDayMonth = '1204',//dt.toFormat('ddMM'),
         ge = easter.gregorianEaster(currentYear),
-        easterDate = DateTime.local(ge.year, ge.month, ge.day),
-        currentEasterM46 = easterDate.plus({ days: -46 }).toFormat('ddMM'),
-        currentEasterM4 = easterDate.plus({ days: -4 }).toFormat('ddMM'),
-        currentEasterM3 = easterDate.plus({ days: -3 }).toFormat('ddMM'),
-        currentEasterM2 = easterDate.plus({ days: -2 }).toFormat('ddMM'),
-        currentEasterM1 = easterDate.plus({ days: -1 }).toFormat('ddMM'),
-        currentEaster = easterDate.toFormat('ddMM'),
-        currentEasterP1 = easterDate.plus({ days: 1 }).toFormat('ddMM'),
-        currentEasterP2 = easterDate.plus({ days: 2 }).toFormat('ddMM'),
-        currentEasterP3 = easterDate.plus({ days: 3 }).toFormat('ddMM'),
-        currentEasterP4 = easterDate.plus({ days: 4 }).toFormat('ddMM'),
-        currentEasterP5 = easterDate.plus({ days: 5 }).toFormat('ddMM'),
-        currentEasterP6 = easterDate.plus({ days: 6 }).toFormat('ddMM'),
-        currentEasterP7 = easterDate.plus({ days: 7 }).toFormat('ddMM'),
-        currentEasterP40 = easterDate.plus({ days: 39 }).toFormat('ddMM'),
-        currentEasterP49 = easterDate.plus({ days: 49 }).toFormat('ddMM'),
-        currentEasterP56 = easterDate.plus({ days: 56 }).toFormat('ddMM'),
-        currentEasterP68 = easterDate.plus({ days: 68 }).toFormat('ddMM')
+        easterDate = DateTime.local(ge.year, ge.month, ge.day)
 
   // Gestion des fêtes votives
   if (typeof date === 'undefined') date = currentDayMonth
-  let result = data1[date]
-  result = data2[date]
-  result = data3[date]
-  if (typeof result === 'undefined') result = {name: 'De la férie'}
-  if (currentDayMonth === currentEasterM46) result = {name: "Mercredi des Cendres"}
-  if (currentDayMonth === currentEasterM4) result = {name: "Mercredi Saint"}
-  if (currentDayMonth === currentEasterM3) result = {name: "Jeudi Saint"}
-  if (currentDayMonth === currentEasterM2) result = {name: "Vendredi Saint"}
-  if (currentDayMonth === currentEasterM1) result = {name: "Samedi Saint", rank: "1"}
-  if (currentDayMonth === currentEaster) result = {name: "Résurrection du Seigneur", rank: "1"}
-  if (currentDayMonth === currentEasterP1) result = {name: "Lundi de l'octave Pâques"}
-  if (currentDayMonth === currentEasterP2) result = {name: "Mardi de l'octave de Pâques"}
-  if (currentDayMonth === currentEasterP3) result = {name: "Mercredi de l'octave de Pâques"}
-  if (currentDayMonth === currentEasterP4) result = {name: "Jeudi de l'octave de Pâques"}
-  if (currentDayMonth === currentEasterP5) result = {name: "Vendredi de l'octave de Pâques"}
-  if (currentDayMonth === currentEasterP6) result = {name: "Samedi de l'octave de Pâques"}
-  if (currentDayMonth === currentEasterP7) result = {name: "Dimanche de la divine Miséricorde", rank: "1"}
-  if (currentDayMonth === currentEasterP40) result = {name: "Ascension", rank: "1"}
-  if (currentDayMonth === currentEasterP49) result = {name: "Pentecôte", rank: "1"}
-  if (currentDayMonth === currentEasterP56) result = {name: "Sainte Trinité", rank: "1"}
-  //if (currentDayMonth === currentEasterP56) result = {name: "Le Saint Sacrement", rank: "1"}
-  if (currentDayMonth === currentEasterP68) result = {name: "Sacré-Cœur de Jésus", rank: "1"}
-  //result = {name: "Christ Roi", rank: "1"}
+  let data = data1[date]
+  data = data2[date]
+  data = data3[date]
+  if (typeof result === 'undefined') data = {name: "De la férie", color: "green", grade: "5", rank: "13"}
+  if (currentDayMonth === easterDate.plus({ days: -46 }).toFormat('ddMM')) data = {name: "Mercredi des Cendres", color: "purple", grade: "2", rank: ""}
+  if (currentDayMonth === easterDate.plus({ days: -42 }).toFormat('ddMM')) data = {name: "Premier dimanche de Carême", color: "purple", grade: "2", rank: ""}
+  if (currentDayMonth === easterDate.plus({ days: -35 }).toFormat('ddMM')) data = {name: "Deuxième dimanche de Carême", color: "purple", grade: "2", rank: ""}
+  if (currentDayMonth === easterDate.plus({ days: -28 }).toFormat('ddMM')) data = {name: "Troisième dimanche de Carême", color: "purple", grade: "2", rank: ""}
+  if (currentDayMonth === easterDate.plus({ days: -21 }).toFormat('ddMM')) data = {name: "Quatrième dimanche de Carême", color: "purple", grade: "2", rank: ""}
+  if (currentDayMonth === easterDate.plus({ days: -14 }).toFormat('ddMM')) data = {name: "Cinquième dimanche de Carême", color: "purple", grade: "2", rank: ""}
+  if (currentDayMonth === easterDate.plus({ days: -7 }).toFormat('ddMM')) data = {name: "Dimanche des Rameaux et de la Passion du Seigneur", color: "red", grade: "2", rank: ""}
+  if (currentDayMonth === easterDate.plus({ days: -6 }).toFormat('ddMM')) data = {name: "Lundi Saint", color: "purple", grade: "", rank: ""}
+  if (currentDayMonth === easterDate.plus({ days: -5 }).toFormat('ddMM')) data = {name: "Mardi Saint", color: "purple", grade: "", rank: ""}
+  if (currentDayMonth === easterDate.plus({ days: -4 }).toFormat('ddMM')) data = {name: "Mercredi Saint", color: "purple", grade: "", rank: ""}
+  if (currentDayMonth === easterDate.plus({ days: -3 }).toFormat('ddMM')) data = {name: "Jeudi Saint", color: "white", grade: "1", rank: ""}
+  if (currentDayMonth === easterDate.plus({ days: -2 }).toFormat('ddMM')) data = {name: "Vendredi Saint", color: "red", grade: "1", rank: ""}
+  if (currentDayMonth === easterDate.plus({ days: -1 }).toFormat('ddMM')) data = {name: "Samedi Saint", color: "purple", grade: "1", rank: ""}
+  if (currentDayMonth === easterDate.toFormat('ddMM')) data = {name: "Résurrection du Seigneur", color: "white", grade: "1", rank: ""}
+  if (currentDayMonth === easterDate.plus({ days: 1 }).toFormat('ddMM')) data = {name: "Lundi dans l'octave Pâques", color: "white", rank: ""}
+  if (currentDayMonth === easterDate.plus({ days: 2 }).toFormat('ddMM')) data = {name: "Mardi dans l'octave de Pâques", color: "white", rank: ""}
+  if (currentDayMonth === easterDate.plus({ days: 3 }).toFormat('ddMM')) data = {name: "Mercredi dans l'octave de Pâques", color: "white", rank: ""}
+  if (currentDayMonth === easterDate.plus({ days: 4 }).toFormat('ddMM')) data = {name: "Jeudi dans l'octave de Pâques", color: "white", rank: ""}
+  if (currentDayMonth === easterDate.plus({ days: 5 }).toFormat('ddMM')) data = {name: "Vendredi dans l'octave de Pâques", color: "white", rank: ""}
+  if (currentDayMonth === easterDate.plus({ days: 6 }).toFormat('ddMM')) data = {name: "Samedi dans l'octave de Pâques", color: "white", rank: ""}
+  if (currentDayMonth === easterDate.plus({ days: 7 }).toFormat('ddMM')) data = {name: "Dimanche de la divine Miséricorde", color: "white", grade: "2", rank: ""}
+  if (currentDayMonth === easterDate.plus({ days: 14 }).toFormat('ddMM')) data = {name: "Troisième dimanche du Temps Pascal", color: "white", grade: "2", rank: ""}
+  if (currentDayMonth === easterDate.plus({ days: 21 }).toFormat('ddMM')) data = {name: "Quatrième dimanche du Temps Pascal", color: "white", grade: "2", rank: ""}
+  if (currentDayMonth === easterDate.plus({ days: 28 }).toFormat('ddMM')) data = {name: "Cinquième dimanche du Temps Pascal", color: "white", grade: "2", rank: ""}
+  if (currentDayMonth === easterDate.plus({ days: 35 }).toFormat('ddMM')) data = {name: "Sixième dimanche du Temps Pascal", color: "white", grade: "2", rank: ""}
+  if (currentDayMonth === easterDate.plus({ days: 40 }).toFormat('ddMM')) data = {name: "Ascension", color: "white", grade: "2", rank: ""}
+  if (currentDayMonth === easterDate.plus({ days: 49 }).toFormat('ddMM')) data = {name: "Pentecôte", color: "white", grade: "2", rank: ""}
+  if (currentDayMonth === easterDate.plus({ days: 56 }).toFormat('ddMM')) data = {name: "Sainte Trinité", color: "white", grade: "1", rank: ""}
+  if (currentDayMonth === easterDate.plus({ days: 63 }).toFormat('ddMM')) data = {name: "Le Saint Sacrement", color: "white", grade: "3", rank: ""}
+  if (currentDayMonth === easterDate.plus({ days: 68 }).toFormat('ddMM')) data = {name: "Sacré-Cœur de Jésus", color: "white", grade: "3", rank: ""}
 
-// Epiphanie, Sainte Famille...
+  //{name: "Christ Roi", color: "white", grade: ""}
+  //{name: "Premier dimanche de l'Avent", color: "white", grade: "2", rank: ""}
+  //{name: "Deuxième dimanche de l'Avent", color: "white", grade: "2", rank: ""}
+  //{name: "Troisième dimanche de l'Avent", color: "white", grade: "2", rank: ""}
+  //{name: "Quatrième dimanche de l'Avent", color: "white", grade: "2", rank: ""}
+  //{name: "Cinquième dimanche de l'Avent", color: "white", grade: "2", rank: ""}
+
+//{"name": "L'Épiphanie du Seigneur", "color": "white", "grade": "3"} //célémonie votive pour la France sur un dimanche, le 6/01 pour d'autres pays
+//Sainte Famille
 /* si dimanche, alors célébration le lundi 9 :
   "0812": {
     "name": "Immaculée Conception de la Bienheureuse Vierge Marie",
     "color": "white",
-    "rank": "1"
+    "grade": "1"
   }
 */
 
   // Traducion des degrés de fête numérotés en language humain
-  let rank = result.rank
-  if (rank === '1') result.rank = 'Solennité'
-  if (rank === '2') result.rank = 'Fête'
-  if (rank === '3') result.rank = 'Mémoire obligatoire'
-  if (rank === '4') result.rank = 'Mémoire facultative'
+  let grade = data.grade
+  if (grade === '1') data.grade = "Solennité"
+  if (grade === '2') data.grade = "Fête"
+  if (grade === '3') data.grade = "Mémoire obligatoire"
+  if (grade === '4') data.grade = "Mémoire facultative"
+  if (grade === '5') data.grade = "De la férie"
 
-  // Gestion des couleurs liturgiques
-  let color = result.color
-  if (typeof result.color === 'undefined') result.color = 'green'
-  if (color === 'withe') result.color = '#ffffff'
-  if (color === 'red') result.color = '#ff0000' //#bf2329
-  if (color === 'green') result.color = 'green' //#1e883f
-  if (color === 'purple') result.color = '#800080' //#9f15a7
-  if (color === 'black') result.color = '#000000'
+  // Convertissage des couleurs liturgiques
+  let color = data.color
+  if (color === 'withe') data.color = '#ffffff'
+  if (color === 'red') data.color = '#ff0000' //#bf2329
+  if (color === 'green') data.color = 'green' //#1e883f
+  if (color === 'purple') data.color = '#800080' //#9f15a7
+  if (color === 'black') data.color = '#000000'
 
-  let color2 = result.color2
-  // Pas de couleurs par défaut
-  if (color2 === 'withe') result.color2 = '#ffffff'
-  if (color2 === 'red') result.color2 = '#ff0000' //#bf2329
-  if (color === 'green') result.color = 'green' //#1e883f
-  if (color2 === 'purple') result.color2 = '#800080' //#9f15a7
-  if (color2 === 'black') result.color2 = '#000000'
+  let color2 = data.color2
+  if (color2 === 'withe') data.color2 = '#ffffff'
+  if (color2 === 'red') data.color2 = '#ff0000' //#bf2329
+  if (color2 === 'green') data.color2 = 'green' //#1e883f
+  if (color2 === 'purple') data.color2 = '#800080' //#9f15a7
+  if (color2 === 'black') data.color2 = '#000000'
 
-  return result
+  return data
 }
 
 module.exports = { liturgicalCalendar: liturgicalCalendar }

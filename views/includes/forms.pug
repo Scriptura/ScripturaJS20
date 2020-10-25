@@ -9,7 +9,10 @@ form(method='get' action='./')
     .input.invalid
       label(for='name2') Text + error
       input#name2(type='text' name='name2' value='' size='23' placeholder='Smith' required='')
-      p Champ invalide&nbsp;: des caractères numériques sont placés dans votre nom.
+      p
+        svg
+          use(xlink:href='/medias/sprites/utils.svg#warning')
+        span Champ invalide&nbsp;: des caractères numériques sont placés dans votre nom.
     .input.disabled
       label(for='name3') Disabled Attribute
       input#name3(type='text' name='name3' value='' size='23' placeholder=':disabled' required='' disabled='')

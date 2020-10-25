@@ -5,999 +5,1197 @@
   "0101": {
     "name": "Sainte Marie, Mère de Dieu",
     "color": "white",
-    "rank": "1"
+    "grade": "1",
+    "rank": ""
   },
   "0201": {
     "name": "Saint Basile le Grand, évêque de Césarée, docteur de l'Église et Saint Grégoire de Naziance, évêque de Constantinople, docteur de l'Église",
     "color": "white",
-    "rank": "3"
+    "grade": "3",
+    "rank": ""
   },
   "0301": {
     "name": "Saint Nom de Jésus",
     "color": "white",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   },
   "0601": {
     "name": "L'Épiphanie du Seigneur",
     "color": "white",
-    "rank": "1"
+    "grade": "1",
+    "rank": ""
   },
   "0701": {
     "name": "Saint Raymond de Peñafort, prêtre, dominicain",
     "color": "white",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   },
   "1301": {
     "name": "Saint Hilaire de Poitiers, évêque et docteur de l'Église",
     "color": "white",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   },
   "1701": {
     "name": "Saint Antoine le Grand, abbé en Haute-Égypte",
     "color": "white",
-    "rank": "3"
+    "grade": "3",
+    "rank": ""
   },
   "2001": {
     "name": "Saint Sébastien, martyr de Rome",
     "color": "red",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   },
   "2101": {
     "name": "Sainte Agnès, vierge et martyre",
     "color": "red",
-    "rank": "3"
+    "grade": "3",
+    "rank": ""
   },
   "2201": {
     "name": "Saint Vincent de Saragosse, diacre et martyr",
     "color": "red",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   },
   "2401": {
     "name": "Saint François de Sales, évêque et docteur de l'Église",
     "color": "white",
-    "rank": "3"
+    "grade": "3",
+    "rank": ""
   },
   "2501": {
     "name": "Conversion de Saint Paul, apôtre",
     "color": "white",
-    "rank": "1"
+    "grade": "1",
+    "rank": ""
   },
   "2601": {
     "name": "Saints Tite et Timothée, évêques, compagons de Saint Paul",
     "color": "white",
-    "rank": "3"
+    "grade": "3",
+    "rank": ""
   },
   "2701": {
     "name": "Sainte Angèle Mérici, vierge",
     "color": "white",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   },
   "2801": {
     "name": "Saint Thomas d'Aquin, prêtre et docteur de l'Église",
     "color": "white",
-    "rank": "3"
+    "grade": "3",
+    "rank": ""
   },
   "3101": {
     "name": "Saint Jean Bosco, prêtre",
     "color": "white",
-    "rank": "3"
+    "grade": "3",
+    "rank": ""
   },
   "0202": {
     "name": "Présentation du Seigneur",
     "color": "white",
-    "rank": "2"
+    "grade": "2",
+    "rank": ""
   },
   "0302": {
     "name": "Saint Anschaire de Brême, évêque",
     "color": "white",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   },
   "0502": {
     "name": "Sainte Agathe, vierge et martyre",
     "color": "red",
-    "rank": "3"
+    "grade": "3",
+    "rank": ""
   },
   "0602": {
     "name": "Saints Paul Miki et ses compagnons, martyrs",
     "color": "red",
-    "rank": "3"
+    "grade": "3",
+    "rank": ""
   },
   "0802": {
     "name": "Sainte Joséphine Bakhita, vierge",
     "color": "white",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   },
   "1002": {
     "name": "Sainte Scholastique, vierge",
     "color": "white",
-    "rank": "3"
+    "grade": "3",
+    "rank": ""
   },
   "1102": {
     "name": "Notre-Dame de Lourdes",
     "color": "white",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   },
   "1402": {
     "name": "Saint Cyrille, moine et Saint Méthode, évêque",
     "color": "white",
-    "rank": "3"
+    "grade": "3",
+    "rank": ""
   },
   "1702": {
     "name": "Les Sept Saints fondateurs de l'ordre des Servites",
     "color": "white",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   },
   "2102": {
     "name": "Saint Pierre Damien, évêque et docteur de l'Église",
     "color": "white",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   },
   "2202": {
     "name": "Chaire de Saint Pierre, apôtre",
     "color": "white",
-    "rank": "2"
+    "grade": "2",
+    "rank": ""
   },
   "2302": {
     "name": "Saint Polycarpe de Smyrne, évêque et martyr",
     "color": "red",
-    "rank": "3"
+    "grade": "3",
+    "rank": ""
   },
   "0403": {
     "name": "Saint Casimir, prince de Lituanie",
     "color": "white",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   },
   "0703": {
     "name": "Sainte Perpétue et Sainte Félicité, martyres",
     "color": "red",
-    "rank": "3"
+    "grade": "3",
+    "rank": ""
   },
   "0803": {
     "name": "Saint Jean de Dieu, religieux, fondateur des frères hospitaliers",
     "color": "white",
-    "rank": "3"
+    "grade": "3",
+    "rank": ""
   },
   "0903": {
     "name": "Sainte Françoise Romaine, mère de famille puis religieuse",
     "color": "white",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   },
   "1703": {
     "name": "Saint Patrick, évêque d'Irlande",
     "color": "white",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   },
   "1803": {
     "name": "Saint Cyrille de Jérusalem, évêque et docteur de l'Église",
     "color": "white",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   },
   "1903": {
     "name": "Saint Joseph, chaste Époux de la Bienheureuse Vierge Marie",
     "color": "white",
-    "rank": "1"
+    "grade": "1",
+    "rank": ""
   },
   "2303": {
     "name": "Saint Toribio de Mogrovejo, évêque",
     "color": "white",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   },
   "2503": {
     "name": "Annonciation du Seigneur",
     "color": "white",
-    "rank": "1"
+    "grade": "1",
+    "rank": ""
   },
   "0204": {
     "name": "Saint François de Paule, ermite italien",
     "color": "white",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   },
   "0404": {
     "name": "Saint Isidore de Séville, évêque et docteur de l'Église",
     "color": "white",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   },
   "0504": {
     "name": "Saint Vincent Ferrier, prêtre, dominicain espagnol",
     "color": "white",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   },
   "0704": {
     "name": "Saint Jean-Baptiste de la Salle, prêtre, fondateur des Écoles chrétiennes",
     "color": "white",
-    "rank": "3"
+    "grade": "3",
+    "rank": ""
   },
   "1104": {
     "name": "Saint Stanislas de Cracovie, évêque et martyr",
     "color": "red",
-    "rank": "3"
+    "grade": "3",
+    "rank": ""
   },
   "1304": {
     "name": "Saint Martin <abbr title=\"premier\">I<sup>er</sup></abbr>, pape et martyr",
     "color": "red",
-    "rank": "3"
+    "grade": "3",
+    "rank": ""
   },
   "2104": {
     "name": "Saint Anselme de Cantorbéry, évêque et docteur de l'Église",
     "color": "white",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   },
   "2304": {
     "name": "Saint Georges, martyr ; Saint Adalbert, évêque de Prague et martyr",
     "color": "red",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   },
   "2404": {
     "name": "Saint Fidèle de Sigmaringen, évêque et martyr",
     "color": "red",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   },
   "2504": {
     "name": "Saint Marc, évangéliste",
     "color": "red",
-    "rank": "2"
+    "grade": "2",
+    "rank": ""
   },
   "2804": {
     "name": "Saint Pierre Chanel, prêtre et martyr et Saint Louis-Marie Grignion de Montfort, prêtre",
     "color": "red",
     "color2": "white",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   },
   "2904": {
     "name": "Sainte Catherine de Sienne, vierge et docteur de l'Église",
     "color": "white",
-    "rank": "3"
+    "grade": "3",
+    "rank": ""
   },
   "3004": {
     "name": "Saint Pie V, pape",
     "color": "white",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   },
   "0105": {
     "name": "Saint Joseph artisan",
     "color": "white",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   },
   "0205": {
     "name": "Saint Athanase d'Alexandrie, évêque et docteur de l'Église",
     "color": "white",
-    "rank": "3"
+    "grade": "3",
+    "rank": ""
   },
   "0305": {
     "name": "Saints Philippe et Jacques, apôtres",
     "color": "red",
-    "rank": "2"
+    "grade": "2",
+    "rank": ""
   },
   "1205": {
     "name": "Saints Nérée et Achillée, martyrs ; ou Saint Pancrace, martyr",
     "color": "red",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   },
   "1305": {
     "name": "Notre-Dame de Fátima",
     "color": "white",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   },
   "1405": {
     "name": "Saint Matthias, apôtres",
     "color": "red",
-    "rank": "2"
+    "grade": "2",
+    "rank": ""
   },
   "1805": {
     "name": "Saint Jean <abbr title=\"premier\">I<sup>er</sup></abbr>, pape et martyr",
     "color": "red",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   },
   "2005": {
     "name": "Saint Bernardin de Sienne, prêtre, franciscain",
     "color": "white",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   },
   "2105": {
     "name": "Saint Cristóbal Magallanes Jara et ses compagnons, martyrs",
     "color": "red",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   },
   "2205": {
     "name": "Sainte Rita de Cascia, religieuse",
     "color": "white",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   },
   "2505": {
     "name": "Saint Bède le Vénérable, prêtre, moine et docteur de l'Église, ou saint Grégoire VII, pape, ou sainte Marie-Madeleine de Pazzi, vierge carmélite",
     "color": "white",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   },
   "2605": {
     "name": "Saint Philippe Neri, prêtre, fondateur de l'Oratoire",
     "color": "white",
-    "rank": "3"
+    "grade": "3",
+    "rank": ""
   },
   "2705": {
     "name": "Saint Augustin de Cantorbéry, évêque",
     "color": "white",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   },
   "3105": {
     "name": "Visitation de la Vierge Marie",
     "color": "white",
-    "rank": "2"
+    "grade": "2",
+    "rank": ""
   },
   "0106": {
     "name": "Saint Justin Martyr",
     "color": "red",
-    "rank": "3"
+    "grade": "3",
+    "rank": ""
   },
   "0206": {
     "name": "Saints Marcellin et Pierre, martyrs",
     "color": "red",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   },
   "0306": {
     "name": "Saints Charles Lwanga et ses compagnons, martyrs",
     "color": "red",
-    "rank": "3"
+    "grade": "3",
+    "rank": ""
   },
   "0506": {
     "name": "Saint Boniface, évêque de Mayence et martyr",
     "color": "red",
-    "rank": "3"
+    "grade": "3",
+    "rank": ""
   },
   "0606": {
     "name": "Saint Norbert, évêque de Magdebourg et fondateur des Prémontrés",
     "color": "white",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   },
   "0906": {
     "name": "Saint Ephrem, diacre et docteur de l'Église",
     "color": "white",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   },
   "1106": {
     "name": "Saint Barnabé, apôtre",
     "color": "red",
-    "rank": "3"
+    "grade": "3",
+    "rank": ""
   },
   "1306": {
     "name": "Saint Antoine de Padoue, prêtre et docteur de l'Église, franciscain portugais",
     "color": "white",
-    "rank": "3"
+    "grade": "3",
+    "rank": ""
   },
   "1906": {
     "name": "Saint Romuald, abbé, fondateur des camaldules",
     "color": "white",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   },
   "2106": {
     "name": "Saint Louis de Gonzague, novice jésuite",
     "color": "white",
-    "rank": "3"
+    "grade": "3",
+    "rank": ""
   },
   "2206": {
     "name": "Saint Paulin de Nole, évêque ou Saints John Fisher, évêque et martyr et Thomas More, martyr",
     "color": "red",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   },
   "2406": {
     "name": "Nativité de Saint Jean-Baptiste",
     "color": "white",
-    "rank": "2"
+    "grade": "2",
+    "rank": ""
   },
   "2706": {
     "name": "Saint Cyrille d'Alexandrie, évêque et docteur de l'Église",
     "color": "white",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   },
   "2806": {
     "name": "Saint Irénée de Lyon, évêque et martyr",
     "color": "red",
-    "rank": "3"
+    "grade": "3",
+    "rank": ""
   },
   "2906": {
     "name": "Saints Pierre et Paul, apôtres",
     "color": "red",
-    "rank": "1"
+    "grade": "1",
+    "rank": ""
   },
   "3006": {
     "name": "Premiers martyrs de l'Église de Rome",
     "color": "red",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   },
   "0307": {
     "name": "Saint Thomas, apôtre",
     "color": "red",
-    "rank": "2"
+    "grade": "2",
+    "rank": ""
   },
   "0407": {
     "name": "Sainte Elisabeth de Portugal, reine",
     "color": "white",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   },
   "0507": {
     "name": "Saint Antoine-Marie Zaccaria, prêtre, fondateur des barnabites",
     "color": "white",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   },
   "0607": {
     "name": "Sainte Maria Goretti, vierge et martyr",
     "color": "red",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   },
   "0907": {
     "name": "Saint Augustin Zhao Rong et ses compagnons, martyrs",
     "color": "red",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   },
   "1107": {
     "name": "Saint Benoît, abbé",
     "color": "white",
-    "rank": "3"
+    "grade": "3",
+    "rank": ""
   },
   "1307": {
     "name": "Saint Henri",
     "color": "",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   },
   "1407": {
     "name": "Saint Camille de Lellis, prêtre",
     "color": "white",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   },
   "1507": {
     "name": "Saint Bonaventure, évêque et docteur de l'Église",
     "color": "white",
-    "rank": "3"
+    "grade": "3",
+    "rank": ""
   },
   "1607": {
     "name": "Notre-Dame du Mont-Carmel",
     "color": "white",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   },
   "2007": {
     "name": "Saint Apollinaire, évêque et martyr",
     "color": "red",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   },
   "2107": {
     "name": "Saint Laurent de Brindisi, prêtre et docteur de l'Église",
     "color": "white",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   },
   "2207": {
     "name": "Sainte Marie-Madeleine, disciple du Seigneur",
     "color": "white",
-    "rank": "2"
+    "grade": "2",
+    "rank": ""
   },
   "2307": {
     "name": "Sainte Brigitte de Suède, religieuse",
     "color": "white",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   },
   "2407": {
     "name": "Saint Charbel Makhlouf, prêtre et ermite",
     "color": "white",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   },
   "2507": {
     "name": "Saint Jacques le Majeur, apôtre",
     "color": "red",
-    "rank": "2"
+    "grade": "2",
+    "rank": ""
   },
   "2607": {
     "name": "Saints Anne et Joachim, parents de la Vierge Marie",
     "color": "white",
-    "rank": "3"
+    "grade": "3",
+    "rank": ""
   },
   "2907": {
     "name": "Sainte Marthe",
     "color": "white",
-    "rank": "3"
+    "grade": "3",
+    "rank": ""
   },
   "3007": {
     "name": "Saint Pierre Chrysologue, évêque et docteur de l'Église",
     "color": "white",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   },
   "3107": {
     "name": "Saint Ignace de Loyola, prêtre, fondateur des jésuites",
     "color": "white",
-    "rank": "3"
+    "grade": "3",
+    "rank": ""
   },
   "0108": {
     "name": "Saint Alphonse de Liguori, évêque et docteur de l'Église, fondateur des Rédemptoristes",
     "color": "white",
-    "rank": "3"
+    "grade": "3",
+    "rank": ""
   },
   "0208": {
     "name": "Saint Eusèbe de Verceil, évêque, ou Saint Pierre-Julien Eymard, prêtre, fondateur de la congrégation du Très-Saint-Sacrement",
     "color": "white",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   },
   "0408": {
     "name": "Saint Jean-Marie Vianney, prêtre",
     "color": "white",
-    "rank": "3"
+    "grade": "3",
+    "rank": ""
   },
   "0508": {
     "name": "Dédicace de la Basilique Sainte-Marie-Majeure",
     "color": "white",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   },
   "0608": {
     "name": "Transfiguration du Seigneur",
     "color": "white",
-    "rank": "2"
+    "grade": "2",
+    "rank": ""
   },
   "0708": {
     "name": "Saint Sixte II, pape, et ses compagnons, martyrs, ou Saint Cajetan, prêtre",
     "color": "red",
     "color2": "withe",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   },
   "0808": {
     "name": "Saint Dominique, prêtre, fondateur des Frères Prêcheurs",
     "color": "white",
-    "rank": "3"
+    "grade": "3",
+    "rank": ""
   },
   "0908": {
     "name": "Sainte Thérèse-Bénédicte de la Croix (Édith Stein), vierge et martyre, carmélite",
     "color": "red",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   },
   "1008": {
     "name": "Saint Laurent, diacre et martyr",
     "color": "red",
-    "rank": "2"
+    "grade": "2",
+    "rank": ""
   },
   "1108": {
     "name": "Sainte Claire d'Assise, vierge, fondatrice des Pauvres Dames ou Clarisses",
     "color": "white",
-    "rank": "3"
+    "grade": "3",
+    "rank": ""
   },
   "1208": {
     "name": "Sainte Jeanne-Françoise de Chantal, religieuse, fondatrice de la Visitation",
     "color": "white",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   },
   "1308": {
     "name": "Saints Pontien, pape, et Hippolyte, prêtre, martyrs",
     "color": "",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   },
   "1408": {
     "name": "Saint Maximilien Kolbe, prêtre et martyr, franciscain",
     "color": "red",
-    "rank": "3"
+    "grade": "3",
+    "rank": ""
   },
   "1508": {
     "name": "Assomption de la Bienheureuse Vierge Marie",
     "color": "white",
-    "rank": "2"
+    "grade": "2",
+    "rank": ""
   },
   "1608": {
     "name": "Saint Étienne de Hongrie",
     "color": "white",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   },
   "1908": {
     "name": "Saint Jean Eudes, prêtre, fondateur",
     "color": "white",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   },
   "2008": {
     "name": "Saint Bernard, abbé de Clairvaux et docteur de l'Église",
     "color": "white",
-    "rank": "3"
+    "grade": "3",
+    "rank": ""
   },
   "2108": {
     "name": "Saint Pie X, pape",
     "color": "white",
-    "rank": "3"
+    "grade": "3",
+    "rank": ""
   },
   "2208": {
     "name": "Bienheureuse Vierge Marie Reine de l'univers",
     "color": "white",
-    "rank": "3"
+    "grade": "3",
+    "rank": ""
   },
   "2308": {
     "name": "Sainte Rose de Lima, vierge, tertiaire dominicaine",
     "color": "white",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   },
   "2408": {
     "name": "Saint Barthélemy, apôtre",
     "color": "red",
-    "rank": "2"
+    "grade": "2",
+    "rank": ""
   },
   "2508": {
     "name": "Saint Louis, roi de France, ou Saint Joseph Calasanz, prêtre, fondateur",
     "color": "white",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   },
   "2708": {
     "name": "Sainte Monique",
     "color": "white",
-    "rank": "3"
+    "grade": "3",
+    "rank": ""
   },
   "2808": {
     "name": "Saint Augustin, évêque et docteur de l'Église",
     "color": "white",
-    "rank": "3"
+    "grade": "3",
+    "rank": ""
   },
   "2908": {
     "name": "Décollation de Saint Jean-Baptiste, martyr",
     "color": "red",
-    "rank": "3"
+    "grade": "3",
+    "rank": ""
   },
   "0309": {
     "name": "Saint Grégoire le Grand, pape et docteur de l'Église",
     "color": "white",
-    "rank": "3"
+    "grade": "3",
+    "rank": ""
   },
   "0809": {
     "name": "Nativité de la Vierge Marie",
     "color": "white",
-    "rank": "2",
-    "link": "https://www.aelf.org/2020-09-08/romain/messe"
+    "grade": "2",
+    "link": "https://www.aelf.org/2020-09-08/romain/messe",
+    "rank": ""
   },
   "0909": {
     "name": "Saint Pierre Claver, prêtre",
     "color": "white",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   },
   "1209": {
     "name": "Saint Nom de la Bienheureuse Vierge Marie",
     "color": "white",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   },
   "1309": {
     "name": "Saint Jean Chrysostome, évêque et docteur de l'Église",
     "color": "white",
-    "rank": "3"
+    "grade": "3",
+    "rank": ""
   },
   "1409": {
     "name": "La Croix glorieuse",
     "color": "red",
-    "rank": "2"
+    "grade": "2",
+    "rank": ""
   },
   "1509": {
     "name": "Notre-Dame des Sept Douleurs",
     "color": "white",
-    "rank": "3"
+    "grade": "3",
+    "rank": ""
   },
   "1609": {
     "name": "Saints Corneille, pape, et Cyprien, évêque, martyrs",
     "color": "red",
-    "rank": "3",
-    "link": "https://www.aelf.org/2020-09-16/romain/messe"
+    "grade": "3",
+    "link": "https://www.aelf.org/2020-09-16/romain/messe",
+    "rank": ""
   },
   "1709": {
     "name": "Saint Robert Bellarmin, évêque et docteur de l'Église",
     "color": "white",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   },
   "1909": {
     "name": "Saint Janvier, évêque et martyr",
     "color": "red",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   },
   "2009": {
     "name": "Saint André Kim Taegon, prêtre, et Paul Chong Hasang et ses compagnons, martyrs",
     "color": "red",
-    "rank": "3"
+    "grade": "3",
+    "rank": ""
   },
   "2109": {
     "name": "Saint Matthieu, apôtre et évangéliste",
     "color": "red",
-    "rank": "2"
+    "grade": "2",
+    "rank": ""
   },
   "2309": {
     "name": "Saint Padre Pio, prêtre",
     "color": "white",
-    "rank": "3"
+    "grade": "3",
+    "rank": ""
   },
   "2609": {
     "name": "Saints Côme et Damien, martyrs",
     "color": "red",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   },
   "2709": {
     "name": "Saint Vincent de Paul, prêtre",
     "color": "white",
-    "rank": "3"
+    "grade": "3",
+    "rank": ""
   },
   "2809": {
     "name": "Saint Venceslas, martyr ou Saints Lorenzo Ruiz et ses compagnons, martyrs",
     "color": "red",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   },
   "2909": {
     "name": "Saints Michel, Gabriel et Raphaël, Archanges",
     "color": "white",
-    "rank": "2"
+    "grade": "2",
+    "rank": ""
   },
   "3009": {
     "name": "Saint Jérôme, prêtre et docteur de l'Église",
     "color": "white",
-    "rank": "3"
+    "grade": "3",
+    "rank": ""
   },
   "0110": {
     "name": "Sainte Thérèse de l'enfant Jésus et de la Sainte Face, vierge et docteur de l'Église",
     "color": "white",
-    "rank": "3"
+    "grade": "3",
+    "rank": ""
   },
   "0210": {
     "name": "Les Saints Anges gardiens",
     "color": "white",
-    "rank": "3"
+    "grade": "3",
+    "rank": ""
   },
   "0410": {
     "name": "Saint François d'Assise, prêtre et docteur de l'Église",
     "color": "white",
-    "rank": "3"
+    "grade": "3",
+    "rank": ""
   },
   "0510": {
     "name": "Ste Faustine Kowalska, vierge, † 1938 à Cracovie",
     "color": "white",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   },
   "0610": {
     "name": "Saint Bruno, prêtre",
     "color": "white",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   },
   "0710": {
     "name": "Notre Dame du Rosaire",
     "color": "white",
-    "rank": "3"
+    "grade": "3",
+    "rank": ""
   },
   "0910": {
     "name": "Saint Denis de Paris et ses compagnons, martyrs et Saint Jean Leonardi, prêtre",
     "color": "red",
     "color2": "white",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   },
   "1110": {
     "name": "Saint Jean XXIII, pape",
     "color": "white",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   },
   "1410": 
   {
     "name": "Saint Callixte <abbr title=\"premier\">I<sup>er</sup></abbr>, pape et martyr",
     "color": "red",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   },
   "1510": {
     "name": "Sainte Thérèse d'Avila, vierge et docteur de l'Église",
     "color": "white",
-    "rank": "3"
+    "grade": "3",
+    "rank": ""
   },
   "1610": {
     "name": "Sainte Hedwige, religieuse et Sainte Marguerite-Marie Alacoque, vierge",
     "color": "white",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   },
   "1710": {
     "name": "Saint Ignace d'Antioche, évêque et martyr",
     "color": "red",
-    "rank": "3"
+    "grade": "3",
+    "rank": ""
   },
   "1810": {
     "name": "Saint Luc, évangéliste",
     "color": "red",
-    "rank": "2"
+    "grade": "2",
+    "rank": ""
   },
   "1910": {
     "name": "Saints Jean de Brébeuf et Isaac Jogues, prêtres et martyrs, et leurs compagnons, martyrs et Saint Paul de la Croix, prêtre",
     "color": "red",
     "color2": "white",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   },
   "2210": {
     "name": "Saint Jean-Paul II, pape",
     "color": "white",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   },
   "2310": {
     "name": "Saint Jean de Capistran, pêtre",
     "color": "white",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   },
   "2410": {
     "name": "Saint Antoine-Marie Claret, évêque",
     "color": "white",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   },
   "2810": {
     "name": "Saint Simon et Saint Jude, apôtres",
     "color": "red",
-    "rank": "2"
+    "grade": "2",
+    "rank": ""
   },
   "0111": {
     "name": "La Toussaint, fête de tous les saints",
     "color": "white",
-    "rank": "1"
+    "grade": "1",
+    "rank": ""
   },
   "0211": {
     "name": "Commémoraison des fidèles Défunts",
     "color": "black",
-    "rank": "0"
+    "grade": "0",
+    "rank": ""
   },
   "0311": {
     "name": "Saint Martin de Porres, dominicain",
     "color": "white",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   },
   "0411": {
     "name": "Saint Charles Borromée, évêque de Milan et cardinal",
     "color": "white",
-    "rank": "3"
+    "grade": "3",
+    "rank": ""
   },
   "0911": {
     "name": "Dédicace de la Basilique Saint-Jean-de-Latran",
     "color": "white",
-    "rank": "2"
+    "grade": "2",
+    "rank": ""
   },
   "1011": {
     "name": "Saint Léon Le Grand, pape et docteur de l'Église",
     "color": "white",
-    "rank": "3"
+    "grade": "3",
+    "rank": ""
   },
   "1111": {
     "name": "Saint Martin de Tours, évêque",
     "color": "white",
-    "rank": "3"
+    "grade": "3",
+    "rank": ""
   },
   "1211": {
     "name": "Saint Josaphat, évêque et martyr",
     "color": "red",
-    "rank": "3"
+    "grade": "3",
+    "rank": ""
   },
   "1511": {
     "name": "Saint Albert le Grand, dominicain, évêque et docteur de l'Église",
     "color": "white",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   },
   "1611": {
     "name": "Sainte Marguerite d'Ecosse, reine et Sainte Gertrude, vierge",
     "color": "white",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   },
   "1711": {
     "name": "Sainte Elisabeth de Hongrie, duchesse de Thuringe et tertiaire franciscaine",
     "color": "white",
-    "rank": "3"
+    "grade": "3",
+    "rank": ""
   },
   "1811": {
     "name": "Dédicace des Basiliques de Saint-Pierre et Saint Paul, apôtres",
     "color": "white",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   },
   "2111": {
     "name": "Présentation de la Bienheureuse Vierge Marie au Temple",
     "color": "white",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   },
   "2211": {
     "name": "Sainte Cécile, vierge et martyr",
     "color": "red",
-    "rank": "3"
+    "grade": "3",
+    "rank": ""
   },
   "2311": {
     "name": "Saint Clément de Rome, pape et martyr et Saint Colomban, religieux",
     "color": "red",
     "color2": "white",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   },
   "2411": {
     "name": "Saint André Dũng-Lạc et ses compagnons, martyrs",
     "color": "red",
-    "rank": "3"
+    "grade": "3",
+    "rank": ""
   },
   "2511": {
     "name": "Sainte Catherine d'Alexandrie, vierge et martyre",
     "color": "red",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   },
   "3011": {
     "name": "Saint André, le premier apôtre",
     "color": "red",
-    "rank": "2"
+    "grade": "2",
+    "rank": ""
   },
   "0312": {
     "name": "Saint François-Xavier, prêtre, jésuite",
     "color": "white",
-    "rank": "3"
+    "grade": "3",
+    "rank": ""
   },
   "0412": {
     "name": "Saint Jean Damascène, prêtre et docteur de l'Église",
     "color": "white",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   },
   "0612": {
     "name": "Saint Nicolas de Myre, évêque",
     "color": "white",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   },
   "0712": {
     "name": "Saint Ambroise de Milan, évêque et docteur de l'Église",
     "color": "white",
-    "rank": "3"
+    "grade": "3",
+    "rank": ""
   },
   "0812": {
     "name": "Immaculée Conception de la Bienheureuse Vierge Marie",
     "color": "white",
-    "rank": "1"
+    "grade": "1",
+    "rank": ""
   },
   "0912": {
     "name": "Saint Juan Diego Cuauhtlatoatzin",
     "color": "white",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   },
   "1012": {
     "name": "Notre-Dame de Lorette",
     "color": "white",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   },
   "1112": {
     "name": "Saint Damase, pape",
     "color": "white",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   },
   "1212": {
     "name": "Notre-Dame de Guadaloupé",
     "color": "white",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   },
   "1312": {
     "name": "Sainte Lucie, vierge et martyre",
     "color": "red",
-    "rank": "3"
+    "grade": "3",
+    "rank": ""
   },
   "1412": {
     "name": "Saint Jean de la Croix, prêtre et docteur de l'Église, carme",
     "color": "red",
-    "rank": "3"
+    "grade": "3",
+    "rank": ""
   },
   "2112": {
     "name": "Saint Pierre Canisius, prêtre et docteur de l'Église",
     "color": "white",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   },
   "2312": {
     "name": "Saint Jean de Kenty, prêtre",
     "color": "white",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   },
   "2512": {
     "name": "Nativité du Seigneur",
     "color": "white",
-    "rank": "1"
+    "grade": "1",
+    "rank": ""
   },
   "2612": {
     "name": "Saint Etienne, premier martyr",
     "color": "red",
-    "rank": "2"
+    "grade": "2",
+    "rank": ""
   },
   "2712": {
     "name": "Saint Jean, apôtre et évangéliste",
     "color": "white",
-    "rank": "2"
+    "grade": "2",
+    "rank": ""
   },
   "2812": {
     "name": "Les Saints Innocents, martyrs",
     "color": "red",
-    "rank": "2"
+    "grade": "2",
+    "rank": ""
   },
   "2912": {
     "name": "Saint Thomas Beckett, évêque et martyr",
     "color": "red",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   },
   "3112": {
     "name": "Saint Silvestre, pape",
     "color": "white",
-    "rank": "4"
+    "grade": "4",
+    "rank": ""
   }
 }
