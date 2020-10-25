@@ -1,90 +1,86 @@
 {
-  "0000": {
-    "name": "No data",
-    "rank": ""
-  },
   "0301": {
     "name": "Saint Nom de Jésus ou Sainte Geneviève, vierge",
     "color": "white",
     "grade": "4",
-    "rank": ""
+    "rank": "12"
   },
   "1501": {
     "name": "Saint Remi, évêque",
     "color": "white",
     "grade": "4",
-    "rank": ""
+    "rank": "12"
   },
   "1402": {
     "name": "Saints Cyrille, moine, et Méthode, évêque",
     "color": "white",
     "grade": "2",
-    "rank": ""
+    "rank": "8"
   },
   "1802": {
     "name": "Sainte Bernadette Soubirous",
     "color": "white",
     "grade": "4",
-    "rank": ""
+    "rank": "12"
   },
   "2904": {
     "name": "Sainte Catherine de Sienne, vierge et docteur de l'Église",
     "color": "white",
     "grade": "2",
-    "rank": ""
+    "rank": "8"
   },
   "1905": {
     "name": "Saint Yves",
     "color": "white",
     "grade": "4",
-    "rank": ""
+    "rank": "12"
   },
   "3005": {
     "name": "Sainte Jeanne d'Arc",
     "color": "red",
     "grade": "3",
-    "rank": ""
+    "rank": "10"
   },
   "0206": {
     "name": "Saint Pothin, évêque, Sainte Blandine, vierge, et leurs compagnons, martyrs",
     "color": "red",
     "grade": "4",
-    "rank": ""
+    "rank": "12"
   },
   "0406": {
     "name": "Sainte Clotilde, reine des Francs, épouse de Clovis",
     "color": "white",
     "grade": "4",
-    "rank": ""
+    "rank": "12"
   },
   "1107": {
     "name": "Saint Benoît, abbé",
     "color": "white",
     "grade": "2",
-    "rank": ""
+    "rank": "8"
   },
   "2307": {
     "name": "Sainte Brigitte de Suède, religieuse",
     "color": "white",
     "grade": "2",
-    "rank": ""
+    "rank": "8"
   },
   "0908": {
     "name": "Sainte Thérèse-Bénédicte de la Croix (Edith Stein), vierge et martyre",
     "color": "red",
     "grade": "2",
-    "rank": ""
+    "rank": "8"
   },
   "2608": {
     "name": "Saint Césaire d'Arles, évêque",
     "color": "white",
     "grade": "4",
-    "rank": ""
+    "rank": "12"
   },
   "1909": {
     "name": "Notre-Dame de La Salette",
     "color": "white",
     "grade": "4",
-    "rank": ""
+    "rank": "12"
   }
 }
