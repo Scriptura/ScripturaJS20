@@ -11,9 +11,9 @@ const fs = require('fs'),
 // Verification des dates de Pâques @see http://5ko.free.fr/fr/easter.php
 
 const liturgicalCalendar = date => {
-  const data1 = JSON.parse(fs.readFileSync(french, 'utf8')),
+  const data1 = JSON.parse(fs.readFileSync(general, 'utf8')),
         data2 = JSON.parse(fs.readFileSync(european, 'utf8')),
-        data3 = JSON.parse(fs.readFileSync(general, 'utf8')),
+        data3 = JSON.parse(fs.readFileSync(french, 'utf8')),
         dt = DateTime.local(),
         currentYear = dt.toFormat('yyyy'),
         //currentDayMonth = dt.toFormat('ddMM'),
@@ -22,14 +22,22 @@ const liturgicalCalendar = date => {
 
   let currentDayMonth = dt.toFormat('ddMM')
   // for test:
-  //currentDayMonth = '2812'
+  currentDayMonth = '0601'
 
-  // Gestion des fêtes votives
   if (typeof date === 'undefined') date = currentDayMonth
+
   let data = data1[date]
-  data = data2[date]
-  data = data3[date]
-  if (typeof data === 'undefined') data = {name: "De la férie", color: "green", grade: "", rank: ""}
+  if ((typeof data2 === 'object') && (data2[date])) data = data2[date]
+  if ((typeof data3 === 'object') && (data3[date])) data = data3[date]
+
+  if ((typeof data === 'undefined') || (data.name === '')) data = {name: "De la férie", color: "", grade: "", rank: ""}
+
+  // Si valeurs suivantes manquantes dans les .json :
+  if (data.color === '') data.color = "green"
+  if (data.grade === '') data.grade = ""
+  if (data.rank === '') data.rank = ""
+
+  // Définition des fêtes votives :
   if (currentDayMonth === easterDate.plus({ days: -46 }).toFormat('ddMM')) data = {name: "Mercredi des Cendres", color: "purple", grade: "", rank: "2"} // @todo Solennité ?
   if (currentDayMonth === easterDate.plus({ days: -42 }).toFormat('ddMM')) data = {name: "Premier dimanche de Carême", color: "purple", grade: "1", rank: "2"}
   if (currentDayMonth === easterDate.plus({ days: -35 }).toFormat('ddMM')) data = {name: "Deuxième dimanche de Carême", color: "purple", grade: "1", rank: "2"}
@@ -79,15 +87,15 @@ const liturgicalCalendar = date => {
   }
 */
 
-  // Traducion des degrés de fête numérotés en language humain
-  let grade = data.grade
+  // Traducion des degrés de fête en language humain
+  let grade = data.grades
   //if (grade === '') data.grade = ""
   if (grade === '1') data.grade = "Solennité"
   if (grade === '2') data.grade = "Fête"
   if (grade === '3') data.grade = "Mémoire obligatoire"
   if (grade === '4') data.grade = "Mémoire facultative"
 
-  // Convertissage des couleurs liturgiques
+  // Calibrage des couleurs liturgiques
   let color = data.color
   if (color === 'withe') data.color = '#ffffff'
   if (color === 'red') data.color = '#ff0000' //#bf2329
