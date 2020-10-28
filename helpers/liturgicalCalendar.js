@@ -22,7 +22,7 @@ const liturgicalCalendar = date => {
 
   let currentDayMonth = dt.toFormat('ddMM')
   // for test:
-  currentDayMonth = '0601'
+  //currentDayMonth = '0601'
 
   if (typeof date === 'undefined') date = currentDayMonth
 
@@ -88,7 +88,7 @@ const liturgicalCalendar = date => {
 */
 
   // Traducion des degrés de fête en language humain
-  let grade = data.grades
+  let grade = data.grade
   //if (grade === '') data.grade = ""
   if (grade === '1') data.grade = "Solennité"
   if (grade === '2') data.grade = "Fête"
@@ -110,6 +110,7 @@ const liturgicalCalendar = date => {
   if (color2 === 'purple') data.color2 = '#800080' //#9f15a7
   if (color2 === 'black') data.color2 = '#000000'
 
+  console.log(data)
   return data
 }
 
