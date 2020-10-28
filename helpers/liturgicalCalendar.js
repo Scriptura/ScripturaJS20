@@ -36,36 +36,43 @@ const liturgicalCalendar = date => {
   if (data.rank === '') data.rank = ""
 
   // Définition des fêtes votives :
-  if (currentDayMonth === easterDate.plus({ days: -46 }).toFormat('ddMM')) data = {name: "Mercredi des Cendres", color: "purple", grade: "", rank: "2"}
-  if (currentDayMonth === easterDate.plus({ days: -42 }).toFormat('ddMM')) data = {name: "Premier dimanche de Carême", color: "purple", grade: "1", rank: "2"}
-  if (currentDayMonth === easterDate.plus({ days: -35 }).toFormat('ddMM')) data = {name: "Deuxième dimanche de Carême", color: "purple", grade: "1", rank: "2"}
-  if (currentDayMonth === easterDate.plus({ days: -28 }).toFormat('ddMM')) data = {name: "Troisième dimanche de Carême", color: "purple", grade: "1", rank: "2"}
-  if (currentDayMonth === easterDate.plus({ days: -21 }).toFormat('ddMM')) data = {name: "Quatrième dimanche de Carême", color: "purple", grade: "1", rank: "2"}
-  if (currentDayMonth === easterDate.plus({ days: -14 }).toFormat('ddMM')) data = {name: "Cinquième dimanche de Carême", color: "purple", grade: "1", rank: "2"}
-  if (currentDayMonth === easterDate.plus({ days: -7 }).toFormat('ddMM')) data = {name: "Dimanche des Rameaux et de la Passion du Seigneur", color: "red", grade: "1", rank: "2"}
-  if (currentDayMonth === easterDate.plus({ days: -6 }).toFormat('ddMM')) data = {name: "Lundi Saint", color: "purple", grade: "", rank: "2"}
-  if (currentDayMonth === easterDate.plus({ days: -5 }).toFormat('ddMM')) data = {name: "Mardi Saint", color: "purple", grade: "", rank: "2"}
-  if (currentDayMonth === easterDate.plus({ days: -4 }).toFormat('ddMM')) data = {name: "Mercredi Saint", color: "purple", grade: "", rank: "2"}
-  if (currentDayMonth === easterDate.plus({ days: -3 }).toFormat('ddMM')) data = {name: "Jeudi Saint", color: "white", grade: "1", rank: "1"} // rank "1" seulement pour le soir, sinon rank "2"
-  if (currentDayMonth === easterDate.plus({ days: -2 }).toFormat('ddMM')) data = {name: "Vendredi Saint", color: "red", grade: "1", rank: "1"}
-  if (currentDayMonth === easterDate.plus({ days: -1 }).toFormat('ddMM')) data = {name: "Samedi Saint", color: "purple", grade: "1", rank: "1"}
+  if (currentDayMonth === easterDate.plus({days: -46}).toFormat('ddMM')) data = {name: "Mercredi des Cendres", color: "purple", grade: "", rank: "2"}
+  if (currentDayMonth === easterDate.plus({days: -42}).toFormat('ddMM')) data = {name: "Premier dimanche de Carême", color: "purple", grade: "1", rank: "2"}
+  if (currentDayMonth === easterDate.plus({days: -35}).toFormat('ddMM')) data = {name: "Deuxième dimanche de Carême", color: "purple", grade: "1", rank: "2"}
+  if (currentDayMonth === easterDate.plus({days: -28}).toFormat('ddMM')) data = {name: "Troisième dimanche de Carême", color: "purple", grade: "1", rank: "2"}
+  if (currentDayMonth === easterDate.plus({days: -21}).toFormat('ddMM')) data = {name: "Quatrième dimanche de Carême", color: "purple", grade: "1", rank: "2"}
+  if (currentDayMonth === easterDate.plus({days: -14}).toFormat('ddMM')) data = {name: "Cinquième dimanche de Carême", color: "purple", grade: "1", rank: "2"}
+  if (currentDayMonth === easterDate.plus({days: -7}).toFormat('ddMM')) data = {name: "Dimanche des Rameaux et de la Passion du Seigneur", color: "red", grade: "1", rank: "2"}
+  if (currentDayMonth === easterDate.plus({days: -6}).toFormat('ddMM')) data = {name: "Lundi Saint", color: "purple", grade: "", rank: "2"}
+  if (currentDayMonth === easterDate.plus({days: -5}).toFormat('ddMM')) data = {name: "Mardi Saint", color: "purple", grade: "", rank: "2"}
+  if (currentDayMonth === easterDate.plus({days: -4}).toFormat('ddMM')) data = {name: "Mercredi Saint", color: "purple", grade: "", rank: "2"}
+  if (currentDayMonth === easterDate.plus({days: -3}).toFormat('ddMM')) data = {name: "Jeudi Saint", color: "white", grade: "1", rank: "1"} // rank "1" seulement pour le soir, sinon rank "2"
+  if (currentDayMonth === easterDate.plus({days: -2}).toFormat('ddMM')) data = {name: "Vendredi Saint", color: "red", grade: "1", rank: "1"}
+  if (currentDayMonth === easterDate.plus({days: -1}).toFormat('ddMM')) data = {name: "Samedi Saint", color: "purple", grade: "1", rank: "1"}
   if (currentDayMonth === easterDate.toFormat('ddMM')) data = {name: "Résurrection du Seigneur", color: "white", grade: "1", rank: "1"}
-  if (currentDayMonth === easterDate.plus({ days: 1 }).toFormat('ddMM')) data = {name: "Lundi dans l'octave Pâques", color: "white", grade: "1", rank: "2"}
-  if (currentDayMonth === easterDate.plus({ days: 2 }).toFormat('ddMM')) data = {name: "Mardi dans l'octave de Pâques", color: "white", grade: "1", rank: "2"}
-  if (currentDayMonth === easterDate.plus({ days: 3 }).toFormat('ddMM')) data = {name: "Mercredi dans l'octave de Pâques", color: "white", grade: "1", rank: "2"}
-  if (currentDayMonth === easterDate.plus({ days: 4 }).toFormat('ddMM')) data = {name: "Jeudi dans l'octave de Pâques", color: "white", grade: "1", rank: "2"}
-  if (currentDayMonth === easterDate.plus({ days: 5 }).toFormat('ddMM')) data = {name: "Vendredi dans l'octave de Pâques", color: "white", grade: "1", rank: "2"}
-  if (currentDayMonth === easterDate.plus({ days: 6 }).toFormat('ddMM')) data = {name: "Samedi dans l'octave de Pâques", color: "white", grade: "1", rank: "2"}
-  if (currentDayMonth === easterDate.plus({ days: 7 }).toFormat('ddMM')) data = {name: "Dimanche de la divine Miséricorde", color: "white", grade: "1", rank: "2"}
-  if (currentDayMonth === easterDate.plus({ days: 14 }).toFormat('ddMM')) data = {name: "Troisième dimanche du Temps Pascal", color: "white", grade: "1", rank: "2"}
-  if (currentDayMonth === easterDate.plus({ days: 21 }).toFormat('ddMM')) data = {name: "Quatrième dimanche du Temps Pascal", color: "white", grade: "1", rank: "2"}
-  if (currentDayMonth === easterDate.plus({ days: 28 }).toFormat('ddMM')) data = {name: "Cinquième dimanche du Temps Pascal", color: "white", grade: "1", rank: "2"}
-  if (currentDayMonth === easterDate.plus({ days: 35 }).toFormat('ddMM')) data = {name: "Sixième dimanche du Temps Pascal", color: "white", grade: "1", rank: "2"}
-  if (currentDayMonth === easterDate.plus({ days: 40 }).toFormat('ddMM')) data = {name: "Ascension", color: "white", grade: "1", rank: "2"}
-  if (currentDayMonth === easterDate.plus({ days: 49 }).toFormat('ddMM')) data = {name: "Pentecôte", color: "white", grade: "1", rank: "2"}
-  if (currentDayMonth === easterDate.plus({ days: 56 }).toFormat('ddMM')) data = {name: "Sainte Trinité", color: "white", grade: "1", rank: "3"}
-  if (currentDayMonth === easterDate.plus({ days: 63 }).toFormat('ddMM')) data = {name: "Le Saint Sacrement", color: "white", grade: "1", rank: "3"}
-  if (currentDayMonth === easterDate.plus({ days: 68 }).toFormat('ddMM')) data = {name: "Sacré-Cœur de Jésus", color: "white", grade: "1", rank: "3"}
+  if (currentDayMonth === easterDate.plus({days: 1}).toFormat('ddMM')) data = {name: "Lundi dans l'octave Pâques", color: "white", grade: "1", rank: "2"}
+  if (currentDayMonth === easterDate.plus({days: 2}).toFormat('ddMM')) data = {name: "Mardi dans l'octave de Pâques", color: "white", grade: "1", rank: "2"}
+  if (currentDayMonth === easterDate.plus({days: 3}).toFormat('ddMM')) data = {name: "Mercredi dans l'octave de Pâques", color: "white", grade: "1", rank: "2"}
+  if (currentDayMonth === easterDate.plus({days: 4}).toFormat('ddMM')) data = {name: "Jeudi dans l'octave de Pâques", color: "white", grade: "1", rank: "2"}
+  if (currentDayMonth === easterDate.plus({days: 5}).toFormat('ddMM')) data = {name: "Vendredi dans l'octave de Pâques", color: "white", grade: "1", rank: "2"}
+  if (currentDayMonth === easterDate.plus({days: 6}).toFormat('ddMM')) data = {name: "Samedi dans l'octave de Pâques", color: "white", grade: "1", rank: "2"}
+  if (currentDayMonth === easterDate.plus({days: 7}).toFormat('ddMM')) data = {name: "Dimanche de la divine Miséricorde", color: "white", grade: "1", rank: "2"}
+  if (currentDayMonth === easterDate.plus({days: 14}).toFormat('ddMM')) data = {name: "Troisième dimanche du Temps Pascal", color: "white", grade: "1", rank: "2"}
+  if (currentDayMonth === easterDate.plus({days: 21}).toFormat('ddMM')) data = {name: "Quatrième dimanche du Temps Pascal", color: "white", grade: "1", rank: "2"}
+  if (currentDayMonth === easterDate.plus({days: 28}).toFormat('ddMM')) data = {name: "Cinquième dimanche du Temps Pascal", color: "white", grade: "1", rank: "2"}
+  if (currentDayMonth === easterDate.plus({days: 35}).toFormat('ddMM')) data = {name: "Sixième dimanche du Temps Pascal", color: "white", grade: "1", rank: "2"}
+  if (currentDayMonth === easterDate.plus({days: 40}).toFormat('ddMM')) data = {name: "Ascension", color: "white", grade: "1", rank: "2"}
+  if (currentDayMonth === easterDate.plus({days: 49}).toFormat('ddMM')) data = {name: "Pentecôte", color: "white", grade: "1", rank: "2"}
+  if (currentDayMonth === easterDate.plus({days: 56}).toFormat('ddMM')) data = {name: "Sainte Trinité", color: "white", grade: "1", rank: "3"}
+  if (currentDayMonth === easterDate.plus({days: 63}).toFormat('ddMM')) data = {name: "Le Saint Sacrement", color: "white", grade: "1", rank: "3"}
+  if (currentDayMonth === easterDate.plus({days: 68}).toFormat('ddMM')) data = {name: "Sacré-Cœur de Jésus", color: "white", grade: "1", rank: "3"}
+
+
+  // BEGIN test
+  //const object = {offset: "-1", name: "Mercredi test", color: "purple", grade: "", rank: "2"}
+  //const test = [object].map((offset, name, color, grade, rank) => `if (currentDayMonth === easterDate.plus({days: ` + offset + `}).toFormat('ddMM')) data = {name: "` + name + `", color: "` + color + `", grade: "` + grade + `, rank: "` + rank + `}`)
+  // END test
+
 
   //{name: "Christ Roi", color: "white", grade: "1", rank: "3"}
   //{name: "Premier dimanche de l'Avent", color: "white", grade: "1", rank: "2"}
