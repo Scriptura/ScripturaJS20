@@ -20,15 +20,13 @@ const liturgicalCalendar = date => {
         ge = easter.gregorianEaster(currentYear),
         easterDate = DateTime.local(ge.year, ge.month, ge.day)
 
-  let currentDayMonth = dt.toFormat('ddMM')
-  // for test:
-  //currentDayMonth = '0601'
-
+  let currentDayMonth = dt.toFormat('ddMM')//; currentDayMonth = '0601'
+  
   if (typeof date === 'undefined') date = currentDayMonth
 
-  let data = data1[date]
-  if ((typeof data2 === 'object') && (data2[date])) data = data2[date]
-  if ((typeof data3 === 'object') && (data3[date])) data = data3[date]
+  // Fusionner les objets :
+  let data = {...data1[date], ...data2[date], ...data3[date]}
+
 
   if ((typeof data === 'undefined') || (data.name === '')) data = {name: "De la férie", color: "", grade: "", rank: ""}
 
@@ -38,13 +36,13 @@ const liturgicalCalendar = date => {
   if (data.rank === '') data.rank = ""
 
   // Définition des fêtes votives :
-  if (currentDayMonth === easterDate.plus({ days: -46 }).toFormat('ddMM')) data = {name: "Mercredi des Cendres", color: "purple", grade: "", rank: "2"} // @todo Solennité ?
+  if (currentDayMonth === easterDate.plus({ days: -46 }).toFormat('ddMM')) data = {name: "Mercredi des Cendres", color: "purple", grade: "", rank: "2"}
   if (currentDayMonth === easterDate.plus({ days: -42 }).toFormat('ddMM')) data = {name: "Premier dimanche de Carême", color: "purple", grade: "1", rank: "2"}
   if (currentDayMonth === easterDate.plus({ days: -35 }).toFormat('ddMM')) data = {name: "Deuxième dimanche de Carême", color: "purple", grade: "1", rank: "2"}
   if (currentDayMonth === easterDate.plus({ days: -28 }).toFormat('ddMM')) data = {name: "Troisième dimanche de Carême", color: "purple", grade: "1", rank: "2"}
   if (currentDayMonth === easterDate.plus({ days: -21 }).toFormat('ddMM')) data = {name: "Quatrième dimanche de Carême", color: "purple", grade: "1", rank: "2"}
   if (currentDayMonth === easterDate.plus({ days: -14 }).toFormat('ddMM')) data = {name: "Cinquième dimanche de Carême", color: "purple", grade: "1", rank: "2"}
-  if (currentDayMonth === easterDate.plus({ days: -7 }).toFormat('ddMM')) data = {name: "Dimanche des Rameaux et de la Passion du Seigneur", color: "red", grade: "2", rank: ""}
+  if (currentDayMonth === easterDate.plus({ days: -7 }).toFormat('ddMM')) data = {name: "Dimanche des Rameaux et de la Passion du Seigneur", color: "red", grade: "1", rank: "2"}
   if (currentDayMonth === easterDate.plus({ days: -6 }).toFormat('ddMM')) data = {name: "Lundi Saint", color: "purple", grade: "", rank: "2"}
   if (currentDayMonth === easterDate.plus({ days: -5 }).toFormat('ddMM')) data = {name: "Mardi Saint", color: "purple", grade: "", rank: "2"}
   if (currentDayMonth === easterDate.plus({ days: -4 }).toFormat('ddMM')) data = {name: "Mercredi Saint", color: "purple", grade: "", rank: "2"}
@@ -110,7 +108,6 @@ const liturgicalCalendar = date => {
   if (color2 === 'purple') data.color2 = '#800080' //#9f15a7
   if (color2 === 'black') data.color2 = '#000000'
 
-  console.log(data)
   return data
 }
 
