@@ -79,7 +79,7 @@ select
 select:not([multiple])
   -webkit-appearance none // @affected Chrome
   -moz-appearance none // @affected Firefox
-  //background-image $image004
+  //background-image _image004
   //background-repeat no-repeat
   //background-position right .5em center // calc(100% - .5em) 50%
   //background-size 1em 1em
@@ -142,7 +142,7 @@ form fieldset > [class*=input]
   width 100%
   margin 1em 0 1em
 
-//@media (min-width $sizeXS)
+//@media (min-width _sizeXS)
 //  form [class^=columns] > [class*=input]
 //    padding-bottom 0
 
@@ -162,7 +162,7 @@ form fieldset > [class*=input]
 [class*=input] select
 [class*=input] textarea
   color currentColor
-  border-radius $r2
+  border-radius _r2
 
 [class*=input] textarea
   min-height 10em // @note Propriété en lien avec 'resize'
@@ -176,7 +176,7 @@ form fieldset > [class*=input]
 [class*=input] textarea:focus
   outline none
   border .1rem solid #000
-  //border-radius $r2
+  //border-radius _r2
 
 [class*=input] [type=color]
   height 3em
@@ -219,7 +219,7 @@ form fieldset > [class*=input]
 
 [class*=input] :required
 [class*=input] .required // @note '.required' pour éléments select, et fallback all browsers
-  //background-image $image002
+  //background-image _image002
   background-repeat no-repeat
   background-position right .5em center
   background-size 1em 1em
@@ -280,7 +280,7 @@ form fieldset > [class*=input]
   border .5em solid #e91e63
   box-shadow 0 0.5rem 2rem rgba(0,0,0,.3)
   background-image linear-gradient(to top,rgba(0,0,0,.1),rgba(255,255,255,.05))
-  //border-radius $r4
+  //border-radius _r4
   transition translateZ .1s linear
 
 .button:focus

@@ -23,13 +23,10 @@ html.no-js(lang='fr')
     //-block aside
       //-aside.aside aside
       //-include aside
-    block nav
-      nav.nav(role='navigation')
-        .wrap nav
-      //-include nav
+    block menu
+      include includes/menu
     block breadcrumb
-      nav.breadcrumb( aria-label='Breadcrumb')
-        .wrap breadcrumb
+      include includes/breadcrumb
     block footer
       footer.footer
         .wrap footer

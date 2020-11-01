@@ -3,18 +3,18 @@
 // @description Polices de caractères
 // -----------------------------------------------------------------------------
 
-if $fontName and $fontFile
+if _fontName and _fontFile
   @font-face
-    font-family $fontName
-    src url('/fonts/' $fontFile '.woff2') format('woff2'),
-        url('/fonts/' $fontFile '.woff') format('woff')
+    font-family _fontName
+    src url('/fonts/' _fontFile '.woff2') format('woff2'),
+        url('/fonts/' _fontFile '.woff') format('woff')
     font-weight normal
     font-style normal
 
-if $fontName2 and $fontFile2
+if _fontName2 and _fontFile2
   @font-face
-    font-family $fontName2
-    src url('/fonts/' $fontFile2 '.woff2') format('woff2'),
-      url('/fonts/' $fontFile2 '.woff') format('woff')
+    font-family _fontName2
+    src url('/fonts/' _fontFile2 '.woff2') format('woff2'),
+      url('/fonts/' _fontFile2 '.woff') format('woff')
     font-weight normal
     font-style normal

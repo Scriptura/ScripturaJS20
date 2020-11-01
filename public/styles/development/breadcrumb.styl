@@ -1,0 +1,70 @@
+_breadcrumbSize = 2.5rem
+_breadcrumbColor = _colorAdd1
+
+.breadcrumb
+  background-color #222
+
+.breadcrumb ol
+  display flex
+  margin 0
+  padding 0
+
+.breadcrumb li
+  list-style none
+  filter drop-shadow(.5rem .5rem .5rem rgba(0, 0, 0, .25))
+
+.breadcrumb li:nth-child(1)
+  z-index 2
+
+.breadcrumb li:nth-child(2)
+  z-index 1
+
+.breadcrumb a
+  position relative
+  display block
+  height _dim
+  line-height _breadcrumbSize // @todo enlever les unités
+  padding 0 (_breadcrumbSize / 4) 0 _breadcrumbSize
+  font-size 1rem //(_breadcrumbSize / 3)
+  background-size cover
+  background-repeat no-repeat
+  color _breadcrumbColor
+  text-decoration none
+
+.breadcrumb li a
+.breadcrumb li a::after
+  background-color #222
+  transition background-color .3s ease-in-out
+
+.breadcrumb a::after
+  content ''
+  position absolute
+  z-index -1
+  top 0
+  right -(_breadcrumbSize / 2)
+  display block
+  width _breadcrumbSize
+  height _breadcrumbSize
+  //clip-path polygon(0 0, 0 0, 100% 50%, 0 100%, 0 100%)
+  clip-path polygon(0% 0%, 50% 0, 100% 50%, 50% 100%, 0% 100%)
+
+.breadcrumb li:first-child a
+  padding-left 1rem
+  //padding-left (_breadcrumbSize / 2)
+
+.breadcrumb li:last-child a
+  color lighten(_breadcrumbColor, 50%)
+/*
+.breadcrumb li a:focus
+.breadcrumb li a:hover
+.breadcrumb li a:active
+  color #777
+*/
+.breadcrumb li a:focus
+.breadcrumb li a:hover
+.breadcrumb li a:active
+.breadcrumb li a:focus::after
+.breadcrumb li a:hover::after
+.breadcrumb li a:active::after
+  color #000
+  background-color Orange

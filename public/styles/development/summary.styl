@@ -4,25 +4,25 @@
 .summary
   display flex
   flex-wrap wrap
-  width 'calc(100% + %s)' % ($gutter)
-  margin-left - $gutter !important
+  width 'calc(100% + %s)' % (_gutter)
+  margin-left - _gutter !important
 
 .summary > *
   width 100%
-  margin-left $gutter !important
+  margin-left _gutter !important
   padding 0 // @note Si liste ul>li
 
-@media (min-width $sizeXS)
+@media (min-width _sizeXS)
 
   .summary > *
-    width 'calc(%s - %s)' % (floor(100% / 12 * 6, 2) $gutter)
+    width 'calc(%s - %s)' % (floor(100% / 12 * 6, 2) _gutter)
 
-@media (min-width $sizeS)
-
-  .summary > *
-    width 'calc(%s - %s)' % (floor(100% / 12 * 4, 2) $gutter)
-
-@media (min-width $sizeL)
+@media (min-width _sizeS)
 
   .summary > *
-    width 'calc(%s - %s)' % (floor(100% / 12 * 3, 2) $gutter)
+    width 'calc(%s - %s)' % (floor(100% / 12 * 4, 2) _gutter)
+
+@media (min-width _sizeL)
+
+  .summary > *
+    width 'calc(%s - %s)' % (floor(100% / 12 * 3, 2) _gutter)

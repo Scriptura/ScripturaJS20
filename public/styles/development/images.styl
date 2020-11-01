@@ -30,8 +30,8 @@ figure
   //vertical-align middle
   width 100%
   padding .5em
-  color $colorT
-  background-color lighten($color0, 10%)
+  color _colorT
+  background-color lighten(_color0, 10%)
   box-shadow .5rem .5rem 2rem rgba(0, 0, 0, .2)
 
 [class^=figure] figcaption
@@ -48,16 +48,16 @@ figure
 [class*=-thumbnail]
   width 100% // Important à appliquer pour le responsive si le width n'est pas définit préalablement
 
-@media (min-width $sizeXS)
+@media (min-width _sizeXS)
 
   [class*=-thumbnail]
-    max-width ($wrap / 4)
+    max-width (_wrap / 4)
 
 
 // @subsection .align
 // -----------------------------------------------------------------------------
 
-@media (min-width $sizeS)
+@media (min-width _sizeS)
 
   [class*=-alignleft]
     float left
@@ -91,10 +91,10 @@ figure
   height 2.5em
   line-height 2.5
   font-weight 600
-  color $colorCL037
+  color _colorCL037
   text-align center
   text-shadow 0 0 .5em colorTS037
-  background-color $colorBG037
+  background-color _colorBG037
   opacity .75
   border-radius 50%
 
@@ -107,8 +107,8 @@ figure
   left 0
   margin 0 .5em .5em
   padding .5em
-  color $colorCL038
-  background-color $colorBG038
+  color _colorCL038
+  background-color _colorBG038
   opacity 0
   transition all .6s ease
 
@@ -151,8 +151,8 @@ figure
   cursor zoom-in
 
 [class*=-focus] button
-  top $gutter
-  right $gutter
+  top _gutter
+  right _gutter
   width 1.2rem
   height 1.2rem
 
@@ -178,8 +178,8 @@ figure
   box-shadow 0 0 0 1000rem #222
 
 .focus-off button
-  bottom $gutter
-  right $gutter
+  bottom _gutter
+  right _gutter
   width 2rem
   height 2rem
   cursor zoom-out

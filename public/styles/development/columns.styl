@@ -10,7 +10,7 @@
   width 100%
   word-wrap break-word
 
-@media (min-width $sizeXS)
+@media (min-width _sizeXS)
 
   .columns2
   .columns3
@@ -21,7 +21,7 @@
   .columns6
     column-count 3
 
-@media (min-width $sizeS)
+@media (min-width _sizeS)
 
   .columns3
   .columns4
@@ -31,7 +31,7 @@
   .columns6
     column-count 4
 
-@media (min-width $sizeL)
+@media (min-width _sizeL)
 
   .columns4
     column-count 4
@@ -43,15 +43,15 @@
     column-count 6
 
 [class^=columns].gap
-  column-gap $gap
+  column-gap _gap
 
 [class^=columns].gap > *
-  margin-bottom $gap
+  margin-bottom _gap
 
-@media (min-width $sizeXS)
+@media (min-width _sizeXS)
 
   [class^=columns].sizeSgap
-    column-gap $gap
+    column-gap _gap
 
   [class^=columns].sizeSgap > *
-    margin-bottom $gap
+    margin-bottom _gap

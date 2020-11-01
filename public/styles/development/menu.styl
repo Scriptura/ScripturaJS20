@@ -1,0 +1,122 @@
+_menuSize = 2.5rem
+_menuFix = 177px
+_menuColor = _colorAdd1 //darken(_colorAdd1, 70%)
+// Main menu
+
+.nav
+  display flex
+  position relative // en lien avec z-index
+  z-index 10 // en lien avec z-index
+  //height _menuSize
+  font-size 1rem
+  background-color #222
+  box-shadow .5rem .5rem .5rem rgba(0, 0, 0, .2)
+
+.nav ul
+  display flex
+  margin 0
+  padding 0
+
+.nav li
+  list-style none
+
+.nav li > *
+  display block
+  padding 0 1em
+  line-height unit(_menuSize, '')
+
+.nav a
+  color  lighten(_menuColor, 50%)
+  text-decoration none
+
+.nav .active
+  color #000
+  background-color Orange
+
+/*
+@media (min-width _sizeNav)
+  for _i in 1...12
+    .nav li:nth-child(11n+{_i}) > *
+      _colorItem = lighten(_menuColor, 5% * _i)
+      background-color _colorItem
+*/
+
+.nav li > *
+  box-shadow inset .5rem .5rem .5rem rgba(0, 0, 0, .2)
+
+.nav li a:focus
+.nav li a:hover
+.nav li a:active
+  color #000
+  background-color _color5 //lighten(_menuColor, 50%) // darken(_menuColor, 25%)
+
+.nav svg
+  display inline-block
+  vertical-align sub
+  height 1.2rem
+  width 1.2rem
+  margin-right .5em
+
+.nav a:focus svg
+.nav a:hover svg
+.nav a:active svg
+  animation animJump .5s ease-in-out
+
+@media (min-width _sizeNav)
+
+  @keyframes animJump
+    30%
+      transform translateY(-.3rem)
+
+@media (min-width _sizeNav)
+
+  .item-push // @note '.item-push' est l'inverse de '.item-pull' (margin-right: auto), cette dernière classe étant non-utilisée.
+      margin-left auto
+
+// Hamburger
+
+.cmd-nav
+  position relative
+  width _menuSize
+  height _menuSize
+  padding (_menuSize / 10)
+  cursor pointer
+  background-color #222
+  fill #000
+  border none
+  outline none
+
+.cmd-nav svg
+  width 100%
+  height 100%
+
+.cmd-nav svg *
+  transform-origin center
+  transition transform .3s ease
+
+.cmd-nav svg :nth-child(1)
+  fill Orange
+.cmd-nav svg :nth-child(2)
+  fill #e91e63 //Crimson
+.cmd-nav svg :nth-child(3)
+  fill #8bc34a //Chocolate
+
+.cmd-nav:focus svg *
+.cmd-nav:hover svg *
+  animation: .6s ease-in-out colorChange forwards
+
+.cmd-nav:focus svg :nth-child(1)
+.cmd-nav:hover svg :nth-child(1)
+  transform translate(- _menuFix, _menuFix) rotate(45deg)
+
+.cmd-nav:focus svg :nth-child(2)
+.cmd-nav:hover svg :nth-child(2)
+  transform rotate(-45deg)
+
+.cmd-nav:focus svg :nth-child(3)
+.cmd-nav:hover svg :nth-child(3)
+  transform translate(- _menuFix, - _menuFix) rotate(-45deg)
+
+@keyframes colorChange
+  to
+    fill #e91e63

@@ -20,9 +20,9 @@
 html
   -webkit-text-size-adjust 100% // @bugfix Prevent adjustments of font size after orientation changes @affected iOS.
   //-webkit-tap-highlight-color Transparent // Change the default tap highlight to be completely transparent. @affected iOS.
-  color $colorT
-  background-color $color0
-  font-family $fontList // Georgia, Serif
+  color _colorT
+  background-color _color0
+  font-family _fontList // Georgia, Serif
   line-height 1.5 //1.15 // @bugfix Correct the line height @affected All browsers.
   scroll-behavior smooth // Défilement fluide. @todo En conflit avec script retour vers le haut...
 
@@ -35,7 +35,7 @@ html
   background-color Orange //rgba(255, 111, 125, .5)
 
 a
-  color $color1
+  color _color1
   // background-color transparent // @bugfix Remove the gray background on active links @affected IE 10.
   text-decoration none
   // transition all .5s
@@ -56,7 +56,7 @@ hr
   box-sizing content-box // @bugfix Add the correct box sizing @affected Firefox.
   height .2rem //0 // @bugfix Add the correct box sizing @affected Firefox.
   color inherit // @bugfix Reset gray color. @affected Firefox.
-  background-color $color1
+  background-color _color1
   border none
 
 h1
@@ -73,7 +73,7 @@ h6
 .h6
   margin-top 0 // @bugfix Retrait des marges top pour un meilleur contrôle.
   margin-bottom .67em
-  font-family $fontList2
+  font-family _fontList2
   //color Tan
   //text-shadow .5rem .5rem .5rem rgba(0, 0, 0, .1)
   // font-style
@@ -126,14 +126,14 @@ blockquote
   position relative
   margin-left 0
   padding-left 1.5em
-  border-left .5em solid $color1 //currentcolor
+  border-left .5em solid _color1 //currentcolor
 
 blockquote::before
   content '\275E' //'\275D' '\201C'
   position absolute
   bottom -3rem
   font-size 4em
-  color $color1
+  color _color1
 
 blockquote footer
   text-align right
@@ -149,7 +149,7 @@ q
 
 mark
   color currentColor
-  background-color $color1
+  background-color _color1
 
 small
   font-size 80% // @bugfix Add the correct font size @affected All browsers.

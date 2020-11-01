@@ -3,16 +3,16 @@
 // @description Définition des variables globales
 // -----------------------------------------------------------------------------
 
-// @note @bugfix Téléscopages possible entre les variables stylus et certaines valeurs. Par convention le framework utilise donc '$' pour les variables. Cela permet aussi un meilleur repérage des variables dans le code.
+// @note @bugfix Téléscopages possible entre les variables stylus et certaines valeurs. Par convention le framework utilise donc '_' pour les variables. Cela permet aussi un meilleur repérage des variables dans le code.
 
 
 // @subsection  Grid
 // @description Configuration de la grille
 // -----------------------------------------------------------------------------
 
-$columns = 12                             // @note Nombre de colonnes
-$gutter = 1rem                            // @note Gouttière, largeur entre deux modules (en unité em/rem)
-$wrap = 90rem + 2                         // @note Largeur maximale du contenu (+ prise en compte du padding interne)
+_columns = 12                             // @note Nombre de colonnes
+_gutter = 1rem                            // @note Gouttière, largeur entre deux modules (en unité em/rem)
+_wrap = 90rem + 2                         // @note Largeur maximale du contenu (+ prise en compte du padding interne)
 
 
 // @subsection  Breakpoints
@@ -20,12 +20,12 @@ $wrap = 90rem + 2                         // @note Largeur maximale du contenu (
 // -----------------------------------------------------------------------------
 
 // @bugfix Nécessité de préciser deux chiffres après la virgule pour éviter un décalage entre 'max-width' et 'min-width' (avec une unité pour éviter les arrondissements par les navigateurs)
-$sizeXS =   36.01rem
-$sizeS =    65.01rem
-$sizeL =    90.01rem
-$sizeXL =  120.01rem
-$sizeXXL = 140.01rem
-$sizeNav =  65.01rem // À caler sur la taille du contenu de '.nav-main ul'. @note Prévoir de la marge en raison des différences d'interprétation des fonts selon les navigateurs
+_sizeXS =   36.01rem
+_sizeS =    65.01rem
+_sizeL =    90.01rem
+_sizeXL =  120.01rem
+_sizeXXL = 140.01rem
+_sizeNav =  65.01rem // À caler sur la taille du contenu de '.nav-main ul'. @note Prévoir de la marge en raison des différences d'interprétation des fonts selon les navigateurs
 
 
 // @subsection  Fonts
@@ -33,33 +33,34 @@ $sizeNav =  65.01rem // À caler sur la taille du contenu de '.nav-main ul'. @no
 // -----------------------------------------------------------------------------
 // @params 'false' si pas de font
 
-$fontName = 'Open Sans'
-$fontList = $fontName, Arial, Sans-Serif
-$fontFile = openSans-Regular
-$fontName2 = 'Noto Serif'
-$fontList2 = $fontName2, Georgia, Serif
-$fontFile2 = notoSerif-Regular
+_fontName = 'Open Sans'
+_fontList = _fontName, Arial, Sans-Serif
+_fontFile = openSans-Regular
+_fontName2 = 'Noto Serif'
+_fontList2 = _fontName2, Georgia, Serif
+_fontFile2 = notoSerif-Regular
 
 
 // @subsection  Colors
 // @description Palette de référence pour le thème
 // -----------------------------------------------------------------------------
 
-$color0 = #333                            // couleur de fond
-$color1 = #e91e63                         // couleur dominante 1
-$color2 = #b9515d                         // couleur dominante 2
-$color4 = #8bc34a                         // couleur secondaire (vert)
-$color5 = Orange //#bb7c3c               // couleur secondaire (orange)
-$color6 = #448aff                         // couleur secondaire (bleu)
-$color7 = #f8fed8                         // couleur secondaire (jaune)
-$colorT = #fff                            // couleur du texte
-$colorG = $color0                         // gris de référence
+_color0 = #333                            // couleur de fond
+_color1 = #e91e63                         // couleur dominante 1
+_color2 = #b9515d                         // couleur dominante 2
+_color4 = #8bc34a                         // couleur secondaire (vert)
+_color5 = #ffa500                         // couleur secondaire (orange)
+_color6 = #448aff                         // couleur secondaire (bleu)
+_color7 = #f8fed8                         // couleur secondaire (jaune)
+_colorT = #fff                            // couleur du texte
+_colorG = _color0                         // gris de référence
 
+_colorAdd1 = #a05a2c
 
 // @subsection Rounds
 // -----------------------------------------------------------------------------
 
-$r1 = .3rem                     // Boites
-$r2 = $r1                       // Éléments internes
-$r3 = false                     // Éléments d'informations
-$r4 = false                     // Bouttons
+_r1 = .3rem                     // Boites
+_r2 = _r1                       // Éléments internes
+_r3 = false                     // Éléments d'informations
+_r4 = false                     // Bouttons
