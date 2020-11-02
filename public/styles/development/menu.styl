@@ -29,10 +29,6 @@ _menuColor = _colorAdd1 //darken(_colorAdd1, 70%)
   color  lighten(_menuColor, 50%)
   text-decoration none
 
-.nav .active
-  color #000
-  background-color Orange
-
 /*
 @media (min-width _sizeNav)
   for _i in 1...12
@@ -42,12 +38,15 @@ _menuColor = _colorAdd1 //darken(_colorAdd1, 70%)
 */
 
 .nav li > *
+  background-image linear-gradient(to top, rgba(0, 0, 0, .1) , rgba(255, 255, 255, .05))
   box-shadow inset .5rem .5rem .5rem rgba(0, 0, 0, .2)
 
 .nav li a:focus
 .nav li a:hover
 .nav li a:active
+.nav .current
   color #000
+  background-image linear-gradient(to top, rgba(0, 0, 0, .3) , rgba(255, 255, 255, .2))
   background-color _color5 //lighten(_menuColor, 50%) // darken(_menuColor, 25%)
 
 .nav svg

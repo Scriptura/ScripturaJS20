@@ -4,4 +4,20 @@ block main
   main
     h1.h2= _name
     include ../public/medias/images/TiLion1.4.svg
+    h2.h4 Serveur :
+    ul
+      //-li Url du site : #{_site_url}
+      li Version de Node.js : #{_node_version}
+      li Hostname : #{_hostname}
+      li Adresse IP locale : #{_ip}
+      li Architecture du processeur : #{_arch}
+      li Mémoire RAM : #{_totalmem} Go
+      li Système d'exploitation : #{_release}
+      li Os : #{_type} (#{_platform})
+      li Chemin du répertoire personnel de l'utilisateur actuel : #{_homedir}
+      li Chemin des fichiers temporaires : #{_tmpdir}
+    h2.h4 Client :
+    ul
+      li Os : #{_user_os} (#{_user_platform})
+      li Navigateur : #{_user_browser} (#{_user_version})
     include includes/links
