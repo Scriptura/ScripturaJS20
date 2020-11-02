@@ -13,16 +13,6 @@ nav.nav(role='navigation' aria-label='Main')
               use(xlink:href='/medias/sprites/utils.svg#home')
             | Home
       li
-        if (url === '/os')
-            svg(role='img' focusable='false')
-              use(xlink:href='/medias/sprites/utils.svg#tools')
-            | Os
-        else
-          a(href='/os')
-            svg(role='img' focusable='false')
-              use(xlink:href='/medias/sprites/utils.svg#tools')
-            | Os
-      li
         if (url === '/login')
             svg(role='img' focusable='false')
               use(xlink:href='/medias/sprites/utils.svg#login')
@@ -101,12 +91,12 @@ nav.nav(role='navigation' aria-label='Main')
       li
         if (url === '/styleGuide')
             svg(role='img' focusable='false')
-              use(xlink:href='/medias/sprites/utils.svg#quill')
+              use(xlink:href='/medias/sprites/utils.svg#tools')
             | Style Guide
         else
           a(href='/styleGuide')
             svg(role='img' focusable='false')
-              use(xlink:href='/medias/sprites/utils.svg#quill')
+              use(xlink:href='/medias/sprites/utils.svg#tools')
             | Style Guide
       li.item-push
         a(href='//github.com/Scriptura/ScripturaJS20')

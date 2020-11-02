@@ -34,10 +34,6 @@ router.use(
 )
 router.use(
   '/',
-  require(path.join(__dirname, 'os'))
-)
-router.use(
-  '/',
   require(path.join(__dirname, 'calendar'))
 )
   router.use(
