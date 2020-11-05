@@ -1,21 +1,23 @@
 _menuSize = 2.5rem
 _menuFix = 177px
 _menuColor = _colorAdd1 //darken(_colorAdd1, 70%)
+_menuColor1 = darken(_colorG, 34%)
+_menuColor2 = _color1
 // Main menu
 
 .nav
   display flex
   position relative // en lien avec z-index
-  z-index 10 // en lien avec z-index
+  z-index 1000 // en lien avec z-index
   //height _menuSize
   font-size 1rem
-  background-color #222
   box-shadow .5rem .5rem .5rem rgba(0, 0, 0, .2)
 
 .nav ul
-  display flex
+  width 100%
   margin 0
   padding 0
+  background-color _menuColor1
 
 .nav li
   list-style none
@@ -26,7 +28,7 @@ _menuColor = _colorAdd1 //darken(_colorAdd1, 70%)
   line-height unit(_menuSize, '')
 
 .nav a
-  color  lighten(_menuColor, 50%)
+  color _menuColor
   text-decoration none
 
 /*
@@ -38,16 +40,15 @@ _menuColor = _colorAdd1 //darken(_colorAdd1, 70%)
 */
 
 .nav li > *
-  background-image linear-gradient(to top, rgba(0, 0, 0, .1) , rgba(255, 255, 255, .05))
+  //background-image linear-gradient(to top, rgba(0, 0, 0, .1) , rgba(255, 255, 255, .05))
   box-shadow inset .5rem .5rem .5rem rgba(0, 0, 0, .2)
 
 .nav li a:focus
 .nav li a:hover
 .nav li a:active
-.nav .current
-  color #000
-  background-image linear-gradient(to top, rgba(0, 0, 0, .3) , rgba(255, 255, 255, .2))
-  background-color _color5 //lighten(_menuColor, 50%) // darken(_menuColor, 25%)
+  color #fff
+  //background-image linear-gradient(to top, rgba(0, 0, 0, .3) , rgba(255, 255, 255, .2))
+  background-color _color1 //lighten(_menuColor, 50%) // darken(_menuColor, 25%)
 
 .nav svg
   display inline-block
@@ -61,61 +62,109 @@ _menuColor = _colorAdd1 //darken(_colorAdd1, 70%)
 .nav a:active svg
   animation animJump .5s ease-in-out
 
+@media (max-width _sizeNav)
+
+  .nav ul
+    position absolute
+    z-index 800
+    left -100vw // @bugfix @affected Safari @note Pas de possibilité d'effet de droite à gauche : dépassement des conteneurs, même avec body overflow hidden-x
+    //display none
+    transition all 1s
+
+  .nav.active ul
+    left 0
+
 @media (min-width _sizeNav)
+
+  .nav ul
+    display flex
+
+  .nav ul .active
+    position relative
+    background-color #e91e63
+
+  .nav ul .active::after
+    content ''
+    position absolute
+    top 2.5rem
+    left calc(50% - 1rem)
+    width 2rem
+    height 1rem
+    background-color #e91e63
+    clip-path polygon(0% 0%, 100% 0%, 50% 100%)
 
   @keyframes animJump
     30%
       transform translateY(-.3rem)
 
-@media (min-width _sizeNav)
-
   .item-push // @note '.item-push' est l'inverse de '.item-pull' (margin-right: auto), cette dernière classe étant non-utilisée.
       margin-left auto
 
-// Hamburger
+// Hamburger :
 
-.cmd-nav
-  position relative
-  width _menuSize
-  height _menuSize
-  padding (_menuSize / 10)
-  cursor pointer
-  background-color #222
-  fill #000
-  border none
-  outline none
+@media (max-width _sizeNav)
 
-.cmd-nav svg
-  width 100%
-  height 100%
+  .cmd-nav
+    position absolute
+    //top 0
+    right 0
+    z-index 1001
+    width _menuSize
+    height _menuSize
+    padding (_menuSize / 10)
+    cursor pointer
+    background-color _menuColor1
+    //fill #000
+    border none
+    outline none
 
-.cmd-nav svg *
-  transform-origin center
-  transition transform .3s ease
+  .cmd-nav svg
+    width 100%
+    height 100%
 
-.cmd-nav svg :nth-child(1)
-  fill Orange
-.cmd-nav svg :nth-child(2)
-  fill #e91e63 //Crimson
-.cmd-nav svg :nth-child(3)
-  fill #8bc34a //Chocolate
+  .cmd-nav svg *
+    transform-origin center
+    transition transform .3s ease
 
-.cmd-nav:focus svg *
-.cmd-nav:hover svg *
-  animation: .6s ease-in-out colorChange forwards
+  .cmd-nav svg *
+    fill _menuColor2
 
-.cmd-nav:focus svg :nth-child(1)
-.cmd-nav:hover svg :nth-child(1)
-  transform translate(- _menuFix, _menuFix) rotate(45deg)
+  /*
+  .cmd-nav svg :nth-child(1)
+    fill Orange
 
-.cmd-nav:focus svg :nth-child(2)
-.cmd-nav:hover svg :nth-child(2)
-  transform rotate(-45deg)
+  .cmd-nav svg :nth-child(2)
+    fill #e91e63 //Crimson
 
-.cmd-nav:focus svg :nth-child(3)
-.cmd-nav:hover svg :nth-child(3)
-  transform translate(- _menuFix, - _menuFix) rotate(-45deg)
+  .cmd-nav svg :nth-child(3)
+    fill #8bc34a //Chocolate
+  */
 
-@keyframes colorChange
-  to
-    fill #e91e63
+  .cmd-nav:focus
+  .cmd-nav:hover
+    background-color _color1
+
+  .cmd-nav:focus svg *
+  .cmd-nav:hover svg *
+    fill #fff
+    //animation: .6s ease-in-out colorChange forwards
+
+  .cmd-nav.active svg :nth-child(1)
+    transform translate(- _menuFix, _menuFix) rotate(45deg)
+
+  .cmd-nav.active svg :nth-child(2)
+    transform rotate(-45deg)
+
+  .cmd-nav.active svg :nth-child(3)
+    transform translate(- _menuFix, - _menuFix) rotate(-45deg)
+
+/*
+  @keyframes colorChange
+    to
+      fill #fff
+*/
+
+@media (min-width _sizeNav)
+
+  .cmd-nav
+    display none

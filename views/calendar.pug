@@ -4,10 +4,11 @@ block main
   main
     h1.h2= _name
     p
+      - var spanStyle = 'vertical-align:sub;display:inline-block;height:1.3rem;width:1.3rem;margin-right:.5rem;background-color:'
       if _calendarColor
-        span(style='display:inline-block;height:1.1rem;width:1.1rem;margin:0 .5rem -1px 0;background-color:' + _calendarColor)
+        span(style=spanStyle + _calendarColor)
       if _calendarColor2
-        span(style='display:inline-block;height:1.1rem;width:1.1rem;margin:0 .5rem -1px 0;background-color:' + _calendarColor2)
+        span(style=spanStyle + _calendarColor2)
       if _calendar && _calendarUrl
         a(href=_calendarUrl)!= _calendarName
       else if _calendarName

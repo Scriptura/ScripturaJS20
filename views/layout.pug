@@ -19,14 +19,14 @@ html.no-js(lang='fr')
       link(rel='stylesheet' href='/libraries/leaflet/leaflet.css')
       script(src='/libraries/leaflet/leaflet.js')
   body
-    block main
-    //-block aside
-      //-aside.aside aside
-      //-include aside
     block menu
       include includes/menu
     block breadcrumb
       include includes/breadcrumb
+    block main
+    //-block aside
+      //-aside.aside aside
+      //-include aside
     block footer
       footer.footer
         .wrap footer
@@ -34,4 +34,4 @@ html.no-js(lang='fr')
         noscript.noscript
           p.message-warning Javascript est désactivé sur votre navigateur, activez-le afin de bénéficier de toutes les fonctionnalités du site.
           //-p.message-warning Javascript is disabled on your browser, enable it to benefit from all the site's features.
-    script(src='/scripts/main.js')
+    script(src='/scripts/development/main.js')

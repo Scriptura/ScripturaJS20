@@ -1,8 +1,10 @@
 _breadcrumbSize = 2.5rem
 _breadcrumbColor = _colorAdd1
+_breadcrumbColor1 = darken(_colorG, 34%)
+_breadcrumbColor2 = _color1
 
 .breadcrumb
-  background-color #222
+  background-color _breadcrumbColor1
 
 .breadcrumb ol
   display flex
@@ -31,11 +33,6 @@ _breadcrumbColor = _colorAdd1
   color _breadcrumbColor
   text-decoration none
 
-.breadcrumb li a
-.breadcrumb li a::after
-  background-color #222
-  transition background-color .3s ease-in-out
-
 .breadcrumb a::after
   content ''
   position absolute
@@ -47,6 +44,11 @@ _breadcrumbColor = _colorAdd1
   height _breadcrumbSize
   //clip-path polygon(0 0, 0 0, 100% 50%, 0 100%, 0 100%)
   clip-path polygon(0% 0%, 50% 0, 100% 50%, 50% 100%, 0% 100%)
+
+.breadcrumb a
+.breadcrumb a::after
+  background-color _breadcrumbColor1
+  transition background-color .3s ease-in-out
 
 .breadcrumb li:first-child a
   padding-left 1rem
@@ -66,5 +68,5 @@ _breadcrumbColor = _colorAdd1
 .breadcrumb li a:focus::after
 .breadcrumb li a:hover::after
 .breadcrumb li a:active::after
-  color #000
-  background-color Orange
+  color #fff
+  background-color _breadcrumbColor2

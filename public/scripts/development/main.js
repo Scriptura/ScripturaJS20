@@ -211,8 +211,9 @@ const readablePassword = (() => {
 // -----------------------------------------------------------------------------
 
 // 1. @see http://jsfiddle.net/smc8ofgg/
-// 2. @see https://stackoverflow.com/questions/15935318/smooth-scroll-to-top/55926067
-// 3. @note Script avec un effet sympa mais en conflit avec la règle CSS scroll-behavior:smooth, celle-ci doit donc être désactivée pour la durée du script.
+// 2. Scrool sur la demi-hauteur d'une fenêtre avant apparition de la flèche.
+// 3. @see https://stackoverflow.com/questions/15935318/smooth-scroll-to-top/55926067
+// 4. @note Script avec un effet sympa mais en conflit avec la règle CSS scroll-behavior:smooth, celle-ci doit donc être désactivée pour la durée du script.
 
 const scrollToTop = (() => {
   const footer = document.querySelector('footer'),
@@ -225,17 +226,18 @@ const scrollToTop = (() => {
   const item = document.querySelector('.scroll-top')
   item.classList.add('hide')
   const position = () => { // 1
-    const yy = window.innerHeight // Hauteur totale d'une fenêtre avant apparition de la flèche.
+    const yy = window.innerHeight / 2 // 2
     let y = window.scrollY
+    console.log(y)
     if (y > yy) item.classList.remove('hide')
     else item.classList.add('hide')
   }
   window.addEventListener('scroll', position)
-  const scroll = () => { // 2
+  const scroll = () => { // 3
     const c = document.documentElement.scrollTop || document.body.scrollTop,
           html = document.documentElement,
           sb = window.getComputedStyle(html,null).getPropertyValue('scroll-behavior')
-    if (sb != 'auto') html.style.scrollBehavior = 'auto' // 3
+    if (sb != 'auto') html.style.scrollBehavior = 'auto' // 4
     if (c > 0) {
       window.requestAnimationFrame(scroll)
       window.scrollTo(0, c - c / 8)
@@ -441,6 +443,24 @@ const imageFocus = (() => {
     button.focus()
   }
 
+})()
+
+// -----------------------------------------------------------------------------
+// @section     Main menu
+// @description Menu principal
+// -----------------------------------------------------------------------------
+
+const mainMenu = (() => {
+  const button = document.querySelector('.cmd-nav'),
+        navigation = document.querySelector('.nav')
+
+  //const pannel = navigation.querySelector('a')
+  //if (window.innerWidth < '1372') Array.from(pannel).map(a => a.tabIndex = -1)
+
+  button.addEventListener('click', () => {
+    button.classList.toggle('active')
+    navigation.classList.toggle('active')
+  })
 })()
 
 

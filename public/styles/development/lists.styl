@@ -1,5 +1,6 @@
-// @subsection Lists
-// -----------------------------------------------------------------------------
+_listsColor = _colorAdd1
+_listsColor1 = darken(_colorG, 34%)
+_listsColor2 = lighten(_listsColor, 50%)
 
 [class*=list]
 [class*=list] > *
@@ -23,7 +24,8 @@
   padding .5em 1em
 
 [class*=list-stripe] > *
-  background-color lighten(_color0, 10%)
+  background-color _listsColor1
+  background-image linear-gradient(to left, rgba(0, 0, 0, .1) , rgba(255, 255, 255, .025))
   box-shadow .5rem .5rem 2rem rgba(0, 0, 0, .1)
 
 [class*=-links] li
@@ -32,11 +34,12 @@
 [class*=-links] a
   display block
   text-decoration none
-  color inherit
+  color _listsColor2 //inherit
 
 [class*=-links] a:focus
 [class*=-links] a:hover
 [class*=-links] a:active
+  color #000
   background-color Orange
   box-shadow .5rem .5rem 2rem rgba(0, 0, 0, .25)
   outline none

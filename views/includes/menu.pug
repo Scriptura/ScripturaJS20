@@ -1,105 +1,62 @@
+button.cmd-nav(type='button' aria-label='Main Menu')
+  svg(viewBox='0 0 1000 1000')
+    rect(x='50' y='200' width='900' height='100')
+    rect(x='50' y='450' width='900' height='100')
+    rect(x='50' y='700' width='900' height='100')
 nav.nav(role='navigation' aria-label='Main')
-  .wrap
-    ul
-      li
-        if (url === '/')
-          span.active
-            svg(role='img' focusable='false')
-              use(xlink:href='/medias/sprites/utils.svg#home')
-            | Home
-        else
-          a(href='/')
-            svg(role='img' focusable='false')
-              use(xlink:href='/medias/sprites/utils.svg#home')
-            | Home
-      li
-        if (url === '/login')
-            svg(role='img' focusable='false')
-              use(xlink:href='/medias/sprites/utils.svg#login')
-            | Login
-        else
-          a(href='/login')
-            svg(role='img' focusable='false')
-              use(xlink:href='/medias/sprites/utils.svg#login')
-            | Login
-      li
-        if (url === '/register')
-            svg(role='img' focusable='false')
-              use(xlink:href='/medias/sprites/utils.svg#bookmark')
-            | Register
-        else
-          a(href='/register')
-            svg(role='img' focusable='false')
-              use(xlink:href='/medias/sprites/utils.svg#bookmark')
-            | Register
-      li
-        if (url === '/user/admin')
-            svg(role='img' focusable='false')
-              use(xlink:href='/medias/sprites/utils.svg#user')
-            | User
-        else
-          a(href='/user/admin')
-            svg(role='img' focusable='false')
-              use(xlink:href='/medias/sprites/utils.svg#user')
-            | User
-      li
-        if (url === '/person/1')
-          span.active
-            svg(role='img' focusable='false')
-              use(xlink:href='/medias/sprites/utils.svg#frame')
-            | Person 1
-        else
-          a(href='/person/1')
-            svg(role='img' focusable='false')
-              use(xlink:href='/medias/sprites/utils.svg#frame')
-            | Person 1
-      li
-        if (url === '/place/1')
-            svg(role='img' focusable='false')
-              use(xlink:href='/medias/sprites/utils.svg#location')
-            | Place 1
-        else
-          a(href='/place/1')
-            svg(role='img' focusable='false')
-              use(xlink:href='/medias/sprites/utils.svg#location')
-            | Place 1
-      li
-        if (url === '/article/1')
-            svg(role='img' focusable='false')
-              use(xlink:href='/medias/sprites/utils.svg#quill')
-            | Article 1
-        else
-          a(href='/article/1')
-            svg(role='img' focusable='false')
-              use(xlink:href='/medias/sprites/utils.svg#quill')
-            | Article 1
-      li
-        a(href='/404')
-          svg(role='img' focusable='false')
-            use(xlink:href='/medias/sprites/utils.svg#warning')
-          | Error 404
-      li
-        if (url === '/calendar')
-            svg(role='img' focusable='false')
-              use(xlink:href='/medias/sprites/utils.svg#calendar')
-            | Calendar
-        else
-          a(href='/calendar')
-            svg(role='img' focusable='false')
-              use(xlink:href='/medias/sprites/utils.svg#calendar')
-            | Calendar
-      li
-        if (url === '/styleGuide')
-            svg(role='img' focusable='false')
-              use(xlink:href='/medias/sprites/utils.svg#tools')
-            | Style Guide
-        else
-          a(href='/styleGuide')
-            svg(role='img' focusable='false')
-              use(xlink:href='/medias/sprites/utils.svg#tools')
-            | Style Guide
-      li.item-push
-        a(href='//github.com/Scriptura/ScripturaJS20')
-          svg(role='img' focusable='false')
-            use(xlink:href='/medias/sprites/utils.svg#github')
-          | Repository
+  ul
+    li
+      span.active
+        svg(role='img' focusable='false')
+          use(xlink:href='/medias/sprites/utils.svg#home')
+        | Home
+    li
+      a(href='/login')
+        svg(role='img' focusable='false')
+          use(xlink:href='/medias/sprites/utils.svg#login')
+        | Login
+    li
+      a(href='/register')
+        svg(role='img' focusable='false')
+          use(xlink:href='/medias/sprites/utils.svg#bookmark')
+        | Register
+    li
+      a(href='/user/admin')
+        svg(role='img' focusable='false')
+          use(xlink:href='/medias/sprites/utils.svg#user')
+        | User
+    li
+      a(href='/person/1')
+        svg(role='img' focusable='false')
+          use(xlink:href='/medias/sprites/utils.svg#frame')
+        | Person 1
+    li
+      a(href='/place/1')
+        svg(role='img' focusable='false')
+          use(xlink:href='/medias/sprites/utils.svg#location')
+        | Place 1
+    li
+      a(href='/article/1')
+        svg(role='img' focusable='false')
+          use(xlink:href='/medias/sprites/utils.svg#quill')
+        | Article 1
+    li
+      a(href='/404')
+        svg(role='img' focusable='false')
+          use(xlink:href='/medias/sprites/utils.svg#warning')
+        | Error 404
+    li
+      a(href='/calendar')
+        svg(role='img' focusable='false')
+          use(xlink:href='/medias/sprites/utils.svg#calendar')
+        | Calendar
+    li
+      a(href='/styleGuide')
+        svg(role='img' focusable='false')
+          use(xlink:href='/medias/sprites/utils.svg#tools')
+        | Style Guide
+    li.item-push
+      a(href='//github.com/Scriptura/ScripturaJS20')
+        svg(role='img' focusable='false')
+          use(xlink:href='/medias/sprites/utils.svg#github')
+        | Repository
