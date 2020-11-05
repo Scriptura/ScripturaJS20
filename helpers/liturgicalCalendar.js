@@ -20,15 +20,15 @@ const liturgicalCalendar = date => {
         ge = easter.gregorianEaster(currentYear),
         easterDate = DateTime.local(ge.year, ge.month, ge.day)
 
-  let currentDayMonth = dt.toFormat('ddMM')//; currentDayMonth = '0601'
+  let currentDayMonth = dt.toFormat('ddMM')//; currentDayMonth = '0301'
   
   if (typeof date === 'undefined') date = currentDayMonth
 
   // Fusionner les objets :
   let data = {...data1[date], ...data2[date], ...data3[date]}
 
-
-  if ((typeof data === 'undefined') || (data.name === '')) data = {name: "De la férie", color: "", grade: "", rank: ""}
+  //console.log(data)
+  if (typeof data.name === 'undefined') data = {name: "De la férie", color: "", grade: "", rank: ""}
 
   // Si valeurs suivantes manquantes dans les .json :
   if (data.color === '') data.color = "green"
@@ -115,6 +115,7 @@ const liturgicalCalendar = date => {
   if (color2 === 'purple') data.color2 = '#800080' //#9f15a7
   if (color2 === 'black') data.color2 = '#000000'
 
+  //console.log(data)
   return data
 }
 
