@@ -1,7 +1,6 @@
 _breadcrumbSize = 2.5rem
 _breadcrumbColor = _colorAdd1
 _breadcrumbColor1 = darken(_colorG, 34%)
-_breadcrumbColor2 = _color1
 
 .breadcrumb
   background-color _breadcrumbColor1
@@ -55,7 +54,7 @@ _breadcrumbColor2 = _color1
   //padding-left (_breadcrumbSize / 2)
 
 .breadcrumb li:last-child a
-  color lighten(_breadcrumbColor, 50%)
+  color _colorT
 /*
 .breadcrumb li a:focus
 .breadcrumb li a:hover
@@ -69,4 +68,4 @@ _breadcrumbColor2 = _color1
 .breadcrumb li a:hover::after
 .breadcrumb li a:active::after
   color #fff
-  background-color _breadcrumbColor2
+  background-color _color1

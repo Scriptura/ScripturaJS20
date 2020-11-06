@@ -17,7 +17,7 @@
 }
 html {
   -webkit-text-size-adjust: 100%;
-  color: #fff;
+  color: #e9dac5;
   background-color: #333;
   font-family: 'Open Sans', Arial, Sans-Serif;
   line-height: 1.5;
@@ -55,10 +55,30 @@ p {
 hr {
   overflow: visible;
   box-sizing: content-box;
-  height: 0.2rem;
-  color: inherit;
+  height: 0.2em;
+  margin: 2em 0;
+  color: transparent;
   background-color: #e91e63;
   border: none;
+}
+.hr {
+  position: relative;
+}
+.hr::before,
+.hr::after {
+  position: absolute;
+  content: '';
+  display: inline-block;
+  width: 100%;
+  height: 0.2em;
+}
+.hr::before {
+  top: 0.5em;
+  background-color: #8bc34a;
+}
+.hr::after {
+  bottom: 0.5em;
+  background-color: Orange;
 }
 h1,
 h2,
@@ -72,8 +92,6 @@ h6,
 .h4,
 .h5,
 .h6 {
-  margin-top: 0;
-  margin-bottom: 0.67em;
   font-family: 'Noto Serif', Georgia, Serif;
 }
 h1,
@@ -488,9 +506,6 @@ samp {
 .alert-info {
   border-left: 0.5rem solid #777;
 }
-.relative {
-  position: relative;
-}
 .protected {
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -629,12 +644,12 @@ samp {
 [class*=-links] a:focus,
 [class*=-links] a:hover,
 [class*=-links] a:active {
-  color: #000;
-  background-color: Orange;
+  color: #fff;
+  background-color: #e91e63;
   box-shadow: 0.5rem 0.5rem 2rem rgba(0,0,0,0.25);
   outline: none;
-  -webkit-animation: animList 0.1s ease-in-out;
-          animation: animList 0.1s ease-in-out;
+  -webkit-animation: animList 0.05s ease-in-out;
+          animation: animList 0.05s ease-in-out;
 }
 [class*=-links] svg {
   width: 1.1rem;
@@ -644,12 +659,12 @@ samp {
   vertical-align: sub;
 }
 @-webkit-keyframes animList {
-  50% {
+  to {
     transform: scale(1.03) translateZ(0);
   }
 }
 @keyframes animList {
-  50% {
+  to {
     transform: scale(1.03) translateZ(0);
   }
 }
@@ -668,7 +683,7 @@ figure {
 [class^=figure] {
   width: 100%;
   padding: 0.5em;
-  color: #fff;
+  color: #e9dac5;
   background-color: #474747;
   box-shadow: 0.5rem 0.5rem 2rem rgba(0,0,0,0.2);
 }
@@ -1130,7 +1145,7 @@ form fieldset > [class*=input] {
 .accordion .accordion-summary {
   padding: 1rem;
   color: #fff;
-  background: Tomato linear-gradient(to top, rgba(0,0,0,0.1), rgba(255,255,255,0.05));
+  background: #e91e63 linear-gradient(to top, rgba(0,0,0,0.1), rgba(255,255,255,0.05));
   cursor: pointer;
   outline: none;
 }
@@ -1148,7 +1163,7 @@ form fieldset > [class*=input] {
 .accordion > * > :first-child:focus,
 .accordion > * > :first-child:hover,
 .accordion > * > :first-child:active {
-  background-color: Orange;
+  background-color: #ffa500;
 }
 .accordion > * > :first-child::before {
   content: '\002B';
@@ -1157,12 +1172,10 @@ form fieldset > [class*=input] {
   margin-left: 5px;
 }
 .accordion .open button {
-  background-color: Orange;
+  background-color: #ffa500;
 }
 .accordion > * > :last-child {
   padding: 0 1rem;
-  color: #555;
-  background-color: #f8f7f5;
   overflow: hidden;
   transition: max-height 0.5s ease-out;
 }
