@@ -57,21 +57,6 @@ const fadeIn = (el, duration) => {
 
 
 // -----------------------------------------------------------------------------
-// @section     Svg Processing
-// @description Ajout d'attrtibuts sur les SVG
-// -----------------------------------------------------------------------------
-
-// @note Appel du code via window.onload, le chargement de la page doit être complet avant d'appliquer le code.
-const svgProcessing = () => {
-  const svgs = document.querySelectorAll('svg')
-  for (const svg of svgs) {
-    svg.setAttribute('role', 'img')
-    svg.setAttribute('focusable', 'false')
-  }
-}
-
-
-// -----------------------------------------------------------------------------
 // @section     Sprites SVG
 // @description Injection de spites SVG
 // -----------------------------------------------------------------------------
@@ -83,7 +68,7 @@ const svgProcessing = () => {
 const injectSvgSprite = (targetElement, spriteId, svgFile) => {
   const path = '/medias/sprites/' // Chemin des fichiers de sprites SVG
   if (svgFile === undefined) svgFile = 'utils'
-  const icon = '<svg><use xlink:href="' + path + svgFile + '.svg#' + spriteId + '"></use></svg>'
+  const icon = '<svg role="img" focusable="false"><use xlink:href="' + path + svgFile + '.svg#' + spriteId + '"></use></svg>'
   targetElement.insertAdjacentHTML('beforeEnd', icon)
 }
 
@@ -465,12 +450,26 @@ const mainMenu = (() => {
 
 
 // -----------------------------------------------------------------------------
+// @section     Separator SVG
+// @description Séparateur pour les balises <hr/>
+// -----------------------------------------------------------------------------
+
+const separatorSvgForHr = (() => {
+  const hrs = document.querySelectorAll('hr.hr')
+  const separator = '<svg role="separator" class="separator"><use xlink:href="/medias/sprites/separators.svg#hr"></use></svg>'
+  for (const hr of hrs) {
+    hr.insertAdjacentHTML('afterEnd', separator)
+    hr.remove()
+  }
+})()
+
+
+// -----------------------------------------------------------------------------
 // @section     Window onload
 // @description Scripts lancés lorsque le chargement de la page est terminé
 // -----------------------------------------------------------------------------
 
-window.onload = () => {
-  svgProcessing()
+//window.onload = () => {
   //jsDetect()
   //touchDetect()
-}
+//}
