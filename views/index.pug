@@ -3,7 +3,18 @@ extends layout
 block main
   main
     h1= _name
-    include ../public/medias/images/TiLion1.4.svg
+    div
+      style.
+        main .logo {
+          margin: 1rem 0;
+        }
+        main .logo,
+        main .logo svg {
+          height: 9rem;
+          width: 9rem;
+        }
+      .logo
+        include ../public/medias/images/TiLion1.5.svg
     h2 Serveur :
     ul
       //-li Url du site : #{_site_url}

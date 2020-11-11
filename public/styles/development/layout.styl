@@ -27,8 +27,6 @@ main
 
 .footer
   grid-area footer
-  padding 1rem
-  background-color #222 //#e91e63 //#f44336
 
 [tabindex=-1]:focus:not(:focus-visible)
   outline 0 !important // Future-proof rule: in browsers that support :focus-visible, suppress the focus outline on elements that programmatically receive focus but wouldn't normally show a visible focus outline. In general, this would mean that the outline is only applied if the interaction that led to the element receiving programmatic focus was a keyboard interaction, or the browser has somehow determined that the user is primarily a keyboard user and/or wants focus outlines to always be presented. @ee https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-visible @see https://developer.paciellogroup.com/blog/2018/03/focus-visible-and-backwards-compatibility/

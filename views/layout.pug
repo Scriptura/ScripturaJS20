@@ -29,7 +29,14 @@ html.no-js(lang='fr')
       //-include aside
     block footer
       footer.footer
-        .wrap footer
+        div
+          .logo
+            svg
+              use(xlink:href='/medias/sprites/logo.svg#tilion')
+          div Scriptura
+        div A framework created by 
+          a(href='https://www.linkedin.com/in/olivier-chavarin/').author Olivier Chavarin
+        div Since 2020
         //-include footer
         noscript.noscript
           p.message-warning Javascript est désactivé sur votre navigateur, activez-le afin de bénéficier de toutes les fonctionnalités du site.
