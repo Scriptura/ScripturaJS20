@@ -11,8 +11,8 @@ _colorAdd12 = lighten(_colorAdd1, 50%)
 [class*=list-stripe]
   margin 0 // @note Si éléments <ul> ou <ol>
 
-:root [class*=list-stripe] > *
-  margin .5em 0 // @bugfix Problème d'interprétation avec unité rem @affected Chrome.
+//:root [class*=list-stripe] > *
+//  margin-bottom 1em // @bugfix Problème d'interprétation avec unité rem @affected Chrome.
 
 :root [class*=list-stripe]:not([class*=-links]) > *
 .list-stripe-links a
@@ -33,7 +33,7 @@ _colorAdd12 = lighten(_colorAdd1, 50%)
 [class*=-links] a
   display block
   text-decoration none
-  color _colorAdd12 //inherit
+  color _colorAdd1 //inherit
 
 [class*=-links] a:focus
 [class*=-links] a:hover

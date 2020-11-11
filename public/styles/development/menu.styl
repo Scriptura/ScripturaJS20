@@ -1,15 +1,15 @@
 _menuSize = 2.5rem
 _menuFix = 177px
 _menuColor1 = darken(_colorG, 34%)
-_menuColor2 = _color1
+
 // Main menu
 
 .nav
   display flex
   position relative // en lien avec z-index
-  z-index 1000 // en lien avec z-index
+  z-index 1000
   //height _menuSize
-  font-size 1rem
+  //font-size 1em
   box-shadow .5rem .5rem .5rem rgba(0, 0, 0, .2)
 
 .nav ul
@@ -52,8 +52,8 @@ _menuColor2 = _color1
 .nav svg
   display inline-block
   vertical-align sub
-  height 1.2rem
-  width 1.2rem
+  height 1.2em
+  width 1.2em
   margin-right .5em
 
 .nav a:focus svg
@@ -85,21 +85,21 @@ _menuColor2 = _color1
   .nav ul .active::after
     content ''
     position absolute
-    top 2.5rem
-    left calc(50% - 1rem)
-    width 2rem
-    height 1rem
+    top 2.5em
+    left calc(50% - 1em)
+    width 2em
+    height 1em
     background-color #e91e63
     clip-path polygon(0% 0%, 100% 0%, 50% 100%)
 
   @keyframes animJump
     30%
-      transform translateY(-.3rem)
+      transform translateY(-.3em)
 
-  .item-push // @note '.item-push' est l'inverse de '.item-pull' (margin-right: auto), cette dernière classe étant non-utilisée.
+  .nav ul > :last-child
       margin-left auto
 
-// Hamburger :
+// Hamburger
 
 @media (max-width _sizeNav)
 
@@ -126,7 +126,7 @@ _menuColor2 = _color1
     transition transform .3s ease
 
   .cmd-nav svg *
-    fill _menuColor2
+    fill _color1
 
   /*
   .cmd-nav svg :nth-child(1)
@@ -157,11 +157,11 @@ _menuColor2 = _color1
   .cmd-nav.active svg :nth-child(3)
     transform translate(- _menuFix, - _menuFix) rotate(-45deg)
 
-/*
+  /*
   @keyframes colorChange
     to
       fill #fff
-*/
+  */
 
 @media (min-width _sizeNav)
 

@@ -1,25 +1,21 @@
 .summary
   display flex
   flex-wrap wrap
-  width 'calc(100% + %s)' % (_gutter)
-  margin-left - _gutter !important
+  //justify-content space-between
+  //align-content stretch
+  gap _gap
 
 .summary > *
-  width 100%
-  margin-left _gutter !important
-  padding 0 // @note Si liste ul>li
+  flex 1 0 100% // flex-grow flex-shrink flex-basis
 
 @media (min-width _sizeXS)
-
   .summary > *
-    width 'calc(%s - %s)' % (floor(100% / 12 * 6, 2) _gutter)
+    flex-basis 'calc(50% - %s)' % _gap
 
 @media (min-width _sizeS)
-
   .summary > *
-    width 'calc(%s - %s)' % (floor(100% / 12 * 4, 2) _gutter)
+    flex-basis 'calc(33% - %s)' % _gap
 
 @media (min-width _sizeL)
-
   .summary > *
-    width 'calc(%s - %s)' % (floor(100% / 12 * 3, 2) _gutter)
+    flex-basis 'calc(25% - %s)' % _gap

@@ -10,11 +10,14 @@ block main
         }
         main .logo,
         main .logo svg {
-          height: 9rem;
-          width: 9rem;
+          height: 8rem;
+          width: 8rem;
         }
       .logo
-        include ../public/medias/images/TiLion1.5.svg
+        svg
+          use(xlink:href='/medias/sprites/logo.svg#tilion')
+        //-include ../public/medias/images/TiLion1.5.svg
+    hr
     h2 Serveur :
     ul
       //-li Url du site : #{_site_url}
@@ -31,4 +34,5 @@ block main
     ul
       li Os : #{_user_os} (#{_user_platform})
       li Navigateur : #{_user_browser} (#{_user_version})
+    hr
     include includes/links

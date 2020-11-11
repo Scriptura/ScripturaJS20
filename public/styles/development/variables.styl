@@ -5,9 +5,9 @@
 
 // @subsection  Grid
 
-_columns = 12                             // @note Nombre de colonnes
-_gutter = 1rem                            // @note Gouttière, largeur entre deux modules (en unité em/rem)
-_wrap = 90rem + 2                         // @note Largeur maximale du contenu (+ prise en compte du padding interne)
+_columns = 12              // Nombre de colonnes
+_gap = 1em                 // Gouttière, largeur entre deux modules (en unité em/rem)
+_wrap = 90rem + _gap * 2   // Largeur maximale du contenu (+ prise en compte du padding interne)
 
 
 // @subsection  Breakpoints
@@ -35,22 +35,23 @@ _fontFile2 = notoSerif-Regular
 
 // @subsection  Colors
 
-_color0 = #333                            // couleur de fond
-_color1 = #e91e63                         // couleur dominante 1
-_color2 = #b9515d                         // couleur dominante 2
-_color3 = #8bc34a                         // couleur secondaire (@todo à définir)
-_color4 = #8bc34a                         // couleur secondaire (vert)
-_color5 = #ffa500                         // couleur secondaire (orange)
-_color6 = #448aff                         // couleur secondaire (bleu)
-_color7 = #f8fed8                         // couleur secondaire (jaune)
-_colorT = #e9dac5                         // couleur du texte
-_colorG = _color0                         // gris de référence
+_color0 = #333         // couleur de fond
+_color1 = #e91e63      // couleur dominante 1
+_color2 = #b9515d      // couleur dominante 2
+_color3 = #8bc34a      // couleur secondaire (@todo à définir)
+_color4 = #8bc34a      // couleur secondaire (vert)
+_color5 = #ffa500      // couleur secondaire (orange)
+_color6 = #448aff      // couleur secondaire (bleu)
+_color7 = #f8fed8      // couleur secondaire (jaune)
+_colorT = #e9dac5      // couleur du texte
+_colorG = _color0      // gris de référence
+_colorW = #fff         // blanc de référence
 _colorAdd1 = #d2b48c
 
 
 // @subsection Rounds
 
-_r1 = .3rem                     // Boites
-_r2 = _r1                       // Éléments internes
-_r3 = false                     // Éléments d'informations
-_r4 = false                     // Bouttons
+_r1 = .3rem            // Boites
+_r2 = _r1              // Éléments internes
+_r3 = false            // Éléments d'informations
+_r4 = false            // Bouttons

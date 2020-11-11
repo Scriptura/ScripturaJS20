@@ -15,60 +15,13 @@ block main
       if _elevation
         li Altitude : #{_elevation}
     if _location
-      #map.map(style='height:50vh', data-name='Basilique Notre-Dame-de-la-Garde', data-coords='[' + _location.y + ',' + _location.x + ']', data-zoom='15', data-color='#ff654f', data-tileserver = 'https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token=pk.eyJ1Ijoib2xpdmllcmMiLCJhIjoiY2s5dnNnZWoyMDIzNDNzb2Y1dmQ4MGNtMCJ9.m4U-wYcS4EPcKe9nVXIbUA', data-attribution = '<a href="//www.openstreetmap.org/">OSM</a> | <a href="//www.mapbox.com/">Mapbox</a>')
+      #map.map(style='height:50vh' data-name='Basilique Notre-Dame-de-la-Garde' data-coords='[' + _location.y + ',' + _location.x + ']', data-zoom='15', data-color='#ff654f', data-tileserver = 'https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token=pk.eyJ1Ijoib2xpdmllcmMiLCJhIjoiY2s5dnNnZWoyMDIzNDNzb2Y1dmQ4MGNtMCJ9.m4U-wYcS4EPcKe9nVXIbUA', data-attribution = '<a href="//www.openstreetmap.org/">OSM</a> | <a href="//www.mapbox.com/">Mapbox</a>')
       //- Serveurs de tuiles disponibles @see https://wiki.openstreetmap.org/wiki/Tile_servers
       //- Alternative : 'https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png'
       //- Zoom de 0 à 18
       //- @todo yarn add color -> color.lighten(0.2)
       script(src='/scripts/mapPlace.js')
-      style.
-        #map {
-          width: 100%;
-          margin: auto;
-        }
-        .leaflet-popup-content-wrapper {
-          font-size: 0.9rem;
-          color: #777;
-          border-radius: 0.2rem;
-        }
-        .leaflet-control,
-        .leaflet-popup-content-wrapper,
-        .leaflet-popup-tip {
-          box-shadow: 0.5rem 0.5rem 2rem rgba(0,0,0,0.1);
-          box-shadow: 0.5rem 0.5rem 2rem rgba(0,0,0,0.1);
-        }
-        .leaflet-marker-pane {
-          animation: drop 1s ease;
-        }
-        .leaflet-shadow-pane {
-          animation: hide 1.5s;
-        }
-        @keyframes hide {
-          0% {
-            opacity: 0;
-          }
-          60% {
-            opacity: 0;
-          }
-          100% {
-            opacity: 1;
-          }
-        }
-        @keyframes drop {
-          0% {
-            transform: translate(0, -100vh);
-          }
-          50% {
-            transform: translate(0, 0);
-          }
-          75% {
-            transform: translate(0, -40px);
-          }
-          100% {
-            transform: translate(0, 0);
-          }
-        }
-    br
+    hr
     ul.list-stripe-large-links.summary
       li
         a(href='/place/1') Place 1

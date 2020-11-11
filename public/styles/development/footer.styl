@@ -1,25 +1,48 @@
 .footer
-  display flex
-  justify-content space-between
-  align-items center
-  padding .5rem 1rem
+  padding 0 1em
   color _colorAdd1
   background-color #222
+  //box-shadow .5rem .5rem 2rem rgba(0, 0, 0, .3)
 
-.footer > :first-child
+.footer a
+  //font-variant small-caps
+  color _colorT
+  text-decoration none
+
+.footer a:focus
+.footer a:hover
+.footer a:active
+  text-decoration underline
+
+.footer .wrap
+  display flex
+  max-width 90rem
+  margin 0 auto
+
+.footer .wrap > :first-child
   display flex
   align-items center
-
 
 .footer .logo
 .footer .logo svg
-  height 2rem
-  width  2rem
-  margin-right 1rem
+  height 2em
+  width  2em
+  margin-right 1em
 
-.footer > :nth-child(2)
+.footer .wrap > :nth-child(2)
   text-align center
 
-.footer .author
-  color #fff
-  //font-variant small-caps
+@media (max-width _sizeXS)
+  .footer .wrap
+    flex-direction column
+    align-items center
+    text-align center
+    line-height 1
+    //gap _gap
+    padding _gap
+
+@media (min-width _sizeXS)
+
+  .footer .wrap
+    justify-content space-between
+    align-items center
