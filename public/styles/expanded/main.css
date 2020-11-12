@@ -565,26 +565,22 @@ samp {
   }
 }
 .summary {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
   gap: 1em;
 }
-.summary > * {
-  flex: 1 0 100%;
-}
 @media (min-width: 36.01em) {
-  .summary > * {
-    flex-basis: calc(50% - 1em);
+  .summary {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 @media (min-width: 65.01em) {
-  .summary > * {
-    flex-basis: calc(33% - 1em);
+  .summary {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 @media (min-width: 90.01em) {
-  .summary > * {
-    flex-basis: calc(25% - 1em);
+  .summary {
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 [class*=list],

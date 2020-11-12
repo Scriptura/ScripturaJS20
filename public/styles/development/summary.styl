@@ -1,12 +1,27 @@
 .summary
+  display grid
+  gap _gap
+
+@media (min-width _sizeXS)
+  .summary
+    grid-template-columns repeat(2, 1fr)
+
+@media (min-width _sizeS)
+  .summary
+    grid-template-columns repeat(3, 1fr)
+
+@media (min-width _sizeL)
+  .summary
+    grid-template-columns repeat(4, 1fr)
+
+/*
+.summary
   display flex
   flex-wrap wrap
-  //justify-content space-between
-  //align-content stretch
   gap _gap
 
 .summary > *
-  flex 1 0 100% // flex-grow flex-shrink flex-basis
+  flex 1 0 100% // = [flex-grow flex-shrink flex-basis]
 
 @media (min-width _sizeXS)
   .summary > *
@@ -19,3 +34,4 @@
 @media (min-width _sizeL)
   .summary > *
     flex-basis 'calc(25% - %s)' % _gap
+*/
