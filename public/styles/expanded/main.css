@@ -187,7 +187,7 @@ body {
 }
 main {
   grid-area: main;
-  padding: 1rem;
+  padding: 1em;
 }
 .header {
   grid-area: header;
@@ -255,7 +255,7 @@ main {
   -webkit-animation: animJump 0.5s ease-in-out;
           animation: animJump 0.5s ease-in-out;
 }
-@media (max-width: 45.01rem) {
+@media (max-width: 45.01em) {
   .nav ul {
     position: absolute;
     z-index: 800;
@@ -266,7 +266,7 @@ main {
     left: 0;
   }
 }
-@media (min-width: 45.01rem) {
+@media (min-width: 45.01em) {
   .nav ul {
     display: flex;
   }
@@ -299,7 +299,7 @@ main {
     }
 }
 }
-@media (max-width: 45.01rem) {
+@media (max-width: 45.01em) {
   .cmd-nav {
     position: absolute;
     right: 0;
@@ -341,7 +341,7 @@ main {
     transform: translate(-177px, -177px) rotate(-45deg);
   }
 }
-@media (min-width: 45.01rem) {
+@media (min-width: 45.01em) {
   .cmd-nav {
     display: none;
   }
@@ -425,7 +425,7 @@ samp {
   position: relative;
   padding: 1em;
   background-color: #262626;
-  border-radius: 0.2em;
+  border-radius: 0.3em;
   box-shadow: 0.5em 0.5em 2em rgba(0,0,0,0.25);
 }
 .pre code {
@@ -509,7 +509,7 @@ samp {
   width: 100%;
   word-wrap: break-word;
 }
-@media (min-width: 36.01rem) {
+@media (min-width: 36.01em) {
   .columns2,
   .columns3,
   .columns4 {
@@ -522,7 +522,7 @@ samp {
          column-count: 3;
   }
 }
-@media (min-width: 65.01rem) {
+@media (min-width: 65.01em) {
   .columns3,
   .columns4 {
     -moz-column-count: 3;
@@ -534,7 +534,7 @@ samp {
          column-count: 4;
   }
 }
-@media (min-width: 90.01rem) {
+@media (min-width: 90.01em) {
   .columns4 {
     -moz-column-count: 4;
          column-count: 4;
@@ -555,7 +555,7 @@ samp {
 [class^=columns].gap > * {
   margin-bottom: 1em;
 }
-@media (min-width: 36.01rem) {
+@media (min-width: 36.01em) {
   [class^=columns].sizeSgap {
     -moz-column-gap: 1em;
          column-gap: 1em;
@@ -572,17 +572,17 @@ samp {
 .summary > * {
   flex: 1 0 100%;
 }
-@media (min-width: 36.01rem) {
+@media (min-width: 36.01em) {
   .summary > * {
     flex-basis: calc(50% - 1em);
   }
 }
-@media (min-width: 65.01rem) {
+@media (min-width: 65.01em) {
   .summary > * {
     flex-basis: calc(33% - 1em);
   }
 }
-@media (min-width: 90.01rem) {
+@media (min-width: 90.01em) {
   .summary > * {
     flex-basis: calc(25% - 1em);
   }
@@ -608,7 +608,7 @@ samp {
 [class*=list-stripe] > * {
   background-color: #222;
   background-image: linear-gradient(to left, rgba(0,0,0,0.1), rgba(255,255,255,0.025));
-  box-shadow: 0.5rem 0.5rem 2rem rgba(0,0,0,0.1);
+  box-shadow: 0.5em 0.5em 2em rgba(0,0,0,0.1);
 }
 [class*=-links] li {
   padding: 0;
@@ -623,16 +623,16 @@ samp {
 [class*=-links] a:active {
   color: #fff;
   background-color: #e91e63;
-  box-shadow: 0.5rem 0.5rem 2rem rgba(0,0,0,0.25);
+  box-shadow: 0.5em 0.5em 2em rgba(0,0,0,0.25);
   outline: none;
   -webkit-animation: animList 0.05s ease-in-out;
           animation: animList 0.05s ease-in-out;
 }
 [class*=-links] svg {
-  width: 1.1rem;
-  height: 1.1rem;
+  width: 1.1em;
+  height: 1.1em;
   display: inline-block;
-  margin-right: 0.5rem;
+  margin-right: 0.5em;
   vertical-align: sub;
 }
 @-webkit-keyframes animList {
@@ -662,7 +662,7 @@ figure {
   padding: 0.5em;
   color: #e9dac5;
   background-color: #474747;
-  box-shadow: 0.5rem 0.5rem 2rem rgba(0,0,0,0.2);
+  box-shadow: 0.5em 0.5em 2em rgba(0,0,0,0.2);
 }
 [class^=figure] figcaption {
   padding-top: 0.5em;
@@ -674,12 +674,12 @@ figure {
 [class*=-thumbnail] {
   width: 100%;
 }
-@media (min-width: 36.01rem) {
+@media (min-width: 36.01em) {
   [class*=-thumbnail] {
     max-width: 23rem;
   }
 }
-@media (min-width: 65.01rem) {
+@media (min-width: 65.01em) {
   [class*=-alignleft] {
     float: left;
     margin-right: 1em;
@@ -741,7 +741,7 @@ figure {
 }
 .js [class*=-focus]:focus-within,
 .js [class*=-focus]:hover {
-  box-shadow: 0.5rem 0.5rem 2rem rgba(0,0,0,0.3);
+  box-shadow: 0.5em 0.5em 2em rgba(0,0,0,0.3);
   transform: scale(1.01);
 }
 .js [class*=-focus]:focus-within {
@@ -765,8 +765,8 @@ figure {
 [class*=-focus] button {
   top: 1em;
   right: 1em;
-  width: 1.2rem;
-  height: 1.2rem;
+  width: 1.2em;
+  height: 1.2em;
 }
 .focus-off {
   position: fixed;
@@ -784,13 +784,13 @@ figure {
   margin: auto;
   max-height: 100vh;
   background-color: #000;
-  box-shadow: 0 0 0 1000rem #222;
+  box-shadow: 0 0 0 1000em #222;
 }
 .focus-off button {
   bottom: 1em;
   right: 1em;
-  width: 2rem;
-  height: 2rem;
+  width: 2em;
+  height: 2em;
   cursor: zoom-out;
 }
 [class*=-focus] button svg,
@@ -1062,7 +1062,7 @@ form fieldset > [class*=input] {
 }
 [class*=input] label {
   display: inline-block;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.5em;
 }
 [class*=input] input:not([type=button]),
 [class*=input] select,
@@ -1070,13 +1070,13 @@ form fieldset > [class*=input] {
   width: 100%;
   padding: 0.4em 1em;
   background-color: #444;
-  border: 0.1em solid #444;
+  border: 1px solid #444;
 }
 [class*=input] input,
 [class*=input] select,
 [class*=input] textarea {
   color: currentColor;
-  border-radius: 0.3rem;
+  border-radius: 0.3em;
 }
 [class*=input] textarea {
   min-height: 10em;
@@ -1089,7 +1089,7 @@ form fieldset > [class*=input] {
 [class*=input] select:focus,
 [class*=input] textarea:focus {
   outline: none;
-  border: 0.1rem solid #000;
+  border-color: #000;
 }
 [class*=input] [type=color] {
   height: 3em;
@@ -1115,9 +1115,9 @@ form fieldset > [class*=input] {
 .invalid svg {
   display: inline;
   vertical-align: middle;
-  width: 1rem;
-  height: 1rem;
-  margin-right: 0.5rem;
+  width: 1em;
+  height: 1em;
+  margin-right: 0.5em;
 }
 .invalid p {
   color: Orange;
@@ -1136,13 +1136,16 @@ form fieldset > [class*=input] {
 .input-password {
   position: relative;
 }
+:root .input-password input {
+  padding-right: 3em;
+}
 .input-password button {
   position: absolute;
-  top: 2rem;
-  right: 0.5rem;
-  width: 2.1rem;
-  height: 2.1rem;
-  padding: 0.5rem;
+  top: 2em;
+  right: 0.5em;
+  width: 2.1em;
+  height: 2.1em;
+  padding: 0.5em;
   color: #777;
   background-color: Transparent;
   border: none;
@@ -1294,7 +1297,7 @@ form fieldset > [class*=input] {
 }
 .footer .wrap {
   display: flex;
-  max-width: 90rem;
+  max-width: 90em;
   margin: 0 auto;
 }
 .footer .wrap > :first-child {
@@ -1310,7 +1313,7 @@ form fieldset > [class*=input] {
 .footer .wrap > :nth-child(2) {
   text-align: center;
 }
-@media (max-width: 36.01rem) {
+@media (max-width: 36.01em) {
   .footer .wrap {
     flex-direction: column;
     align-items: center;
@@ -1319,7 +1322,7 @@ form fieldset > [class*=input] {
     padding: 1em;
   }
 }
-@media (min-width: 36.01rem) {
+@media (min-width: 36.01em) {
   .footer .wrap {
     justify-content: space-between;
     align-items: center;
