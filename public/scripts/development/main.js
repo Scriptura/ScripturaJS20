@@ -453,11 +453,23 @@ const mainMenu = (() => {
 // @section     Separator SVG
 // @description Séparateur pour les balises <hr/>
 // -----------------------------------------------------------------------------
+/*
+const separatorSvgForHr = (() => {
+  const hrs = document.querySelectorAll('hr.hr')
+  const separator = '<svg role="separator" class="separator"><use xlink:href="/medias/sprites/silos.svg#195v"></use></svg>'
+  for (const hr of hrs) {
+    hr.insertAdjacentHTML('afterEnd', separator)
+    hr.remove()
+  }
+})()
+*/
 
 const separatorSvgForHr = (() => {
   const hrs = document.querySelectorAll('hr.hr')
-  const separator = '<svg role="separator" class="separator"><use xlink:href="/medias/sprites/separators.svg#hr"></use></svg>'
+  let idsprite = '195v'
   for (const hr of hrs) {
+    if(hr.dataset.id) idsprite = hr.dataset.id
+    const separator = '<svg role="separator" class="separator"><use xlink:href="/medias/sprites/silos.svg#' + idsprite + '"></use></svg>'
     hr.insertAdjacentHTML('afterEnd', separator)
     hr.remove()
   }
