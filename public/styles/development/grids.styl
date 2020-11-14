@@ -1,3 +1,53 @@
+[class^=grid]
+  display grid
+  grid-auto-flow dense
+
+[class*=-gap]
+  gap _gap
+
+@media (min-width _sizeXS)
+  .grid2
+  .grid3
+  .grid4
+    grid-template-columns repeat(2, 1fr)
+
+@media (min-width _sizeS)
+  .grid3
+  .grid4
+    grid-template-columns repeat(3, 1fr)
+
+@media (min-width _sizeL)
+  .grid4
+    grid-template-columns repeat(4, 1fr)
+
+@media (min-width _sizeXS)
+  .c2
+  .c3
+  .c4
+    grid-column span 2
+
+@media (min-width _sizeS)
+  .c3
+  .c4
+    grid-column span 3
+
+@media (min-width _sizeL)
+  .c4
+    grid-column span 4
+
+.r2
+  grid-row span 2
+
+.r3
+  grid-row span 3
+
+.r4
+  grid-row span 4
+
+
+/*
+// with Grid layout:
+
 .summary
   display grid
   gap _gap
@@ -14,7 +64,9 @@
   .summary
     grid-template-columns repeat(4, 1fr)
 
-/*
+
+// with flexbox:
+
 .summary
   display flex
   flex-wrap wrap

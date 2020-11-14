@@ -17,7 +17,7 @@
 }
 html {
   -webkit-text-size-adjust: 100%;
-  color: #e9dac5;
+  color: #fff;
   background-color: #333;
   font-family: 'Open Sans', Arial, Sans-Serif;
   line-height: 1.5;
@@ -174,7 +174,7 @@ template {
 }
 .separator {
   width: 100%;
-  height: 20em;
+  height: 10em;
   fill: #d2b48c;
 }
 body {
@@ -208,6 +208,122 @@ main {
 }
 [tabindex=-1]:focus:not(:focus-visible) {
   outline: 0 !important;
+}
+[class^=grid] {
+  display: grid;
+  grid-auto-flow: dense;
+}
+[class*=-gap] {
+  gap: 1em;
+}
+@media (min-width: 36.01em) {
+  .grid2,
+  .grid3,
+  .grid4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 65.01em) {
+  .grid3,
+  .grid4 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (min-width: 90.01em) {
+  .grid4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+@media (min-width: 36.01em) {
+  .c2,
+  .c3,
+  .c4 {
+    grid-column: span 2;
+  }
+}
+@media (min-width: 65.01em) {
+  .c3,
+  .c4 {
+    grid-column: span 3;
+  }
+}
+@media (min-width: 90.01em) {
+  .c4 {
+    grid-column: span 4;
+  }
+}
+.r2 {
+  grid-row: span 2;
+}
+.r3 {
+  grid-row: span 3;
+}
+.r4 {
+  grid-row: span 4;
+}
+[class^=columns] {
+  -moz-column-gap: 0;
+       column-gap: 0;
+}
+[class^=columns] > * {
+  display: inline-block;
+  width: 100%;
+  word-wrap: break-word;
+}
+@media (min-width: 36.01em) {
+  .columns2,
+  .columns3,
+  .columns4 {
+    -moz-column-count: 2;
+         column-count: 2;
+  }
+  .columns5,
+  .columns6 {
+    -moz-column-count: 3;
+         column-count: 3;
+  }
+}
+@media (min-width: 65.01em) {
+  .columns3,
+  .columns4 {
+    -moz-column-count: 3;
+         column-count: 3;
+  }
+  .columns5,
+  .columns6 {
+    -moz-column-count: 4;
+         column-count: 4;
+  }
+}
+@media (min-width: 90.01em) {
+  .columns4 {
+    -moz-column-count: 4;
+         column-count: 4;
+  }
+  .columns5 {
+    -moz-column-count: 5;
+         column-count: 5;
+  }
+  .columns6 {
+    -moz-column-count: 6;
+         column-count: 6;
+  }
+}
+[class^=columns].gap {
+  -moz-column-gap: 1em;
+       column-gap: 1em;
+}
+[class^=columns].gap > * {
+  margin-bottom: 1em;
+}
+@media (min-width: 36.01em) {
+  [class^=columns].sizeSgap {
+    -moz-column-gap: 1em;
+         column-gap: 1em;
+  }
+  [class^=columns].sizeSgap > * {
+    margin-bottom: 1em;
+  }
 }
 .nav {
   display: flex;
@@ -414,7 +530,7 @@ samp {
   font-family: monospace, monospace;
   font-size: 1em;
   word-break: break-all;
-  color: Tan;
+  color: #d2b48c;
   border-radius: 0.2em;
 }
 :not(pre) > code {
@@ -499,89 +615,6 @@ samp {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-}
-[class^=columns] {
-  -moz-column-gap: 0;
-       column-gap: 0;
-}
-[class^=columns] > * {
-  display: inline-block;
-  width: 100%;
-  word-wrap: break-word;
-}
-@media (min-width: 36.01em) {
-  .columns2,
-  .columns3,
-  .columns4 {
-    -moz-column-count: 2;
-         column-count: 2;
-  }
-  .columns5,
-  .columns6 {
-    -moz-column-count: 3;
-         column-count: 3;
-  }
-}
-@media (min-width: 65.01em) {
-  .columns3,
-  .columns4 {
-    -moz-column-count: 3;
-         column-count: 3;
-  }
-  .columns5,
-  .columns6 {
-    -moz-column-count: 4;
-         column-count: 4;
-  }
-}
-@media (min-width: 90.01em) {
-  .columns4 {
-    -moz-column-count: 4;
-         column-count: 4;
-  }
-  .columns5 {
-    -moz-column-count: 5;
-         column-count: 5;
-  }
-  .columns6 {
-    -moz-column-count: 6;
-         column-count: 6;
-  }
-}
-[class^=columns].gap {
-  -moz-column-gap: 1em;
-       column-gap: 1em;
-}
-[class^=columns].gap > * {
-  margin-bottom: 1em;
-}
-@media (min-width: 36.01em) {
-  [class^=columns].sizeSgap {
-    -moz-column-gap: 1em;
-         column-gap: 1em;
-  }
-  [class^=columns].sizeSgap > * {
-    margin-bottom: 1em;
-  }
-}
-.summary {
-  display: grid;
-  gap: 1em;
-}
-@media (min-width: 36.01em) {
-  .summary {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-@media (min-width: 65.01em) {
-  .summary {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-@media (min-width: 90.01em) {
-  .summary {
-    grid-template-columns: repeat(4, 1fr);
-  }
 }
 [class*=list],
 [class*=list] > * {
