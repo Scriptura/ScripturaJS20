@@ -5,14 +5,14 @@
 
 // @subsection  Grid
 
-_columns = 12              // Nombre de colonnes
 _gap = 1em                 // Gouttière, largeur entre deux modules (en unité em/rem)
-_wrap = 90rem + _gap * 2   // Largeur maximale du contenu (+ prise en compte du padding interne)
+_wrap = 90em + _gap * 2   // Largeur maximale du contenu (+ prise en compte du padding interne)
 
 
 // @subsection  Breakpoints
 
 // @bugfix Nécessité de préciser deux chiffres après la virgule pour éviter un décalage entre 'max-width' et 'min-width' (avec une unité pour éviter les arrondissements par les navigateurs)
+
 _sizeXS =   36.01em
 _sizeS =    65.01em
 _sizeL =    90.01em
@@ -28,6 +28,7 @@ _sizeNav =  45.01em // À caler sur la taille du contenu de '.nav-main ul'. @not
 _fontName = 'Open Sans'
 _fontList = _fontName, Arial, Sans-Serif
 _fontFile = openSans-Regular
+
 _fontName2 = 'Noto Serif'
 _fontList2 = _fontName2, Georgia, Serif
 _fontFile2 = notoSerif-Regular
@@ -37,7 +38,7 @@ _fontFile2 = notoSerif-Regular
 
 _color0 = #333         // couleur de fond
 _color1 = #e91e63      // couleur dominante 1
-_color2 = #b9515d      // couleur dominante 2
+_color2 = #ff6347      // couleur dominante 2 (tomato)
 _color3 = #8bc34a      // couleur secondaire (@todo à définir)
 _color4 = #8bc34a      // couleur secondaire (vert)
 _color5 = #ffa500      // couleur secondaire (orange)
@@ -51,7 +52,7 @@ _colorAdd1 = #d2b48c
 
 // @subsection Rounds
 
-_r1 = .3em            // Boites
-_r2 = _r1              // Éléments internes
+_r1 = .3em             // Boites
+_r2 = .2em             // Éléments internes
 _r3 = false            // Éléments d'informations
 _r4 = false            // Bouttons

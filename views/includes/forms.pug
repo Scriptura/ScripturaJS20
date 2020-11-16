@@ -1,4 +1,4 @@
-form(method='get' action='./')
+form(method='get' action='./').grid4.gap
   fieldset
     legend Label & Inputs
     p
@@ -22,6 +22,8 @@ form(method='get' action='./')
     .input
       label(for='tel') Type tel
       input#tel(type='tel' name='tel' value='' size='23' placeholder='0477446677')
+  fieldset
+    legend Dates & time
     .input
       label(for='date') Type date
       input(type='date' name='date' value='2015-02-12')
@@ -31,6 +33,8 @@ form(method='get' action='./')
     .input
       label(for='datetime') Type datetime
       input(type='datetime' name='datetime')
+  fieldset
+    legend Other
     .input
       label(for='number') Type number
       input(type='number' name='number' step='1' min='-5' max='100' value='50')

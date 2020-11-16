@@ -38,11 +38,13 @@ html {
 }
 a {
   color: #ffa500;
+  text-decoration: none;
 }
 a:focus,
 a:hover,
 a:active {
-  color: #fff;
+  color: #ffa500;
+  text-decoration: underline;
   outline: none;
 }
 p {
@@ -180,7 +182,7 @@ template {
 body {
   display: grid;
   grid-template-rows: repeat(3, auto) 1fr;
-  grid-template-columns: 1fr minmax(0, 92rem) 1fr;
+  grid-template-columns: 1fr minmax(0, 92em) 1fr;
   grid-template-areas: 'nav nav nav' '. header .' 'breadcrumb breadcrumb breadcrumb' '. main .' 'aside aside aside' 'footer footer footer';
   min-height: 100vh;
   margin: 0;
@@ -209,12 +211,15 @@ main {
 [tabindex=-1]:focus:not(:focus-visible) {
   outline: 0 !important;
 }
-[class^=grid] {
+[class*=grid] {
   display: grid;
   grid-auto-flow: dense;
 }
-[class*=-gap] {
+[class*=grid].gap {
   gap: 1em;
+}
+[class*=grid].vertical-gap {
+  gap: 0 1em;
 }
 @media (min-width: 36.01em) {
   .grid2,
@@ -264,6 +269,7 @@ main {
 [class^=columns] {
   -moz-column-gap: 0;
        column-gap: 0;
+  position: relative;
 }
 [class^=columns] > * {
   display: inline-block;
@@ -315,15 +321,6 @@ main {
 }
 [class^=columns].gap > * {
   margin-bottom: 1em;
-}
-@media (min-width: 36.01em) {
-  [class^=columns].sizeSgap {
-    -moz-column-gap: 1em;
-         column-gap: 1em;
-  }
-  [class^=columns].sizeSgap > * {
-    margin-bottom: 1em;
-  }
 }
 .nav {
   display: flex;
@@ -472,7 +469,7 @@ main {
 }
 .breadcrumb li {
   list-style: none;
-  filter: drop-shadow(0.5rem 0.5rem 0.5rem rgba(0,0,0,0.25));
+  filter: drop-shadow(0.5em 0.5em 0.5em rgba(0,0,0,0.25));
 }
 .breadcrumb li:nth-child(1) {
   z-index: 2;
@@ -484,9 +481,9 @@ main {
   position: relative;
   display: block;
   height: _dim;
-  line-height: 2.5rem;
-  padding: 0 0.625rem 0 2.5rem;
-  font-size: 1rem;
+  line-height: 2.5em;
+  padding: 0 0.625em 0 2.5em;
+  font-size: 1em;
   background-size: cover;
   background-repeat: no-repeat;
   color: #d2b48c;
@@ -497,10 +494,10 @@ main {
   position: absolute;
   z-index: -1;
   top: 0;
-  right: -1.25rem;
+  right: -1.25em;
   display: block;
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 2.5em;
+  height: 2.5em;
   -webkit-clip-path: polygon(0% 0%, 50% 0, 100% 50%, 50% 100%, 0% 100%);
           clip-path: polygon(0% 0%, 50% 0, 100% 50%, 50% 100%, 0% 100%);
 }
@@ -510,7 +507,7 @@ main {
   transition: background-color 0.3s ease-in-out;
 }
 .breadcrumb li:first-child a {
-  padding-left: 1rem;
+  padding-left: 1em;
 }
 .breadcrumb li:last-child a {
   color: #e9dac5;
@@ -541,7 +538,7 @@ samp {
   position: relative;
   padding: 1em;
   background-color: #262626;
-  border-radius: 0.3em;
+  border-radius: 0.2em;
   box-shadow: 0.5em 0.5em 2em rgba(0,0,0,0.25);
 }
 .pre code {
@@ -582,28 +579,39 @@ samp {
   color: Orange;
   outline: none;
 }
+.message,
 [class*=alert] {
   margin-bottom: 1em;
   padding: 1em;
   color: #fff;
-  background-color: #222;
-  border-left: 0.5em solid #448aff;
+  background-color: #393939;
   box-shadow: 0.5em 0.5em 2em rgba(0,0,0,0.15);
+  border-radius: 0.2em;
+}
+[class*=alert] svg {
+  display: inline-block;
+  vertical-align: sub;
+  height: 1.2em;
+  width: 1.2em;
+  margin-right: 0.5em;
+}
+.alert-primary {
+  background-color: #e91e63;
 }
 .alert-secondary {
-  border-color: #e91e63;
-}
-.alert-success {
-  border-color: #8bc34a;
-}
-.alert-danger {
-  border-color: Red;
-}
-.alert-warning {
-  border-color: #ffa500;
+  background-color: #cd853f;
 }
 .alert-info {
-  border-color: #777;
+  background-color: #448aff;
+}
+.alert-success {
+  background-color: #8bc34a;
+}
+.alert-danger {
+  background-color: #f00;
+}
+.alert-warning {
+  background-color: #ffa500;
 }
 .protected {
   -webkit-user-select: none;
@@ -705,7 +713,7 @@ figure {
 }
 @media (min-width: 36.01em) {
   [class*=-thumbnail] {
-    max-width: 23rem;
+    max-width: 23em;
   }
 }
 @media (min-width: 65.01em) {
@@ -1103,7 +1111,7 @@ form fieldset > [class*=input] {
 [class*=input] select,
 [class*=input] textarea {
   color: currentColor;
-  border-radius: 0.3em;
+  border-radius: 0.2em;
 }
 [class*=input] textarea {
   min-height: 10em;
@@ -1236,13 +1244,13 @@ form fieldset > [class*=input] {
   }
 }
 .accordion {
-  box-shadow: 0.5rem 0.5rem 2rem rgba(0,0,0,0.25);
+  box-shadow: 0.5em 0.5em 2em rgba(0,0,0,0.25);
 }
 .accordion summary,
 .accordion .accordion-summary {
-  padding: 1rem;
+  padding: 1em;
   color: #fff;
-  background: #e91e63 linear-gradient(to top, rgba(0,0,0,0.1), rgba(255,255,255,0.05));
+  background: #ff6347 linear-gradient(to top, rgba(0,0,0,0.1), rgba(255,255,255,0.05));
   cursor: pointer;
   outline: none;
 }
@@ -1253,31 +1261,33 @@ form fieldset > [class*=input] {
   display: block;
   width: 100%;
   font-family: Arial;
-  font-size: 1rem;
+  font-size: 1em;
   text-align: left;
   border: none;
+}
+.accordion > * > :first-child {
+  display: flex;
 }
 .accordion > * > :first-child:focus,
 .accordion > * > :first-child:hover,
 .accordion > * > :first-child:active {
   background-color: #ffa500;
 }
-.accordion > * > :first-child::before {
+.accordion > * > :first-child::after {
   content: '\002B';
   font-weight: bold;
-  float: right;
-  margin-left: 5px;
+  margin-left: auto;
 }
 .accordion .open button {
   background-color: #ffa500;
 }
 .accordion > * > :last-child {
-  padding: 0 1rem;
+  padding: 0 1em;
   overflow: hidden;
   transition: max-height 0.5s ease-out;
 }
-.accordion details[open] summary::before,
-.accordion .open .accordion-summary::before {
+.accordion details[open] summary::after,
+.accordion .open .accordion-summary::after {
   content: '\2212';
 }
 .accordion .accordion-panel {
@@ -1354,4 +1364,30 @@ form fieldset > [class*=input] {
     justify-content: space-between;
     align-items: center;
   }
+}
+[class*=demo-items] > * {
+  box-sizing: border-box;
+  padding: 0 0.5em;
+  background-color: #444;
+  box-shadow: 0.5em 0.5em 2em rgba(0,0,0,0.15);
+}
+.demo-items > * {
+  padding: 1em;
+}
+.demo-items-empty > * {
+  min-height: 2em;
+  line-height: 2;
+}
+[class*=demo-items] > * code {
+  background-color: rgba(0,0,0,0.2);
+}
+.demo-counter > * {
+  counter-increment: div;
+}
+.demo-counter > ::before {
+  display: inline;
+  content: counter(div) '.';
+}
+.demo-counter > * :first-child {
+  display: inline;
 }

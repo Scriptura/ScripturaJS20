@@ -1,0 +1,56 @@
+_colorAlert = #393939
+_colorAlertPrimary = _color1
+_colorAlertSecondary = peru
+_colorAlertInfo = _color6
+_colorAlertSuccess = _color4 //darken(_color4, 5)
+_colorAlertDanger = red
+_colorAlertWarning = orange //#444
+_colorBand = rgba(0, 0, 0, .2)
+
+.message
+[class*=alert]
+  margin-bottom 1em
+  padding 1em
+  color #fff
+  background-color _colorAlert
+  box-shadow .5em .5em 2em rgba(0, 0, 0, .15)
+  border-radius _r2
+
+[class*=alert] svg
+  display inline-block
+  vertical-align sub
+  height 1.2em
+  width 1.2em
+  margin-right .5em
+
+.alert-primary
+  background-color _colorAlertPrimary
+
+.alert-secondary
+  background-color _colorAlertSecondary
+
+.alert-info
+  background-color _colorAlertInfo
+
+.alert-success
+  background-color _colorAlertSuccess
+
+.alert-danger
+  background-color _colorAlertDanger
+
+.alert-warning
+  background-color _color5
+
+/*
+.alert-warning
+  position relative
+  background-color _color5
+  &::before
+  &::after
+    content ''
+    position absolute
+  position relative
+  &::after
+    bottom 0
+    border-radius 0 0 _r2 _r2
+*/

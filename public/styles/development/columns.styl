@@ -1,5 +1,6 @@
 [class^=columns]
   column-gap 0
+  position relative
 
 [class^=columns] > *
   display inline-block
@@ -44,10 +45,5 @@
 [class^=columns].gap > *
   margin-bottom _gap
 
-@media (min-width _sizeXS)
-
-  [class^=columns].sizeSgap
-    column-gap _gap
-
-  [class^=columns].sizeSgap > *
-    margin-bottom _gap
+//[class^=columns].vertical-gap
+//  column-gap _gap
