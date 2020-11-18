@@ -3,11 +3,8 @@ extends layout
 block main
   main
     h1= error.status + ' ' + message
-    //-pre #{error.stack}
-    pre.
-         OxxO
-        X oo X
-        X >< X
-         XXXX~<>
-       (..)(..)
+    pre
+      code(translate='no' data-select='Select and copy') #{error.stack}
+    .decorative-svg.gap-bottom
+      include ../public/medias/images/Silos131v-d1.svg
     include includes/links

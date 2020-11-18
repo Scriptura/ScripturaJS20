@@ -1,0 +1,42 @@
+.box
+  position relative
+  padding 2em
+  color _colorAdd1 //#474747
+  background-color darken(_color0, 20%) //#e7e7e7
+  border-radius .5em
+  box-shadow 0 0 2em rgba(0, 0, 0, .1)
+
+.box::before
+.box::after
+  content ''
+  z-index -1
+  position absolute
+  bottom 2em
+  left 1em
+  width 80%
+  height 1.5em
+  max-width 30em
+  box-shadow 0 1.5em 2em rgba(0, 0, 0, .4)
+  transform rotate(-3deg) translateZ(0)
+
+.box::after
+  right 1em
+  left auto
+  transform rotate(3deg)
+
+/*
+.box::after
+  content ''
+  position absolute
+  z-index -1
+  bottom 1.5em
+  left 10%
+  width 80%
+  height 1.5em
+  max-width 30em
+  box-shadow 0 1.5em 2em rgba(0,0,0,.8)
+  border-radius 50%
+*/
+
+.box .h2
+  text-align center

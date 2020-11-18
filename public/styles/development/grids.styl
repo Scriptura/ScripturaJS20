@@ -8,6 +8,10 @@
 [class*=grid].vertical-gap
   gap 0 _gap
 
+@media (max-width _sizeXS)
+  .sizeXSgrid2
+    grid-template-columns repeat(2, 1fr)
+
 @media (min-width _sizeXS)
   .grid2
   .grid3

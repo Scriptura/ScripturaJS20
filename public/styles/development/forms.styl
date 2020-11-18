@@ -1,3 +1,5 @@
+_formsColor1 = _color2
+
 fieldset
   margin 0
   //padding 0.35em 0.75em 0.625em // @bugfix Correct the padding @affected Firefox.
@@ -274,9 +276,9 @@ form fieldset > [class*=input]
   white-space nowrap
   text-overflow ellipsis
   color #fff
-  background-color #e91e63
+  background-color _formsColor1
   outline 0
-  border .5em solid #e91e63
+  border .5em solid _formsColor1
   box-shadow 0 0.5rem 2rem rgba(0,0,0,.3)
   background-image linear-gradient(to top,rgba(0,0,0,.1),rgba(255,255,255,.05))
   //border-radius _r4

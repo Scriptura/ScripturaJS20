@@ -1,20 +1,21 @@
-_colorAlert = #393939
-_colorAlertPrimary = _color1
-_colorAlertSecondary = peru
-_colorAlertInfo = _color6
-_colorAlertSuccess = _color4 //darken(_color4, 5)
-_colorAlertDanger = red
-_colorAlertWarning = orange //#444
-_colorBand = rgba(0, 0, 0, .2)
+_messageBoxesColor0 = lighten(_colorG, 5)
+_messageBoxesColor1 = lighten(_colorG, 15)
+_messageBoxesColor2 = _messageBoxesColor0
+_messageBoxesColor3 = _color6
+_messageBoxesColor4 = _color4
+_messageBoxesColor5 = _color2
+_messageBoxesColor6 = _color5
 
 .message
 [class*=alert]
   margin-bottom 1em
   padding 1em
-  color #fff
-  background-color _colorAlert
+  background-color _messageBoxesColor0
   box-shadow .5em .5em 2em rgba(0, 0, 0, .15)
   border-radius _r2
+
+[class*=alert]
+  color #fff
 
 [class*=alert] svg
   display inline-block
@@ -24,22 +25,22 @@ _colorBand = rgba(0, 0, 0, .2)
   margin-right .5em
 
 .alert-primary
-  background-color _colorAlertPrimary
+  background-color _messageBoxesColor1
 
 .alert-secondary
-  background-color _colorAlertSecondary
+  background-color _messageBoxesColor2
 
 .alert-info
-  background-color _colorAlertInfo
+  background-color _messageBoxesColor3
 
 .alert-success
-  background-color _colorAlertSuccess
+  background-color _messageBoxesColor4
 
 .alert-danger
-  background-color _colorAlertDanger
+  background-color _messageBoxesColor5
 
 .alert-warning
-  background-color _color5
+  background-color _messageBoxesColor6
 
 /*
 .alert-warning

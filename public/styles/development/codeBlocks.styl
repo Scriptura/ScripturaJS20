@@ -1,3 +1,7 @@
+_codeBlocksColor1 = _colorG
+_codeBlocksColor2 = #777
+_codeBlocksColor3 = darken(_colorG, 12)
+
 code
 kbd
 samp
@@ -9,20 +13,19 @@ samp
 
 :not(pre) > code
   padding .2em
-  background-color darken(_color0, 5) // => #262626
-  //border 1px solid #000
+  background-color _codeBlocksColor1
 
 // @note Pas de style par défaut pour la balise `pre`
 
 .pre
   position relative
   padding 1em
-  background-color darken(_color0, 5) // => #262626
+  background-color _codeBlocksColor3
   border-radius _r2
   box-shadow .5em .5em 2em rgba(0, 0, 0, .25)
 
 .pre code
-  color #777
+  color _codeBlocksColor2
   transition color .5s ease-in-out
 
 .pre code:focus-within
@@ -34,12 +37,12 @@ samp
   top 1em
   right 1em
   font-size 1em
-  color #777
+  color _codeBlocksColor2
 
 .pre svg
   width 1em
   height 1em
-  fill #777
+  fill _codeBlocksColor2
 
 .pre div span
   margin-left .5em
@@ -50,7 +53,7 @@ samp
   right 1em
   padding 0
   border none
-  color #777
+  color _codeBlocksColor2
   background-color transparent
 
 .pre button:focus

@@ -1,6 +1,8 @@
 _menuSize = 2.5rem
 _menuFix = 177px
 _menuColor1 = darken(_colorG, 34%)
+_menuColor2 = _colorAdd1
+_menuColor3 = _color2
 
 // Main menu
 
@@ -27,14 +29,14 @@ _menuColor1 = darken(_colorG, 34%)
   line-height unit(_menuSize, '')
 
 .nav a
-  color _colorAdd1
+  color _menuColor2
   text-decoration none
 
 /*
 @media (min-width _sizeNav)
   for _i in 1...12
     .nav li:nth-child(11n+{_i}) > *
-      _colorItem = lighten(_colorAdd1, 5% * _i)
+      _colorItem = lighten(_menuColor2, 5% * _i)
       background-color _colorItem
 */
 
@@ -47,7 +49,7 @@ _menuColor1 = darken(_colorG, 34%)
 .nav li a:active
   color #fff
   //background-image linear-gradient(to top, rgba(0, 0, 0, .3) , rgba(255, 255, 255, .2))
-  background-color _color1 //lighten(_colorAdd1, 50%) // darken(_colorAdd1, 25%)
+  background-color _menuColor3
 
 .nav svg
   display inline-block
@@ -80,7 +82,7 @@ _menuColor1 = darken(_colorG, 34%)
 
   .nav ul .active
     position relative
-    background-color #e91e63
+    background-color _menuColor3
 
   .nav ul .active::after
     content ''
@@ -89,7 +91,7 @@ _menuColor1 = darken(_colorG, 34%)
     left calc(50% - 1em)
     width 2em
     height 1em
-    background-color #e91e63
+    background-color _menuColor3
     clip-path polygon(0% 0%, 100% 0%, 50% 100%)
 
   @keyframes animJump
@@ -133,7 +135,7 @@ _menuColor1 = darken(_colorG, 34%)
     fill Orange
 
   .cmd-nav svg :nth-child(2)
-    fill #e91e63 //Crimson
+    fill _menuColor3 //Crimson
 
   .cmd-nav svg :nth-child(3)
     fill #8bc34a //Chocolate

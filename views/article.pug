@@ -4,18 +4,10 @@ block main
   main
     h1= _name
     p!= _content
-    figure.figure-focus-thumbnail
-      - var img = '/medias/images/demo/LotusTest'
-      - var alt = 'Lotus'
-      include utils/picture
-    figure.figure-focus-thumbnail
-      - var img = '/medias/images/demo/ColorfulLeaf'
-      - var alt = 'Colorful leaf'
-      include utils/picture
-    figure.figure-focus-thumbnail
-      - var img = '/medias/images/demo/GrassLeaf'
-      - var alt = 'Grass leaf'
-      include utils/picture
+      figure.figure-focus-thumbnail
+        - var img = '/medias/images/demo/OldMechanism'
+        - var alt = 'Old Mechanism'
+        include helpers/picture
     ul
       li Description : #{_description}
       li

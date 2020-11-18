@@ -1,8 +1,3 @@
-// -----------------------------------------------------------------------------
-// @section     Base
-// @description Base du site, inclus un reboot css
-// -----------------------------------------------------------------------------
-
 // @note Inspiré de Bootstrap Reboot et Normalize CSS 8.0.1
 // @see https://github.com/twbs/bootstrap/blob/v4-dev/scss/_reboot.scss
 // @see https://github.com/necolas/normalize.css
@@ -20,7 +15,7 @@
 html
   -webkit-text-size-adjust 100% // @bugfix Prevent adjustments of font size after orientation changes @affected iOS.
   //-webkit-tap-highlight-color Transparent // Change the default tap highlight to be completely transparent. @affected iOS.
-  color _colorW
+  color _colorT
   background-color _color0
   font-family _fontList // Georgia, Serif
   line-height 1.5 // @bugfix Correct the line height @affected All browsers.
@@ -39,7 +34,7 @@ html
   background-color Orange //rgba(255, 111, 125, .5)
 
 a
-  color _color5
+  color _color2
   // background-color transparent // @bugfix Remove the gray background on active links @affected IE 10.
   text-decoration none
   // transition all .5s
@@ -59,9 +54,9 @@ hr
   overflow visible // @bugfix Show the overflow @affected Edge and IE.
   box-sizing content-box // @bugfix Add the correct box sizing @affected Firefox.
   height 1px //0 // @bugfix Add the correct box sizing @affected Firefox.
-  margin 2rem auto
+  margin 2em auto
   color transparent // inherit // @bugfix Reset gray color. @affected Firefox.
-  background-color _color1
+  background-color _colorAdd1
   border none
 
 h1
@@ -131,14 +126,14 @@ blockquote
   position relative
   margin-left 0
   padding-left 1.5em
-  border-left .5em solid _color1 //currentcolor
+  border-left .5em solid _color2 //currentColor
 
 blockquote::before
   content '\275E' //'\275D' '\201C'
   position absolute
   bottom -3rem
   font-size 4em
-  color _color1
+  color _color2
 
 blockquote footer
   text-align right
@@ -154,7 +149,7 @@ q
 
 mark
   color currentColor
-  background-color _color1
+  background-color _color2
 
 small
   font-size 80% // @bugfix Add the correct font size @affected All browsers.

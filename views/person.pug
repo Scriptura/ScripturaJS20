@@ -3,60 +3,69 @@ extends layout
 block main
   main
     h1= _full_name
-    ul
-      li Id : #{_id}
-      if _user_id
-        li User id : #{_user_id}
-      li Sexe : 
-        if _sexe == NULL
-          | non renseigné
-        if _sexe == '0'
-          | inconnu
-        if _sexe == '1'
-          | homme
-        else if _sexe == '2'
-          | femme
-        else if _sexe == '9'
-          | non applicable
-      if _given_name
-        li= _given_name
-      if _middle_name
-        li= _middle_name
-      if _family_name
-        li= _family_name
-      if _usual_name
-        li= _usual_name
-      if _nickname
-        li= _nickname
-      if _prefix
-        li= _prefix
-      if _suffix
-        li= _suffix
-      if _birth_date
-        li
-          if _sexe != 2
-            | Né
-          else
-            | Née
-          |  le #{_birth_date}
-          if _birth_place_id
-            |  à #{_birth_place_id}
-      if _death_date
-        li
-          if _sexe == ('1' || '9')
-            | Décédé
-          else 
-            | Décédée
-          |  le #{_death_date}
-      if _nationality
-        li Pays : #{_nationality}
-      if _phone
-        li Téléphone : #{_phone}
-      if _devise
-        li Devise : 
-          em "#{_devise}"
-    p!= _description
-    hr
+    .grid2.gap.gap-bottom
+      div
+        ul
+          li Id : #{_id}
+          if _user_id
+            li User id : #{_user_id}
+          li Sexe : 
+            if _sexe == NULL
+              | non renseigné
+            if _sexe == '0'
+              | inconnu
+            if _sexe == '1'
+              | homme
+            else if _sexe == '2'
+              | femme
+            else if _sexe == '9'
+              | non applicable
+          if _given_name
+            li= _given_name
+          if _middle_name
+            li= _middle_name
+          if _family_name
+            li= _family_name
+          if _usual_name
+            li= _usual_name
+          if _nickname
+            li= _nickname
+          if _prefix
+            li= _prefix
+          if _suffix
+            li= _suffix
+          if _birth_date
+            li
+              if _sexe != 2
+                | Né
+              else
+                | Née
+              |  le #{_birth_date}
+              if _birth_place_id
+                |  à #{_birth_place_id}
+          if _death_date
+            li
+              if _sexe == ('1' || '9')
+                | Décédé
+              else 
+                | Décédée
+              |  le #{_death_date}
+          if _nationality
+            li Pays : #{_nationality}
+          if _phone
+            li Téléphone : #{_phone}
+          if _devise
+            li Devise : 
+              em "#{_devise}"
+        p!= _description
+      .decorative-svg(style='display:flex;align-items:center')
+        //-
+          style.
+            .decorative-svg svg {
+              height:30em;
+              max-width:40em;
+            }
+        include ../public/medias/images/Silos126r-d1.svg
     ul.list-stripe-large-links.grid4.gap
       li
         a(href='/person/1') Person 1

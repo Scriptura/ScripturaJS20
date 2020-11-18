@@ -1,18 +1,16 @@
 p
   code .figure-focus
-.grid3.gap
-  div
-    figure.figure-focus
-      - var img = '/medias/images/demo/LotusTest'
-      - var alt = 'Lotus'
-      include ../utils/picture
-  div
-    figure.figure-focus
-      - var img = '/medias/images/demo/ColorfulLeaf'
-      - var alt = 'Colorful leaf'
-      include ../utils/picture
-  div
-    figure.figure-focus
-      - var img = '/medias/images/demo/GrassLeaf'
-      - var alt = 'Grass leaf'
-      include ../utils/picture
+.grid4.sizeXSgrid2.gap
+  - var items = [['LotusTest', 'Lotus test'], ['FlowerMacro', 'Flower'], ['LotusMacro', 'Lotus'], ['ColorfulLeaf', 'Colorful leaf'], ['GrassLeaf', 'Grass leaf'], ['PacificCity', 'Pacific city'], ['FlowerMacro', 'Flower'], ['LotusMacro', 'Lotus'], ['ColorfulLeaf', 'Colorful leaf'], ['GrassLeaf', 'Grass leaf'], ['PacificCity', 'Pacific city'], ['FlowerMacro', 'Flower'], ['LotusMacro', 'Lotus'], ['ColorfulLeaf', 'Colorful leaf'], ['GrassLeaf', 'Grass leaf'], ['PacificCity', 'Pacific city'], ['FlowerMacro', 'Flower'], ['LotusMacro', 'Lotus'], ['ColorfulLeaf', 'Colorful leaf'], ['GrassLeaf', 'Grass leaf'], ['PacificCity', 'Pacific city'], ['FlowerMacro', 'Flower'], ['LotusMacro', 'Lotus'], ['ColorfulLeaf', 'Colorful leaf'], ['GrassLeaf', 'Grass leaf'], ['PacificCity', 'Pacific city']] //['OldMechanism', 'Old Mechanism']
+  - for (var i = 0; i < items.length; i++)
+    div
+      figure.figure-focus
+        - var img = '/medias/images/demo/' + items[i][0]
+        - var alt = items[i][1]
+        include ../helpers/picture
+  //-
+    div
+      figure.figure-focus
+        - var img = '/medias/images/demo/LotusTest'
+        - var alt = 'Lotus'
+        include ../helpers/picture

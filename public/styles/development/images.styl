@@ -1,12 +1,12 @@
-// @subsection Vector graphics
-// -----------------------------------------------------------------------------
+_imagesColor1 = _colorG
 
 svg
+  max-width 100%
   fill currentcolor // Pour les polices d'icônes par défaut.
 
-
-// @subsection Raster images
-// -----------------------------------------------------------------------------
+.decorative-svg svg
+  height 25em
+  fill _colorAdd1
 
 img
   vertical-align middle // Évite un décalage possible de l'élément suivant
@@ -14,10 +14,6 @@ img
   height auto
   max-width 100%
   border-style none // @bugfix Remove the border on images inside links @affected IE 10.
-
-
-// @subsection Figures
-// -----------------------------------------------------------------------------
 
 figure
   margin 0 // @bugfix @affected All browers
@@ -27,7 +23,7 @@ figure
   width 100%
   padding .5em
   color _colorT
-  background-color lighten(_color0, 10%)
+  background-color _imagesColor1
   box-shadow .5em .5em 2em rgba(0, 0, 0, .2)
 
 [class^=figure] figcaption
@@ -37,10 +33,6 @@ figure
 [class^=figure] + [class^=figure]
   margin-top 2em
 
-
-// @subsection Thumbnails
-// -----------------------------------------------------------------------------
-
 [class*=-thumbnail]
   width 100% // Important à appliquer pour le responsive si le width n'est pas définit préalablement
 
@@ -48,10 +40,6 @@ figure
 
   [class*=-thumbnail]
     max-width (_wrap / 4)
-
-
-// @subsection .align
-// -----------------------------------------------------------------------------
 
 @media (min-width _sizeS)
 
@@ -69,53 +57,6 @@ figure
   [class*=-align] ~ aside
     clear both // @Note Ciblage de certains éléments faisants suite à une image flotante @todo Le margin-top de ces éléments n'est pas pris en compte sous l'image...
 
-
-// @subsection Caption Slides
-// -----------------------------------------------------------------------------
-
-[class*=-captionslide]
-  position relative
-  overflow hidden
-
-[class*=-captionslide]::before
-  content '?'
-  position absolute
-  bottom 1em
-  left 1em
-  z-index 300
-  width 2.5em
-  height 2.5em
-  line-height 2.5
-  font-weight 600
-  color _colorCL037
-  text-align center
-  text-shadow 0 0 .5em colorT
-  background-color _colorT
-  opacity .75
-  border-radius 50%
-
-[class*=-captionslide]:hover::before
-  opacity 0
-
-[class*=-captionslide] figcaption
-  position absolute
-  bottom -30%
-  left 0
-  margin 0 .5em .5em
-  padding .5em
-  color _colorCL038
-  background-color _colorT
-  opacity 0
-  transition all .6s ease
-
-[class*=-captionslide]:hover figcaption
-  opacity 1
-  bottom 0
-
-
-// @subsection Focus
-// -----------------------------------------------------------------------------
-
 .js [class*=-focus]
   position relative
   cursor zoom-in
@@ -132,7 +73,6 @@ figure
   background-color Orange
 
 .js [class*=-focus]:focus-within svg
-.js [class*=-focus]:hover svg
   fill Orange
 
 [class*=-focus] button
