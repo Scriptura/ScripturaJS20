@@ -1,13 +1,13 @@
-.box
+.card
   position relative
   padding 2em
-  color _colorAdd1 //#474747
-  background-color darken(_color0, 20%) //#e7e7e7
+  color _colorAdd1
+  background-color darken(_color0, 20%)
   border-radius .5em
   box-shadow 0 0 2em rgba(0, 0, 0, .1)
 
-.box::before
-.box::after
+.card::before
+.card::after
   content ''
   z-index -1
   position absolute
@@ -19,13 +19,13 @@
   box-shadow 0 1.5em 2em rgba(0, 0, 0, .4)
   transform rotate(-3deg) translateZ(0)
 
-.box::after
+.card::after
   right 1em
   left auto
   transform rotate(3deg)
 
 /*
-.box::after
+.card::after
   content ''
   position absolute
   z-index -1
@@ -38,5 +38,5 @@
   border-radius 50%
 */
 
-.box .h2
+.card .h2
   text-align center

@@ -2,7 +2,7 @@ extends layout
 
 block main
   main
-    h1= _name
+    h1.title= _name
     form(action='/register' method='post')
       .input
         label Créez un nom d'utilisateur
@@ -14,4 +14,7 @@ block main
         label Réentrez votre mot de passe
         input(type='password' name='password2' placeholder='• • • • • • • •' required='required')
       div
-        button.button Enregistrer
+        button.button
+          svg.icon(role='img' focusable='false')
+            use(xlink:href='/medias/sprites/utils.svg#bookmark')
+          | Enregistrer

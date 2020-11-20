@@ -1,5 +1,15 @@
-_listsColor1 = darken(_colorG, 34%)
+_listsColor1 = lighten(_colorG, 10%)
 _listsColor2 = _color2
+_listsColor3 = _colorT
+
+ul
+  list-style-type square
+
+ol ol
+  list-style-type lower-latin
+
+ol ol ol
+  list-style-type lower-greek
 
 [class*=list]
 [class*=list] > *
@@ -9,47 +19,26 @@ _listsColor2 = _color2
   display block
 
 [class*=list-stripe]
-  margin 0 // @note Si éléments <ul> ou <ol>
-
-//:root [class*=list-stripe] > *
-//  margin-bottom 1em // @bugfix Problème d'interprétation avec unité rem @affected Chrome.
-
-:root [class*=list-stripe]:not([class*=-links]) > *
-.list-stripe-links a
-  padding .3em 1em
-
-:root [class*=list-stripe-large]:not([class*=-links]) > *
-.list-stripe-large-links a
-  padding .5em 1em
+  display grid
+  gap _gap
+  margin 0
 
 [class*=list-stripe] > *
+  padding .5em 1em
   background-color _listsColor1
-  //background-image linear-gradient(to left, rgba(0, 0, 0, .1) , rgba(255, 255, 255, .025))
   box-shadow .5em .5em 2em rgba(0, 0, 0, .1)
-
-[class*=-links] li
-  padding 0
 
 [class*=-links] a
   display block
+  color _listsColor3 //inherit
   text-decoration none
-  color _colorAdd1 //inherit
 
-[class*=-links] a:focus
-[class*=-links] a:hover
-[class*=-links] a:active
-  color #fff
+[class*=-links] li:focus-within
+[class*=-links] li:hover
   background-color _listsColor2
   box-shadow .5em .5em 2em rgba(0, 0, 0, .25)
   outline none
   animation animList .05s ease-in-out
-
-[class*=-links] svg
-  width 1.1em
-  height 1.1em
-  display inline-block
-  margin-right .5em
-  vertical-align sub
 
 @keyframes animList
   to

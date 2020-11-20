@@ -2,7 +2,8 @@ extends layout
 
 block main
   main
-    h1= _full_name
+    h1.title Personne : 
+      span #{_full_name}
     .grid2.gap.gap-bottom
       div
         ul
@@ -66,7 +67,7 @@ block main
               max-width:40em;
             }
         include ../public/medias/images/Silos126r-d1.svg
-    ul.list-stripe-large-links.grid4.gap
+    ul.list-stripe-links.grid2
       li
         a(href='/person/1') Person 1
       li

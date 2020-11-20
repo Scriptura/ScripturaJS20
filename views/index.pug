@@ -2,7 +2,8 @@ extends layout
 
 block main
   main
-    h1= _name
+    h1.title #{_name} 
+      span un framework pour le web
     .grid2.gap.gap-bottom
       div
         h2 Serveur :
@@ -21,6 +22,6 @@ block main
         ul
           li Os : #{_user_os} (#{_user_platform})
           li Navigateur : #{_user_browser} (#{_user_version})
-      .decorative-svg(style='display:flex;align-items:center')
+      .decorative-svg.center
         include ../public/medias/images/Silos195v.svg
     include includes/links

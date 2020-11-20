@@ -2,7 +2,7 @@ extends layout
 
 block main
   main
-    h1= _name
+    h1.title= _name
     form(action='/login' method='post')
       .input
         label Utilisateur :
@@ -11,4 +11,7 @@ block main
         label Mot de passe :
         input(type='password' name='password' placeholder='• • • • • • • •' required='required')
       div
-        button.button Se connecter
+        button.button
+          svg.icon(role='img' focusable='false')
+            use(xlink:href='/medias/sprites/utils.svg#login')
+          | Se connecter

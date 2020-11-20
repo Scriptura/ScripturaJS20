@@ -34,7 +34,7 @@ _menuColor3 = _color2
 
 /*
 @media (min-width _sizeNav)
-  for _i in 1...12
+  for _i in 1..10
     .nav li:nth-child(11n+{_i}) > *
       _colorItem = lighten(_menuColor2, 5% * _i)
       background-color _colorItem
@@ -50,13 +50,6 @@ _menuColor3 = _color2
   color #fff
   //background-image linear-gradient(to top, rgba(0, 0, 0, .3) , rgba(255, 255, 255, .2))
   background-color _menuColor3
-
-.nav svg
-  display inline-block
-  vertical-align sub
-  height 1.2em
-  width 1.2em
-  margin-right .5em
 
 .nav a:focus svg
 .nav a:hover svg

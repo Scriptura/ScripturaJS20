@@ -2,7 +2,8 @@ extends layout
 
 block main
   main
-    h1= _name
+    h1.title Adresse : 
+      span #{_name}
     ul
       if _street && _postal_code && _locality
         li Adresse : #{_street}, #{_postal_code}, #{_locality}
@@ -15,14 +16,14 @@ block main
       if _elevation
         li Altitude : #{_elevation}
     if _location
-      #map.map(style='height:50vh' data-name='Basilique Notre-Dame-de-la-Garde' data-coords='[' + _location.y + ',' + _location.x + ']', data-zoom='15', data-color='#ff654f', data-tileserver = 'https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token=pk.eyJ1Ijoib2xpdmllcmMiLCJhIjoiY2s5dnNnZWoyMDIzNDNzb2Y1dmQ4MGNtMCJ9.m4U-wYcS4EPcKe9nVXIbUA', data-attribution = '<a href="//www.openstreetmap.org/">OSM</a> | <a href="//www.mapbox.com/">Mapbox</a>')
-      //- Serveurs de tuiles disponibles @see https://wiki.openstreetmap.org/wiki/Tile_servers
-      //- Alternative : 'https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png'
-      //- Zoom de 0 à 18
-      //- @todo yarn add color -> color.lighten(0.2)
+      .gap-bottom
+        #map.map(style='height:50vh' data-name='Basilique Notre-Dame-de-la-Garde' data-coords='[' + _location.y + ',' + _location.x + ']', data-zoom='15', data-color='#ff654f', data-tileserver = 'https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token=pk.eyJ1Ijoib2xpdmllcmMiLCJhIjoiY2s5dnNnZWoyMDIzNDNzb2Y1dmQ4MGNtMCJ9.m4U-wYcS4EPcKe9nVXIbUA', data-attribution = '<a href="//www.openstreetmap.org/">OSM</a> | <a href="//www.mapbox.com/">Mapbox</a>')
+        //- Serveurs de tuiles disponibles @see https://wiki.openstreetmap.org/wiki/Tile_servers
+        //- Alternative : 'https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png'
+        //- Zoom de 0 à 18
+        //- @todo yarn add color -> color.lighten(0.2)
       script(src='/scripts/mapPlace.js')
-    hr
-    ul.list-stripe-large-links.grid4.gap
+    ul.list-stripe-links.grid3
       li
         a(href='/place/1') Place 1
       li

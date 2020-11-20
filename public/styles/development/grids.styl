@@ -9,36 +9,46 @@
   gap 0 _gap
 
 @media (max-width _sizeXS)
+
   .sizeXSgrid2
     grid-template-columns repeat(2, 1fr)
 
 @media (min-width _sizeXS)
+
   .grid2
   .grid3
   .grid4
     grid-template-columns repeat(2, 1fr)
 
 @media (min-width _sizeS)
+
+  .sizeSgrid2
+    grid-template-columns repeat(3, 1fr) !important
+
   .grid3
   .grid4
     grid-template-columns repeat(3, 1fr)
 
 @media (min-width _sizeL)
+
   .grid4
     grid-template-columns repeat(4, 1fr)
 
 @media (min-width _sizeXS)
+
   .c2
   .c3
   .c4
     grid-column span 2
 
 @media (min-width _sizeS)
+
   .c3
   .c4
     grid-column span 3
 
 @media (min-width _sizeL)
+
   .c4
     grid-column span 4
 
@@ -60,14 +70,17 @@
   gap _gap
 
 @media (min-width _sizeXS)
+
   .summary
     grid-template-columns repeat(2, 1fr)
 
 @media (min-width _sizeS)
+
   .summary
     grid-template-columns repeat(3, 1fr)
 
 @media (min-width _sizeL)
+
   .summary
     grid-template-columns repeat(4, 1fr)
 
@@ -83,14 +96,25 @@
   flex 1 0 100% // = [flex-grow flex-shrink flex-basis]
 
 @media (min-width _sizeXS)
+
   .summary > *
     flex-basis 'calc(50% - %s)' % _gap
 
 @media (min-width _sizeS)
+
   .summary > *
     flex-basis 'calc(33% - %s)' % _gap
 
 @media (min-width _sizeL)
+
   .summary > *
     flex-basis 'calc(25% - %s)' % _gap
 */
+
+.flex // @todo En test...
+  display flex
+  flex-wrap wrap
+  justify-content space-between
+
+.flex.gap
+  gap _gap
