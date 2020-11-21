@@ -29,15 +29,15 @@ html {
   }
 }
 ::-moz-selection {
-  color: #000;
+  color: #fff;
   background-color: Orange;
 }
 ::selection {
-  color: #000;
+  color: #fff;
   background-color: Orange;
 }
 a {
-  color: #ff6347;
+  color: #ffa500;
   text-decoration: none;
 }
 a:focus,
@@ -119,7 +119,7 @@ em {
 }
 blockquote {
   position: relative;
-  margin-left: 0;
+  margin: 0;
   padding-left: 1.5em;
   border-left: 0.5em solid #ff6347;
 }
@@ -174,10 +174,10 @@ template {
 [hidden] {
   display: none;
 }
-.title {
+.main-heading {
   text-shadow: 0.2em 0.2em 0.2em rgba(0,0,0,0.3);
 }
-.title span {
+.main-heading span {
   color: #ff6347;
 }
 .separator {
@@ -234,7 +234,7 @@ main {
   gap: 0 1em;
 }
 @media (max-width: 36.01em) {
-  .sizeXSgrid2 {
+  .sizeXS-grid2 {
     grid-template-columns: repeat(2, 1fr);
   }
 }
@@ -246,7 +246,7 @@ main {
   }
 }
 @media (min-width: 65.01em) {
-  .sizeSgrid2 {
+  .sizeS-grid2 {
     grid-template-columns: repeat(3, 1fr) !important;
   }
   .grid3,
@@ -305,7 +305,7 @@ main {
   word-wrap: break-word;
 }
 @media (max-width: 36.01em) {
-  .sizeXScolumns2 {
+  .sizeXS-columns2 {
     -moz-column-count: 2;
          column-count: 2;
   }
@@ -490,11 +490,11 @@ main {
     transition: transform 0.3s ease;
   }
   .cmd-nav svg * {
-    fill: #e91e63;
+    fill: #ff6347;
   }
   .cmd-nav:focus,
   .cmd-nav:hover {
-    background-color: #e91e63;
+    background-color: #ff6347;
   }
   .cmd-nav:focus svg *,
   .cmd-nav:hover svg * {
@@ -670,6 +670,18 @@ samp {
 }
 .alert-warning {
   background-color: #ffa500;
+}
+.hidden,
+[hidden] {
+  display: none !important;
+}
+@media (max-width: 36.01em) {
+  .sizeXS-hidden {
+    display: none !important;
+  }
+}
+.invisible {
+  visibility: hidden;
 }
 .protected {
   -webkit-user-select: none;

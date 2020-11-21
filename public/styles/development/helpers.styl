@@ -1,14 +1,25 @@
-// @description Clases utilitaires pour CSS atomiques
+// Clases utilitaires pour CSS atomiques
 
-// @description Classe ajouté en js sur des éléments parents
-//.relative
+// @note Cacher l'élément  @affected Lecteurs d'écran inclus
+.hidden
+[hidden]
+  display none !important
+
+@media (max-width _sizeXS)
+
+  .sizeXS-hidden
+    display none !important
+
+.invisible // @note Cacher l'élément en laissant son emplacement @affected Lecteurs d'écran inclus
+  visibility hidden
+
+//.relative // @note Classe ajouté en js sur des éléments parents
 //  position relative
 
-.protected // @description Protège partiellement le texte en empêchant sa sélection
+.protected // @note Protège partiellement le texte en empêchant sa sélection
   user-select none
 
-// @description Texte sur une ligne sans dépassement
-.onaline
+.onaline // @note Texte sur une ligne sans dépassement
   overflow hidden
   white-space nowrap
   text-overflow ellipsis
