@@ -680,8 +680,24 @@ samp {
     display: none !important;
   }
 }
+@media (min-width: 65.01em) and (max-width: 90.01em) {
+  .sizeL-hidden {
+    display: none !important;
+  }
+}
 .invisible {
   visibility: hidden;
+}
+.sr-only {
+  position: absolute;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  white-space: nowrap;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
 }
 .protected {
   -webkit-user-select: none;
@@ -1263,13 +1279,35 @@ form fieldset > [class*=input] {
   background-color: Orange;
   border-color: Orange;
 }
-.button-group {
-  display: flex;
-  flex-wrap: wrap;
-  margin-bottom: 0;
+.round-button {
+  width: 5rem;
+  height: 5rem;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.5rem;
+  color: #d2b48c;
+  background-color: #a0522d;
+  background-image: linear-gradient(-45deg, rgba(55,55,55,0.4), rgba(0,0,0,0), rgba(55,55,55,0.4));
+  border: 0.416666666666667rem solid #cd853f;
+  border-radius: 50%;
+  box-shadow: 0 0.5rem 2rem rgba(0,0,0,0.5);
+  transform: translate(0, 0);
+  cursor: pointer;
+  outline: none;
+  transition: all 0.2s linear;
+  transition-property: translateZ box-shadow;
 }
-.button-group > * {
-  margin-right: 1em;
+.round-button:focus,
+.round-button:hover {
+  color: #ffa500;
+  border-color: #ffa500;
+}
+.round-button:active {
+  transform: translate(0.1rem, 0.1rem);
+  border-color: #d2b48c;
+  box-shadow: 0 0.5rem 2rem rgba(0,0,0,0);
+}
+.round-button svg {
+  margin: 0;
 }
 @-webkit-keyframes animInvalidInput {
   50% {

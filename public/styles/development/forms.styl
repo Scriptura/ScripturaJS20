@@ -264,7 +264,7 @@ form fieldset > [class*=input]
 
 // @subsection Buttons
 // -----------------------------------------------------------------------------
-// @note Toujours privilégier l'élément <button> sur l'élément <input type=button> car il permet de réaliser des rendu plus complexe en acceptant d'autre balises html en son sein.
+// @note Toujours privilégier l'élément <button> sur l'élément <input type=button> car il permet de réaliser des rendus plus complexe en acceptant des balises html.
 // @link https://developer.mozilla.org/fr/docs/Web/HTML/Element/Button
 
 .button
@@ -283,20 +283,18 @@ form fieldset > [class*=input]
   background-image linear-gradient(to top,rgba(0,0,0,.1),rgba(255,255,255,.05))
   //border-radius _r4
   transition translateZ .1s linear
+  &:focus
+  &:hover
+    box-shadow 0 0.5rem 2rem rgba(0,0,0,0.3);
+    transform translate(0, -.1em)
+  &:active
+    box-shadow 0 0 0 #000
+    transform translate(.1em, .4em)
+  &:focus-visible // @see https://css-tricks.com/almanac/selectors/f/focus-visible/
+    background-color Orange
+    border-color Orange
 
-.button:focus
-.button:hover
-  box-shadow 0 0.5rem 2rem rgba(0,0,0,0.3);
-  transform translate(0, -.1em)
-
-.button:active
-  box-shadow 0 0 0 #000
-  transform translate(.1em, .4em)
-
-.button:focus-visible // @see https://css-tricks.com/almanac/selectors/f/focus-visible/
-  background-color Orange
-  border-color Orange
-
+/*
 .button-group
   display flex
   flex-wrap wrap
@@ -304,3 +302,36 @@ form fieldset > [class*=input]
 
 .button-group > *
   margin-right 1em // @note Espacement entre deux boutons
+*/
+
+_roundbuttonSize = 5rem
+_roundbuttonBorder = _roundbuttonSize / 12
+
+.round-button
+  width _roundbuttonSize
+  height _roundbuttonSize
+  //padding-bottom 100%
+  font-family 'Open Sans', sans-serif
+  font-size 1.5rem
+  color tan
+  background-color sienna
+  background-image linear-gradient(-45deg, rgba(55, 55, 55, .4), rgba(0, 0, 0, .0), rgba(55, 55, 55, .4))
+  border _roundbuttonBorder solid peru
+  border-radius 50%
+  box-shadow 0 .5rem 2rem rgba(0, 0, 0, .5)
+  transform translate(0, 0)
+  cursor pointer
+  outline none
+  transition all .2s linear
+  transition-property translateZ box-shadow
+  &:focus
+  &:hover
+    color orange
+    border-color orange
+  &:active
+    transform translate(.1rem, .1rem)
+    border-color tan
+    box-shadow 0 .5rem 2rem rgba(0, 0, 0, 0)
+
+.round-button svg
+  margin 0
