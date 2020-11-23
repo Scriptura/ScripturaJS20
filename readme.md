@@ -1,6 +1,6 @@
 # Scriptura
 
-<img src="public/medias/images/TiLion1.3.svg" alt="Ti Lion" height="150"/>
+<img src="public/medias/images/Silos195v.svg" alt="Ti Lion" height="150"/>
 
 Scriptura est une application web sous Node.js utilisant :
 * Express 4 comme environnement de développement
@@ -56,9 +56,5 @@ Par convention les fichiers travaillant au sein de la même logique MVC se doive
 Il existe deux dossiers de fonctions utilitaires à la racine du projet :
 - `helpers/` rassemble les fonctions travaillant sur les données,
 - `middlewares/` rassemble les fonctions modifiant les informations des routes (err, req, res, next).
-
-### Et ce petit lion c'est quoi&nbsp;?
-
-Et bien... il y a longtemps je voulais créer un anim' complet à partir d'SVG, ce projet n'a jamais été terminé mais il en est ressorti quelques items qui me sont restés chers. Ils agrémenterons le code, à commencer par ce petit lion.
 
 Bonne exploration !
