@@ -3,6 +3,8 @@ extends layout
 block main
   main
     h1.main-heading= _name
+    if  _calendarDate
+      p= _calendarDate
     p
       - var spanStyle = 'vertical-align:sub;display:inline-block;height:1.3rem;width:1.3rem;margin-right:.5rem;background-color:'
       if _calendarColor

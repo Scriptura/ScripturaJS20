@@ -16,12 +16,12 @@ const liturgicalCalendar = date => {
         data3 = JSON.parse(fs.readFileSync(french, 'utf8')),
         dt = DateTime.local(),
         currentYear = dt.toFormat('yyyy'),
-        //currentDayMonth = dt.toFormat('ddMM'),
+        currentDayMonth = dt.toFormat('ddMM'),
+        //currentDayMonth = '2203', // @todo For test
         ge = easter.gregorianEaster(currentYear),
-        easterDate = DateTime.local(ge.year, ge.month, ge.day)
+        easterDate = DateTime.local(ge.year, ge.month, ge.day),
+        sundayBeforeChristmas = DateTime.fromFormat('2512', 'ddMM').startOf('week')
 
-  let currentDayMonth = dt.toFormat('ddMM')//; currentDayMonth = '0301'
-  
   if (typeof date === 'undefined') date = currentDayMonth
 
   // Fusionner les objets :
@@ -40,7 +40,7 @@ const liturgicalCalendar = date => {
   if (currentDayMonth === easterDate.plus({days: -42}).toFormat('ddMM')) data = {name: "Premier dimanche de Carême", color: "purple", grade: "1", rank: "2"}
   if (currentDayMonth === easterDate.plus({days: -35}).toFormat('ddMM')) data = {name: "Deuxième dimanche de Carême", color: "purple", grade: "1", rank: "2"}
   if (currentDayMonth === easterDate.plus({days: -28}).toFormat('ddMM')) data = {name: "Troisième dimanche de Carême", color: "purple", grade: "1", rank: "2"}
-  if (currentDayMonth === easterDate.plus({days: -21}).toFormat('ddMM')) data = {name: "Quatrième dimanche de Carême", color: "purple", grade: "1", rank: "2"}
+  if (currentDayMonth === easterDate.plus({days: -21}).toFormat('ddMM')) data = {name: "Quatrième dimanche de Carême, <em>Laetare</em>", color: "pink", grade: "1", rank: "2"}
   if (currentDayMonth === easterDate.plus({days: -14}).toFormat('ddMM')) data = {name: "Cinquième dimanche de Carême", color: "purple", grade: "1", rank: "2"}
   if (currentDayMonth === easterDate.plus({days: -7}).toFormat('ddMM')) data = {name: "Dimanche des Rameaux et de la Passion du Seigneur", color: "red", grade: "1", rank: "2"}
   if (currentDayMonth === easterDate.plus({days: -6}).toFormat('ddMM')) data = {name: "Lundi Saint", color: "purple", grade: "", rank: "2"}
@@ -67,30 +67,16 @@ const liturgicalCalendar = date => {
   if (currentDayMonth === easterDate.plus({days: 63}).toFormat('ddMM')) data = {name: "Le Saint Sacrement", color: "white", grade: "1", rank: "3"}
   if (currentDayMonth === easterDate.plus({days: 68}).toFormat('ddMM')) data = {name: "Sacré-Cœur de Jésus", color: "white", grade: "1", rank: "3"}
 
+  if (currentDayMonth === sundayBeforeChristmas.plus({days: -29}).toFormat('ddMM')) data = {name: "Notre Seigneur Jésus Christ Roi de l'Univers", color: "white", grade: "1", rank: "3"}
+  if (currentDayMonth === sundayBeforeChristmas.plus({days: -22}).toFormat('ddMM')) data = {name: "Premier dimanche de l'Avent", color: "purple", grade: "1", rank: "2"}
+  if (currentDayMonth === sundayBeforeChristmas.plus({days: -15}).toFormat('ddMM')) data = {name: "Deuxième dimanche de l'Avent", color: "purple", grade: "1", rank: "2"}
+  if (currentDayMonth === sundayBeforeChristmas.plus({days: -8}).toFormat('ddMM')) data = {name: "Troisième dimanche de l'Avent, <em>Gaudete</em>", color: "pink", grade: "1", rank: "2"}
+  if (currentDayMonth === sundayBeforeChristmas.plus({days: -1}).toFormat('ddMM')) data = {name: "Quatrième dimanche de l'Avent", color: "purple", grade: "1", rank: "2"}
 
-  // BEGIN test
-  //const object = {offset: "-1", name: "Mercredi test", color: "purple", grade: "", rank: "2"}
-  //const test = [object].map((offset, name, color, grade, rank) => `if (currentDayMonth === easterDate.plus({days: ` + offset + `}).toFormat('ddMM')) data = {name: "` + name + `", color: "` + color + `", grade: "` + grade + `, rank: "` + rank + `}`)
-  // END test
-
-
-  //{name: "Christ Roi", color: "white", grade: "1", rank: "3"}
-  //{name: "Premier dimanche de l'Avent", color: "white", grade: "1", rank: "2"}
-  //{name: "Deuxième dimanche de l'Avent", color: "white", grade: "1", rank: "2"}
-  //{name: "Troisième dimanche de l'Avent", color: "white", grade: "1", rank: "2"}
-  //{name: "Quatrième dimanche de l'Avent", color: "white", grade: "1", rank: "2"}
-  //{name: "Cinquième dimanche de l'Avent", color: "white", grade: "1", rank: "2"}
-
-//{"name": "L'Épiphanie du Seigneur", "color": "white", "grade": "1", rank: "3"} //célémonie votive pour la France sur un dimanche, le 6/01 pour d'autres pays
-//{"name": "Le Baptême du Seigneur", "color": "white", "grade": "3", rank: "5"}
-//Sainte Famille
-/* si dimanche, alors célébration le lundi 9 :
-  "0812": {
-    "name": "Immaculée Conception de la Bienheureuse Vierge Marie",
-    "color": "white",
-    "grade": "1"
-  }
-*/
+// {"name": "L'Épiphanie du Seigneur", "color": "white", "grade": "1", rank: "3"} //cérémonie votive pour la France sur un dimanche, le 6/01 pour d'autres pays
+// {"name": "Le Baptême du Seigneur", "color": "white", "grade": "3", rank: "5"}
+// Sainte Famille...
+// Immaculée Conception : si dimanche, alors célébration le lundi 9 {name: "Immaculée Conception de la Bienheureuse Vierge Marie", color: "white", grade: "1"}
 
   // Traducion des degrés de fête en language humain
   let grade = data.grade
@@ -103,17 +89,21 @@ const liturgicalCalendar = date => {
   // Calibrage des couleurs liturgiques
   let color = data.color
   if (color === 'withe') data.color = '#ffffff'
-  if (color === 'red') data.color = '#ff0000' //#bf2329
-  if (color === 'green') data.color = 'green' //#1e883f
-  if (color === 'purple') data.color = '#800080' //#9f15a7
+  if (color === 'red') data.color = '#ff0000' // #bf2329
+  if (color === 'green') data.color = 'green' // #1e883f
+  if (color === 'purple') data.color = '#800080' // #9f15a7
+  if (color === 'pink') data.color = '#ff69b4' // hotpink
   if (color === 'black') data.color = '#000000'
 
   let color2 = data.color2
   if (color2 === 'withe') data.color2 = '#ffffff'
-  if (color2 === 'red') data.color2 = '#ff0000' //#bf2329
-  if (color2 === 'green') data.color2 = 'green' //#1e883f
-  if (color2 === 'purple') data.color2 = '#800080' //#9f15a7
+  if (color2 === 'red') data.color2 = '#ff0000' // #bf2329
+  if (color2 === 'green') data.color2 = 'green' // #1e883f
+  if (color2 === 'purple') data.color2 = '#800080' // #9f15a7
+  if (color2 === 'pink') data.color = '#ff69b4' // hotpink
   if (color2 === 'black') data.color2 = '#000000'
+
+  data.displayDate = currentDayMonth.substring(0, 2) + '/' + currentDayMonth.substring(2, 5) + '/' + currentYear
 
   //console.log(data)
   return data

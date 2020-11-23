@@ -477,7 +477,7 @@ main {
     height: 2.5rem;
     padding: 0.25rem;
     cursor: pointer;
-    background-color: #2d2d2d;
+    background-color: transparent;
     border: none;
     outline: none;
   }
@@ -1452,6 +1452,8 @@ html,
 .nav a,
 .nav .active,
 .nav .active::after,
+.cmd-nav:focus,
+.cmd-nav:hover,
 .breadcrumb ol,
 .breadcrumb a,
 .breadcrumb a::after,
