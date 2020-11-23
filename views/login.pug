@@ -11,7 +11,7 @@ block main
         label Mot de passe :
         input(type='password' name='password' placeholder='• • • • • • • •' required='required')
       div
-        button.button
+        button.round-button
           svg.icon(role='img' focusable='false')
-            use(xlink:href='/medias/sprites/utils.svg#login')
-          | Se connecter
+            use(xlink:href='/medias/sprites/utils.svg#checkmark')
+          .sr-only Se connecter
