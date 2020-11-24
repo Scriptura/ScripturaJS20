@@ -3,54 +3,58 @@ extends layout
 block main
   main
     h1.main-heading= _name
-    if  _calendarDate
-      p= _calendarDate
-    p
-      - var spanStyle = 'vertical-align:sub;display:inline-block;height:1.3rem;width:1.3rem;margin-right:.5rem;background-color:'
-      if _calendarColor
-        span(style=spanStyle + _calendarColor)
-      if _calendarColor2
-        span(style=spanStyle + _calendarColor2)
-      if _calendar && _calendarUrl
-        a(href=_calendarUrl)!= _calendarName
-      else if _calendarName
-        span!= _calendarName
-      else
-        span no calendar
-    if _calendarGrade
-      p
-        em= _calendarGrade
-    if _calendarRank
-      p
-        em= _calendarRank
-    div= _moonPhaseImg
-    if _moonPhase
-      .moon(style='width:2.5rem;height:2.5rem;margin: 0 0 .5rem -.3rem')
-        style.
-          .moon svg circle {
-            stroke: currentColor;
-          }
-          .moon svg path {
-            fill: currentColor;
-          }
-        if _moonPhase == 0
-          //- style spécifique à cette image SVG :
-          style.
-            .moon svg circle {
-              fill: Peru;
-            }
-          include ../public/medias/images/moons/0.svg
-        if _moonPhase == 1
-          include ../public/medias/images/moons/1.svg
-        if _moonPhase == 2
-          include ../public/medias/images/moons/2.svg
-        if _moonPhase == 3
-          include ../public/medias/images/moons/3.svg
-        if _moonPhase == 4
-          include ../public/medias/images/moons/4.svg
-        if _moonPhase == 5
-          include ../public/medias/images/moons/5.svg
-        if _moonPhase == 6
-          include ../public/medias/images/moons/6.svg
-        if _moonPhase == 7
-          include ../public/medias/images/moons/7.svg
+    .grid2.gap
+      div
+        if  _calendarDate
+          p= _calendarDate
+        p
+          - var spanStyle = 'vertical-align:sub;display:inline-block;height:1.3rem;width:1.3rem;margin-right:.5rem;background-color:'
+          if _calendarColor
+            span(style=spanStyle + _calendarColor)
+          if _calendarColor2
+            span(style=spanStyle + _calendarColor2)
+          if _calendar && _calendarUrl
+            a(href=_calendarUrl)!= _calendarName
+          else if _calendarName
+            span!= _calendarName
+          else
+            span no calendar
+        if _calendarGrade
+          p
+            em= _calendarGrade
+        if _calendarRank
+          p
+            em= _calendarRank
+        div= _moonPhaseImg
+        if _moonPhase
+          .moon(style='width:2.5rem;height:2.5rem;margin: 0 0 .5rem -.3rem')
+            style.
+              .moon svg circle {
+                stroke: currentColor;
+              }
+              .moon svg path {
+                fill: currentColor;
+              }
+            if _moonPhase == 0
+              //- style spécifique à cette image SVG :
+              style.
+                .moon svg circle {
+                  fill: Peru;
+                }
+              include ../public/medias/images/moons/0.svg
+            if _moonPhase == 1
+              include ../public/medias/images/moons/1.svg
+            if _moonPhase == 2
+              include ../public/medias/images/moons/2.svg
+            if _moonPhase == 3
+              include ../public/medias/images/moons/3.svg
+            if _moonPhase == 4
+              include ../public/medias/images/moons/4.svg
+            if _moonPhase == 5
+              include ../public/medias/images/moons/5.svg
+            if _moonPhase == 6
+              include ../public/medias/images/moons/6.svg
+            if _moonPhase == 7
+              include ../public/medias/images/moons/7.svg
+      .decorative-svg.center.zoom250
+        include ../public/medias/images/silos/245v.svg

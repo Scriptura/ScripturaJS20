@@ -10,7 +10,16 @@
   fill _colorAdd1 //currentColor
   margin 2em auto
 
-.decorative-svg svg
-  height 25em
-  fill _colorAdd1 // rgba(210,180,140, .5)
-  text-shadow: .2em .2em .5em rgba(0, 0, 0, .5) // offset-x | offset-y | blur-radius | color
+// @note Les propriétés applicables au sélecteur ::first-letter varient d'un navigateur à l'autre ; la solution retenue est un wrapper en javascript 'span.dropcap' sur la première lettre.
+
+.dropcap
+//.add-dropcap > p:first-child::first-letter
+  float left
+  margin-right .2em
+  padding .2em
+  line-height 1
+  font-size 3em
+  font-weight bold
+  font-family _fontList2
+  color _color2
+  background-color rgba(255, 255, 255, .05)

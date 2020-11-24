@@ -1,16 +1,12 @@
 .columns2.gap
   p
-    code .adddropcap p
-  .adddropcap
+    code .add-dropcap p
+  .add-dropcap
     p Lorem ipsum dolor sit amet, consetetur 
       ins sadipscing elitr
       |  
       code ins
-      |  , sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Stet 
-      small clita
-      |  
-      code small
-      |  kasd gubergren, 
+      | , sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Stet clita kasd gubergren, 
       s no sea takimata sanctus
       |  
       code s
@@ -24,10 +20,16 @@
       strong Stet clita kasd gubergren
       |  
       code strong
-      |, no sea takimata sanctus est. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+      |, no sea takimata sanctus est. Lorem ipsum dolor sit amet,
+      |  
+      small consetetur
+      |  
+      code small
+      |  
+      | sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
   p
-    code .addtooltips a
-  p.addtooltips
+    code .add-tooltips a
+  p.add-tooltips
     | Nam liber tempor cum 
     a(href='#', title='Viewing the title in a tooltip.') soluta nobis
     |  eleifend option congue nihil imperdiet doming id 
@@ -112,7 +114,11 @@
   hr.hr(data-id='131v-d2')
   //-hr.hr(data-id='195v')
   //-hr.hr(data-id='245v')
-  button.button.cmd-print
+hr
+div
+  p
+    code .cmd-print
+  button.round-button.zoom300.cmd-print
     svg.icon(role='img' focusable='false')
       use(xlink:href='/medias/sprites/utils.svg#printer')
-    | Print Stylesheet
+    .sr-only Print Stylesheet

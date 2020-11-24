@@ -58,14 +58,8 @@ block main
             li Devise : 
               em "#{_devise}"
         p!= _description
-      .decorative-svg(style='display:flex;align-items:center')
-        //-
-          style.
-            .decorative-svg svg {
-              height:30em;
-              max-width:40em;
-            }
-        include ../public/medias/images/Silos126r-d1.svg
+      .decorative-svg.center.zoom250
+        include ../public/medias/images/silos/126r-d1.svg
     ul.list-stripe-links.grid2
       li
         a(href='/person/1') Person 1

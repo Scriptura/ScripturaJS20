@@ -477,6 +477,27 @@ const separatorSvgForHr = (() => {
 
 
 // -----------------------------------------------------------------------------
+// @section     Add drop cap
+// @description Création de lettrines
+// -----------------------------------------------------------------------------
+
+// @note Le pseudo-élément ::first-letter ne se comporte pas de la même manière selon tous les navigateurs, cette solution css/js corrige ce problème.
+// @note Ajout d'une class .dropcap sur le premier paragraphe enfant d'un élément comportant .add-dropcap
+
+const addDropCap = (() => {
+  const paragraphs = document.querySelectorAll('.add-dropcap p:first-child')
+  for (const paragraph of paragraphs) {
+    let string = paragraph.innerHTML.substring(1)
+    let dropcap = paragraph.textContent.substring(0, 1)
+    dropcap = '<span class="dropcap">' + dropcap + '</span>'
+    const text = dropcap + string
+    paragraph.insertAdjacentHTML('beforeBegin', text)
+    paragraph.remove()
+  }
+})()
+
+
+// -----------------------------------------------------------------------------
 // @section     Window onload
 // @description Scripts lancés lorsque le chargement de la page est terminé
 // -----------------------------------------------------------------------------
