@@ -471,7 +471,7 @@ const separatorSvgForHr = (() => {
 // @description Création de lettrines
 // -----------------------------------------------------------------------------
 
-// @note Les propriétés applicables au sélecteur ::first-letter varient d'un navigateur à l'autre ; la solution retenue est un wrapper en javascript 'span.dropcap' sur la première lettre.
+// @note Les propriétés applicables au pseudo-élément ::first-letter varient d'un navigateur à l'autre ; la solution retenue est un wrapper en javascript 'span.dropcap' sur la première lettre.
 // @note Ajout d'une class .dropcap sur le premier caractère du premier paragraphe enfant d'un élément comportant '.add-dropcap'.
 
 const addDropCap = (() => {

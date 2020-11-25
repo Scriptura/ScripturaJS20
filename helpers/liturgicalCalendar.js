@@ -17,7 +17,7 @@ const liturgicalCalendar = date => {
         dt = DateTime.local(),
         currentYear = dt.toFormat('yyyy'),
         currentDayMonth = dt.toFormat('ddMM'),
-        //currentDayMonth = '2203', // @todo For test
+        //currentDayMonth = '2712', // @todo For test
         ge = easter.gregorianEaster(currentYear),
         easterDate = DateTime.local(ge.year, ge.month, ge.day),
         sundayBeforeChristmas = DateTime.fromFormat('2512', 'ddMM').startOf('week')
@@ -75,8 +75,13 @@ const liturgicalCalendar = date => {
 
 // {"name": "L'Épiphanie du Seigneur", "color": "white", "grade": "1", rank: "3"} //cérémonie votive pour la France sur un dimanche, le 6/01 pour d'autres pays
 // {"name": "Le Baptême du Seigneur", "color": "white", "grade": "3", rank: "5"}
-// Sainte Famille...
 // Immaculée Conception : si dimanche, alors célébration le lundi 9 {name: "Immaculée Conception de la Bienheureuse Vierge Marie", color: "white", grade: "1"}
+
+const christmasSunday = DateTime.fromFormat('2512', 'ddMM').endOf('week').toFormat('ddMM')
+const christmasDay = DateTime.fromFormat('2512', 'ddMM').weekday
+// @note "Sainte Famille" un dimanche qui suit Noël, si Noël est un dimanche alors le '3012'.
+if (currentDayMonth === christmasSunday || currentDayMonth === '3012' && christmasDay === 7) data = {name: "La Sainte Famille", color: "white", grade: "2", rank: "5"} // @todo Vérifier le rang
+
 
   // Traducion des degrés de fête en language humain
   let grade = data.grade
