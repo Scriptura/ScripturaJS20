@@ -317,15 +317,15 @@ _roundButtonColor2 = sienna
   cursor pointer
   outline none
   transition all .2s linear
-  transition-property translateZ box-shadow
+  transition-property translate box-shadow
   &:focus
   &:hover
     color orange
     border-color orange
-    transform translate(0, -.1rem) // en rem
+    transform translateY(-.1rem) // en rem
   &:active
     box-shadow 0 .5rem 2rem rgba(0, 0, 0, 0)
-    transform translate(.05em, .05em)
+    transform translateY(.05em)
   &::before
     content ''
     display inline-block

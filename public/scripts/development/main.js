@@ -68,7 +68,7 @@ const fadeIn = (el, duration) => {
 const injectSvgSprite = (targetElement, spriteId, svgFile) => {
   const path = '/medias/sprites/' // Chemin des fichiers de sprites SVG
   if (svgFile === undefined) svgFile = 'utils'
-  const icon = '<svg role="img" focusable="false"><use xlink:href="' + path + svgFile + '.svg#' + spriteId + '"></use></svg>'
+  const icon = `<svg role="img" focusable="false"><use xlink:href="${path + svgFile}.svg#${spriteId}"></use></svg>`
   targetElement.insertAdjacentHTML('beforeEnd', icon)
 }
 
@@ -453,23 +453,13 @@ const mainMenu = (() => {
 // @section     Separator SVG
 // @description Séparateur pour les balises <hr/>
 // -----------------------------------------------------------------------------
-/*
-const separatorSvgForHr = (() => {
-  const hrs = document.querySelectorAll('hr.hr')
-  const separator = '<svg role="separator" class="separator"><use xlink:href="/medias/sprites/silos.svg#195v"></use></svg>'
-  for (const hr of hrs) {
-    hr.insertAdjacentHTML('afterEnd', separator)
-    hr.remove()
-  }
-})()
-*/
 
 const separatorSvgForHr = (() => {
   const hrs = document.querySelectorAll('hr.hr')
   let idsprite = '195v'
   for (const hr of hrs) {
     if(hr.dataset.id) idsprite = hr.dataset.id
-    const separator = '<svg role="separator" class="separator"><use xlink:href="/medias/sprites/silos.svg#' + idsprite + '"></use></svg>'
+    const separator = `<svg role="separator" class="separator"><use xlink:href="/medias/sprites/silos.svg#${idsprite}"></use></svg>`
     hr.insertAdjacentHTML('afterEnd', separator)
     hr.remove()
   }
@@ -481,19 +471,12 @@ const separatorSvgForHr = (() => {
 // @description Création de lettrines
 // -----------------------------------------------------------------------------
 
-// @note Le pseudo-élément ::first-letter ne se comporte pas de la même manière selon tous les navigateurs, cette solution css/js corrige ce problème.
-// @note Ajout d'une class .dropcap sur le premier paragraphe enfant d'un élément comportant .add-dropcap
+// @note Les propriétés applicables au sélecteur ::first-letter varient d'un navigateur à l'autre ; la solution retenue est un wrapper en javascript 'span.dropcap' sur la première lettre.
+// @note Ajout d'une class .dropcap sur le premier caractère du premier paragraphe enfant d'un élément comportant '.add-dropcap'.
 
 const addDropCap = (() => {
   const paragraphs = document.querySelectorAll('.add-dropcap p:first-child')
-  for (const paragraph of paragraphs) {
-    let string = paragraph.innerHTML.substring(1)
-    let dropcap = paragraph.textContent.substring(0, 1)
-    dropcap = '<span class="dropcap">' + dropcap + '</span>'
-    const text = dropcap + string
-    paragraph.insertAdjacentHTML('beforeBegin', text)
-    paragraph.remove()
-  }
+  paragraphs.forEach(e => e.innerHTML = e.innerHTML.replace(/^(.)/, '<span class="dropcap">$1</span>')) // [A-Za-z0-9"]
 })()
 
 

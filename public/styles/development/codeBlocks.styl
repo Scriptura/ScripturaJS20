@@ -1,5 +1,5 @@
 _codeBlocksColor1 = _colorG
-_codeBlocksColor2 = #777
+_codeBlocksColor2 = lighten(_colorG, 20)
 _codeBlocksColor3 = darken(_colorG, 12)
 
 code
@@ -11,18 +11,22 @@ samp
   color _colorAdd1
   border-radius _r2
 
+// @note 1. Pas d'effet de transparence sur le background ni de bordures en raison des chevauchements possibles des balises code au sein d'un même paragraphe de texte, puisque nous avons opté pour un padding légèrement supérieur au ligne-height de base.
+
 :not(pre) > code
   padding .2em
-  background-color _codeBlocksColor1
+  background-color _codeBlocksColor1 // 1
 
 // @note Pas de style par défaut pour la balise `pre`
+
+// pre
 
 .pre
   position relative
   padding 1em
   background-color _codeBlocksColor3
   border-radius _r2
-  box-shadow .5em .5em 2em rgba(0, 0, 0, .25)
+  box-shadow .5rem .5rem 2rem rgba(0, 0, 0, .25)
 
 .pre code
   color _codeBlocksColor2

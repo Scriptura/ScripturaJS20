@@ -51,15 +51,29 @@
   align-items center
   justify-content center
 
-// @subsection Zoom
-// @note Ces classes permettent de d'augmenter ou réduire la taille de toutes les polices ou éléments enfants
-// - cette technique est incompatible avec les unités vmin placés sur les titres
-// - pas de '.zoom100' : aucun intérêt...
+//.centerX // @todo
+
+//.centerY // @todo
+
+//[class*=rotate]
+//  transform-origin 50% 50%
+
+for _i in 90 180 // 45 135
+  .rotate{_i}
+    transform rotate(_i * 1deg)
+
+// @note .zoom permet de jouer sur la taille des éléments enfants codés en unité relative
+// - cette technique est incompatible avec les unités les éléments utilisant vmin
 // - pas de possibilité de zoom avec cette technique au-dessous de 50%
+// - pas de '.zoom100' : aucun intérêt...
+.reverse
+  transform: scaleX(-1)
 
 for _i in 1000 900 800 700 600 500 450 400 350 300 250 200 175 150 140 130 120 115 110 105 95 90 85 80 75 70 60 50
   .zoom{_i}
     font-size _i * 1%
 
-.zoom-reset // @note Réinitialisation d'un élément enfant si élément parent zoomé
-  font-size 1rem // @note Valeur égale à la taille d'origine
+// @note Réinitialisation d'un élément enfant si élément parent zoomé, valeur égale à la taille d'origine
+
+.zoom-reset
+  font-size 1rem
