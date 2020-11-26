@@ -7,25 +7,29 @@ const fs = require('fs'),
       { DateTime } = require('luxon'),
       easter = require('date-easter')
 
-// @param {string} 'ddMM' ; default: current date
+// @params: {string} 'ddMM' ; {string} 'yyyy' ; default: current date
 // Verification des dates de Pâques @see http://5ko.free.fr/fr/easter.php
 
-const liturgicalCalendar = date => {
+const liturgicalCalendar = (dayMonth, year) => {
+  //if (typeof dayMonth === 'undefined') dayMonth = dt.toFormat('ddMM')
+  //if (typeof year === 'undefined') year = dt.toFormat('yyyy')
+
   const data1 = JSON.parse(fs.readFileSync(general, 'utf8')),
         data2 = JSON.parse(fs.readFileSync(european, 'utf8')),
         data3 = JSON.parse(fs.readFileSync(french, 'utf8')),
         dt = DateTime.local(),
-        currentYear = dt.toFormat('yyyy'),
-        currentDayMonth = dt.toFormat('ddMM'),
-        //currentDayMonth = '2712', // @todo For test
+        currentYear = year || dt.toFormat('yyyy'),
+        currentDayMonth = dayMonth || dt.toFormat('ddMM'),
         ge = easter.gregorianEaster(currentYear),
         easterDate = DateTime.local(ge.year, ge.month, ge.day),
-        sundayBeforeChristmas = DateTime.fromFormat('2512', 'ddMM').startOf('week')
+        immaculateConceptionDay = DateTime.fromFormat('0812' + currentYear, 'ddMMyyyy').weekday,
+        sundayBeforeChristmas = DateTime.fromFormat('2512', 'ddMM').startOf('week'),
+        christmasSunday = DateTime.fromFormat('2512' + currentYear, 'ddMMyyyy').endOf('week').toFormat('ddMM'),
+        christmasDay = DateTime.fromFormat('2512' + currentYear, 'ddMMyyyy').weekday
 
-  if (typeof date === 'undefined') date = currentDayMonth
 
   // Fusionner les objets :
-  let data = {...data1[date], ...data2[date], ...data3[date]}
+  let data = {...data1[currentDayMonth], ...data2[currentDayMonth], ...data3[currentDayMonth]}
 
   //console.log(data)
   if (typeof data.name === 'undefined') data = {name: "De la férie", color: "", grade: "", rank: ""}
@@ -73,15 +77,14 @@ const liturgicalCalendar = date => {
   if (currentDayMonth === sundayBeforeChristmas.plus({days: -8}).toFormat('ddMM')) data = {name: "Troisième dimanche de l'Avent, <em>Gaudete</em>", color: "pink", grade: "1", rank: "2"}
   if (currentDayMonth === sundayBeforeChristmas.plus({days: -1}).toFormat('ddMM')) data = {name: "Quatrième dimanche de l'Avent", color: "purple", grade: "1", rank: "2"}
 
-// {"name": "L'Épiphanie du Seigneur", "color": "white", "grade": "1", rank: "3"} //cérémonie votive pour la France sur un dimanche, le 6/01 pour d'autres pays
-// {"name": "Le Baptême du Seigneur", "color": "white", "grade": "3", rank: "5"}
 // Immaculée Conception : si dimanche, alors célébration le lundi 9 {name: "Immaculée Conception de la Bienheureuse Vierge Marie", color: "white", grade: "1"}
+if (currentDayMonth === '0812' && immaculateConceptionDay !== 7 || currentDayMonth === '0912' && immaculateConceptionDay === 7) data = {name: "Immaculée Conception de la Bienheureuse Vierge Marie", color: "white", grade: "1", rank: "3"}
 
-const christmasSunday = DateTime.fromFormat('2512', 'ddMM').endOf('week').toFormat('ddMM')
-const christmasDay = DateTime.fromFormat('2512', 'ddMM').weekday
 // @note "Sainte Famille" un dimanche qui suit Noël, si Noël est un dimanche alors le '3012'.
 if (currentDayMonth === christmasSunday || currentDayMonth === '3012' && christmasDay === 7) data = {name: "La Sainte Famille", color: "white", grade: "2", rank: "5"} // @todo Vérifier le rang
 
+// {"name": "L'Épiphanie du Seigneur", "color": "white", "grade": "1", rank: "3"} //cérémonie votive pour la France sur un dimanche, le 6/01 pour d'autres pays
+// {"name": "Le Baptême du Seigneur", "color": "white", "grade": "3", rank: "5"}
 
   // Traducion des degrés de fête en language humain
   let grade = data.grade

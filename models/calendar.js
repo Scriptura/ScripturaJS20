@@ -2,19 +2,21 @@
 
 const vv = require('../settings/variables'),
       { liturgicalCalendar } = require('../helpers/liturgicalCalendar'),
-      { moonPhase } = require('../helpers/astronomy')
+      { moonPhase } = require('../helpers/astronomy'),
+      { DateTime } = require('luxon'),
+      lc = liturgicalCalendar(DateTime.local().toFormat('ddMM'))
 
 const getCalendar = {
   _title: 'Calendar | ' + vv.siteName
   , _name: 'Calendrier'
   , _description: 'Informations disponibles pour les fonctions de calendrier'
-  , _calendarDate: liturgicalCalendar().displayDate
-  , _calendarName: liturgicalCalendar().name
-  , _calendarColor: liturgicalCalendar().color
-  , _calendarColor2: liturgicalCalendar().color2
-  , _calendarGrade: liturgicalCalendar().grade
-  , _calendarRank: liturgicalCalendar().rank
-  , _calendarUrl: liturgicalCalendar().link
+  , _calendarDate: lc.displayDate
+  , _calendarName: lc.name
+  , _calendarColor: lc.color
+  , _calendarColor2: lc.color2
+  , _calendarGrade: lc.grade
+  , _calendarRank: lc.rank
+  , _calendarUrl: lc.link
   , _moonPhase: moonPhase(new Date)
 }
 
