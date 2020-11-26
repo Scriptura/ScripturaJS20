@@ -122,17 +122,26 @@ blockquote {
   position: relative;
   margin: 0;
   padding-left: 1.5em;
+  padding-bottom: 2em;
   border-left: 0.5em solid #ff6347;
 }
-blockquote::before {
-  content: '\275E';
+blockquote::after {
+  content: '\201C';
   position: absolute;
-  bottom: -3rem;
-  font-size: 4em;
+  z-index: -1;
+  bottom: 0;
+  left: 0;
+  margin-left: 1.5rem;
+  width: 3rem;
+  height: 3rem;
+  line-height: 1;
+  font-size: 6em;
   color: #ff6347;
+  font-family: 'Noto Serif', Georgia, Serif;
 }
 blockquote footer {
-  text-align: right;
+  margin-top: 0.75em;
+  margin-bottom: 0.75em;
 }
 blockquote footer::before {
   content: '\2014 \00A0';
