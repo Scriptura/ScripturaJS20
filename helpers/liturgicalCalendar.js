@@ -22,7 +22,8 @@ const liturgicalCalendar = (dayMonth = currentDayMonth, year = currentYear) => {
         sundayBeforeChristmas = DateTime.fromFormat('2512', 'ddMM').startOf('week'),
         christmasSunday = DateTime.fromFormat('2512' + year, 'ddMMyyyy').endOf('week').toFormat('ddMM'),
         christmasDay = DateTime.fromFormat('2512' + year, 'ddMMyyyy').weekday,
-        epiphany = DateTime.fromFormat('0201' + year, 'ddMMyyyy').endOf('week').toFormat('ddMM')
+        epiphany = DateTime.fromFormat('0201' + year, 'ddMMyyyy').endOf('week').toFormat('ddMM'),
+        precomputingBaptismOfTheLord = DateTime.fromFormat('0201' + year, 'ddMMyyyy').endOf('week').plus({days: 7}).toFormat('ddMM')
 
   // Fusionner les objets :
   let data = {...data1[dayMonth], ...data2[dayMonth], ...data3[dayMonth]}
@@ -46,7 +47,7 @@ const liturgicalCalendar = (dayMonth = currentDayMonth, year = currentYear) => {
   if (dayMonth === easterDate.plus({days: -6}).toFormat('ddMM')) data = {name: "Lundi Saint", color: "purple", grade: "", rank: "2"}
   if (dayMonth === easterDate.plus({days: -5}).toFormat('ddMM')) data = {name: "Mardi Saint", color: "purple", grade: "", rank: "2"}
   if (dayMonth === easterDate.plus({days: -4}).toFormat('ddMM')) data = {name: "Mercredi Saint", color: "purple", grade: "", rank: "2"}
-  if (dayMonth === easterDate.plus({days: -3}).toFormat('ddMM')) data = {name: "Jeudi Saint", color: "white", grade: "1", rank: "1"} // rank "1" seulement pour le soir, sinon rank "2"
+  if (dayMonth === easterDate.plus({days: -3}).toFormat('ddMM')) data = {name: "Jeudi Saint", color: "white", grade: "1", rank: "1"} // rank "2" en journée, rank "1" le soir
   if (dayMonth === easterDate.plus({days: -2}).toFormat('ddMM')) data = {name: "Vendredi Saint", color: "red", grade: "1", rank: "1"}
   if (dayMonth === easterDate.plus({days: -1}).toFormat('ddMM')) data = {name: "Samedi Saint", color: "purple", grade: "1", rank: "1"}
   if (dayMonth === easterDate.toFormat('ddMM')) data = {name: "Résurrection du Seigneur", color: "white", grade: "1", rank: "1"}
@@ -82,8 +83,8 @@ if (dayMonth === christmasSunday || dayMonth === '3012' && christmasDay === 7) d
 // Épiphanie : le 06/01 pour le calendrier général, le dimanche après le premier janvier pour la France (et les autres pays qui ne chôment pas ce jour-là).
 if (dayMonth === epiphany) data = {name: "Épiphanie du Seigneur", color: "white", grade: "1", rank: "2"}
 
-const baptismOfTheLord = DateTime.fromFormat('0201' + year, 'ddMMyyyy').endOf('week').plus({days: 7}).toFormat('ddMM')
-if (dayMonth === baptismOfTheLord && epiphany !== ('0701' || '0801') || dayMonth === '0801' && epiphany === '0701' || dayMonth === '0901' && epiphany === '0801') data = {name: "Le Baptême du Seigneur", color: "white", grade: "3", rank: "5"}
+// Baptême du Seigneur : célébré à la place du 1er dimanche ordinaire, ou le lendemain de l'Épiphanie si celle-ci est célébrée le 7 ou 8 janvier.
+if (dayMonth === precomputingBaptismOfTheLord && epiphany !== ('0701' || '0801') || dayMonth === '0801' && epiphany === '0701' || dayMonth === '0901' && epiphany === '0801') data = {name: "Le Baptême du Seigneur", color: "white", grade: "3", rank: "5"}
 
   // Traducion des degrés de fête en language humain
   let grade = data.grade
