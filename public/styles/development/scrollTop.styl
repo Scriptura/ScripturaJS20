@@ -1,4 +1,6 @@
-// @description Défilement vers le haut
+_scrollTopColor1 = #000
+_scrollTopColor2 = #aaa
+_scrollTopColor3 = _color5
 
 .scroll-top
   //display none // @note apparition de l'élément au scrool de la page via JS
@@ -18,10 +20,12 @@
 .scroll-top svg
   height 2em
   width 2em
-  fill #000
+  fill _scrollTopColor1
   opacity .5
 
 .scroll-top:focus svg
+  fill _scrollTopColor3
+
 .scroll-top:hover svg
 .scroll-top:active svg
-  fill #aaa
+  fill _scrollTopColor2

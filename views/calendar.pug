@@ -13,7 +13,7 @@ block main
             span(style=spanStyle + _calendarColor)
           if _calendarColor2
             span(style=spanStyle + _calendarColor2)
-          if _calendar && _calendarUrl
+          if _calendarName && _calendarUrl
             a(href=_calendarUrl)!= _calendarName
           else if _calendarName
             span!= _calendarName

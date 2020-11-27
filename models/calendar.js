@@ -4,7 +4,9 @@ const vv = require('../settings/variables'),
       { liturgicalCalendar } = require('../helpers/liturgicalCalendar'),
       { moonPhase } = require('../helpers/astronomy'),
       { DateTime } = require('luxon'),
-      lc = liturgicalCalendar(DateTime.local().toFormat('ddMM'))
+      currentDayMonth = DateTime.local().toFormat('ddMM'),
+      //lc = liturgicalCalendar(currentDayMonth)
+      lc = liturgicalCalendar('0601', '2020')
 
 const getCalendar = {
   _title: 'Calendar | ' + vv.siteName
