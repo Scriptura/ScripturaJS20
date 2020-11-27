@@ -50,13 +50,15 @@ p
   margin-top .75em
   margin-bottom .75em
 
+_hrSize = 5px
+
 hr
   overflow visible // @bugfix Show the overflow @affected Edge and IE.
   box-sizing content-box // @bugfix Add the correct box sizing @affected Firefox.
-  height 1px //0 // @bugfix Add the correct box sizing @affected Firefox.
-  margin 2em auto
+  height .5em // @bugfix Add the correct box sizing @affected Firefox @note Toujours définir une valeur.
+  margin 2.5em 0
   color transparent // inherit // @bugfix Reset gray color. @affected Firefox.
-  background-color _color2
+  background-image repeating-linear-gradient(-45deg, transparent 0 _hrSize, rgba(255, 255, 255, .1) _hrSize _hrSize * 2)
   border none
 
 h1
@@ -127,23 +129,25 @@ em
 blockquote
   position relative
   margin 0
-  padding-left 1.5em
-  padding-bottom 2em
-  border-left .5em solid _color2 //currentColor
+  padding-left 2em
+  padding-bottom 1.5em
   //background-color rgba(255, 255, 255, .1)
+  background repeating-linear-gradient(-45deg, transparent 0 _hrSize, rgba(255, 255, 255, .1) _hrSize _hrSize * 2) no-repeat
+  background-size .5em 100%
+  //border-left .5em solid rgba(255, 255, 255, .1)
 
 blockquote::after
   content '\201C' // '\201C' '\275D' '\201D' '\275E'
   position absolute
   z-index -1
-  bottom 0
+  bottom -.8rem
   left 0
   margin-left 1.5rem
   width 3rem
   height 3rem
   line-height 1
   font-size 6em
-  color _color2
+  color rgba(255, 255, 255, .1) //_color2
   font-family _fontList2
   //background-color rgba(255, 255, 255, .1)
 

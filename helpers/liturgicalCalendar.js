@@ -21,10 +21,13 @@ const liturgicalCalendar = (dayMonth = currentDayMonth, year = currentYear) => {
         immaculateConceptionDay = DateTime.fromFormat('0812' + year, 'ddMMyyyy').weekday,
         sundayBeforeChristmas = DateTime.fromFormat('2512', 'ddMM').startOf('week'),
         christmasSunday = DateTime.fromFormat('2512' + year, 'ddMMyyyy').endOf('week').toFormat('ddMM'),
-        christmasDay = DateTime.fromFormat('2512' + year, 'ddMMyyyy').weekday
+        christmasDay = DateTime.fromFormat('2512' + year, 'ddMMyyyy').weekday,
+        epiphany = DateTime.fromFormat('0201' + year, 'ddMMyyyy').endOf('week').toFormat('ddMM')
 
   // Fusionner les objets :
   let data = {...data1[dayMonth], ...data2[dayMonth], ...data3[dayMonth]}
+
+  // @note Si une fête fixe du calendrier général devient votive dans le propre d'un pays, le .json du pays concerné mentionnera une valeur vide pour le nom en lieu et place de la date ({"name": ""}), ceci afin de permettre les traitements qui annuleront la fête.
 
   // Si pas de données dans les .json ou valeurs manquantes :
   if (typeof data.name === 'undefined' || data.name === '') data = {name: "De la férie", color: "", grade: "", rank: ""}
@@ -70,16 +73,18 @@ const liturgicalCalendar = (dayMonth = currentDayMonth, year = currentYear) => {
   if (dayMonth === sundayBeforeChristmas.plus({days: -8}).toFormat('ddMM')) data = {name: "Troisième dimanche de l'Avent, <em>Gaudete</em>", color: "pink", grade: "1", rank: "2"}
   if (dayMonth === sundayBeforeChristmas.plus({days: -1}).toFormat('ddMM')) data = {name: "Quatrième dimanche de l'Avent", color: "purple", grade: "1", rank: "2"}
 
-// Immaculée Conception : si dimanche, alors célébration le lundi 9 {name: "Immaculée Conception de la Bienheureuse Vierge Marie", color: "white", grade: "1"}
+// Immaculée Conception : si le 08/12 est un dimanche, alors célébration le lundi 09/12
 if (dayMonth === '0812' && immaculateConceptionDay !== 7 || dayMonth === '0912' && immaculateConceptionDay === 7) data = {name: "Immaculée Conception de la Bienheureuse Vierge Marie", color: "white", grade: "1", rank: "3"}
 
-// @note "Sainte Famille" un dimanche qui suit Noël, si Noël est un dimanche alors le '3012'.
+// Sainte Famille : le dimanche qui suit Noël, si Noël est un dimanche alors le 30/12.
 if (dayMonth === christmasSunday || dayMonth === '3012' && christmasDay === 7) data = {name: "La Sainte Famille", color: "white", grade: "2", rank: "5"}
 
-const epiphany = DateTime.fromFormat('2512' + year, 'ddMMyyyy').endOf('week').plus({days: 7}).toFormat('ddMM')
-if (dayMonth === epiphany) data = {name: "Épiphanie du Seigneur", color: "white", grade: "1", rank: "2"} //cérémonie votive pour la France sur un dimanche, le 6/01 pour d'autres pays
+// Épiphanie : le 06/01 pour le calendrier général, le dimanche après le premier janvier pour la France (et les autres pays qui ne chôment pas ce jour-là).
+if (dayMonth === epiphany) data = {name: "Épiphanie du Seigneur", color: "white", grade: "1", rank: "2"}
 
-// data = {name: "Le Baptême du Seigneur", color: "white", grade: "3", rank: "5"}
+const baptismOfTheLord = DateTime.fromFormat('0201' + year, 'ddMMyyyy').endOf('week').plus({days: 7}).toFormat('ddMM')
+console.log('epiphany: ' + epiphany)
+if (dayMonth === baptismOfTheLord && epiphany !== ('0701' || '0801')) data = {name: "Le Baptême du Seigneur", color: "white", grade: "3", rank: "5"}
 
   // Traducion des degrés de fête en language humain
   let grade = data.grade

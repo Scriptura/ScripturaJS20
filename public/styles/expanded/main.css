@@ -54,10 +54,10 @@ p {
 hr {
   overflow: visible;
   box-sizing: content-box;
-  height: 1px;
-  margin: 2em auto;
+  height: 0.5em;
+  margin: 2.5em 0;
   color: transparent;
-  background-color: #ff6347;
+  background-image: repeating-linear-gradient(-45deg, transparent 0 5px, rgba(255,255,255,0.1) 5px 10px);
   border: none;
 }
 h1,
@@ -121,22 +121,23 @@ em {
 blockquote {
   position: relative;
   margin: 0;
-  padding-left: 1.5em;
-  padding-bottom: 2em;
-  border-left: 0.5em solid #ff6347;
+  padding-left: 2em;
+  padding-bottom: 1.5em;
+  background: repeating-linear-gradient(-45deg, transparent 0 5px, rgba(255,255,255,0.1) 5px 10px) no-repeat;
+  background-size: 0.5em 100%;
 }
 blockquote::after {
   content: '\201C';
   position: absolute;
   z-index: -1;
-  bottom: 0;
+  bottom: -0.8rem;
   left: 0;
   margin-left: 1.5rem;
   width: 3rem;
   height: 3rem;
   line-height: 1;
   font-size: 6em;
-  color: #ff6347;
+  color: rgba(255,255,255,0.1);
   font-family: 'Noto Serif', Georgia, Serif;
 }
 blockquote footer {
@@ -206,7 +207,8 @@ template {
   font-weight: bold;
   font-family: 'Noto Serif', Georgia, Serif;
   color: #ff6347;
-  background: transparent repeating-linear-gradient(-45deg, transparent 0 7px, rgba(255,255,255,0.05) 7px 14px);
+  background-color: rgba(255,255,255,0.05);
+  transform: translateY(0.05em);
 }
 body {
   display: grid;
@@ -376,8 +378,7 @@ main {
 .card {
   position: relative;
   padding: 2em;
-  color: #d2b48c;
-  background-color: #363636;
+  background-color: #515151;
   border-radius: 0.5em;
   box-shadow: 0 0 2rem rgba(0,0,0,0.1);
 }
@@ -398,6 +399,9 @@ main {
   right: 1em;
   left: auto;
   transform: rotate(3deg);
+}
+.card :not(.h2) {
+  color: #d2b48c;
 }
 .card .h2 {
   text-align: center;
@@ -1221,6 +1225,16 @@ form fieldset > [class*=input] {
 .input-password button:active {
   color: Orange;
 }
+@-webkit-keyframes animInvalidInput {
+  50% {
+    border-color: Orange;
+  }
+}
+@keyframes animInvalidInput {
+  50% {
+    border-color: Orange;
+  }
+}
 .button {
   overflow: hidden;
   margin-bottom: 1em;
@@ -1289,16 +1303,6 @@ form fieldset > [class*=input] {
   height: 1em;
   width: 1em;
   fill: rgba(205,133,63,0.5);
-}
-@-webkit-keyframes animInvalidInput {
-  50% {
-    border-color: Orange;
-  }
-}
-@keyframes animInvalidInput {
-  50% {
-    border-color: Orange;
-  }
 }
 .accordion {
   box-shadow: 0.5rem 0.5rem 2rem rgba(0,0,0,0.25);

@@ -1,8 +1,11 @@
+_cardsColor1 = _colorAdd1
+_cardsColor2 = lighten(_colorG, 5)
+
 .card
   position relative
   padding 2em
-  color _colorAdd1
-  background-color darken(_color0, 20%)
+  //color _cardsColor1
+  background-color _cardsColor2
   border-radius .5em
   box-shadow 0 0 2rem rgba(0, 0, 0, .1)
 
@@ -37,6 +40,9 @@
   box-shadow 0 1.5rem 2rem rgba(0,0,0,.8)
   border-radius 50%
 */
+
+.card :not(.h2)
+  color _cardsColor1
 
 .card .h2
   text-align center
