@@ -83,8 +83,7 @@ if (dayMonth === christmasSunday || dayMonth === '3012' && christmasDay === 7) d
 if (dayMonth === epiphany) data = {name: "Épiphanie du Seigneur", color: "white", grade: "1", rank: "2"}
 
 const baptismOfTheLord = DateTime.fromFormat('0201' + year, 'ddMMyyyy').endOf('week').plus({days: 7}).toFormat('ddMM')
-console.log('epiphany: ' + epiphany)
-if (dayMonth === baptismOfTheLord && epiphany !== ('0701' || '0801')) data = {name: "Le Baptême du Seigneur", color: "white", grade: "3", rank: "5"}
+if (dayMonth === baptismOfTheLord && epiphany !== ('0701' || '0801') || dayMonth === '0801' && epiphany === '0701' || dayMonth === '0901' && epiphany === '0801') data = {name: "Le Baptême du Seigneur", color: "white", grade: "3", rank: "5"}
 
   // Traducion des degrés de fête en language humain
   let grade = data.grade
@@ -113,7 +112,7 @@ if (dayMonth === baptismOfTheLord && epiphany !== ('0701' || '0801')) data = {na
 
   data.displayDate = `${dayMonth.substring(0, 2)}/${dayMonth.substring(2, 5)}/${year}`
 
-  console.log(data)
+  //console.log(data)
   return data
 }
 

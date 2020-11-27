@@ -191,12 +191,6 @@ template {
 .main-heading span {
   color: #ff6347;
 }
-.separator {
-  width: 100%;
-  height: 10em;
-  fill: #d2b48c;
-  margin: 2em auto;
-}
 .dropcap,
 .no-js .add-dropcap > p:first-child::first-letter {
   float: left;
@@ -400,11 +394,12 @@ main {
   left: auto;
   transform: rotate(3deg);
 }
-.card :not(.h2) {
-  color: #d2b48c;
-}
 .card .h2 {
   text-align: center;
+}
+.card svg {
+  height: 6em;
+  color: #d2b48c;
 }
 .nav {
   display: flex;

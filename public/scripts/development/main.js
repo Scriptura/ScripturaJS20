@@ -453,7 +453,7 @@ const mainMenu = (() => {
 // @section     Separator SVG
 // @description Séparateur pour les balises <hr/>
 // -----------------------------------------------------------------------------
-
+/*
 const separatorSvgForHr = (() => {
   const hrs = document.querySelectorAll('hr.hr')
   let idsprite = '195v'
@@ -464,7 +464,7 @@ const separatorSvgForHr = (() => {
     hr.remove()
   }
 })()
-
+*/
 
 // -----------------------------------------------------------------------------
 // @section     Add drop cap
