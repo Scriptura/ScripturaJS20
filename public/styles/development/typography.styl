@@ -29,3 +29,25 @@ _dropCapColor2 = rgba(255, 255, 255, .05)
   color _dropCapColor1
   background-color _dropCapColor2
   transform translateY(.05em)
+
+hr[data-hr]
+  display block
+  //clear both
+  width 100%
+  height 2em
+  margin 2em 0
+  font-family _fontList2
+  text-align center
+  line-height 1
+  //letter-spacing .5em
+  color rgba(255, 255, 255, .1)
+  background-image none
+  //border 1px solid orange
+
+hr[data-hr]::after
+  content attr(data-hr)
+  display block
+  width 100%
+  height 100%
+  font-size 2em
+  //background-color rgba(255, 255, 255, .1)

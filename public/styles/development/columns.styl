@@ -47,7 +47,7 @@
 [class^=columns].gap
   column-gap _gap
 
-[class^=columns].gap > *
+[class^=columns].gap > :not(hr) // @todo En test... // [class^=columns].gap > *
   margin-bottom _gap
 
 //[class^=columns].vertical-gap

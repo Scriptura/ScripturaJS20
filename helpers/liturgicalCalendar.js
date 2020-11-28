@@ -38,11 +38,11 @@ const liturgicalCalendar = (dayMonth = currentDayMonth, year = currentYear) => {
 
   // Définition des fêtes votives :
   if (dayMonth === easterDate.plus({days: -46}).toFormat('ddMM')) data = {name: "Mercredi des Cendres", color: "purple", grade: "", rank: "2"}
-  if (dayMonth === easterDate.plus({days: -42}).toFormat('ddMM')) data = {name: "Premier dimanche de Carême", color: "purple", grade: "1", rank: "2"}
-  if (dayMonth === easterDate.plus({days: -35}).toFormat('ddMM')) data = {name: "Deuxième dimanche de Carême", color: "purple", grade: "1", rank: "2"}
-  if (dayMonth === easterDate.plus({days: -28}).toFormat('ddMM')) data = {name: "Troisième dimanche de Carême", color: "purple", grade: "1", rank: "2"}
+  if (dayMonth === easterDate.plus({days: -42}).toFormat('ddMM')) data = {name: "Premier dimanche de Carême, <em>Invocabit</em>", color: "purple", grade: "1", rank: "2"}
+  if (dayMonth === easterDate.plus({days: -35}).toFormat('ddMM')) data = {name: "Deuxième dimanche de Carême, <em>Reminiscere</em>", color: "purple", grade: "1", rank: "2"}
+  if (dayMonth === easterDate.plus({days: -28}).toFormat('ddMM')) data = {name: "Troisième dimanche de Carême, <em>Oculi</em>", color: "purple", grade: "1", rank: "2"}
   if (dayMonth === easterDate.plus({days: -21}).toFormat('ddMM')) data = {name: "Quatrième dimanche de Carême, <em>Laetare</em>", color: "pink", grade: "1", rank: "2"}
-  if (dayMonth === easterDate.plus({days: -14}).toFormat('ddMM')) data = {name: "Cinquième dimanche de Carême", color: "purple", grade: "1", rank: "2"}
+  if (dayMonth === easterDate.plus({days: -14}).toFormat('ddMM')) data = {name: "Cinquième dimanche de Carême, <em>Judica</em>", color: "purple", grade: "1", rank: "2"}
   if (dayMonth === easterDate.plus({days: -7}).toFormat('ddMM')) data = {name: "Dimanche des Rameaux et de la Passion du Seigneur", color: "red", grade: "1", rank: "2"}
   if (dayMonth === easterDate.plus({days: -6}).toFormat('ddMM')) data = {name: "Lundi Saint", color: "purple", grade: "", rank: "2"}
   if (dayMonth === easterDate.plus({days: -5}).toFormat('ddMM')) data = {name: "Mardi Saint", color: "purple", grade: "", rank: "2"}
@@ -57,7 +57,7 @@ const liturgicalCalendar = (dayMonth = currentDayMonth, year = currentYear) => {
   if (dayMonth === easterDate.plus({days: 4}).toFormat('ddMM')) data = {name: "Jeudi dans l'octave de Pâques", color: "white", grade: "1", rank: "2"}
   if (dayMonth === easterDate.plus({days: 5}).toFormat('ddMM')) data = {name: "Vendredi dans l'octave de Pâques", color: "white", grade: "1", rank: "2"}
   if (dayMonth === easterDate.plus({days: 6}).toFormat('ddMM')) data = {name: "Samedi dans l'octave de Pâques", color: "white", grade: "1", rank: "2"}
-  if (dayMonth === easterDate.plus({days: 7}).toFormat('ddMM')) data = {name: "Dimanche de la divine Miséricorde", color: "white", grade: "1", rank: "2"}
+  if (dayMonth === easterDate.plus({days: 7}).toFormat('ddMM')) data = {name: "Dimanche de la divine Miséricorde, <em>in albis</em>", color: "white", grade: "1", rank: "2"}
   if (dayMonth === easterDate.plus({days: 14}).toFormat('ddMM')) data = {name: "Troisième dimanche du Temps Pascal", color: "white", grade: "1", rank: "2"}
   if (dayMonth === easterDate.plus({days: 21}).toFormat('ddMM')) data = {name: "Quatrième dimanche du Temps Pascal", color: "white", grade: "1", rank: "2"}
   if (dayMonth === easterDate.plus({days: 28}).toFormat('ddMM')) data = {name: "Cinquième dimanche du Temps Pascal", color: "white", grade: "1", rank: "2"}
@@ -69,10 +69,10 @@ const liturgicalCalendar = (dayMonth = currentDayMonth, year = currentYear) => {
   if (dayMonth === easterDate.plus({days: 68}).toFormat('ddMM')) data = {name: "Sacré-Cœur de Jésus", color: "white", grade: "1", rank: "3"}
 
   if (dayMonth === sundayBeforeChristmas.plus({days: -29}).toFormat('ddMM')) data = {name: "Notre Seigneur Jésus Christ Roi de l'Univers", color: "white", grade: "1", rank: "3"}
-  if (dayMonth === sundayBeforeChristmas.plus({days: -22}).toFormat('ddMM')) data = {name: "Premier dimanche de l'Avent", color: "purple", grade: "1", rank: "2"}
-  if (dayMonth === sundayBeforeChristmas.plus({days: -15}).toFormat('ddMM')) data = {name: "Deuxième dimanche de l'Avent", color: "purple", grade: "1", rank: "2"}
+  if (dayMonth === sundayBeforeChristmas.plus({days: -22}).toFormat('ddMM')) data = {name: "Premier dimanche de l'Avent, <em>Levavi</em>", color: "purple", grade: "1", rank: "2"}
+  if (dayMonth === sundayBeforeChristmas.plus({days: -15}).toFormat('ddMM')) data = {name: "Deuxième dimanche de l'Avent, <em>Populus Sion</em>", color: "purple", grade: "1", rank: "2"}
   if (dayMonth === sundayBeforeChristmas.plus({days: -8}).toFormat('ddMM')) data = {name: "Troisième dimanche de l'Avent, <em>Gaudete</em>", color: "pink", grade: "1", rank: "2"}
-  if (dayMonth === sundayBeforeChristmas.plus({days: -1}).toFormat('ddMM')) data = {name: "Quatrième dimanche de l'Avent", color: "purple", grade: "1", rank: "2"}
+  if (dayMonth === sundayBeforeChristmas.plus({days: -1}).toFormat('ddMM')) data = {name: "Quatrième dimanche de l'Avent, <em>Rorate</em>", color: "purple", grade: "1", rank: "2"}
 
 // Immaculée Conception : si le 08/12 est un dimanche, alors célébration le lundi 09/12
 if (dayMonth === '0812' && immaculateConceptionDay !== 7 || dayMonth === '0912' && immaculateConceptionDay === 7) data = {name: "Immaculée Conception de la Bienheureuse Vierge Marie", color: "white", grade: "1", rank: "3"}
@@ -85,6 +85,25 @@ if (dayMonth === epiphany) data = {name: "Épiphanie du Seigneur", color: "white
 
 // Baptême du Seigneur : célébré à la place du 1er dimanche ordinaire, ou le lendemain de l'Épiphanie si celle-ci est célébrée le 7 ou 8 janvier.
 if (dayMonth === precomputingBaptismOfTheLord && epiphany !== ('0701' || '0801') || dayMonth === '0801' && epiphany === '0701' || dayMonth === '0901' && epiphany === '0801') data = {name: "Le Baptême du Seigneur", color: "white", grade: "3", rank: "5"}
+
+// @todo :
+
+// - Solennité de Saint Joseph, époux de la Vierge Marie : 19 mars, reporté au 20 mars si le 19 tombe un dimanche de carême, ou avancé au samedi avant les Rameaux si le 19 tombe pendant la semaine sainte.
+// Si la fête tombe un dimanche, autre que le Dimanche des Rameaux, celle-ci est célébrée le jour suivant, généralement le lundi 20 mars, mais seulement si une autre solennité (par exemple, un autre Saint patron de l'Église) n'est pas célébrée durant cette journée. Depuis 2008, si le jour de la Fête de Saint Joseph tombe pendant la Semaine Sainte, la célébration de sa fête est déplacée vers le jour le plus proche possible avant le 19 mars, généralement le samedi précédant la Semaine Sainte.
+// data = {name: "Saint Joseph, chaste Époux de la Bienheureuse Vierge Marie", color: "white", grade: "1", rank: "3"}
+
+// - Solennité de l’Annonciation du Seigneur à Marie, le 25 mars. Est décalée au 26, si le 25 est un dimanche (ou le premier lundi qui suit le deuxième dimanche de Pâques si le 25 mars se situe pendant la Semaine Sainte).
+// data = {name: "Annonciation du Seigneur", color: "white", grade: "1", rank: "3"}
+
+// Jeudi de la solennité du Saint Sacrement (fête décalée au dimanche dans certaines régions, en particulier en France, ayant reçu un indult en ce sens)
+
+// Solennité de la Nativité de Saint Jean-Baptiste : 24 juin, reporté au 25 si le 24 juin tombe le jour de la solennité du Saint-Sacrement ou du Sacré-Coeur
+// data = {name: "Nativité de Saint Jean-Baptiste", color: "white", grade: "1", rank: "3"}
+
+// Solennité de Saint Pierre et Saint Paul : 29 juin, reporté au 30 si le 29 tombe le jour de la solennité du Sacré-Coeur
+// data = {name: "Saints Pierre et Paul, apôtres", color: "red", grade: "1", rank: "3"}
+
+
 
   // Traducion des degrés de fête en language humain
   let grade = data.grade
