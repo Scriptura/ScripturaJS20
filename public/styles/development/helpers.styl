@@ -55,6 +55,9 @@
 
 //.centerY // @todo
 
+//.push
+//  margin-left auto
+
 //[class*=rotate]
 //  transform-origin 50% 50%
 
@@ -68,6 +71,15 @@ for _i in 90 180 // 45 135
 // - pas de '.zoom100' : aucun intérêt...
 .reverse
   transform: scaleX(-1)
+
+[class*=size]
+  max-width 100%
+  max-height 100vh
+
+for _i in 1..25
+  .size{_i}
+    width _i * 1rem
+    height _i * 1rem
 
 for _i in 1000 900 800 700 600 500 450 400 350 300 250 200 175 150 140 130 120 115 110 105 95 90 85 80 75 70 60 50
   .zoom{_i}

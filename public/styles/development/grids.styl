@@ -1,3 +1,5 @@
+// @documentation minmax(0, 1fr) @see https://css-tricks.com/equal-width-columns-in-css-grid-are-kinda-weird/
+
 [class*=grid]
   display grid
   grid-auto-flow dense
@@ -11,28 +13,28 @@
 @media (max-width _sizeXS)
 
   .sizeXS-grid2
-    grid-template-columns repeat(2, 1fr)
+    grid-template-columns repeat(2, minmax(0, 1fr))
 
 @media (min-width _sizeXS)
 
   .grid2
   .grid3
   .grid4
-    grid-template-columns repeat(2, 1fr)
+    grid-template-columns repeat(2, minmax(0, 1fr))
 
 @media (min-width _sizeS)
 
   .sizeS-grid2
-    grid-template-columns repeat(3, 1fr) !important
+    grid-template-columns repeat(3, minmax(0, 1fr)) !important
 
   .grid3
   .grid4
-    grid-template-columns repeat(3, 1fr)
+    grid-template-columns repeat(3, minmax(0, 1fr))
 
 @media (min-width _sizeL)
 
   .grid4
-    grid-template-columns repeat(4, 1fr)
+    grid-template-columns repeat(4, minmax(0, 1fr))
 
 @media (min-width _sizeXS)
 

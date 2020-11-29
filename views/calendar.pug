@@ -5,7 +5,7 @@ block main
     h1.main-heading= _name
     .grid2.gap
       div
-        .message.flex.gap
+        .card.flex.gap
           div
             if  _calendarDate
               p= _calendarDate
@@ -28,35 +28,9 @@ block main
               p
                 em= _calendarRank
           if _moonPhase
-            .center
-              .moon(style='width:4rem;height:4rem;margin-left:auto')
-                style.
-                  .moon svg circle {
-                    stroke: currentColor;
-                  }
-                  .moon svg path {
-                    fill: currentColor;
-                  }
-                if _moonPhase == 0
-                  //- style spécifique à cette image SVG :
-                  style.
-                    .moon svg circle {
-                      fill: Peru;
-                    }
-                  include ../public/medias/images/moons/0.svg
-                if _moonPhase == 1
-                  include ../public/medias/images/moons/1.svg
-                if _moonPhase == 2
-                  include ../public/medias/images/moons/2.svg
-                if _moonPhase == 3
-                  include ../public/medias/images/moons/3.svg
-                if _moonPhase == 4
-                  include ../public/medias/images/moons/4.svg
-                if _moonPhase == 5
-                  include ../public/medias/images/moons/5.svg
-                if _moonPhase == 6
-                  include ../public/medias/images/moons/6.svg
-                if _moonPhase == 7
-                  include ../public/medias/images/moons/7.svg
-      .gap-bottom.decorative-svg.zoom250.center
-        include ../public/medias/images/silos/245v.svg
+            .center(style='clip-path:circle(40%)')
+              svg.size4(role='img' focusable='false')
+                use(xlink:href='/medias/sprites/moons.svg#' +_moonPhase + '')
+      .gap-bottom.decorative-svg.center
+        .size25
+          include ../public/medias/images/silos/245v.svg
