@@ -7,12 +7,12 @@
 
 @media (max-width _sizeXS)
 
-  .sizeXS-hidden
+  .media-xs-hidden
     display none !important
 
 @media (min-width _sizeS) and (max-width _sizeL)
 
-  .sizeL-hidden
+  .media-l-hidden
     display none !important
 
 .invisible // @note Cacher l'élément en laissant son emplacement @affected Lecteurs d'écran inclus
@@ -55,8 +55,8 @@
 
 //.centerY // @todo
 
-//.push
-//  margin-left auto
+.push
+  margin-left auto
 
 //[class*=rotate]
 //  transform-origin 50% 50%
@@ -72,14 +72,15 @@ for _i in 90 180 // 45 135
 .reverse
   transform: scaleX(-1)
 
-[class*=size]
+[class^=size]
   max-width 100%
   max-height 100vh
+  //background-color #333
 
 for _i in 1..25
   .size{_i}
-    width _i * 1rem
-    height _i * 1rem
+    width _i * 1em
+    height _i * 1em
 
 for _i in 1000 900 800 700 600 500 450 400 350 300 250 200 175 150 140 130 120 115 110 105 95 90 85 80 75 70 60 50
   .zoom{_i}

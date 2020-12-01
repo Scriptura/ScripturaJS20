@@ -133,10 +133,6 @@ form fieldset > [class*=input]
   width 100%
   margin 1em 0 1em
 
-//@media (min-width _sizeXS)
-//  form [class^=columns] > [class*=input]
-//    padding-bottom 0
-
 [class*=input] label
   display inline-block
   margin-bottom .5em
@@ -156,11 +152,11 @@ form fieldset > [class*=input]
   border-radius _r2
 
 [class*=input] textarea
-  min-height 10em // @note Propriété en lien avec 'resize'
-  max-height 50vh // @note Idem
-  resize vertical // @note Redimensionnement par l'utilisateur limité à la verticale
+  min-height 10em
+  max-height 50vh
   padding 1em
   line-height 2
+  resize vertical
 
 [class*=input] input:not([type=button]):focus
 [class*=input] select:focus
@@ -176,9 +172,11 @@ form fieldset > [class*=input]
 [class*=input].disabled label
   color #777
 
+_inputSize = 5px
+
 [class*=input].disabled input
-  background #444 repeating-linear-gradient(-45deg, #777, #aaa 1px, transparent 1px, transparent 6px) repeat
-  background-size 8px 8px
+  background #444 repeating-linear-gradient(-45deg, transparent 0 _inputSize, #555 _inputSize _inputSize * 2)
+  background-size 100% 100%
   cursor not-allowed
 
 [class*=input].invalid input

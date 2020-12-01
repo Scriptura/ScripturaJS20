@@ -4,8 +4,9 @@ block main
   main
     h1.main-heading Error #{error.status} 
       span #{message}
-    .decorative-svg.zoom200
-      include ../public/medias/images/silos/131v-d1.svg
+    .decorative-svg
+      svg.size25(role='img' focusable='false')
+        use(xlink:href='/medias/sprites/silos.svg#131v-d1')
     pre
       code(translate='no' data-select='Select and copy') #{error.stack}
     hr

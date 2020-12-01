@@ -8,6 +8,7 @@ _breadcrumbColor2 = _color2
 
 .breadcrumb ol
   display flex
+  flex-wrap wrap // @note Pour les versions mobiles. @todo A supprimer peut-être...
   margin 0
   padding 0
 
@@ -52,7 +53,6 @@ _breadcrumbColor2 = _color2
 
 .breadcrumb li:first-child a
   padding-left 1em
-  //padding-left (_breadcrumbSize / 2)
 
 .breadcrumb li:last-child a
   color _colorT

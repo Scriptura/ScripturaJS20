@@ -1,6 +1,6 @@
 'use strict'
 // Renseigner les variables globales et renommer le fichier en 'settings.js'
-const pkg = require( '../package.json' );
+const pkg = require( '../package.json' )
 
 exports.dev = true
 

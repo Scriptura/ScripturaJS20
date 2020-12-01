@@ -4,7 +4,7 @@ block main
   main
     h1.main-heading #{_name} 
       span un framework pour le web
-    .grid2.gap.gap-bottom
+    .grid2.gap
       div
         h2 Serveur :
         ul
@@ -22,7 +22,8 @@ block main
         ul
           li Os : #{_user_os} (#{_user_platform})
           li Navigateur : #{_user_browser} (#{_user_version})
-      .decorative-svg.zoom250.center
-        include ../public/medias/images/silos/195v.svg
+      .decorative-svg.center
+        svg.size25(role='img' focusable='false')
+          use(xlink:href='/medias/sprites/silos.svg#195v')
     hr
     include includes/links

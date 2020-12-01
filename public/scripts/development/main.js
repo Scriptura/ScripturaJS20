@@ -213,7 +213,6 @@ const scrollToTop = (() => {
   const position = () => { // 1
     const yy = window.innerHeight / 2 // 2
     let y = window.scrollY
-    console.log(y)
     if (y > yy) item.classList.remove('hide')
     else item.classList.add('hide')
   }

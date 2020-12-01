@@ -1,19 +1,15 @@
-// @documentation minmax(0, 1fr) @see https://css-tricks.com/equal-width-columns-in-css-grid-are-kinda-weird/
+// @note Avec `minmax` le contenu n'influencera pas la taille de la grille en responsive. @documentation minmax(0, 1fr) @see https://css-tricks.com/equal-width-columns-in-css-grid-are-kinda-weird/
 
 [class*=grid]
   display grid
   grid-auto-flow dense
+  grid-template-columns minmax(0, 1fr) // 1
 
 [class*=grid].gap
   gap _gap
 
 [class*=grid].vertical-gap
   gap 0 _gap
-
-@media (max-width _sizeXS)
-
-  .sizeXS-grid2
-    grid-template-columns repeat(2, minmax(0, 1fr))
 
 @media (min-width _sizeXS)
 
@@ -24,9 +20,6 @@
 
 @media (min-width _sizeS)
 
-  .sizeS-grid2
-    grid-template-columns repeat(3, minmax(0, 1fr)) !important
-
   .grid3
   .grid4
     grid-template-columns repeat(3, minmax(0, 1fr))
@@ -35,6 +28,29 @@
 
   .grid4
     grid-template-columns repeat(4, minmax(0, 1fr))
+
+@media (max-width _sizeXS)
+
+  .media-xs-grid2
+    grid-template-columns repeat(2, minmax(0, 1fr))
+
+@media (min-width _sizeXS) and (max-width _sizeS)
+
+  :root .media-s-grid1
+    grid-template-columns minmax(0, 1fr)
+
+  :root .media-s-grid2
+    grid-template-columns repeat(2, minmax(0, 1fr))
+
+@media (min-width _sizeS) and (max-width _sizeL)
+
+  :root .media-l-grid2
+    grid-template-columns repeat(2, minmax(0, 1fr))
+
+@media (min-width _sizeL) and (max-width _sizeXL)
+
+  :root .media-xl-grid2
+    grid-template-columns repeat(2, minmax(0, 1fr))
 
 @media (min-width _sizeXS)
 

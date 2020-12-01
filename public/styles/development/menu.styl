@@ -7,14 +7,15 @@ _menuColor3 = _color2
 // Main menu
 
 .nav
+  position relative
   display flex
-  position relative // en lien avec z-index
   z-index 1000
   //height _menuSize
   //font-size 1em
   box-shadow .5rem .5rem .5rem rgba(0, 0, 0, .2)
 
 .nav ul
+  //position absolute
   width 100%
   margin 0
   padding 0
@@ -61,12 +62,25 @@ _menuColor3 = _color2
   .nav ul
     position absolute
     z-index 800
-    left -100vw // @bugfix @affected Safari @note Pas de possibilité d'effet de droite à gauche : dépassement des conteneurs, même avec body overflow hidden-x
-    //display none
-    transition all 1s
+    transform translateX(-100vw)
+    //left -100vw // @bugfix @affected Safari @note Pas de possibilité d'effet de droite à gauche : dépassement des conteneurs, même avec body overflow hidden-x
+    //top -100vh
 
-  .nav.active ul
-    left 0
+  .nav li
+    background-color _menuColor1
+    transform rotate(90deg)
+    transition transform .4s ease-in-out
+
+  .nav.active li
+    //left 0
+    //margin-left 100vw
+    transform translateX(100vw) rotate(0deg)
+
+  _x = 10
+  for _i in 1.._x
+    _abstr = _i / _x
+    .nav li:nth-child({_i})
+      transition-delay '%ss' % _abstr
 
 @media (min-width _sizeNav)
 

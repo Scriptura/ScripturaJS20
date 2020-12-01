@@ -3,7 +3,7 @@ extends layout
 block main
   main
     h1.main-heading= _name
-    .grid2.gap
+    .grid2.gap.media-s-grid1
       div
         .card.flex.gap
           div
@@ -28,9 +28,9 @@ block main
               p
                 em= _calendarRank
           if _moonPhase
-            .center(style='clip-path:circle(40%)')
-              svg.size4(role='img' focusable='false')
+            .center
+              svg.size4.push(role='img' focusable='false')
                 use(xlink:href='/medias/sprites/moons.svg#' +_moonPhase + '')
-      .gap-bottom.decorative-svg.center
-        .size25
-          include ../public/medias/images/silos/245v.svg
+      .decorative-svg.push
+        svg.size25(role='img' focusable='false')
+          use(xlink:href='/medias/sprites/silos.svg#245v-d1')

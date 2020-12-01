@@ -95,7 +95,7 @@ if (dayMonth === precomputingBaptismOfTheLord && epiphany !== ('0701' || '0801')
 // - Solennité de l’Annonciation du Seigneur à Marie, le 25 mars. Est décalée au 26, si le 25 est un dimanche (ou le premier lundi qui suit le deuxième dimanche de Pâques si le 25 mars se situe pendant la Semaine Sainte).
 // data = {name: "Annonciation du Seigneur", color: "white", grade: "1", rank: "3"}
 
-// Jeudi de la solennité du Saint Sacrement (fête décalée au dimanche dans certaines régions, en particulier en France, ayant reçu un indult en ce sens)
+// Jeudi de la solennité du Saint Sacrement (fête décalée au dimanche dans certaines régions, en particulier en France, ayant reçu un indult en ce sens).
 
 // Solennité de la Nativité de Saint Jean-Baptiste : 24 juin, reporté au 25 si le 24 juin tombe le jour de la solennité du Saint-Sacrement ou du Sacré-Coeur
 // data = {name: "Nativité de Saint Jean-Baptiste", color: "white", grade: "1", rank: "3"}

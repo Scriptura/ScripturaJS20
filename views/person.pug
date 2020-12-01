@@ -3,7 +3,7 @@ extends layout
 block main
   main
     h1.main-heading #{_full_name}
-    .grid2.gap.gap-bottom
+    .grid2.gap.media-s-grid1
       div
         ul
           li Id : #{_id}
@@ -58,8 +58,10 @@ block main
             li Devise : 
               em "#{_devise}"
         p!= _description
-      .decorative-svg.reverse.zoom250.center
-        include ../public/medias/images/silos/126r-d1.svg
+      .decorative-svg
+        svg.size25(role='img' focusable='false')
+          use(xlink:href='/medias/sprites/silos.svg#126r-d1')
+    hr
     ul.list-stripe-links.grid2
       li
         a(href='/person/1') Person 1
