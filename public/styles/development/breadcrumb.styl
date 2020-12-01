@@ -22,10 +22,15 @@ _breadcrumbColor2 = _color2
 .breadcrumb li:nth-child(2)
   z-index 1
 
+@media (max-width _sizeXS)
+
+  .breadcrumb li:last-child // @note Pour éviter les effets de bord sur portable quand fil d'ariane trop long @todo Non optimal car il vaux mieux contrôler à partir du contenu.
+    display none
+
 .breadcrumb a
   position relative
   display block
-  height _dim
+  //height _breadcrumbSize
   line-height _breadcrumbSize // @todo enlever les unités
   padding 0 (_breadcrumbSize / 4) 0 _breadcrumbSize
   font-size 1em //(_breadcrumbSize / 3)

@@ -628,10 +628,14 @@ main {
 .breadcrumb li:nth-child(2) {
   z-index: 1;
 }
+@media (max-width: 36.01em) {
+  .breadcrumb li:last-child {
+    display: none;
+  }
+}
 .breadcrumb a {
   position: relative;
   display: block;
-  height: _dim;
   line-height: 2.5em;
   padding: 0 0.625em 0 2.5em;
   font-size: 1em;
