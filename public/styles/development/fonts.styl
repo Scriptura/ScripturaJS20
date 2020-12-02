@@ -1,4 +1,4 @@
-_fontFileR = openSans-Regular
+_fontFileR = notoSans-Regular
 
 if _fontName and _fontFileR
   @font-face
@@ -7,24 +7,6 @@ if _fontName and _fontFileR
         url('/fonts/' _fontFileR '.woff') format('woff')
     font-weight normal
     font-style normal
-
-_fontFileB = openSans-Bold
-
-if _fontName and _fontFileB
-  @font-face
-    font-family _fontName
-    src url('/fonts/' _fontFileB '.woff2') format('woff2'),
-        url('/fonts/' _fontFileB '.woff') format('woff')
-    font-weight bold
-
-_fontFileI = openSans-Italic
-
-if _fontName and _fontFileI
-  @font-face
-    font-family _fontName
-    src url('/fonts/' _fontFileI '.woff2') format('woff2'),
-        url('/fonts/' _fontFileI '.woff') format('woff')
-    font-style italic
 
 _fontFile2R = notoSerif-Regular
 

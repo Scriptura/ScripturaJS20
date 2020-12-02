@@ -149,7 +149,8 @@ form fieldset > [class*=input]
 [class*=input] select
 [class*=input] textarea
   color currentColor
-  border-radius _r2
+  //border-radius _r2
+  box-shadow .5rem .5rem 2rem rgba(0, 0, 0, .1)
 
 [class*=input] textarea
   min-height 10em
@@ -172,7 +173,7 @@ form fieldset > [class*=input]
 [class*=input].disabled label
   color #777
 
-_inputSize = 5px
+_inputSize = 3px
 
 [class*=input].disabled input
   background #444 repeating-linear-gradient(-45deg, transparent 0 _inputSize, #555 _inputSize _inputSize * 2)

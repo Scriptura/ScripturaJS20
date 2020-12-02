@@ -1,18 +1,8 @@
 @font-face {
-  font-family: 'Open Sans';
-  src: url("/fonts/openSans-Regular.woff2") format('woff2'), url("/fonts/openSans-Regular.woff") format('woff');
+  font-family: 'Noto Sans';
+  src: url("/fonts/notoSans-Regular.woff2") format('woff2'), url("/fonts/notoSans-Regular.woff") format('woff');
   font-weight: normal;
   font-style: normal;
-}
-@font-face {
-  font-family: 'Open Sans';
-  src: url("/fonts/openSans-Bold.woff2") format('woff2'), url("/fonts/openSans-Bold.woff") format('woff');
-  font-weight: bold;
-}
-@font-face {
-  font-family: 'Open Sans';
-  src: url("/fonts/openSans-Italic.woff2") format('woff2'), url("/fonts/openSans-Italic.woff") format('woff');
-  font-style: italic;
 }
 @font-face {
   font-family: 'Noto Serif';
@@ -29,7 +19,7 @@ html {
   -webkit-text-size-adjust: 100%;
   color: #e9dac5;
   background-color: #444;
-  font-family: 'Open Sans', Arial, sans-serif;
+  font-family: 'Noto Sans', sans-serif;
   line-height: 1.5;
   scroll-behavior: smooth;
 }
@@ -82,7 +72,7 @@ h6,
 .h4,
 .h5,
 .h6 {
-  font-family: 'Noto Serif', Georgia, serif;
+  font-family: 'Noto Serif', serif;
 }
 h1,
 .h1 {
@@ -148,7 +138,7 @@ blockquote::after {
   line-height: 1;
   font-size: 6em;
   color: rgba(255,255,255,0.1);
-  font-family: 'Noto Serif', Georgia, serif;
+  font-family: 'Noto Serif', serif;
 }
 blockquote footer {
   margin-top: 0.75em;
@@ -209,7 +199,7 @@ template {
   line-height: 1;
   font-size: 3em;
   font-weight: bold;
-  font-family: 'Noto Serif', Georgia, serif;
+  font-family: 'Noto Serif', serif;
   color: #ff6347;
   background-color: rgba(255,255,255,0.05);
   transform: translateY(0.05em);
@@ -219,7 +209,6 @@ hr[data-hr] {
   width: 100%;
   height: 2em;
   margin: 2em 0;
-  font-family: 'Noto Serif', Georgia, serif;
   text-align: center;
   line-height: 1;
   color: rgba(255,255,255,0.1);
@@ -794,7 +783,7 @@ ol ol ol {
 [class*=list-stripe] > * {
   padding: 0.5em 1em;
   background-color: #515151;
-  box-shadow: 0.5em 0.5em 2em rgba(0,0,0,0.1);
+  box-shadow: 0.5rem 0.5rem 2rem rgba(0,0,0,0.1);
 }
 [class*=-links] a {
   display: block;
@@ -804,7 +793,7 @@ ol ol ol {
 [class*=-links] li:focus-within,
 [class*=-links] li:hover {
   background-color: #ff6347;
-  box-shadow: 0.5em 0.5em 2em rgba(0,0,0,0.25);
+  box-shadow: 0.5rem 0.5rem 2rem rgba(0,0,0,0.25);
   outline: none;
   -webkit-animation: animList 0.05s ease-in-out;
           animation: animList 0.05s ease-in-out;
@@ -1215,7 +1204,7 @@ form fieldset > [class*=input] {
 [class*=input] select,
 [class*=input] textarea {
   color: currentColor;
-  border-radius: 0.2em;
+  box-shadow: 0.5rem 0.5rem 2rem rgba(0,0,0,0.1);
 }
 [class*=input] textarea {
   min-height: 10em;
@@ -1238,7 +1227,7 @@ form fieldset > [class*=input] {
   color: #777;
 }
 [class*=input].disabled input {
-  background: #444 repeating-linear-gradient(-45deg, transparent 0 5px, #555 5px 10px);
+  background: #444 repeating-linear-gradient(-45deg, transparent 0 3px, #555 3px 6px);
   background-size: 100% 100%;
   cursor: not-allowed;
 }

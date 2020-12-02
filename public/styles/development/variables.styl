@@ -22,15 +22,16 @@ _sizeXXL = 140.01em
 _sizeNav =  68.01em // À caler sur la taille du contenu de '.nav-main ul'. @note Prévoir de la marge en raison des différences d'interprétation des fonts selon les navigateurs
 
 
-// @subsection  Fonts
-// @description Choix des polices de caractères à charger via @font-face
-// @params 'false' si pas de font
+// @subsection  Web fonts
+// @description Choix des polices de caractères.
+// @params false, 'font name'
+// @note Le chargement des polices via @font-face est fortement recommandé pour ne pas dépendre de l'environnement de l'utilisateur. Ce qui permet d'avoir la maitrise du design du site.
 
-_fontName = 'Open Sans'
-_fontList = _fontName, Arial, sans-serif
+_fontName = 'Noto Sans'
+_fontList = _fontName, sans-serif
 
 _fontName2 = 'Noto Serif'
-_fontList2 = _fontName2, Georgia, serif
+_fontList2 = _fontName2, serif
 
 
 // @subsection  Colors
