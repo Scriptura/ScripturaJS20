@@ -4,7 +4,7 @@ const fs = require('fs'),
       general = './data/json/generalRomanCalendar.json',
       european = './data/json/europeanRomanCalendar.json',
       french = './data/json/frenchRomanCalendar.json',
-      { DateTime, Interval } = require('luxon'),
+      { DateTime } = require('luxon'),
       easter = require('date-easter'),
       currentDayMonth = DateTime.local().toFormat('ddMM'),
       currentYear = DateTime.local().toFormat('yyyy')
@@ -39,9 +39,7 @@ const liturgicalCalendar = (dayMonth = currentDayMonth, year = currentYear) => {
 
   // Périodes liturgiques :
   data.period = "Temps ordinaire"
-  const advent = Interval.fromDateTimes(sundayBeforeChristmas.plus({days: -22}), DateTime.fromFormat('2412' + year, 'ddMMyyyy')).toFormat('ddMM')
-  console.log(advent)
-  if (dayMonth === advent) data.period = "Temps de l'Avent"
+
 
   // Définition des fêtes votives :
   if (dayMonth === easterDate.plus({days: -46}).toFormat('ddMM')) data = {name: "Mercredi des Cendres", color: "purple", grade: "", rank: "2"}
@@ -99,7 +97,7 @@ if (dayMonth === precomputingBaptismOfTheLord && epiphany !== ('0701' || '0801')
 // Si la fête tombe un dimanche, autre que le Dimanche des Rameaux, celle-ci est célébrée le jour suivant, généralement le lundi 20 mars, mais seulement si une autre solennité (par exemple, un autre Saint patron de l'Église) n'est pas célébrée durant cette journée. Depuis 2008, si le jour de la Fête de Saint Joseph tombe pendant la Semaine Sainte, la célébration de sa fête est déplacée vers le jour le plus proche possible avant le 19 mars, généralement le samedi précédant la Semaine Sainte.
 // data = {name: "Saint Joseph, chaste Époux de la Bienheureuse Vierge Marie", color: "white", grade: "1", rank: "3"}
 
-// - Solennité de l’Annonciation du Seigneur à Marie, le 25 mars. Est décalée au 26, si le 25 est un dimanche (ou le premier lundi qui suit le deuxième dimanche de Pâques si le 25 mars se situe pendant la Semaine Sainte).
+// - Solennité de l'Annonciation du Seigneur à Marie, le 25 mars. Est décalée au 26, si le 25 est un dimanche (ou le premier lundi qui suit le deuxième dimanche de Pâques si le 25 mars se situe pendant la Semaine Sainte).
 // data = {name: "Annonciation du Seigneur", color: "white", grade: "1", rank: "3"}
 
 // Jeudi de la solennité du Saint Sacrement (fête décalée au dimanche dans certaines régions, en particulier en France, ayant reçu un indult en ce sens).
