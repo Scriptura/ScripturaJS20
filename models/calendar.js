@@ -12,6 +12,7 @@ const getCalendar = {
   _title: 'Calendar | ' + vv.siteName
   , _name: 'Calendrier'
   , _description: 'Informations disponibles pour les fonctions de calendrier'
+  , _calendarPeriod: lc.period
   , _calendarDate: lc.displayDate
   , _calendarName: lc.name
   , _calendarColor: lc.color

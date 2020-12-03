@@ -3,17 +3,6 @@
     p
       code .accordion
     .accordion
-      //-
-        details
-          summary Item Exp
-          div
-            ul
-              li
-                a(href='#') link 1
-              li
-                a(href='#') link 2
-              li
-                a(href='#') link 3
       details
         summary Item 1
         div
@@ -47,7 +36,9 @@
         div
           p Morbi ac ex ornare, finibus turpis vel, pellentesque leo. Aenean dignissim eu dolor id dignissim. Duis ornare sapien ex, non porttitor sapien suscipit ut. Curabitur at tempor massa, ac finibus mi. Suspendisse nibh neque, porta et placerat vel, gravida at magna. Aenean augue dui, tincidunt nec ligula ut, laoreet tempor elit. Nullam vel sagittis eros, vel mattis ex.
           p Suspendisse fermentum luctus odio. Curabitur fringilla pulvinar interdum. Morbi porta orci neque, at commodo nulla tincidunt sed. Nulla finibus libero erat, eu auctor felis condimentum ac. Duis aliquet arcu sed luctus molestie. Pellentesque eros ipsum, ullamcorper ac turpis non, dictum hendrerit nulla. Integer mattis feugiat mauris a tincidunt. Duis fermentum faucibus nisl.
-    p.message Avec option 'singletab'&nbsp;: un seul onglet s'ouvre à la fois.
+    p.message Avec option 
+      code singletab
+      | &nbsp;: un seul onglet s'ouvre à la fois.
   div
     p
       code .accordion(data-singletab='true') + details(open='open')
@@ -65,7 +56,13 @@
         div
           p Morbi ac ex ornare, finibus turpis vel, pellentesque leo. Aenean dignissim eu dolor id dignissim. Duis ornare sapien ex, non porttitor sapien suscipit ut. Curabitur at tempor massa, ac finibus mi. Suspendisse nibh neque, porta et placerat vel, gravida at magna. Aenean augue dui, tincidunt nec ligula ut, laoreet tempor elit. Nullam vel sagittis eros, vel mattis ex.
           p Suspendisse fermentum luctus odio. Curabitur fringilla pulvinar interdum. Morbi porta orci neque, at commodo nulla tincidunt sed. Nulla finibus libero erat, eu auctor felis condimentum ac. Duis aliquet arcu sed luctus molestie. Pellentesque eros ipsum, ullamcorper ac turpis non, dictum hendrerit nulla. Integer mattis feugiat mauris a tincidunt. Duis fermentum faucibus nisl.
-    p.message Avec deux options&nbsp;: un seul onglet s'ouvre à la fois + un onglet ouvert par défaut (option standard de details/summary).
+    p.message Avec deux options&nbsp;: un seul onglet s'ouvre à la fois + un onglet ouvert par défaut (option standard de 
+      code details/summary
+      | ).
   div
-    p.message L'accordéon est basé sur les éléments html details/summary. Le javascript transforme cette base pour permettre les animations et un meilleur contrôle, il ajoute aussi des attributs aria pour l'accessibilité. L'accordéon reste accessible au clavier comme pour le html de base.
-    p.message Notez que l'apparence de l'accordéon ne changera pas si javascript est désactivé. Seul les animations et l'option 'singletab' auront disparus.
+    p.message L'accordéon est basé sur les éléments html 
+      code details/summary
+      | . Le javascript transforme cette base pour permettre les animations et un meilleur contrôle, il ajoute aussi des attributs aria pour l'accessibilité. L'accordéon reste accessible au clavier comme pour le html de base.
+    p.message Notez que l'apparence de l'accordéon ne changera pas si javascript est désactivé. Seul les animations et l'option 
+      code singletab
+      |  auront disparus.

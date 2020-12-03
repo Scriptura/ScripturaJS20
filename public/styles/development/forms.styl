@@ -1,3 +1,6 @@
+_formsColor1 = #444
+_formsColor2 = _formsColor1 + 40%
+
 fieldset
   margin 0
   //padding 0.35em 0.75em 0.625em // @bugfix Correct the padding @affected Firefox.
@@ -114,11 +117,11 @@ textarea:-webkit-autofill:focus
 select:-webkit-autofill
 select:-webkit-autofill:hover
 select:-webkit-autofill:focus
-  -webkit-text-fill-color #ddd
-  -webkit-box-shadow 0 0 0px 1000px #222 inset
+  -webkit-text-fill-color _colorT
+  -webkit-box-shadow inset 0 0 0 2rem _formsColor1 !important
 
 ::placeholder
-  color #777
+  color _formsColor2
 
 :focus::placeholder
   color transparent
@@ -142,15 +145,15 @@ form fieldset > [class*=input]
 [class*=input] textarea
   width 100%
   padding .4em 1em
-  background-color #444
-  border 1px solid #444 //#222 // @note Permet d'anticiper le comportement des bordures colorées de '.invalid' en évitant des rattrapages en padding aléatoires selon le type d'input
+  background-color _formsColor1
+  border 1px solid _formsColor1 //#222 // @note Permet d'anticiper le comportement des bordures colorées de '.invalid' en évitant des rattrapages en padding aléatoires selon le type d'input
 
 [class*=input] input
 [class*=input] select
 [class*=input] textarea
   color currentColor
   //border-radius _r2
-  box-shadow .5rem .5rem 2rem rgba(0, 0, 0, .1)
+  box-shadow inset .5rem .5rem 2rem rgba(0, 0, 0, .1)
 
 [class*=input] textarea
   min-height 10em
@@ -176,7 +179,7 @@ form fieldset > [class*=input]
 _inputSize = 3px
 
 [class*=input].disabled input
-  background #444 repeating-linear-gradient(-45deg, transparent 0 _inputSize, #555 _inputSize _inputSize * 2)
+  background _formsColor1 repeating-linear-gradient(-45deg, transparent 0 _inputSize, #555 _inputSize _inputSize * 2)
   background-size 100% 100%
   cursor not-allowed
 

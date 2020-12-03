@@ -4,7 +4,7 @@ const fs = require('fs'),
       general = './data/json/generalRomanCalendar.json',
       european = './data/json/europeanRomanCalendar.json',
       french = './data/json/frenchRomanCalendar.json',
-      { DateTime } = require('luxon'),
+      { DateTime, Interval } = require('luxon'),
       easter = require('date-easter'),
       currentDayMonth = DateTime.local().toFormat('ddMM'),
       currentYear = DateTime.local().toFormat('yyyy')
@@ -19,7 +19,8 @@ const liturgicalCalendar = (dayMonth = currentDayMonth, year = currentYear) => {
         ge = easter.gregorianEaster(year),
         easterDate = DateTime.local(ge.year, ge.month, ge.day), // Verification des dates de Pâques @see http://5ko.free.fr/fr/easter.php
         immaculateConceptionDay = DateTime.fromFormat('0812' + year, 'ddMMyyyy').weekday,
-        sundayBeforeChristmas = DateTime.fromFormat('2512', 'ddMM').startOf('week'),
+        sundayBeforeChristmas = DateTime.fromFormat('2512' + year, 'ddMMyyyy').startOf('week'),
+        firstAdventSunday = sundayBeforeChristmas.plus({days: -22}).toFormat('ddMM'),
         christmasSunday = DateTime.fromFormat('2512' + year, 'ddMMyyyy').endOf('week').toFormat('ddMM'),
         christmasDay = DateTime.fromFormat('2512' + year, 'ddMMyyyy').weekday,
         epiphany = DateTime.fromFormat('0201' + year, 'ddMMyyyy').endOf('week').toFormat('ddMM'),
@@ -35,6 +36,12 @@ const liturgicalCalendar = (dayMonth = currentDayMonth, year = currentYear) => {
   if (data.color === '') data.color = "green"
   if (data.grade === '') data.grade = ""
   if (data.rank === '') data.rank = ""
+
+  // Périodes liturgiques :
+  data.period = "Temps ordinaire"
+  const advent = Interval.fromDateTimes(sundayBeforeChristmas.plus({days: -22}), DateTime.fromFormat('2412' + year, 'ddMMyyyy')).toFormat('ddMM')
+  console.log(advent)
+  if (dayMonth === advent) data.period = "Temps de l'Avent"
 
   // Définition des fêtes votives :
   if (dayMonth === easterDate.plus({days: -46}).toFormat('ddMM')) data = {name: "Mercredi des Cendres", color: "purple", grade: "", rank: "2"}
@@ -69,7 +76,7 @@ const liturgicalCalendar = (dayMonth = currentDayMonth, year = currentYear) => {
   if (dayMonth === easterDate.plus({days: 68}).toFormat('ddMM')) data = {name: "Sacré-Cœur de Jésus", color: "white", grade: "1", rank: "3"}
 
   if (dayMonth === sundayBeforeChristmas.plus({days: -29}).toFormat('ddMM')) data = {name: "Notre Seigneur Jésus Christ Roi de l'Univers", color: "white", grade: "1", rank: "3"}
-  if (dayMonth === sundayBeforeChristmas.plus({days: -22}).toFormat('ddMM')) data = {name: "Premier dimanche de l'Avent, <em>Levavi</em>", color: "purple", grade: "1", rank: "2"}
+  if (dayMonth === firstAdventSunday) data = {name: "Premier dimanche de l'Avent, <em>Levavi</em>", color: "purple", grade: "1", rank: "2"}
   if (dayMonth === sundayBeforeChristmas.plus({days: -15}).toFormat('ddMM')) data = {name: "Deuxième dimanche de l'Avent, <em>Populus Sion</em>", color: "purple", grade: "1", rank: "2"}
   if (dayMonth === sundayBeforeChristmas.plus({days: -8}).toFormat('ddMM')) data = {name: "Troisième dimanche de l'Avent, <em>Gaudete</em>", color: "pink", grade: "1", rank: "2"}
   if (dayMonth === sundayBeforeChristmas.plus({days: -1}).toFormat('ddMM')) data = {name: "Quatrième dimanche de l'Avent, <em>Rorate</em>", color: "purple", grade: "1", rank: "2"}
