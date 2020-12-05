@@ -811,7 +811,7 @@ svg {
   max-width: 100%;
   fill: currentColor;
 }
-.decorative-svg svg {
+.decorative-svg {
   fill: #d2b48c;
 }
 .icon {
