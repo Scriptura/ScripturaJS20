@@ -4,8 +4,9 @@ const vv = require('../settings/variables'),
       { liturgicalCalendar } = require('../helpers/liturgicalCalendar'),
       { moonPhase } = require('../helpers/astronomy'),
       { DateTime } = require('luxon'),
-      date = DateTime.fromFormat('08012018', 'ddMMyyyy'), // @note Pour les tests
-      lc = liturgicalCalendar(date)
+      //currentDate = DateTime.local(),
+      currentDate = DateTime.fromFormat('02012021', 'ddMMyyyy'), // @note Pour les tests
+      lc = liturgicalCalendar(currentDate)
 
 const getCalendar = {
   _title: 'Calendar | ' + vv.siteName
@@ -19,7 +20,7 @@ const getCalendar = {
   , _calendarGrade: lc.grade
   , _calendarRank: lc.rank
   , _calendarUrl: lc.link
-  , _moonPhase: moonPhase(new Date)
+  , _moonPhase: moonPhase(currentDate)
 }
 
 module.exports = { getCalendar: getCalendar }

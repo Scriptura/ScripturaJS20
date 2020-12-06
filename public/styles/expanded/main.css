@@ -1450,8 +1450,8 @@ form fieldset > [class*=input] {
 }
 .footer .logo,
 .footer .logo svg {
-  height: 2em;
-  width: 2em;
+  height: 3em;
+  width: 4em;
   margin-right: 1em;
 }
 .footer .wrap > :nth-child(2) {
