@@ -30,7 +30,7 @@ const liturgicalCalendar = (date = currentDate, lang = 'VAT') => {
         epiphanyPeriod = Interval.fromDateTimes(epiphany, epiphany.plus({days:6})),
         christmasSunday = DateTime.fromFormat('2512' + year, 'ddMMyyyy').endOf('week'),
         precomputingBaptismOfTheLord = DateTime.fromFormat('0201' + year, 'ddMMyyyy').endOf('week').plus({days: 7}),
-        baptismOfTheLord = precomputingBaptismOfTheLord.hasSame(date, 'day') && epiphany.toFormat('ddMM') !== ('0701' || '0801') || dayMonth === '0801' && epiphany.toFormat('ddMM') === '0701' || dayMonth === '0901' && epiphany.toFormat('ddMM') === '0801'
+        baptismOfTheLordBoolean = precomputingBaptismOfTheLord.hasSame(date, 'day') && epiphany.toFormat('ddMM') !== ('0701' || '0801') || dayMonth === '0801' && epiphany.toFormat('ddMM') === '0701' || dayMonth === '0901' && epiphany.toFormat('ddMM') === '0801'
         //christmasPeriod = Interval.fromDateTimes(christmas, DateTime.fromFormat('0601' + year, 'ddMMyyyy').plus({year: 1}))
 
   // @note Si une fête fixe du calendrier général devient votive dans le propre d'un pays, le .json du pays concerné mentionnera une valeur vide pour le nom en lieu et place de la date ({"name": ""}), ceci afin de permettre les traitements qui annuleront la fête.
@@ -70,7 +70,7 @@ const liturgicalCalendar = (date = currentDate, lang = 'VAT') => {
   // Épiphanie le 06/01 pour le calendrier général, le dimanche après le premier janvier pour la France (et les autres pays qui ne chôment pas ce jour-là).
   if (epiphany.hasSame(date, 'day')) data.name = "Épiphanie du Seigneur", data.color = "white", data.grade = "1", data.rank = "2"
   // Baptême du Seigneur célébré à la place du 1er dimanche ordinaire, ou le lendemain de l'Épiphanie si celle-ci est célébrée le 7 ou 8 janvier.
-  if (baptismOfTheLord) data.name = "Le Baptême du Seigneur", data.color = "white", data.grade = "3", data.rank = "5"
+  if (baptismOfTheLordBoolean) data.name = "Le Baptême du Seigneur", data.color = "white", data.grade = "3", data.rank = "5"
   if (easter.plus({days: -46}).hasSame(date, 'day')) data.name = "Mercredi des Cendres", data.color = "purple", data.grade = "", data.rank = "2"
   if (easter.plus({days: -42}).hasSame(date, 'day')) data.name = "Premier dimanche de Carême, <em>Invocabit</em>", data.color = "purple", data.grade = "1", data.rank = "2"
   if (easter.plus({days: -35}).hasSame(date, 'day')) data.name = "Deuxième dimanche de Carême, <em>Reminiscere</em>", data.color = "purple", data.grade = "1", data.rank = "2"
@@ -150,7 +150,7 @@ const liturgicalCalendar = (date = currentDate, lang = 'VAT') => {
 
   data.displayDate = `${day}.${month}.${year}`
 
-  console.log(data)
+  //console.log(data)
 
   return data
 }

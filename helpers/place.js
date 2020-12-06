@@ -2,7 +2,7 @@
 
 const vv = require('../settings/variables')
 
-const placeFormat = (data) => { // Travaille sur l'initialisateur d'objet envoyé par la db et retourne des résultats formatés pour les besoins de la page.
+const placeFormat = data => { // Travaille sur l'initialisateur d'objet envoyé par la db et retourne des résultats formatés pour les besoins de la page.
   data._title = [data._name, vv.siteName].join(' | ')
   if (!data._description) {
     if (data._name) data._description = data._name // donnée obligatoire pour une page web
