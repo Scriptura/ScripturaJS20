@@ -21,12 +21,14 @@ block main
                 span!= _calendarName
               else
                 span no calendar
-            if _calendarGrade
+            if _calendarGrade || _calendarRank
               p
-                em= _calendarGrade
-            if _calendarRank
-              p
-                em= _calendarRank
+                if _calendarGrade
+                  em= _calendarGrade
+                if _calendarGrade && _calendarRank
+                  | , 
+                if _calendarRank
+                  em= _calendarRank
             if _calendarPeriod
               p= _calendarPeriod
           if _moonPhase
