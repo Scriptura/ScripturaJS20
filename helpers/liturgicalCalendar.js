@@ -20,20 +20,24 @@ const liturgicalCalendar = (date = currentDate, lang = 'VAT') => {
         dayMonth = day + month,
         ge = easterDate.gregorianEaster(year),
         easter = DateTime.local(ge.year, ge.month, ge.day), // Verification des dates de Pâques @see http://5ko.free.fr/fr/easter.php
-        immaculateConception = DateTime.fromFormat('0812' + year, 'ddMMyyyy'),
         christmas = DateTime.fromFormat('2512' + year, 'ddMMyyyy'),
         sundayBeforeChristmas = christmas.startOf('week'),
         firstAdventSunday = sundayBeforeChristmas.plus({days: -22}),
-        advent = Interval.fromDateTimes(firstAdventSunday, christmas),
-        christmasOctave = Interval.fromDateTimes(christmas, christmas.plus({days: 7})), // @todo A cheval sur 2 années...
+        // Épiphanie le 06/01 pour le calendrier général, le dimanche après le premier janvier pour la France et les autres pays qui ne chôment pas ce jour-là.
         epiphany = DateTime.fromFormat('0201' + year, 'ddMMyyyy').endOf('week'),
         christmasSunday = DateTime.fromFormat('2512' + year, 'ddMMyyyy').endOf('week')
 
+  // Immaculée Conception le 08/12, si dimanche alors célébration le lundi 09/12
+  let immaculateConception = DateTime.fromFormat('0812' + year, 'ddMMyyyy')
+  if (immaculateConception.weekday === 7) immaculateConception = DateTime.fromFormat('0912' + year, 'ddMMyyyy')
+  // Baptême du Seigneur célébré à la place du 1er dimanche ordinaire, ou le lendemain de l'Épiphanie si celle-ci est célébrée le 7 ou 8 janvier.
   let baptismOfTheLord = DateTime.fromFormat('0201' + year, 'ddMMyyyy').endOf('week').plus({days: 7})
   if (epiphany.toFormat('dd') === ('07' || '08')) baptismOfTheLord = epiphany.plus({days: 1})
 
-  const christmasPeriod = Interval.fromDateTimes(christmas, baptismOfTheLord.plus({years: 1})), // @todo A cheval sur 2 années...
-        epiphanyPeriod = Interval.fromDateTimes(epiphany, baptismOfTheLord.plus({days: -1}))
+  let advent = Interval.fromDateTimes(firstAdventSunday, christmas),
+      christmasOctave = Interval.fromDateTimes(christmas, christmas.plus({days: 7})), // @todo A cheval sur 2 années...
+      christmasPeriod = Interval.fromDateTimes(christmas, baptismOfTheLord.plus({years: 1})), // @todo A cheval sur 2 années...
+      epiphanyPeriod = Interval.fromDateTimes(epiphany, baptismOfTheLord.plus({days: -1}))
 
   // @note Si une fête fixe du calendrier général devient votive dans le propre d'un pays, le .json du pays concerné mentionnera une valeur vide pour le nom en lieu et place de la date ({"name": ""}), ceci afin de permettre les traitements qui annuleront la fête.
 
@@ -59,21 +63,18 @@ const liturgicalCalendar = (date = currentDate, lang = 'VAT') => {
   else if (christmasPeriod.contains(date) && data.color === '') data.color = "white"
   else if (data.color === '') data.color = "green"
 
-  console.log(christmasOctave.contains(date))
-  console.log(christmasOctave.toFormat('ddMMyyyy'))
+  //console.log(christmasOctave.contains(date))
+  //console.log(christmasOctave.toFormat('ddMMyyyy'))
 
   // Définition des fêtes votives :
   if (firstAdventSunday.hasSame(date, 'day')) data.name = "Premier dimanche de l'Avent, <em>Levavi</em>", data.color = "purple", data.grade = "1", data.rank = "2"
   if (sundayBeforeChristmas.plus({days: -15}).hasSame(date, 'day')) data.name = "Deuxième dimanche de l'Avent, <em>Populus Sion</em>", data.color = "purple", data.grade = "1", data.rank = "2"
   if (sundayBeforeChristmas.plus({days: -8}).hasSame(date, 'day')) data.name = "Troisième dimanche de l'Avent, <em>Gaudete</em>", data.color = "pink", data.grade = "1", data.rank = "2"
   if (sundayBeforeChristmas.plus({days: -1}).hasSame(date, 'day')) data.name = "Quatrième dimanche de l'Avent, <em>Rorate</em>", data.color = "purple", data.grade = "1", data.rank = "2"
-  // Immaculée Conception le 08/12, si dimanche alors célébration le lundi 09/12
-  if (dayMonth === '0812' && immaculateConception.weekday !== 7 || dayMonth === '0912' && immaculateConception.weekday === 7) data.name = "Immaculée Conception de la Bienheureuse Vierge Marie", data.color = "white", data.grade = "1", data.rank = "3"
+  if (immaculateConception.hasSame(date, 'day')) data.name = "Immaculée Conception de la Bienheureuse Vierge Marie", data.color = "white", data.grade = "1", data.rank = "3"
   // Sainte Famille le dimanche qui suit Noël, si Noël est un dimanche alors le 30/12.
   if (christmasSunday.hasSame(date, 'day') || dayMonth === '3012' && christmas.weekday === 7) data.name = "La Sainte Famille", data.color = "white", data.grade = "2", data.rank = "5"
-  // Épiphanie le 06/01 pour le calendrier général, le dimanche après le premier janvier pour la France (et les autres pays qui ne chôment pas ce jour-là).
   if (epiphany.hasSame(date, 'day')) data.name = "Épiphanie du Seigneur", data.color = "white", data.grade = "1", data.rank = "2"
-  // Baptême du Seigneur célébré à la place du 1er dimanche ordinaire, ou le lendemain de l'Épiphanie si celle-ci est célébrée le 7 ou 8 janvier.
   if (baptismOfTheLord.hasSame(date, 'day')) data.name = "Le Baptême du Seigneur", data.color = "white", data.grade = "3", data.rank = "5"
   if (easter.plus({days: -46}).hasSame(date, 'day')) data.name = "Mercredi des Cendres", data.color = "purple", data.grade = "", data.rank = "2"
   if (easter.plus({days: -42}).hasSame(date, 'day')) data.name = "Premier dimanche de Carême, <em>Invocabit</em>", data.color = "purple", data.grade = "1", data.rank = "2"

@@ -221,6 +221,9 @@ hr[data-hr]::after {
   height: 100%;
   font-size: 2em;
 }
+.verse {
+  color: #ff6347;
+}
 body {
   display: grid;
   grid-template-rows: repeat(3, auto) 1fr;
