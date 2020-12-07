@@ -10,7 +10,15 @@ const fs = require('fs'),
 
 // @params: {object} ISO date, optional ; {string} ISO 3166-1 alpha-3 pays, optional
 const liturgicalCalendar = (date = currentDate, lang = 'VAT') => {
-
+/*
+ * 1. Verification des dates de Pâques @see http://5ko.free.fr/fr/easter.php
+ * 2. Immaculée Conception le 08/12, si dimanche alors célébration le lundi 09/12.
+ * 3. Sainte Famille le dimanche qui suit Noël, si Noël est un dimanche alors le 30/12.
+ * 4. Épiphanie le 06/01 pour le calendrier général, le dimanche après le premier janvier pour la France et les autres pays qui ne chôment pas ce jour-là.
+ * 5. Baptême du Seigneur célébré à la place du 1er dimanche ordinaire, ou le lendemain de l'Épiphanie si celle-ci est célébrée le 7 ou 8 janvier.
+ * 6. Période de Noël à cheval sur 2 années : en fonction de la date courante on calcule l'Octave pour la fin de l'année en cours puis pour le début de l'année en cours.
+ * 7. Octave de Noël à cheval sur 2 années : en fonction de la date courante on calcule l'Octave pour la fin de l'année en cours puis pour le début de l'année en cours.
+*/
   const data1 = JSON.parse(fs.readFileSync(general, 'utf8')),
         data2 = JSON.parse(fs.readFileSync(european, 'utf8')),
         data3 = JSON.parse(fs.readFileSync(french, 'utf8')),
@@ -19,25 +27,27 @@ const liturgicalCalendar = (date = currentDate, lang = 'VAT') => {
         day = date.toFormat('dd'),
         dayMonth = day + month,
         ge = easterDate.gregorianEaster(year),
-        easter = DateTime.local(ge.year, ge.month, ge.day), // Verification des dates de Pâques @see http://5ko.free.fr/fr/easter.php
         christmas = DateTime.fromFormat('2512' + year, 'ddMMyyyy'),
         sundayBeforeChristmas = christmas.startOf('week'),
         firstAdventSunday = sundayBeforeChristmas.plus({days: -22}),
-        // Épiphanie le 06/01 pour le calendrier général, le dimanche après le premier janvier pour la France et les autres pays qui ne chôment pas ce jour-là.
-        epiphany = DateTime.fromFormat('0201' + year, 'ddMMyyyy').endOf('week'),
-        christmasSunday = DateTime.fromFormat('2512' + year, 'ddMMyyyy').endOf('week')
+        december8 = DateTime.fromFormat('0812' + year, 'ddMMyyyy'),
+        immaculateConception = (december8.weekday === 7) ? december8.plus({days: 1}) : december8, // 2
+        holyFamily = (christmas.weekday === 7) ? DateTime.fromFormat('3012' + year, 'ddMMyyyy') : DateTime.fromFormat('2512' + year, 'ddMMyyyy').endOf('week'), // 3
+        epiphany = DateTime.fromFormat('0201' + year, 'ddMMyyyy').endOf('week'), // 4
+        baptismOfTheLord = (epiphany.toFormat('dd') === ('07' || '08')) ? baptismOfTheLord = epiphany.plus({days: 1}) : DateTime.fromFormat('0201' + year, 'ddMMyyyy').endOf('week').plus({days: 7}), // 5
+        advent = Interval.fromDateTimes(firstAdventSunday, christmas),
+        epiphanyTide = Interval.fromDateTimes(epiphany, baptismOfTheLord.plus({days: -1})),
+        christmastide = (date <= baptismOfTheLord) ? Interval.fromDateTimes(christmas.plus({years: -1}), baptismOfTheLord) : Interval.fromDateTimes(christmas, baptismOfTheLord.plus({years: 1})), // 6
+        octaveOfChristmas = (date <= DateTime.fromFormat('0101', 'ddMM')) ? Interval.fromDateTimes(DateTime.fromFormat('2512', 'ddMM').plus({years: -1}), DateTime.fromFormat('0201', 'ddMM')) : Interval.fromDateTimes(christmas, christmas.plus({days: 7})), // 7
+        easter = DateTime.local(ge.year, ge.month, ge.day), // 1
+        ashWednesday = easter.plus({days: -46}),
+        holySaturday = easter.plus({days: -1}),
+        lent = Interval.fromDateTimes(ashWednesday, holySaturday.plus({days: 1})),
+        holyWeek = Interval.fromDateTimes(easter.plus({days: -7}), easter),
+        easterTriduum = Interval.fromDateTimes(easter.plus({days: -3}), easter),
+        eastertide = Interval.fromDateTimes(easter, easter.plus({days: 50})),
+        octaveOfEaster = Interval.fromDateTimes(easter, easter.plus({days: 8}))
 
-  // Immaculée Conception le 08/12, si dimanche alors célébration le lundi 09/12
-  let immaculateConception = DateTime.fromFormat('0812' + year, 'ddMMyyyy')
-  if (immaculateConception.weekday === 7) immaculateConception = DateTime.fromFormat('0912' + year, 'ddMMyyyy')
-  // Baptême du Seigneur célébré à la place du 1er dimanche ordinaire, ou le lendemain de l'Épiphanie si celle-ci est célébrée le 7 ou 8 janvier.
-  let baptismOfTheLord = DateTime.fromFormat('0201' + year, 'ddMMyyyy').endOf('week').plus({days: 7})
-  if (epiphany.toFormat('dd') === ('07' || '08')) baptismOfTheLord = epiphany.plus({days: 1})
-
-  let advent = Interval.fromDateTimes(firstAdventSunday, christmas),
-      christmasOctave = Interval.fromDateTimes(christmas, christmas.plus({days: 7})), // @todo A cheval sur 2 années...
-      christmasPeriod = Interval.fromDateTimes(christmas, baptismOfTheLord.plus({years: 1})), // @todo A cheval sur 2 années...
-      epiphanyPeriod = Interval.fromDateTimes(epiphany, baptismOfTheLord.plus({days: -1}))
 
   // @note Si une fête fixe du calendrier général devient votive dans le propre d'un pays, le .json du pays concerné mentionnera une valeur vide pour le nom en lieu et place de la date ({"name": ""}), ceci afin de permettre les traitements qui annuleront la fête.
 
@@ -53,18 +63,23 @@ const liturgicalCalendar = (date = currentDate, lang = 'VAT') => {
 
   // Périodes liturgiques, dénomination :
   if (advent.contains(date)) data.period = "Temps de l'Avent"
-  else if (christmasOctave.contains(date)) data.period = "Octave de la Nativité du Seigneur"
-  else if (epiphanyPeriod.contains(date)) data.period = "Après l'Épiphanie"
-  else if (christmasPeriod.contains(date)) data.period = "Temps de Noël"
+  else if (octaveOfChristmas.contains(date)) data.period = "Octave de la Nativité du Seigneur"
+  else if (epiphanyTide.contains(date)) data.period = "Après l'Épiphanie"
+  else if (christmastide.contains(date)) data.period = "Temps de Noël"
+  else if (easterTriduum.contains(date)) data.period = "Triduum pascal"
+  else if (holyWeek.contains(date)) data.period = "Semaine Sainte"
+  else if (lent.contains(date)) data.period = "Carême"
+  else if (octaveOfEaster.contains(date)) data.period = "Octave de Pâques"
+  else if (eastertide.contains(date)) data.period = "Temps Pascal"
   else data.period = "Temps ordinaire"
 
   // Périodes liturgiques, couleur :
   if (advent.contains(date) && data.color === '') data.color = "purple"
-  else if (christmasPeriod.contains(date) && data.color === '') data.color = "white"
+  else if (christmastide.contains(date) && data.color === '') data.color = "white"
+  else if (lent.contains(date) && data.color === '') data.color = "purple"
+  else if (eastertide.contains(date) && data.color === '') data.color = "white"
   else if (data.color === '') data.color = "green"
 
-  //console.log(christmasOctave.contains(date))
-  //console.log(christmasOctave.toFormat('ddMMyyyy'))
 
   // Définition des fêtes votives :
   if (firstAdventSunday.hasSame(date, 'day')) data.name = "Premier dimanche de l'Avent, <em>Levavi</em>", data.color = "purple", data.grade = "1", data.rank = "2"
@@ -72,11 +87,10 @@ const liturgicalCalendar = (date = currentDate, lang = 'VAT') => {
   if (sundayBeforeChristmas.plus({days: -8}).hasSame(date, 'day')) data.name = "Troisième dimanche de l'Avent, <em>Gaudete</em>", data.color = "pink", data.grade = "1", data.rank = "2"
   if (sundayBeforeChristmas.plus({days: -1}).hasSame(date, 'day')) data.name = "Quatrième dimanche de l'Avent, <em>Rorate</em>", data.color = "purple", data.grade = "1", data.rank = "2"
   if (immaculateConception.hasSame(date, 'day')) data.name = "Immaculée Conception de la Bienheureuse Vierge Marie", data.color = "white", data.grade = "1", data.rank = "3"
-  // Sainte Famille le dimanche qui suit Noël, si Noël est un dimanche alors le 30/12.
-  if (christmasSunday.hasSame(date, 'day') || dayMonth === '3012' && christmas.weekday === 7) data.name = "La Sainte Famille", data.color = "white", data.grade = "2", data.rank = "5"
+  if (holyFamily.hasSame(date, 'day')) data.name = "La Sainte Famille", data.color = "white", data.grade = "2", data.rank = "5"
   if (epiphany.hasSame(date, 'day')) data.name = "Épiphanie du Seigneur", data.color = "white", data.grade = "1", data.rank = "2"
   if (baptismOfTheLord.hasSame(date, 'day')) data.name = "Le Baptême du Seigneur", data.color = "white", data.grade = "3", data.rank = "5"
-  if (easter.plus({days: -46}).hasSame(date, 'day')) data.name = "Mercredi des Cendres", data.color = "purple", data.grade = "", data.rank = "2"
+  if (ashWednesday.hasSame(date, 'day')) data.name = "Mercredi des Cendres", data.color = "purple", data.grade = "", data.rank = "2"
   if (easter.plus({days: -42}).hasSame(date, 'day')) data.name = "Premier dimanche de Carême, <em>Invocabit</em>", data.color = "purple", data.grade = "1", data.rank = "2"
   if (easter.plus({days: -35}).hasSame(date, 'day')) data.name = "Deuxième dimanche de Carême, <em>Reminiscere</em>", data.color = "purple", data.grade = "1", data.rank = "2"
   if (easter.plus({days: -28}).hasSame(date, 'day')) data.name = "Troisième dimanche de Carême, <em>Oculi</em>", data.color = "purple", data.grade = "1", data.rank = "2"
@@ -88,7 +102,7 @@ const liturgicalCalendar = (date = currentDate, lang = 'VAT') => {
   if (easter.plus({days: -4}).hasSame(date, 'day')) data.name = "Mercredi Saint", data.color = "purple", data.grade = "", data.rank = "2"
   if (easter.plus({days: -3}).hasSame(date, 'day')) data.name = "Jeudi Saint", data.color = "white", data.grade = "1", data.rank = "1" // rank "2" en journée, rank "1" le soir
   if (easter.plus({days: -2}).hasSame(date, 'day')) data.name = "Vendredi Saint", data.color = "red", data.grade = "1", data.rank = "1"
-  if (easter.plus({days: -1}).hasSame(date, 'day')) data.name = "Samedi Saint", data.color = "purple", data.grade = "1", data.rank = "1"
+  if (holySaturday.hasSame(date, 'day')) data.name = "Samedi Saint", data.color = "purple", data.grade = "1", data.rank = "1"
   if (easter.hasSame(date, 'day')) data.name = "Résurrection du Seigneur", data.color = "white", data.grade = "1", data.rank = "1"
   if (easter.plus({days: 1}).hasSame(date, 'day')) data.name = "Lundi dans l'octave Pâques", data.color = "white", data.grade = "1", data.rank = "2"
   if (easter.plus({days: 2}).hasSame(date, 'day')) data.name = "Mardi dans l'octave de Pâques", data.color = "white", data.grade = "1", data.rank = "2"
@@ -103,6 +117,7 @@ const liturgicalCalendar = (date = currentDate, lang = 'VAT') => {
   if (easter.plus({days: 35}).hasSame(date, 'day')) data.name = "Sixième dimanche du Temps Pascal", data.color = "white", data.grade = "1", data.rank = "2"
   if (easter.plus({days: 40}).hasSame(date, 'day')) data.name = "Ascension", data.color = "white", data.grade = "1", data.rank = "2"
   if (easter.plus({days: 49}).hasSame(date, 'day')) data.name = "Pentecôte", data.color = "white", data.grade = "1", data.rank = "2"
+  if (easter.plus({days: 50}).hasSame(date, 'day')) data.name = "Bienheureuse Vierge Marie, Mère de l'Église", data.color = "white", data.grade = "3", data.rank = "10"
   if (easter.plus({days: 56}).hasSame(date, 'day')) data.name = "Sainte Trinité", data.color = "white", data.grade = "1", data.rank = "3"
   if (easter.plus({days: 63}).hasSame(date, 'day')) data.name = "Le Saint Sacrement", data.color = "white", data.grade = "1", data.rank = "3"
   if (easter.plus({days: 68}).hasSame(date, 'day')) data.name = "Sacré-Cœur de Jésus", data.color = "white", data.grade = "1", data.rank = "3"
@@ -129,7 +144,6 @@ const liturgicalCalendar = (date = currentDate, lang = 'VAT') => {
 
   // Traducion des degrés de fête en language humain
   let grade = data.grade
-  //if (grade === '') data.grade = ""
   if (grade === '1') data.grade = "Solennité"
   if (grade === '2') data.grade = "Fête"
   if (grade === '3') data.grade = "Mémoire obligatoire"
@@ -153,7 +167,7 @@ const liturgicalCalendar = (date = currentDate, lang = 'VAT') => {
   if (color2 === 'black') data.color2 = '#000000'
 
 
-  data.displayDate = `${day}.${month}.${year}`
+  data.displayDate = `${day}.${month}.${year}, ${date.weekday}`
 
   //console.log(data)
 
