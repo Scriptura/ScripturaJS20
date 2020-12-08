@@ -11,6 +11,7 @@ const fs = require('fs'),
 // @params: {object} ISO date, optional ; {string} ISO 3166-1 alpha-3 pays, optional
 const liturgicalCalendar = (date = currentDate, lang = 'VAT') => {
 /*
+ * 0. Si une fête fixe du calendrier général devient votive dans le propre d'un pays, le .json du pays concerné mentionnera une valeur vide pour le nom en lieu et place de la date ({"name": ""}), ceci afin de permettre les traitements qui annuleront la fête.
  * 1. Verification des dates de Pâques @see http://5ko.free.fr/fr/easter.php
  * 2. Immaculée Conception le 08/12, si dimanche alors célébration le lundi 09/12.
  * 3. Sainte Famille le dimanche qui suit Noël, si Noël est un dimanche alors le 30/12.
@@ -19,14 +20,18 @@ const liturgicalCalendar = (date = currentDate, lang = 'VAT') => {
  * 6. Période de Noël à cheval sur 2 années : en fonction de la date courante on calcule l'Octave pour la fin de l'année en cours puis pour le début de l'année en cours.
  * 7. Octave de Noël à cheval sur 2 années : en fonction de la date courante on calcule l'Octave pour la fin de l'année en cours puis pour le début de l'année en cours.
 */
+
+  const year = date.toFormat('yyyy'),
+        month = date.toFormat('MM'),
+        day = date.toFormat('dd'),
+        dayMonth = day + month
+
   const data1 = JSON.parse(fs.readFileSync(general, 'utf8')),
         data2 = JSON.parse(fs.readFileSync(european, 'utf8')),
         data3 = JSON.parse(fs.readFileSync(french, 'utf8')),
-        year = date.toFormat('yyyy'),
-        month = date.toFormat('MM'),
-        day = date.toFormat('dd'),
-        dayMonth = day + month,
-        ge = easterDate.gregorianEaster(year),
+        data = {...data1[dayMonth], ...data2[dayMonth], ...data3[dayMonth]}
+
+  const ge = easterDate.gregorianEaster(year),
         christmas = DateTime.fromFormat('2512' + year, 'ddMMyyyy'),
         sundayBeforeChristmas = christmas.startOf('week'),
         firstAdventSunday = sundayBeforeChristmas.plus({days: -22}),
@@ -54,19 +59,14 @@ const liturgicalCalendar = (date = currentDate, lang = 'VAT') => {
         palmSunday = easter.plus({days: -7})
 
 
-  // @note Si une fête fixe du calendrier général devient votive dans le propre d'un pays, le .json du pays concerné mentionnera une valeur vide pour le nom en lieu et place de la date ({"name": ""}), ceci afin de permettre les traitements qui annuleront la fête.
-
-  // Fusionner les objets :
-  let data = {...data1[dayMonth], ...data2[dayMonth], ...data3[dayMonth]}
-
-
   // Initialisation des variables si pas de données ou valeurs manquantes dans les .json :
   if (typeof data.name === 'undefined' || data.name === '') data.name = "De la férie", data.color = "", data.grade = "", data.rank = ""
   if (data.color === '') data.color = ""
   if (data.grade === '') data.grade = ""
   if (data.rank === '') data.rank = ""
 
-  // Périodes liturgiques, dénomination :
+
+  // Périodes liturgiques, dénominations :
   if (advent.contains(date)) data.period = "Temps de l'Avent"
   else if (octaveOfChristmas.contains(date)) data.period = "Octave de la Nativité du Seigneur"
   else if (epiphanyTide.contains(date)) data.period = "Après l'Épiphanie"
@@ -78,7 +78,8 @@ const liturgicalCalendar = (date = currentDate, lang = 'VAT') => {
   else if (eastertide.contains(date)) data.period = "Temps Pascal"
   else data.period = "Temps ordinaire"
 
-  // Périodes liturgiques, couleur :
+
+  // Périodes liturgiques, couleurs :
   if (advent.contains(date) && data.color === '') data.color = "purple"
   else if (christmastide.contains(date) && data.color === '') data.color = "white"
   else if (lent.contains(date) && data.color === '') data.color = "purple"
