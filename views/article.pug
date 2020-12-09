@@ -3,16 +3,42 @@ extends layout
 block main
   main
     h1.main-heading= _name
-    p!= _content
+    .article.add-line-marks.add-drop-cap
+      p!= _content
+      .grid2.gap.media-s-grid1
+        p(lang='grc')
+          span.verse 1
+          |  Ὃ ἦν ἀπ᾽ ἀρχῆς, ὃ ἀκηκόαμεν, ὃ ἑωράκαμεν τοῖς ὀφθαλμοῖς ἡμῶν, ὃ ἐθεασάμεθα καὶ αἱ χεῖρες ἡμῶν ἐψηλάφησαν περὶ τοῦ λόγου τῆς ζωῆς – 
+          span.verse 2
+          |  καὶ ἡ ζωὴ ἐφανερώθη, καὶ ἑωράκαμεν καὶ μαρτυροῦμεν καὶ ἀπαγγέλλομεν ὑμῖν τὴν ζωὴν τὴν αἰώνιον ἥτις ἦν πρὸς τὸν πατέρα καὶ ἐφανερώθη ἡμῖν – 
+          span.verse 3
+          |  ὃ ἑωράκαμεν καὶ ἀκηκόαμεν, ἀπαγγέλλομεν καὶ ὑμῖν, ἵνα καὶ ὑμεῖς κοινωνίαν ἔχητε μεθ᾽ ἡμῶν. καὶ ἡ κοινωνία δὲ ἡ ἡμετέρα μετὰ τοῦ πατρὸς καὶ μετὰ τοῦ υἱοῦ αὐτοῦ Ἰησοῦ Χριστοῦ. 
+          span.verse 4
+          |  καὶ ταῦτα γράφομεν ἡμεῖς, ἵνα ἡ χαρὰ ἡμῶν ᾖ πεπληρωμένη. 
+          span.verse 5
+          |  Καὶ ἔστιν αὕτη ἡ ἀγγελία ἣν ἀκηκόαμεν ἀπ᾽ αὐτοῦ καὶ ἀναγγέλλομεν ὑμῖν, ὅτι ὁ θεὸς φῶς ἐστιν καὶ σκοτία ἐν αὐτῷ οὐκ ἔστιν οὐδεμία.
+        p
+          span.verse 1
+          |  Ce qui était dès le commencement, ce que nous avons entendu, ce que nous avons vu de nos yeux, ce que nous avons contemplé et (que) nos mains ont palpé du Logos de vie - 
+          span.verse 2
+          |  et la vie a été manifestée, et nous avons vu, et nous témoignons et nous vous annonçons la vie éternelle qui était auprès du Père et nous fut manifestée - 
+          span.verse 3
+          |  ce que nous avons vu et entendu, nous vous l'annonçons à vous aussi, afin que vous aussi soyez en communion avec nous. Et notre communion à nous (est) avec le Père et avec son Fils Jésus Christ. 
+          span.verse 4
+          |  Et cela nous l'écrivons, nous, afin que notre joie soit en plénitude. 
+          span.verse 5
+          |  Et tel est le message que nous avons entendu de lui et (que) nous vous annonçons : Dieu est lumière et de ténèbres en lui il n'en est aucune.
+      - for (var i = 0; i < 20; i++)
+        p!= _content
       figure.figure-focus-thumbnail
         - var img = '/medias/images/demo/OldMechanism'
         - var alt = 'Old Mechanism'
         include helpers/picture
-    ul
-      li Description : #{_description}
-      li
-        em
-          | Article créé le #{_creation}
-          if _revision
-            |, révisé le #{_revision}
-          |.
+      ul
+        li Description : #{_description}
+        li
+          em
+            | Article créé le #{_creation}
+            if _revision
+              |, révisé le #{_revision}
+            |.

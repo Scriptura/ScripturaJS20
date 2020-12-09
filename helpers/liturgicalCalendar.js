@@ -17,7 +17,9 @@ const fs = require('fs'),
 const liturgicalCalendar = (date = currentDate, lang = 'VAT') => {
 
   /**
-   * 0. Si une fête fixe du calendrier général devient votive dans le propre d'un pays, le .json du pays concerné mentionnera une valeur vide pour le nom en lieu et place de la date ({"name": ""}), ceci afin de permettre les traitements qui annuleront la fête.
+   * Vérification @see https://www.aelf.org/calendrier/romain/2020/01
+   * La préséance est déterminée par une valeur rank dans les fichiers .json, mais dans la pratique le calendrier romain sert de base et ses valeurs peuvent être écrasées par les propres qui sont chargés après lui, sans besoin de calcul logiciel.
+   * Si une fête fixe du calendrier général devient votive dans le propre d'un pays, le .json du pays concerné mentionnera une valeur vide pour le nom en lieu et place de la date ({"name": ""}), ceci afin de permettre les traitements qui annuleront la fête, la fête votive sera au final déterminée par calcul logiciel.
    * 1. Verification des dates de Pâques @see http://5ko.free.fr/fr/easter.php
    * 2. Immaculée Conception le 08/12, si dimanche alors célébration le lundi 09/12.
    * 3. Sainte Famille le dimanche qui suit Noël, si Noël est un dimanche alors le 30/12.
@@ -184,33 +186,41 @@ const liturgicalCalendar = (date = currentDate, lang = 'VAT') => {
   // Traducion des degrés de fête en language humain
   let grade = data.grade
   if (grade === '1') data.grade = "Solennité"
-  if (grade === '2') data.grade = "Fête"
-  if (grade === '3') data.grade = "Mémoire obligatoire"
-  if (grade === '4') data.grade = "Mémoire facultative"
+  else if (grade === '2') data.grade = "Fête"
+  else if (grade === '3') data.grade = "Mémoire obligatoire"
+  else if (grade === '4') data.grade = "Mémoire facultative"
 
   // Calibrage des couleurs liturgiques
   let color = data.color
-  if (color === 'withe') data.color = '#ffffff'
-  if (color === 'red') data.color = '#ff0000' // #bf2329
   if (color === 'green') data.color = 'green' // #1e883f
-  if (color === 'purple') data.color = '#800080' // #9f15a7
-  if (color === 'pink') data.color = '#ff69b4' // hotpink
-  if (color === 'black') data.color = '#000000'
+  else if (color === 'withe') data.color = '#ffffff'
+  else if (color === 'red') data.color = '#ff0000' // #bf2329
+  else if (color === 'purple') data.color = '#800080' // #9f15a7
+  else if (color === 'pink') data.color = '#ff69b4' // hotpink
+  else if (color === 'black') data.color = '#000000'
+  else if (color === 'gold') data.color = '#ffd700'
 
   let color2 = data.color2
-  if (color2 === 'withe') data.color2 = '#ffffff'
-  if (color2 === 'red') data.color2 = '#ff0000' // #bf2329
   if (color2 === 'green') data.color2 = 'green' // #1e883f
-  if (color2 === 'purple') data.color2 = '#800080' // #9f15a7
-  if (color2 === 'pink') data.color = '#ff69b4' // hotpink
-  if (color2 === 'black') data.color2 = '#000000'
+  else if (color2 === 'withe') data.color2 = '#ffffff'
+  else if (color2 === 'red') data.color2 = '#ff0000' // #bf2329
+  else if (color2 === 'purple') data.color2 = '#800080' // #9f15a7
+  else if (color2 === 'pink') data.color2 = '#ff69b4' // hotpink
+  else if (color2 === 'black') data.color2 = '#000000'
+  else if (color2 === 'gold') data.color2 = '#ffd700'
 
 
-  data.displayDate = `${day}.${month}.${year}, ${date.weekday}`
-
-  //console.log(data)
+  data.displayDate = `${day}.${month}.${year}, ${date.weekday}` // @todo For test.
 
   return data
 }
+
+/*
+for (let i = 1; i < 33; i++) { // @todo For test.
+  const d = ('0' + i).slice(-2)
+  const lc = liturgicalCalendar(DateTime.fromFormat(d + '012020', 'ddMMyyyy'))
+  console.log(lc)
+}
+*/
 
 module.exports = { liturgicalCalendar: liturgicalCalendar }

@@ -191,19 +191,6 @@ template {
 .main-heading span {
   color: #ff6347;
 }
-.dropcap,
-.no-js .add-dropcap > p:first-child::first-letter {
-  float: left;
-  margin-right: 0.2em;
-  padding: 0.2em;
-  line-height: 1;
-  font-size: 3em;
-  font-weight: bold;
-  font-family: 'Noto Serif', serif;
-  color: #ff6347;
-  background-color: rgba(255,255,255,0.05);
-  transform: translateY(0.05em);
-}
 hr[data-hr] {
   display: block;
   width: 100%;
@@ -744,7 +731,7 @@ samp {
   margin-right: 0.5em;
 }
 .alert-primary {
-  background-color: #6a6a6a;
+  background-color: #696969;
 }
 .alert-secondary {
   background-color: #515151;
@@ -1475,6 +1462,75 @@ form fieldset > [class*=input] {
     align-items: center;
   }
 }
+.article {
+  max-width: 50em;
+  background-color: #444;
+}
+@media (min-width: 36.01em) {
+  .article {
+    padding: 4em 6em;
+    box-shadow: 0 0 1.5rem rgba(0,0,0,0.15);
+  }
+}
+.drop-cap,
+.no-js .add-drop-cap > p:first-child::first-letter {
+  float: left;
+  margin-right: 0.2em;
+  padding: 0.2em;
+  line-height: 1;
+  font-size: 3em;
+  font-weight: bold;
+  font-family: 'Noto Serif', serif;
+  color: #ff6347;
+  background-color: rgba(255,255,255,0.05);
+  transform: translateY(0.05em);
+}
+@media (max-width: 36.01em) {
+  .line-mark {
+    display: none;
+  }
+}
+@media (min-width: 36.01em) {
+  .add-line-marks > * {
+    position: relative;
+  }
+  .line-mark {
+    position: absolute;
+    top: -1em;
+    right: -6em;
+    width: 4em;
+    height: 2em;
+    padding-top: 1em;
+    vertical-align: sub;
+    font-size: 1rem;
+    font-weight: normal;
+    text-decoration: none;
+    color: #777;
+    outline: none;
+    transition: color 0.2s ease-in-out;
+  }
+  .line-mark:focus,
+  .line-mark:hover,
+  .line-markactive {
+    color: #ffa500;
+    text-decoration: none;
+  }
+  .line-mark::before {
+    content: '- ';
+  }
+  .line-mark::after {
+    content: ' -';
+  }
+  h2 .line-mark {
+    top: -0.5em;
+  }
+  h3 .line-mark {
+    top: -0.8em;
+  }
+  [class*=grid] .line-mark {
+    top: -0.25em;
+  }
+}
 html,
 .nav ul,
 .nav a,
@@ -1487,6 +1543,7 @@ html,
 .breadcrumb a::after,
 .footer,
 .card,
+.article,
 .message,
 [class*=alert],
 [class*=demo-items] > *,
