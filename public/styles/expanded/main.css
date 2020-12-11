@@ -191,7 +191,8 @@ template {
 .main-heading span {
   color: #ff6347;
 }
-hr[data-hr] {
+hr[data-hr],
+.decorative-hr hr {
   display: block;
   width: 100%;
   height: 2em;
@@ -201,12 +202,16 @@ hr[data-hr] {
   color: rgba(255,255,255,0.1);
   background-image: none;
 }
-hr[data-hr]::after {
+hr[data-hr]::after,
+.decorative-hr hr::after {
   content: attr(data-hr);
   display: block;
   width: 100%;
   height: 100%;
   font-size: 2em;
+}
+.decorative-hr hr::after {
+  content: '✻ ✻ ✻';
 }
 .verse {
   color: #ff6347;
@@ -1063,7 +1068,7 @@ video[poster] {
 .table td {
   vertical-align: top;
   padding: 0.5em 1em;
-  box-shadow: inset 0 0 1px #444;
+  box-shadow: inset 0 0 1px #222;
 }
 .table thead th {
   position: -webkit-sticky;

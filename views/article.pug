@@ -3,8 +3,15 @@ extends layout
 block main
   main
     h1.main-heading= _name
-    .article.add-line-marks.add-drop-cap
+    .article.add-line-marks.add-drop-cap.decorative-hr
       p!= _content
+      p Ut velit mauris, egestas sed, gravida nec, ornare ut, mi. Aenean ut orci vel massa suscipit pulvinar (note 1 : 
+        a(href='#n1' id='r1') #1
+        | ). Nulla sollicitudin. Fusce varius, ligula non tempus aliquam, nunc turpis ullamcorper nibh, in tempus sapien eros vitae ligula. Pellentesque rhoncus nunc et augue. Integer id felis. Curabitur aliquet pellentesque diam. Integer quis metus vitae elit lobortis egestas (note 2 : 
+        a(href='#n2' id='r2') #2
+        | ). Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi vel erat non mauris convallis vehicula. Nulla et sapien. Integer tortor tellus, aliquam faucibus, convallis id, congue eu, quam. Mauris ullamcorper felis vitae erat. Proin feugiat, augue non elementum posuere, metus purus iaculis lectus, et tristique ligula justo vitae magna (note 3 : 
+        a(href='#n3' id='r3') #3
+        | ).
       .grid2.vertical-gap.media-s-grid1
         p(lang='grc')
           span.verse 1
@@ -34,6 +41,7 @@ block main
         - var img = '/medias/images/demo/OldMechanism'
         - var alt = 'Old Mechanism'
         include helpers/picture
+      include includes/loremIpsum
       ul
         li Description : #{_description}
         li
@@ -42,3 +50,14 @@ block main
             if _revision
               |, révisé le #{_revision}
             |.
+      hr
+      div
+        p
+          a(href='#r1' id='n1') #1
+          |  Première note.
+        p
+          a(href='#r2' id='n2') #2
+          |  Deuxième note.
+        p
+          a(href='#r3' id='n3') #3
+          |  Troisième note.
