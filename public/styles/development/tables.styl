@@ -1,7 +1,7 @@
 _tablesSize = 5px
 _tablesColor = #444
 _tablesColor2 = _color2
-_tablesColor3 = darken(_colorG, 34%) //rgba(255, 255, 255, .05)
+_tablesColor3 = _colorG - 30%
 
 .table
   width 100%
@@ -40,9 +40,9 @@ _tablesColor3 = darken(_colorG, 34%) //rgba(255, 255, 255, .05)
     & tbody th::before
     & tbody td::before
       content attr(data-thead) ' ' // '\00a0: '
-      color _colorAdd1
+      color _colorT2
     & tbody td:empty::before
-      content attr(data-thead) ' _ _ _'
+      content attr(data-thead) ' ● ● ●' // ' ...'
     & tbody th
       background-image none !important
 

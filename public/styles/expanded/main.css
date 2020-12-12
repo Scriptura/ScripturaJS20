@@ -1101,7 +1101,7 @@ video[poster] {
     color: #d2b48c;
   }
   .table tbody td:empty::before {
-    content: attr(data-thead) ' _ _ _';
+    content: attr(data-thead) ' ● ● ●';
   }
   .table tbody th {
     background-image: none !important;
@@ -1126,7 +1126,7 @@ video[poster] {
   }
   .table tbody th,
   .table tfoot {
-    background-color: #2d2d2d;
+    background-color: #303030;
   }
   .table tbody tr:nth-child(odd) {
     background-color: rgba(255,255,255,0.04);
