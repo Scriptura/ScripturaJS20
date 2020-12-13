@@ -29,8 +29,10 @@ const liturgicalCalendar = (date = currentDate, lang = 'VAT') => {
    * 6. Période de Noël à cheval sur 2 années : en fonction de la date courante on calcule l'Octave pour la fin de l'année en cours puis pour le début de l'année en cours.
    * 7. Octave de Noël à cheval sur 2 années : en fonction de la date courante on calcule l'Octave pour la fin de l'année en cours puis pour le début de l'année en cours.
    * 8. Solennité de Saint Pierre et Saint Paul : 29 juin, reporté au 30 si le 29 tombe le jour de la solennité du Sacré-Coeur.
-   * 9. Si la fête tombe un dimanche, autre que le Dimanche des Rameaux, celle-ci est célébrée le jour suivant, généralement le lundi 20 mars, mais seulement si une autre solennité (par exemple, un autre Saint patron de l'Église) n'est pas célébrée durant cette journée. Depuis 2008, si le jour de la Fête de Saint Joseph tombe pendant la Semaine Sainte, la célébration de sa fête est déplacée vers le jour le plus proche possible avant le 19 mars, généralement le samedi précédant la Semaine Sainte.
+   * 9. Saint Joseph, époux. Si la fête tombe un dimanche, autre que le Dimanche des Rameaux, celle-ci est célébrée le jour suivant, généralement le lundi 20 mars, mais seulement si une autre solennité (par exemple, un autre Saint patron de l'Église) n'est pas célébrée durant cette journée. Depuis 2008, si le jour de la Fête de Saint Joseph tombe pendant la Semaine Sainte, la célébration de sa fête est déplacée vers le jour le plus proche possible avant le 19 mars, généralement le samedi précédant la Semaine Sainte.
    * 10. Annonciation du Seigneur à Marie. Le 25 mars. Le premier lundi qui suit le deuxième dimanche de Pâques si le 25 mars se situe pendant la Semaine Sainte. Décalée au 26, si le 25 est un dimanche.
+   * 11. Fête-Dieu célébrée le jeudi qui suit la Sainte-Trinité, c'est-à-dire soixante jours après Pâques, reportée au dimanche qui suit la Sainte-Trinité dans les pays où elle n'est pas inscrite au nombre des jours fériés (France).
+   * 12. Solennité de la Nativité de Saint Jean-Baptiste : 24 juin, reporté au 25 si le 24 juin tombe le jour de la solennité du Saint-Sacrement ou du Sacré-Coeur.
   */
 
   const year = date.toFormat('yyyy'),
@@ -90,7 +92,8 @@ const liturgicalCalendar = (date = currentDate, lang = 'VAT') => {
         ascension = easter.plus({days: 40}),
         pentecost = easter.plus({days: 49}),
         holyTrinity = easter.plus({days: 56}),
-        blessedSacrament = easter.plus({days: 63}),
+        //feastOfCorpusChristi = easter.plus({days: 60}), // 11
+        feastOfCorpusChristi = easter.plus({days: 63}), // 11
         sacredHeart = easter.plus({days: 68}),
         eastertide = Interval.fromDateTimes(easter, easter.plus({days: 50})),
         holyWeek = Interval.fromDateTimes(palmSunday, easter),
@@ -102,10 +105,9 @@ const liturgicalCalendar = (date = currentDate, lang = 'VAT') => {
         march19InLentSunday = lentSundaysBoolean ? march19.plus({days: 1}) : false,
         saintJoseph = march19InHolyWeek ? march19InHolyWeek : (march19InLentSunday ? march19InLentSunday : march19), // 9
         march25 = DateTime.fromFormat('2503' + year, 'ddMMyyyy'),
-        annunciation = holyWeek.contains(march25) ? secondSundayEaster.plus({days: 1}) : (march25.weekday === 7 ? march25.plus({days: 1}) : march25) // 10
+        annunciation = holyWeek.contains(march25) ? secondSundayEaster.plus({days: 1}) : (march25.weekday === 7 ? march25.plus({days: 1}) : march25), // 10
+        nativityOfSaintJohnTheBaptist = (feastOfCorpusChristi.toFormat('ddMM') || sacredHeart.toFormat('ddMM') === '2406') ? DateTime.fromFormat('2506' + year, 'ddMMyyyy') : DateTime.fromFormat('2406' + year, 'ddMMyyyy') // 12
 
-    console.log('epiphany: ' + epiphany.toFormat('dd.MM.yyyy'))
-    console.log('baptismOfTheLord: ' + baptismOfTheLord.toFormat('dd.MM.yyyy'))
 
   // Initialisation des variables si pas de données ou valeurs manquantes dans les .json :
   if (typeof data.name === 'undefined' || data.name === '') data.name = "De la férie", data.color = "",  data.color2 ="", data.grade = "", data.rank = ""
@@ -176,19 +178,13 @@ const liturgicalCalendar = (date = currentDate, lang = 'VAT') => {
   if (pentecost.hasSame(date, 'day')) data.name = "Pentecôte", data.color = "white",  data.color2 ="", data.grade = "1", data.rank = "2"
   if (easter.plus({days: 50}).hasSame(date, 'day')) data.name = "Bienheureuse Vierge Marie, Mère de l'Église", data.color = "white",  data.color2 ="", data.grade = "3", data.rank = "10"
   if (holyTrinity.hasSame(date, 'day')) data.name = "Sainte Trinité", data.color = "white",  data.color2 ="", data.grade = "1", data.rank = "3"
-  if (blessedSacrament.hasSame(date, 'day')) data.name = "Le Saint Sacrement", data.color = "white",  data.color2 ="", data.grade = "1", data.rank = "3"
+  if (feastOfCorpusChristi.hasSame(date, 'day')) data.name = "Le Saint Sacrement du Corps et du Sang du Christ (Fête-Dieu)", data.color = "white",  data.color2 ="", data.grade = "1", data.rank = "3"
   if (sacredHeart.hasSame(date, 'day')) data.name = "Sacré-Cœur de Jésus", data.color = "white",  data.color2 ="", data.grade = "1", data.rank = "3"
   if (christKingOfTheUniverse.hasSame(date, 'day')) data.name = "Notre Seigneur Jésus Christ Roi de l'Univers", data.color = "white",  data.color2 ="", data.grade = "1", data.rank = "3"
   if (saintsPeterAndPaul.hasSame(date, 'day')) data.name = "Saints Pierre et Paul, apôtres", data.color = "red",  data.color2 ="", data.grade = "1", data.rank = "3"
   if (saintJoseph.hasSame(date, 'day')) data.name = "Saint Joseph, époux de la Vierge Marie", data.color = "white",  data.color2 ="", data.grade = "1", data.rank = "3"
   if (annunciation.hasSame(date, 'day')) data.name = "Annonciation du Seigneur", data.color = "white",  data.color2 ="", data.grade = "1", data.rank = "3"
-
-// @todo :
-
-// Jeudi de la solennité du Saint Sacrement (fête décalée au dimanche dans certaines régions, en particulier en France, ayant reçu un indult en ce sens).
-
-// Solennité de la Nativité de Saint Jean-Baptiste : 24 juin, reporté au 25 si le 24 juin tombe le jour de la solennité du Saint-Sacrement ou du Sacré-Coeur
-// data.name = "Nativité de Saint Jean-Baptiste", data.color = "white",  data.color2 ="", data.grade = "1", data.rank = "3"
+  if (nativityOfSaintJohnTheBaptist.hasSame(date, 'day')) data.name = "Nativité de Saint Jean-Baptiste", data.color = "white",  data.color2 ="", data.grade = "1", data.rank = "3"
 
 
   // Traducion des degrés de fête en language humain
@@ -223,7 +219,6 @@ const liturgicalCalendar = (date = currentDate, lang = 'VAT') => {
   return data
 }
 
-
 /*
 const test0 = (() => { // @todo For test.
   for (let i = 1; i < 32; i++) {
@@ -235,10 +230,10 @@ const test0 = (() => { // @todo For test.
 */
 /*
 const test1 = (() => { // @todo For test.
-  const begin = 2018
-  const end = 2019
+  const begin = 2010
+  const end = 2030
   for (let i = begin; i <= end; i++) {
-    const lc = liturgicalCalendar(DateTime.fromFormat('1301' + i, 'ddMMyyyy'))
+    const lc = liturgicalCalendar(DateTime.fromFormat('2506' + i, 'ddMMyyyy'))
     console.log(i)
     console.log(lc)
   }
