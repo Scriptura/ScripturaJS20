@@ -5,7 +5,7 @@ const vv = require('../settings/variables'),
       { moonPhase } = require('../helpers/astronomy'),
       { DateTime } = require('luxon'),
       //currentDate = DateTime.local(),
-      currentDate = DateTime.fromFormat('28042019', 'ddMMyyyy'), // @note For test // '28042019'
+      currentDate = DateTime.fromFormat('13012020', 'ddMMyyyy'), // @note For test // '28042019'
       lc = liturgicalCalendar(currentDate)
 
 const getCalendar = {

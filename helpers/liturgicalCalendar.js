@@ -17,10 +17,11 @@ const fs = require('fs'),
 const liturgicalCalendar = (date = currentDate, lang = 'VAT') => {
 
   /**
+   * Source @see https://fr.wikipedia.org/wiki/Calendrier_liturgique_romain#Schéma_de_l’année_liturgique
    * Vérification @see https://www.aelf.org/calendrier/romain/2020/01
    * La préséance est déterminée par une valeur rank dans les fichiers .json, mais dans la pratique le calendrier romain sert de base et ses valeurs peuvent être écrasées par les propres qui sont chargés après lui, sans besoin de calcul logiciel.
    * Si une fête fixe du calendrier général devient votive dans le propre d'un pays, le .json du pays concerné mentionnera une valeur vide pour le nom en lieu et place de la date ({"name": ""}), ceci afin de permettre les traitements qui annuleront la fête, la fête votive sera au final déterminée par calcul logiciel.
-   * 1. Verification des dates de Pâques @see http://5ko.free.fr/fr/easter.php
+   * 1. Vérification des dates de Pâques @see http://5ko.free.fr/fr/easter.php
    * 2. Immaculée Conception le 08/12, si dimanche alors célébration le lundi 09/12.
    * 3. Sainte Famille le dimanche qui suit Noël, si Noël est un dimanche alors le 30/12.
    * 4. Épiphanie le 06/01 pour le calendrier général, le dimanche après le premier janvier pour la France et les autres pays qui ne chôment pas ce jour-là.
@@ -29,6 +30,7 @@ const liturgicalCalendar = (date = currentDate, lang = 'VAT') => {
    * 7. Octave de Noël à cheval sur 2 années : en fonction de la date courante on calcule l'Octave pour la fin de l'année en cours puis pour le début de l'année en cours.
    * 8. Solennité de Saint Pierre et Saint Paul : 29 juin, reporté au 30 si le 29 tombe le jour de la solennité du Sacré-Coeur.
    * 9. Si la fête tombe un dimanche, autre que le Dimanche des Rameaux, celle-ci est célébrée le jour suivant, généralement le lundi 20 mars, mais seulement si une autre solennité (par exemple, un autre Saint patron de l'Église) n'est pas célébrée durant cette journée. Depuis 2008, si le jour de la Fête de Saint Joseph tombe pendant la Semaine Sainte, la célébration de sa fête est déplacée vers le jour le plus proche possible avant le 19 mars, généralement le samedi précédant la Semaine Sainte.
+   * 10. Annonciation du Seigneur à Marie. Le 25 mars. Le premier lundi qui suit le deuxième dimanche de Pâques si le 25 mars se situe pendant la Semaine Sainte. Décalée au 26, si le 25 est un dimanche.
   */
 
   const year = date.toFormat('yyyy'),
@@ -53,7 +55,7 @@ const liturgicalCalendar = (date = currentDate, lang = 'VAT') => {
         immaculateConception = (december8.weekday === 7) ? december8.plus({days: 1}) : december8, // 2
         holyFamily = (christmas.weekday === 7) ? DateTime.fromFormat('3012' + year, 'ddMMyyyy') : DateTime.fromFormat('2512' + year, 'ddMMyyyy').endOf('week'), // 3
         epiphany = DateTime.fromFormat('0201' + year, 'ddMMyyyy').endOf('week'), // 4
-        baptismOfTheLord = (epiphany.toFormat('dd') === ('07' || '08')) ? baptismOfTheLord = epiphany.plus({days: 1}) : DateTime.fromFormat('0201' + year, 'ddMMyyyy').endOf('week').plus({days: 7}), // 5
+        baptismOfTheLord = epiphany > DateTime.fromFormat('0701' + year, 'ddMMyyyy') ? epiphany.plus({days: 1}) : DateTime.fromFormat('0801' + year, 'ddMMyyyy').endOf('week'), // 5
         advent = Interval.fromDateTimes(firstAdventSunday, christmas),
         epiphanyTide = Interval.fromDateTimes(epiphany, baptismOfTheLord.plus({days: -1})),
         christmastide = (date <= baptismOfTheLord) ? Interval.fromDateTimes(christmas.plus({years: -1}), baptismOfTheLord) : Interval.fromDateTimes(christmas, baptismOfTheLord.plus({years: 1})), // 6
@@ -98,8 +100,12 @@ const liturgicalCalendar = (date = currentDate, lang = 'VAT') => {
         march19 = DateTime.fromFormat('1903' + year, 'ddMMyyyy'),
         march19InHolyWeek = holyWeek.contains(march19) ? palmSunday.plus({days: -1}) : false,
         march19InLentSunday = lentSundaysBoolean ? march19.plus({days: 1}) : false,
-        saintJoseph = march19InHolyWeek ? march19InHolyWeek : (march19InLentSunday ? march19InLentSunday : march19) // 9
+        saintJoseph = march19InHolyWeek ? march19InHolyWeek : (march19InLentSunday ? march19InLentSunday : march19), // 9
+        march25 = DateTime.fromFormat('2503' + year, 'ddMMyyyy'),
+        annunciation = holyWeek.contains(march25) ? secondSundayEaster.plus({days: 1}) : (march25.weekday === 7 ? march25.plus({days: 1}) : march25) // 10
 
+    console.log('epiphany: ' + epiphany.toFormat('dd.MM.yyyy'))
+    console.log('baptismOfTheLord: ' + baptismOfTheLord.toFormat('dd.MM.yyyy'))
 
   // Initialisation des variables si pas de données ou valeurs manquantes dans les .json :
   if (typeof data.name === 'undefined' || data.name === '') data.name = "De la férie", data.color = "",  data.color2 ="", data.grade = "", data.rank = ""
@@ -151,7 +157,7 @@ const liturgicalCalendar = (date = currentDate, lang = 'VAT') => {
   if (holyMonday.hasSame(date, 'day')) data.name = "Lundi Saint", data.color = "purple",  data.color2 ="", data.grade = "", data.rank = "2"
   if (holyTuesday.hasSame(date, 'day')) data.name = "Mardi Saint", data.color = "purple",  data.color2 ="", data.grade = "", data.rank = "2"
   if (holyWednesday.hasSame(date, 'day')) data.name = "Mercredi Saint", data.color = "purple",  data.color2 ="", data.grade = "", data.rank = "2"
-  if (holyThursday.hasSame(date, 'day')) data.name = "Jeudi Saint", data.color = "white",  data.color2 ="", data.grade = "1", data.rank = "1" // rank "2" en journée, rank "1" le soir
+  if (holyThursday.hasSame(date, 'day')) data.name = "Jeudi Saint", data.color = "white",  data.color2 ="", data.grade = "1", data.rank = "1" // @todo rank "2" en journée, rank "1" le soir
   if (goodFriday.hasSame(date, 'day')) data.name = "Vendredi Saint", data.color = "red",  data.color2 ="", data.grade = "1", data.rank = "1"
   if (holySaturday.hasSame(date, 'day')) data.name = "Samedi Saint", data.color = "purple",  data.color2 ="", data.grade = "1", data.rank = "1"
   if (easter.hasSame(date, 'day')) data.name = "Résurrection du Seigneur", data.color = "white",  data.color2 ="", data.grade = "1", data.rank = "1"
@@ -175,12 +181,9 @@ const liturgicalCalendar = (date = currentDate, lang = 'VAT') => {
   if (christKingOfTheUniverse.hasSame(date, 'day')) data.name = "Notre Seigneur Jésus Christ Roi de l'Univers", data.color = "white",  data.color2 ="", data.grade = "1", data.rank = "3"
   if (saintsPeterAndPaul.hasSame(date, 'day')) data.name = "Saints Pierre et Paul, apôtres", data.color = "red",  data.color2 ="", data.grade = "1", data.rank = "3"
   if (saintJoseph.hasSame(date, 'day')) data.name = "Saint Joseph, époux de la Vierge Marie", data.color = "white",  data.color2 ="", data.grade = "1", data.rank = "3"
-
+  if (annunciation.hasSame(date, 'day')) data.name = "Annonciation du Seigneur", data.color = "white",  data.color2 ="", data.grade = "1", data.rank = "3"
 
 // @todo :
-
-// - Solennité de l'Annonciation du Seigneur à Marie, le 25 mars. Est décalée au 26, si le 25 est un dimanche (ou le premier lundi qui suit le deuxième dimanche de Pâques si le 25 mars se situe pendant la Semaine Sainte).
-// data.name = "Annonciation du Seigneur", data.color = "white",  data.color2 ="", data.grade = "1", data.rank = "3"
 
 // Jeudi de la solennité du Saint Sacrement (fête décalée au dimanche dans certaines régions, en particulier en France, ayant reçu un indult en ce sens).
 
@@ -220,12 +223,26 @@ const liturgicalCalendar = (date = currentDate, lang = 'VAT') => {
   return data
 }
 
+
 /*
-for (let i = 1; i < 33; i++) { // @todo For test.
-  const d = ('0' + i).slice(-2)
-  const lc = liturgicalCalendar(DateTime.fromFormat(d + '012020', 'ddMMyyyy'))
-  console.log(lc)
-}
+const test0 = (() => { // @todo For test.
+  for (let i = 1; i < 32; i++) {
+    const d = numFormat(i, 2)
+    const lc = liturgicalCalendar(DateTime.fromFormat(d + '012020', 'ddMMyyyy'))
+    console.log(lc)
+  }
+})()
+*/
+/*
+const test1 = (() => { // @todo For test.
+  const begin = 2018
+  const end = 2019
+  for (let i = begin; i <= end; i++) {
+    const lc = liturgicalCalendar(DateTime.fromFormat('1301' + i, 'ddMMyyyy'))
+    console.log(i)
+    console.log(lc)
+  }
+})()
 */
 
 module.exports = { liturgicalCalendar: liturgicalCalendar }
