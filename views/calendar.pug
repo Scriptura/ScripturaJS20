@@ -31,7 +31,7 @@ block main
                   em= _calendarRank
             if _calendarPeriod
               p= _calendarPeriod
-          if _moonPhase
+          if (_moonPhase || _moonPhase === 0)
             .center
               svg.size4.push(role='img' focusable='false')
                 use(xlink:href='/medias/sprites/moons.svg#' +_moonPhase + '')

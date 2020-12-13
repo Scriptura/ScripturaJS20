@@ -92,7 +92,16 @@ const liturgicalCalendar = (date = currentDate, lang = 'VAT') => {
         holyTrinity = easter.plus({days: 56}),
         blessedSacrament = easter.plus({days: 63}),
         sacredHeart = easter.plus({days: 68}),
-        saintsPeterAndPaul = (sacredHeart.toFormat('ddMM') === '2906') ? DateTime.fromFormat('3006' + year, 'ddMMyyyy') : DateTime.fromFormat('2906' + year, 'ddMMyyyy') // 8
+        saintsPeterAndPaul = (sacredHeart.toFormat('ddMM') === '2906') ? DateTime.fromFormat('3006' + year, 'ddMMyyyy') : DateTime.fromFormat('2906' + year, 'ddMMyyyy'), // 8
+        march19 = DateTime.fromFormat('1903' + year, 'ddMMyyyy')
+        
+        ,
+        march19InHolyWeek = holyWeek.contains(march19) ? palmSunday.plus({days: -1}) : march19,
+        march19InLentSunday = (lent.weekday === 7) ? DateTime.fromFormat('2003' + year, 'ddMMyyyy') : march19,
+        saintJoseph = (march19InHolyWeek || march19InLentSunday)
+
+
+        // Si la fête tombe un dimanche, autre que le Dimanche des Rameaux, celle-ci est célébrée le jour suivant, généralement le lundi 20 mars, mais seulement si une autre solennité (par exemple, un autre Saint patron de l'Église) n'est pas célébrée durant cette journée. Depuis 2008, si le jour de la Fête de Saint Joseph tombe pendant la Semaine Sainte, la célébration de sa fête est déplacée vers le jour le plus proche possible avant le 19 mars, généralement le samedi précédant la Semaine Sainte.
 
 
   // Initialisation des variables si pas de données ou valeurs manquantes dans les .json :
@@ -167,12 +176,10 @@ const liturgicalCalendar = (date = currentDate, lang = 'VAT') => {
   if (sacredHeart.hasSame(date, 'day')) data.name = "Sacré-Cœur de Jésus", data.color = "white", data.grade = "1", data.rank = "3"
   if (christKingOfTheUniverse.hasSame(date, 'day')) data.name = "Notre Seigneur Jésus Christ Roi de l'Univers", data.color = "white", data.grade = "1", data.rank = "3"
   if (saintsPeterAndPaul.hasSame(date, 'day')) data.name = "Saints Pierre et Paul, apôtres", data.color = "red", data.grade = "1", data.rank = "3"
+  if (saintJoseph.hasSame(date, 'day')) data.name = "Saint Joseph, époux de la Vierge Marie", data.color = "white", data.grade = "1", data.rank = "3"
+
 
 // @todo :
-
-// - Solennité de Saint Joseph, époux de la Vierge Marie : 19 mars, reporté au 20 mars si le 19 tombe un dimanche de carême, ou avancé au samedi avant les Rameaux si le 19 tombe pendant la semaine sainte.
-// Si la fête tombe un dimanche, autre que le Dimanche des Rameaux, celle-ci est célébrée le jour suivant, généralement le lundi 20 mars, mais seulement si une autre solennité (par exemple, un autre Saint patron de l'Église) n'est pas célébrée durant cette journée. Depuis 2008, si le jour de la Fête de Saint Joseph tombe pendant la Semaine Sainte, la célébration de sa fête est déplacée vers le jour le plus proche possible avant le 19 mars, généralement le samedi précédant la Semaine Sainte.
-// data.name = "Saint Joseph, chaste Époux de la Bienheureuse Vierge Marie", data.color = "white", data.grade = "1", data.rank = "3"
 
 // - Solennité de l'Annonciation du Seigneur à Marie, le 25 mars. Est décalée au 26, si le 25 est un dimanche (ou le premier lundi qui suit le deuxième dimanche de Pâques si le 25 mars se situe pendant la Semaine Sainte).
 // data.name = "Annonciation du Seigneur", data.color = "white", data.grade = "1", data.rank = "3"
