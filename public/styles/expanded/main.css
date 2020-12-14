@@ -606,7 +606,7 @@ main {
 }
 .breadcrumb li {
   list-style: none;
-  filter: drop-shadow(0.5em 0.5em 0.5em rgba(0,0,0,0.25));
+  filter: drop-shadow(0.5rem 0.5rem 0.5rem rgba(0,0,0,0.25));
 }
 .breadcrumb li:nth-child(1) {
   z-index: 2;
@@ -939,7 +939,7 @@ audio,
 video,
 .video {
   background-color: #000;
-  box-shadow: 0.5em 0.5em 2em rgba(0,0,0,0.25);
+  box-shadow: 0.5rem 0.5rem 2rem rgba(0,0,0,0.25);
 }
 audio,
 video {
@@ -972,16 +972,16 @@ video[poster] {
 }
 :root .map .leaflet-control {
   border: none;
-  box-shadow: 0.5em 0.5em 2em rgba(0,0,0,0.1);
+  box-shadow: 0.5rem 0.5rem 2rem rgba(0,0,0,0.1);
 }
 :root .map .leaflet-popup-content-wrapper {
   font-size: 1rem;
   color: #777;
   border-radius: 0.2em;
-  box-shadow: 0.5em 0.5em 2em rgba(0,0,0,0.1);
+  box-shadow: 0.5rem 0.5rem 2rem rgba(0,0,0,0.1);
 }
 .leaflet-popup-tip {
-  box-shadow: 0.5em 0.5em 2em #000;
+  box-shadow: 0.5rem 0.5rem 2rem rgba(0,0,0,0.1);
 }
 .leaflet-marker-pane:hover {
   -webkit-animation: animBounce 0.35s ease infinite alternate;

@@ -12,7 +12,7 @@ _menuColor3 = _color2
   z-index 1000
   //height _menuSize
   //font-size 1em
-  box-shadow .5rem .5rem .5rem rgba(0, 0, 0, .2)
+  box-shadow _shadow2
 
 .nav ul
   width 100%
@@ -32,23 +32,13 @@ _menuColor3 = _color2
   color _menuColor2
   text-decoration none
 
-/*
-@media (min-width _sizeNav)
-  for _i in 1..10
-    .nav li:nth-child(11n+{_i}) > *
-      _colorItem = lighten(_menuColor2, 5% * _i)
-      background-color _colorItem
-*/
-
 .nav li > *
-  //background-image linear-gradient(to top, rgba(0, 0, 0, .1) , rgba(255, 255, 255, .05))
-  box-shadow inset .5rem .5rem .5rem rgba(0, 0, 0, .2)
+  box-shadow _shadow3
 
 .nav li a:focus
 .nav li a:hover
 .nav li a:active
   color #fff
-  //background-image linear-gradient(to top, rgba(0, 0, 0, .3) , rgba(255, 255, 255, .2))
   background-color _menuColor3
 
 .nav a:focus svg
@@ -107,7 +97,7 @@ _menuColor3 = _color2
   .nav ul > :last-child
       margin-left auto
 
-// Hamburger
+// Hamburger:
 
 @media (max-width _sizeNav)
 
@@ -135,17 +125,6 @@ _menuColor3 = _color2
 
   .cmd-nav svg *
     fill _menuColor3
-
-  /*
-  .cmd-nav svg :nth-child(1)
-    fill Orange
-
-  .cmd-nav svg :nth-child(2)
-    fill _menuColor3 //Crimson
-
-  .cmd-nav svg :nth-child(3)
-    fill #8bc34a //Chocolate
-  */
 
   .cmd-nav:focus
   .cmd-nav:hover

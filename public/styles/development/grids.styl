@@ -82,6 +82,13 @@
 .r4
   grid-row span 4
 
+.flex // @todo En test...
+  display flex
+  flex-wrap wrap
+  justify-content space-between
+
+.flex.gap
+  gap _gap
 
 /*
 // with Grid layout:
@@ -131,11 +138,3 @@
   .summary > *
     flex-basis 'calc(25% - %s)' % _gap
 */
-
-.flex // @todo En test...
-  display flex
-  flex-wrap wrap
-  justify-content space-between
-
-.flex.gap
-  gap _gap
