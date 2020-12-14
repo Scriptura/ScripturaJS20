@@ -680,7 +680,7 @@ samp {
   padding: 1em;
   background-color: #252525;
   border-radius: 0.2em;
-  box-shadow: 0.5rem 0.5rem 2rem rgba(0,0,0,0.25);
+  box-shadow: 0 0 2rem rgba(0,0,0,0.3);
 }
 .pre code {
   color: #777;
@@ -834,7 +834,7 @@ figure {
   padding: 0.5em;
   color: #e9dac5;
   background-color: #515151;
-  box-shadow: 0.5rem 0.5rem 2rem rgba(0,0,0,0.2);
+  box-shadow: 0 0 2rem rgba(0,0,0,0.2);
 }
 [class*=figure] figcaption {
   padding-top: 0.5em;
@@ -1065,7 +1065,7 @@ video[poster] {
 .table th {
   font-weight: normal;
 }
-.table.layout-fixed {
+.table-fixed {
   table-layout: fixed;
 }
 @media (max-width: 50.01em) {
@@ -1426,7 +1426,7 @@ form fieldset > [class*=input] {
   width: 1em;
 }
 .accordion {
-  box-shadow: 0.5rem 0.5rem 2rem rgba(0,0,0,0.25);
+  box-shadow: 0 0 2rem rgba(0,0,0,0.25);
 }
 .accordion summary,
 .accordion .accordion-summary {
