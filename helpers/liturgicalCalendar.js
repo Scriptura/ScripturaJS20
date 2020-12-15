@@ -116,7 +116,7 @@ const liturgicalCalendar = (date = currentDate, country = 'FRA') => {
   // Initialisation des variables si pas de données ou valeurs manquantes dans les .json :
   if (typeof data.name === 'undefined' || data.name === '') data.name = "De la férie", data.color = "", data.color2 ="", data.grade = "", data.rank = ""
   if (data.color === '') data.color = ""
-  if (data.color === '') data.color2 = ""
+  if (data.color2 === '') data.color2 = ""
   if (data.grade === '') data.grade = ""
   if (data.rank === '') data.rank = ""
 
@@ -134,16 +134,16 @@ const liturgicalCalendar = (date = currentDate, country = 'FRA') => {
   else data.period = "Temps ordinaire"
 
   // Périodes liturgiques, couleur et priorité :
-  if (advent17_24.contains(date) && (data.color === '' || data.rank > 9)) data.color = "purple", data.rank = 9
-  else if (advent.contains(date) && (data.color === '' || data.rank > 13)) data.color = "purple", data.rank = 13
-  else if (octaveOfChristmas.contains(date) && (data.color === '' || data.rank > 9)) data.color = "white", data.rank = 9
-  else if (christmastide.contains(date) && (data.color === '' || data.rank > 13)) data.color = "white", data.rank = 13
-  else if (lent.contains(date) && (data.color === '' || data.rank > 9)) data.color = "purple", data.rank = 9
-  else if (eastertide.contains(date) && (data.color === '' || data.rank > 13)) data.color = "white", data.rank = 13
+  if (advent17_24.contains(date) && (data.color === '' || data.rank < 9)) data.color2 = data.color, data.color = "purple", data.rank = 9
+  else if (advent.contains(date) && (data.color === '' || data.rank < 13)) data.color2 = data.color, data.color = "purple", data.rank = 13
+  else if (octaveOfChristmas.contains(date) && (data.color === '' || data.rank < 9)) data.color2 = data.color, data.color = "white", data.rank = 9
+  else if (christmastide.contains(date) && (data.color === '' || data.rank < 13)) data.color2 = data.color, data.color = "white", data.rank = 13
+  else if (lent.contains(date) && (data.color === '' || data.rank < 9)) data.color2 = data.color, data.color = "purple", data.rank = 9
+  else if (eastertide.contains(date) && (data.color === '' || data.rank < 13)) data.color2 = data.color, data.color = "white", data.rank = 13
   else if (data.color === '') data.color = "green"
 
-  console.log(data.color)
-  console.log(data.rank)
+  //console.log(data.color)
+  //console.log(data.rank)
 
 
   // Définition des fêtes votives. Ces valeurs remplacent les fêtes fixes définies à la même date dans les fichiers json.
