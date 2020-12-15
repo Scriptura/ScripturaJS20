@@ -14,7 +14,8 @@ const fs = require('fs'),
  * @param {object} ISO date, optional
  * @param {string} ISO 3166-1 alpha-3 pays, optional
 */
-const liturgicalCalendar = (date = currentDate, lang = 'VAT') => {
+
+const liturgicalCalendar = (date = currentDate, country = 'FRA') => {
 
   /**
    * Source @see https://fr.wikipedia.org/wiki/Calendrier_liturgique_romain#Schéma_de_l’année_liturgique
@@ -33,6 +34,7 @@ const liturgicalCalendar = (date = currentDate, lang = 'VAT') => {
    * 10. Annonciation du Seigneur à Marie. Le 25 mars. Le premier lundi qui suit le deuxième dimanche de Pâques si le 25 mars se situe pendant la Semaine Sainte. Décalée au 26, si le 25 est un dimanche.
    * 11. Fête-Dieu célébrée le jeudi qui suit la Sainte-Trinité, c'est-à-dire soixante jours après Pâques, reportée au dimanche qui suit la Sainte-Trinité dans les pays où elle n'est pas inscrite au nombre des jours fériés (France).
    * 12. Solennité de la Nativité de Saint Jean-Baptiste : 24 juin, reporté au 25 si le 24 juin tombe le jour de la solennité du Saint-Sacrement ou du Sacré-Coeur.
+   * 13. Avent du 17 au 24, n'a pas la même préséance que le début du temps de l'Avent.
   */
 
   const year = date.toFormat('yyyy'),
@@ -58,6 +60,7 @@ const liturgicalCalendar = (date = currentDate, lang = 'VAT') => {
         holyFamily = (christmas.weekday === 7) ? DateTime.fromFormat('3012' + year, 'ddMMyyyy') : DateTime.fromFormat('2512' + year, 'ddMMyyyy').endOf('week'), // 3
         epiphany = DateTime.fromFormat('0201' + year, 'ddMMyyyy').endOf('week'), // 4
         baptismOfTheLord = epiphany > DateTime.fromFormat('0701' + year, 'ddMMyyyy') ? epiphany.plus({days: 1}) : DateTime.fromFormat('0801' + year, 'ddMMyyyy').endOf('week'), // 5
+        advent17_24 = Interval.fromDateTimes(DateTime.fromFormat('1712' + year, 'ddMMyyyy'), DateTime.fromFormat('2412' + year, 'ddMMyyyy')), // 13
         advent = Interval.fromDateTimes(firstAdventSunday, christmas),
         epiphanyTide = Interval.fromDateTimes(epiphany, baptismOfTheLord.plus({days: -1})),
         christmastide = (date <= baptismOfTheLord) ? Interval.fromDateTimes(christmas.plus({years: -1}), baptismOfTheLord) : Interval.fromDateTimes(christmas, baptismOfTheLord.plus({years: 1})), // 6
@@ -130,15 +133,17 @@ const liturgicalCalendar = (date = currentDate, lang = 'VAT') => {
   else if (eastertide.contains(date)) data.period = "Temps Pascal"
   else data.period = "Temps ordinaire"
 
+  // Périodes liturgiques, couleur et priorité :
+  if (advent17_24.contains(date) && (data.color === '' || data.rank > 9)) data.color = "purple", data.rank = 9
+  else if (advent.contains(date) && (data.color === '' || data.rank > 13)) data.color = "purple", data.rank = 13
+  else if (octaveOfChristmas.contains(date) && (data.color === '' || data.rank > 9)) data.color = "white", data.rank = 9
+  else if (christmastide.contains(date) && (data.color === '' || data.rank > 13)) data.color = "white", data.rank = 13
+  else if (lent.contains(date) && (data.color === '' || data.rank > 9)) data.color = "purple", data.rank = 9
+  else if (eastertide.contains(date) && (data.color === '' || data.rank > 13)) data.color = "white", data.rank = 13
+  else if (data.color === '') data.color = "green"
 
-  // Périodes liturgiques, couleurs :
-  if (data.color === '') {
-    if (advent.contains(date)) data.color = "purple"
-    else if (christmastide.contains(date)) data.color = "white"
-    else if (lent.contains(date)) data.color = "purple"
-    else if (eastertide.contains(date)) data.color = "white"
-    else data.color = "green"
-  }
+  console.log(data.color)
+  console.log(data.rank)
 
 
   // Définition des fêtes votives. Ces valeurs remplacent les fêtes fixes définies à la même date dans les fichiers json.
@@ -190,10 +195,10 @@ const liturgicalCalendar = (date = currentDate, lang = 'VAT') => {
 
   // Traducion des degrés de fête en language humain
   let grade = data.grade
-  if (grade === '1') data.grade = "Solennité"
-  else if (grade === '2') data.grade = "Fête"
-  else if (grade === '3') data.grade = "Mémoire obligatoire"
-  else if (grade === '4') data.grade = "Mémoire facultative"
+  if (grade === 1) data.grade = "Solennité"
+  else if (grade === 2) data.grade = "Fête"
+  else if (grade === 3) data.grade = "Mémoire obligatoire"
+  else if (grade === 4) data.grade = "Mémoire facultative"
 
   // Calibrage des couleurs liturgiques
   let color = data.color

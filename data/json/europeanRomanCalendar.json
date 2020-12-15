@@ -2,31 +2,31 @@
   "1402": {
     "name": "Saint Cyrille, moine et Saint Méthode, évêque",
     "color": "white",
-    "grade": "2",
-    "rank": "8"
+    "grade": 2,
+    "rank": 8
   },
   "2904": {
     "name": "Sainte Catherine de Sienne, vierge et docteur de l'Église",
     "color": "white",
-    "grade": "2",
-    "rank": "8"
+    "grade": 2,
+    "rank": 8
   },
   "1107": {
     "name": "Saint Benoît, abbé",
     "color": "white",
-    "grade": "2",
-    "rank": "8"
+    "grade": 2,
+    "rank": 8
   },
   "2307": {
     "name": "Sainte Brigitte de Suède, religieuse",
     "color": "white",
-    "grade": "2",
-    "rank": "8"
+    "grade": 2,
+    "rank": 8
   },
   "0908": {
     "name": "Sainte Thérèse-Bénédicte de la Croix (Édith Stein), vierge et martyre, carmélite",
     "color": "red",
-    "grade": "2",
-    "rank": "8"
+    "grade": 2,
+    "rank": 8
   }
 }
