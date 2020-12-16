@@ -18,7 +18,7 @@ const fs = require('fs'),
 const liturgicalCalendar = (date = currentDate, country = 'FRA') => {
 
   /**
-   * Source @see https://fr.wikipedia.org/wiki/Calendrier_liturgique_romain#Schéma_de_l’année_liturgique
+   * Source @see https://fr.wikipedia.org/wiki/Calendrier_liturgique_romain
    * Vérification @see https://www.aelf.org/calendrier/romain/2020/01
    * La préséance est déterminée par une valeur rank dans les fichiers .json, mais dans la pratique le calendrier romain sert de base et ses valeurs peuvent être écrasées par les propres qui sont chargés après lui, sans besoin de calcul logiciel.
    * Si une fête fixe du calendrier général devient votive dans le propre d'un pays, le .json du pays concerné mentionnera une valeur vide pour le nom en lieu et place de la date ({"name": ""}), ceci afin de permettre les traitements qui annuleront la fête, la fête votive sera au final déterminée par calcul logiciel.
@@ -121,29 +121,6 @@ const liturgicalCalendar = (date = currentDate, country = 'FRA') => {
   if (data.rank === '') data.rank = ""
 
 
-  // Périodes liturgiques, dénominations :
-  if (advent.contains(date)) data.period = "Temps de l'Avent"
-  else if (octaveOfChristmas.contains(date)) data.period = "Octave de la Nativité du Seigneur"
-  else if (epiphanyTide.contains(date)) data.period = "Après l'Épiphanie"
-  else if (christmastide.contains(date)) data.period = "Temps de Noël"
-  else if (easterTriduum.contains(date)) data.period = "Triduum pascal"
-  else if (holyWeek.contains(date)) data.period = "Semaine Sainte"
-  else if (lent.contains(date)) data.period = "Carême"
-  else if (octaveOfEaster.contains(date)) data.period = "Octave de Pâques"
-  else if (eastertide.contains(date)) data.period = "Temps Pascal"
-  else data.period = "Temps ordinaire"
-
-
-  // Périodes liturgiques, priorités et couleurs :
-  if (advent17_24.contains(date)) data.periodRank = 9, data.periodColor = "purple"
-  else if (advent.contains(date)) data.periodRank = 13, data.periodColor = "purple"
-  else if (octaveOfChristmas.contains(date)) data.periodRank = 9, data.periodColor = "white"
-  else if (christmastide.contains(date)) data.periodRank = 13, data.periodColor = "white"
-  else if (lent.contains(date)) data.periodRank = 9, data.periodColor = "purple"
-  else if (eastertide.contains(date)) data.periodRank = 13, data.periodColor = "white"
-  else data.periodColor = "green"
-
-
   // Définition des fêtes votives. Ces valeurs remplacent les fêtes fixes définies à la même date dans les fichiers json.
   if (firstAdventSunday.hasSame(date, 'day')) data.name = "Premier dimanche de l'Avent, <em>Levavi</em>", data.color = "purple", data.color2 ="", data.grade = 1, data.rank = 2
   if (secondAdventSunday.hasSame(date, 'day')) data.name = "Deuxième dimanche de l'Avent, <em>Populus Sion</em>", data.color = "purple", data.color2 ="", data.grade = 1, data.rank = 2
@@ -189,6 +166,33 @@ const liturgicalCalendar = (date = currentDate, country = 'FRA') => {
   if (saintJoseph.hasSame(date, 'day')) data.name = "Saint Joseph, époux de la Vierge Marie", data.color = "white", data.color2 ="", data.grade = 1, data.rank = 3
   if (annunciation.hasSame(date, 'day')) data.name = "Annonciation du Seigneur", data.color = "white", data.color2 ="", data.grade = 1, data.rank = 3
   if (nativityOfSaintJohnTheBaptist.hasSame(date, 'day')) data.name = "Nativité de Saint Jean-Baptiste", data.color = "white", data.color2 ="", data.grade = 1, data.rank = 3
+
+
+  // Périodes liturgiques, dénominations :
+  if (advent.contains(date)) data.period = "Temps de l'Avent"
+  else if (octaveOfChristmas.contains(date)) data.period = "Octave de la Nativité du Seigneur"
+  else if (epiphanyTide.contains(date)) data.period = "Après l'Épiphanie"
+  else if (christmastide.contains(date)) data.period = "Temps de Noël"
+  else if (easterTriduum.contains(date)) data.period = "Triduum pascal"
+  else if (holyWeek.contains(date)) data.period = "Semaine Sainte"
+  else if (lent.contains(date)) data.period = "Carême"
+  else if (octaveOfEaster.contains(date)) data.period = "Octave de Pâques"
+  else if (eastertide.contains(date)) data.period = "Temps Pascal"
+  else data.period = "Temps ordinaire"
+
+
+  // Périodes liturgiques, priorités et couleurs :
+  if (advent17_24.contains(date)) data.periodRank = 9, data.periodColor = "purple"
+  else if (advent.contains(date)) data.periodRank = 13, data.periodColor = "purple"
+  else if (octaveOfChristmas.contains(date)) data.periodRank = 9, data.periodColor = "white"
+  else if (christmastide.contains(date)) data.periodRank = 13, data.periodColor = "white"
+  else if (lent.contains(date)) data.periodRank = 9, data.periodColor = "purple"
+  else if (eastertide.contains(date)) data.periodRank = 13, data.periodColor = "white"
+  else data.periodColor = "green"
+
+
+  // Si période de carême, mémoires obligatoires considérées comme mémoires facultatives :
+  if (lent.contains(date) && data.grade === 3) data.grade = 4, data.rank = 12
 
 
   // Traducion des degrés de fête en language humain
