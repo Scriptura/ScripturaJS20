@@ -7,18 +7,19 @@ block main
       div
         .card.flex.gap
           div
-            if  _calendarDate
+            if _calendarDate
               p= _calendarDate
             p
-              - var spanStyle = 'vertical-align:sub;display:inline-block;height:1.3rem;width:1.3rem;margin-right:.5rem;background-color:'
-              if _calendarColor
-                span(style=spanStyle + _calendarColor)
-              if _calendarColor2
-                span(style=spanStyle + _calendarColor2)
+              if _calendarPeriodColor && (!_calendarRank || _calendarRank > 9)
+                .calendar-color(class='calendar-' + _calendarPeriodColor)
+              if _calendarColor && _calendarRank < 11
+                .calendar-color(class='calendar-' + _calendarColor)
+              if _calendarColor2 && _calendarRank < 11
+                .calendar-color(class='calendar-' + _calendarColor2)
               if _calendarName && _calendarUrl
-                a(href=_calendarUrl)!= _calendarName
+                a(href=_calendarUrl)!= _calendarName + '.'
               else if _calendarName
-                span!= _calendarName
+                span!= _calendarName + '.'
               else
                 span no calendar
             if _calendarGrade || _calendarRank
@@ -30,11 +31,11 @@ block main
                 if _calendarRank
                   em= _calendarRank
             if _calendarPeriod
-              p= _calendarPeriod
+              p!= _calendarPeriod + '.'
           if (_moonPhase || _moonPhase === 0)
             .center
               svg.size4.push(role='img' focusable='false')
-                use(xlink:href='/medias/sprites/moons.svg#' +_moonPhase + '')
+                use(xlink:href='/medias/sprites/moons.svg#' + _moonPhase)
       .center
         svg.size25.decorative-svg(role='img' focusable='false')
           use(xlink:href='/medias/sprites/silos/182r-d1-1.1.svg#1')
