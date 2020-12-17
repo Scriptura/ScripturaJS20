@@ -35,6 +35,7 @@ const liturgicalCalendar = (date = currentDate, country = 'FRA') => {
    * 11. Fête-Dieu célébrée le jeudi qui suit la Sainte-Trinité, c'est-à-dire soixante jours après Pâques, reportée au dimanche qui suit la Sainte-Trinité dans les pays où elle n'est pas inscrite au nombre des jours fériés (France).
    * 12. Solennité de la Nativité de Saint Jean-Baptiste : 24 juin, reporté au 25 si le 24 juin tombe le jour de la solennité du Saint-Sacrement ou du Sacré-Coeur.
    * 13. Avent du 17 au 24, n'a pas la même préséance que le début du temps de l'Avent.
+   * 14. La Mémoire de la bienheureuse Vierge Marie, Mère de l’Église étant liée à la Pentecôte, de même que la Mémoire du Cœur immaculé de la bienheureuse Vierge Marie est conjointe à la célébration du très saint Cœur de Jésus, en cas de coïncidence avec une autre Mémoire d’un saint ou d’un bienheureux, selon la tradition liturgique de la prééminence entre les personnes, c’est la Mémoire de la bienheureuse Vierge Marie qui prévaut. Congrégation pour le Culte divin et la Discipline des Sacrements, le 24 mars 2018.
   */
 
   const year = date.toFormat('yyyy'),
@@ -99,6 +100,7 @@ const liturgicalCalendar = (date = currentDate, country = 'FRA') => {
         //feastOfCorpusChristi = easter.plus({days: 60}), // 11
         feastOfCorpusChristi = easter.plus({days: 63}), // 11
         sacredHeart = easter.plus({days: 68}),
+        immaculateHeartOfMary = easter.plus({days: 69}),
         eastertide = Interval.fromDateTimes(easter, easter.plus({days: 50})),
         holyWeek = Interval.fromDateTimes(palmSunday, easter),
         easterTriduum = Interval.fromDateTimes(easter.plus({days: -3}), easter),
@@ -114,58 +116,62 @@ const liturgicalCalendar = (date = currentDate, country = 'FRA') => {
 
 
   // Initialisation des variables si pas de données ou valeurs manquantes dans les .json :
-  if (typeof data.name === 'undefined' || data.name === '') data.name = "De la férie", data.color = "", data.color2 ="", data.grade = "", data.rank = ""
-  if (data.color === '') data.color = ""
-  if (data.color2 === '') data.color2 = ""
-  if (data.grade === '') data.grade = ""
-  if (data.rank === '') data.rank = ""
+  if (typeof data.name === 'undefined' || data.name === '') data.name = "De la férie", data.color = "", data.color2 = "", data.grade = "", data.rank = "13"
+  //if (data.color === '') data.color = ""
+  //if (data.color2 === '') data.color2 = ""
+  //if (data.grade === '') data.grade = ""
+  //if (data.rank === '') data.rank = ""
+
+
+  if (date.weekday === 7) data.name = "Dimanche du temps ordinaire", data.grade = "", data.color = "", data.color2 = ""
 
 
   // Définition des fêtes votives. Ces valeurs remplacent les fêtes fixes définies à la même date dans les fichiers json.
-  if (firstAdventSunday.hasSame(date, 'day')) data.name = "Premier dimanche de l'Avent, <em>Levavi</em>", data.color = "purple", data.color2 ="", data.grade = 1, data.rank = 2
-  if (secondAdventSunday.hasSame(date, 'day')) data.name = "Deuxième dimanche de l'Avent, <em>Populus Sion</em>", data.color = "purple", data.color2 ="", data.grade = 1, data.rank = 2
-  if (thirdAdventSunday.hasSame(date, 'day')) data.name = "Troisième dimanche de l'Avent, <em>Gaudete</em>", data.color = "pink", data.color2 ="", data.grade = 1, data.rank = 2
-  if (fourthAdventSunday.hasSame(date, 'day')) data.name = "Quatrième dimanche de l'Avent, <em>Rorate</em>", data.color = "purple", data.color2 ="", data.grade = 1, data.rank = 2
-  if (immaculateConception.hasSame(date, 'day')) data.name = "Immaculée Conception de la Bienheureuse Vierge Marie", data.color = "white", data.color2 ="", data.grade = 1, data.rank = 3
-  if (holyFamily.hasSame(date, 'day')) data.name = "La Sainte Famille", data.color = "white", data.color2 ="", data.grade = 2, data.rank = 5
-  if (epiphany.hasSame(date, 'day')) data.name = "Épiphanie du Seigneur", data.color = "white", data.color2 ="", data.grade = 1, data.rank = 2
-  if (baptismOfTheLord.hasSame(date, 'day')) data.name = "Le Baptême du Seigneur", data.color = "white", data.color2 ="", data.grade = 3, data.rank = 5
-  if (ashWednesday.hasSame(date, 'day')) data.name = "Mercredi des Cendres", data.color = "purple", data.color2 ="", data.grade = "", data.rank = 2
-  if (firstLentSunday.hasSame(date, 'day')) data.name = "Premier dimanche de Carême, <em>Invocabit</em>", data.color = "purple", data.color2 ="", data.grade = 1, data.rank = 2
-  if (secondLentSunday.hasSame(date, 'day')) data.name = "Deuxième dimanche de Carême, <em>Reminiscere</em>", data.color = "purple", data.color2 ="", data.grade = 1, data.rank = 2
-  if (thirdLentSunday.hasSame(date, 'day')) data.name = "Troisième dimanche de Carême, <em>Oculi</em>", data.color = "purple", data.color2 ="", data.grade = 1, data.rank = 2
-  if (fourthLentSunday.hasSame(date, 'day')) data.name = "Quatrième dimanche de Carême, <em>Laetare</em>", data.color = "pink", data.color2 ="", data.grade = 1, data.rank = 2
-  if (fiveLentSunday.hasSame(date, 'day')) data.name = "Cinquième dimanche de Carême, <em>Judica</em>", data.color = "purple", data.color2 ="", data.grade = 1, data.rank = 2
-  if (palmSunday.hasSame(date, 'day')) data.name = "Dimanche des Rameaux et de la Passion du Seigneur", data.color = "red", data.color2 ="", data.grade = 1, data.rank = 2
-  if (holyMonday.hasSame(date, 'day')) data.name = "Lundi Saint", data.color = "purple", data.color2 ="", data.grade = "", data.rank = 2
-  if (holyTuesday.hasSame(date, 'day')) data.name = "Mardi Saint", data.color = "purple", data.color2 ="", data.grade = "", data.rank = 2
-  if (holyWednesday.hasSame(date, 'day')) data.name = "Mercredi Saint", data.color = "purple", data.color2 ="", data.grade = "", data.rank = 2
-  if (holyThursday.hasSame(date, 'day')) data.name = "Jeudi Saint", data.color = "white", data.color2 ="", data.grade = 1, data.rank = 1 // @todo rank=2 en journée, rank=1 le soir
-  if (goodFriday.hasSame(date, 'day')) data.name = "Vendredi Saint", data.color = "red", data.color2 ="", data.grade = 1, data.rank = 1
-  if (holySaturday.hasSame(date, 'day')) data.name = "Samedi Saint", data.color = "purple", data.color2 ="", data.grade = 1, data.rank = 1
-  if (easter.hasSame(date, 'day')) data.name = "Résurrection du Seigneur", data.color = "white", data.color2 ="", data.grade = 1, data.rank = 1
-  if (easterMonday.hasSame(date, 'day')) data.name = "Lundi dans l'octave Pâques", data.color = "white", data.color2 ="", data.grade = 1, data.rank = 2
-  if (easterTuesday.hasSame(date, 'day')) data.name = "Mardi dans l'octave de Pâques", data.color = "white", data.color2 ="", data.grade = 1, data.rank = 2
-  if (easterWednesday.hasSame(date, 'day')) data.name = "Mercredi dans l'octave de Pâques", data.color = "white", data.color2 ="", data.grade = 1, data.rank = 2
-  if (easterThursday.hasSame(date, 'day')) data.name = "Jeudi dans l'octave de Pâques", data.color = "white", data.color2 ="", data.grade = 1, data.rank = 2
-  if (easterFriday.hasSame(date, 'day')) data.name = "Vendredi dans l'octave de Pâques", data.color = "white", data.color2 ="", data.grade = 1, data.rank = 2
-  if (easterSaturday.hasSame(date, 'day')) data.name = "Samedi dans l'octave de Pâques", data.color = "white", data.color2 ="", data.grade = 1, data.rank = 2
-  if (secondSundayEaster.hasSame(date, 'day')) data.name = "Dimanche de la divine Miséricorde, <em>in albis</em>", data.color = "white", data.color2 ="", data.grade = 1, data.rank = 2
-  if (thirdSundayEaster.hasSame(date, 'day')) data.name = "Troisième dimanche du Temps Pascal", data.color = "white", data.color2 ="", data.grade = 1, data.rank = 2
-  if (fourthSundayEaster.hasSame(date, 'day')) data.name = "Quatrième dimanche du Temps Pascal", data.color = "white", data.color2 ="", data.grade = 1, data.rank = 2
-  if (fiveSundayEaster.hasSame(date, 'day')) data.name = "Cinquième dimanche du Temps Pascal", data.color = "white", data.color2 ="", data.grade = 1, data.rank = 2
-  if (sixSundayEaster.hasSame(date, 'day')) data.name = "Sixième dimanche du Temps Pascal", data.color = "white", data.color2 ="", data.grade = 1, data.rank = 2
-  if (ascension.hasSame(date, 'day')) data.name = "Ascension", data.color = "white", data.color2 ="", data.grade = 1, data.rank = 2
-  if (pentecost.hasSame(date, 'day')) data.name = "Pentecôte", data.color = "white", data.color2 ="", data.grade = 1, data.rank = 2
-  if (maryMotherOfTheChurch.hasSame(date, 'day')) data.name = "Bienheureuse Vierge Marie, Mère de l'Église", data.color = "white", data.color2 ="", data.grade = 3, data.rank = 10
-  if (holyTrinity.hasSame(date, 'day')) data.name = "Sainte Trinité", data.color = "white", data.color2 ="", data.grade = 1, data.rank = 3
-  if (feastOfCorpusChristi.hasSame(date, 'day')) data.name = "Le Saint Sacrement du Corps et du Sang du Christ (Fête-Dieu)", data.color = "white", data.color2 ="", data.grade = 1, data.rank = 3
-  if (sacredHeart.hasSame(date, 'day')) data.name = "Sacré-Cœur de Jésus", data.color = "white", data.color2 ="", data.grade = 1, data.rank = 3
-  if (christKingOfTheUniverse.hasSame(date, 'day')) data.name = "Notre Seigneur Jésus Christ Roi de l'Univers", data.color = "white", data.color2 ="", data.grade = 1, data.rank = 3
-  if (saintsPeterAndPaul.hasSame(date, 'day')) data.name = "Saints Pierre et Paul, apôtres", data.color = "red", data.color2 ="", data.grade = 1, data.rank = 3
-  if (saintJoseph.hasSame(date, 'day')) data.name = "Saint Joseph, époux de la Vierge Marie", data.color = "white", data.color2 ="", data.grade = 1, data.rank = 3
-  if (annunciation.hasSame(date, 'day')) data.name = "Annonciation du Seigneur", data.color = "white", data.color2 ="", data.grade = 1, data.rank = 3
-  if (nativityOfSaintJohnTheBaptist.hasSame(date, 'day')) data.name = "Nativité de Saint Jean-Baptiste", data.color = "white", data.color2 ="", data.grade = 1, data.rank = 3
+  if (firstAdventSunday.hasSame(date, 'day')) data.name = "Premier dimanche de l'Avent, <em>Levavi</em>", data.color = "purple", data.color2 = "", data.grade = 1, data.rank = 2
+  if (secondAdventSunday.hasSame(date, 'day')) data.name = "Deuxième dimanche de l'Avent, <em>Populus Sion</em>", data.color = "purple", data.color2 = "", data.grade = 1, data.rank = 2
+  if (thirdAdventSunday.hasSame(date, 'day')) data.name = "Troisième dimanche de l'Avent, <em>Gaudete</em>", data.color = "pink", data.color2 = "", data.grade = 1, data.rank = 2
+  if (fourthAdventSunday.hasSame(date, 'day')) data.name = "Quatrième dimanche de l'Avent, <em>Rorate</em>", data.color = "purple", data.color2 = "", data.grade = 1, data.rank = 2
+  if (immaculateConception.hasSame(date, 'day')) data.name = "Immaculée Conception de la Bienheureuse Vierge Marie", data.color = "white", data.color2 = "", data.grade = 1, data.rank = 3
+  if (holyFamily.hasSame(date, 'day')) data.name = "La Sainte Famille", data.color = "white", data.color2 = "", data.grade = 2, data.rank = 5
+  if (epiphany.hasSame(date, 'day')) data.name = "Épiphanie du Seigneur", data.color = "white", data.color2 = "", data.grade = 1, data.rank = 2
+  if (baptismOfTheLord.hasSame(date, 'day')) data.name = "Le Baptême du Seigneur", data.color = "white", data.color2 = "", data.grade = 2, data.rank = 5
+  if (ashWednesday.hasSame(date, 'day')) data.name = "Mercredi des Cendres", data.color = "purple", data.color2 = "", data.grade = "", data.rank = 2
+  if (firstLentSunday.hasSame(date, 'day')) data.name = "Premier dimanche de Carême, <em>Invocabit</em>", data.color = "purple", data.color2 = "", data.grade = 1, data.rank = 2
+  if (secondLentSunday.hasSame(date, 'day')) data.name = "Deuxième dimanche de Carême, <em>Reminiscere</em>", data.color = "purple", data.color2 = "", data.grade = 1, data.rank = 2
+  if (thirdLentSunday.hasSame(date, 'day')) data.name = "Troisième dimanche de Carême, <em>Oculi</em>", data.color = "purple", data.color2 = "", data.grade = 1, data.rank = 2
+  if (fourthLentSunday.hasSame(date, 'day')) data.name = "Quatrième dimanche de Carême, <em>Laetare</em>", data.color = "pink", data.color2 = "", data.grade = 1, data.rank = 2
+  if (fiveLentSunday.hasSame(date, 'day')) data.name = "Cinquième dimanche de Carême, <em>Judica</em>", data.color = "purple", data.color2 = "", data.grade = 1, data.rank = 2
+  if (palmSunday.hasSame(date, 'day')) data.name = "Dimanche des Rameaux et de la Passion du Seigneur", data.color = "red", data.color2 = "", data.grade = 1, data.rank = 2
+  if (holyMonday.hasSame(date, 'day')) data.name = "Lundi Saint", data.color = "purple", data.color2 = "", data.grade = "", data.rank = 2
+  if (holyTuesday.hasSame(date, 'day')) data.name = "Mardi Saint", data.color = "purple", data.color2 = "", data.grade = "", data.rank = 2
+  if (holyWednesday.hasSame(date, 'day')) data.name = "Mercredi Saint", data.color = "purple", data.color2 = "", data.grade = "", data.rank = 2
+  if (holyThursday.hasSame(date, 'day')) data.name = "Jeudi Saint", data.color = "white", data.color2 = "", data.grade = 1, data.rank = 1 // @todo rank=2 en journée, rank=1 le soir
+  if (goodFriday.hasSame(date, 'day')) data.name = "Vendredi Saint", data.color = "red", data.color2 = "", data.grade = 1, data.rank = 1
+  if (holySaturday.hasSame(date, 'day')) data.name = "Samedi Saint", data.color = "purple", data.color2 = "", data.grade = 1, data.rank = 1
+  if (easter.hasSame(date, 'day')) data.name = "Résurrection du Seigneur", data.color = "white", data.color2 = "", data.grade = 1, data.rank = 1
+  if (easterMonday.hasSame(date, 'day')) data.name = "Lundi dans l'octave Pâques", data.color = "white", data.color2 = "", data.grade = 1, data.rank = 2
+  if (easterTuesday.hasSame(date, 'day')) data.name = "Mardi dans l'octave de Pâques", data.color = "white", data.color2 = "", data.grade = 1, data.rank = 2
+  if (easterWednesday.hasSame(date, 'day')) data.name = "Mercredi dans l'octave de Pâques", data.color = "white", data.color2 = "", data.grade = 1, data.rank = 2
+  if (easterThursday.hasSame(date, 'day')) data.name = "Jeudi dans l'octave de Pâques", data.color = "white", data.color2 = "", data.grade = 1, data.rank = 2
+  if (easterFriday.hasSame(date, 'day')) data.name = "Vendredi dans l'octave de Pâques", data.color = "white", data.color2 = "", data.grade = 1, data.rank = 2
+  if (easterSaturday.hasSame(date, 'day')) data.name = "Samedi dans l'octave de Pâques", data.color = "white", data.color2 = "", data.grade = 1, data.rank = 2
+  if (secondSundayEaster.hasSame(date, 'day')) data.name = "Dimanche de la divine Miséricorde, <em>in albis</em>", data.color = "white", data.color2 = "", data.grade = 1, data.rank = 2
+  if (thirdSundayEaster.hasSame(date, 'day')) data.name = "Troisième dimanche du Temps Pascal", data.color = "white", data.color2 = "", data.grade = 1, data.rank = 2
+  if (fourthSundayEaster.hasSame(date, 'day')) data.name = "Quatrième dimanche du Temps Pascal", data.color = "white", data.color2 = "", data.grade = 1, data.rank = 2
+  if (fiveSundayEaster.hasSame(date, 'day')) data.name = "Cinquième dimanche du Temps Pascal", data.color = "white", data.color2 = "", data.grade = 1, data.rank = 2
+  if (sixSundayEaster.hasSame(date, 'day')) data.name = "Sixième dimanche du Temps Pascal", data.color = "white", data.color2 = "", data.grade = 1, data.rank = 2
+  if (ascension.hasSame(date, 'day')) data.name = "Ascension", data.color = "white", data.color2 = "", data.grade = 1, data.rank = 2
+  if (pentecost.hasSame(date, 'day')) data.name = "Pentecôte", data.color = "white", data.color2 = "", data.grade = 1, data.rank = 2
+  if (maryMotherOfTheChurch.hasSame(date, 'day')) data.name = "Bienheureuse Vierge Marie, Mère de l'Église", data.color = "white", data.color2 = "", data.grade = 3, data.rank = 10 // 14
+  if (holyTrinity.hasSame(date, 'day')) data.name = "Sainte Trinité", data.color = "white", data.color2 = "", data.grade = 1, data.rank = 3
+  if (feastOfCorpusChristi.hasSame(date, 'day')) data.name = "Le Saint Sacrement du Corps et du Sang du Christ (Fête-Dieu)", data.color = "white", data.color2 = "", data.grade = 1, data.rank = 3
+  if (sacredHeart.hasSame(date, 'day')) data.name = "Sacré-Cœur de Jésus", data.color = "white", data.color2 = "", data.grade = 1, data.rank = 3
+  if (immaculateHeartOfMary.hasSame(date, 'day')) data.name = "Cœur immaculé de Marie", data.color = "white", data.color2 = "", data.grade = 3, data.rank = 10 // 14
+  if (christKingOfTheUniverse.hasSame(date, 'day')) data.name = "Notre Seigneur Jésus Christ Roi de l'Univers", data.color = "white", data.color2 = "", data.grade = 1, data.rank = 3
+  if (saintsPeterAndPaul.hasSame(date, 'day')) data.name = "Saints Pierre et Paul, apôtres", data.color = "red", data.color2 = "", data.grade = 1, data.rank = 3
+  if (saintJoseph.hasSame(date, 'day')) data.name = "Saint Joseph, époux de la Vierge Marie", data.color = "white", data.color2 = "", data.grade = 1, data.rank = 3
+  if (annunciation.hasSame(date, 'day')) data.name = "Annonciation du Seigneur", data.color = "white", data.color2 = "", data.grade = 1, data.rank = 3
+  if (nativityOfSaintJohnTheBaptist.hasSame(date, 'day')) data.name = "Nativité de Saint Jean-Baptiste", data.color = "white", data.color2 = "", data.grade = 1, data.rank = 3
 
 
   // Périodes liturgiques, dénominations :
@@ -191,7 +197,7 @@ const liturgicalCalendar = (date = currentDate, country = 'FRA') => {
   else data.periodColor = "green"
 
 
-  // Si période de carême, mémoires obligatoires considérées comme mémoires facultatives :
+  // Si période de carême, mémoires obligatoires rétrogradées en mémoires facultatives pour l'année en cours :
   if (lent.contains(date) && data.grade === 3) data.grade = 4, data.rank = 12
 
 
@@ -203,7 +209,7 @@ const liturgicalCalendar = (date = currentDate, country = 'FRA') => {
   else if (grade === 4) data.grade = "Mémoire facultative"
 
 
-  data.displayDate = `${day}.${month}.${year}, ${date.weekday}` // @todo For test.
+  data.displayDate = `${day}/${month}/${year} [${date.weekday}]` // @todo For test.
 
   return data
 }

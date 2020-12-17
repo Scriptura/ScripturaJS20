@@ -17,9 +17,9 @@ block main
               if _calendarColor2 && _calendarRank < 11
                 .calendar-color(class='calendar-' + _calendarColor2)
               if _calendarName && _calendarUrl
-                a(href=_calendarUrl)!= _calendarName + '.'
+                a(href=_calendarUrl)!= _calendarName
               else if _calendarName
-                span!= _calendarName + '.'
+                span!= _calendarName
               else
                 span no calendar
             if _calendarGrade || _calendarRank
@@ -29,9 +29,9 @@ block main
                 if _calendarGrade && _calendarRank
                   | , 
                 if _calendarRank
-                  em= _calendarRank
+                  em= 'rang ' + _calendarRank
             if _calendarPeriod
-              p!= _calendarPeriod + '.'
+              p!= _calendarPeriod
           if (_moonPhase || _moonPhase === 0)
             .center
               svg.size4.push(role='img' focusable='false')
