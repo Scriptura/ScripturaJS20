@@ -24,12 +24,12 @@ block main
                 span no calendar
             if _calendarGrade || _calendarRank
               p
-                if _calendarGrade
+                if _calendarGrade && !_calendarRank
                   em= _calendarGrade
                 if _calendarGrade && _calendarRank
-                  | , 
-                if _calendarRank
-                  em= 'rang ' + _calendarRank
+                  em= _calendarGrade + ', rank ' + _calendarRank
+                if !_calendarGrade && _calendarRank
+                  em= 'Rank ' + _calendarRank
             if _calendarPeriod
               p!= _calendarPeriod
           if (_moonPhase || _moonPhase === 0)

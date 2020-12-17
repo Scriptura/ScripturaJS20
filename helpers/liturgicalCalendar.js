@@ -3,19 +3,16 @@
 const e = require('express')
 
 const fs = require('fs'),
-      general = './data/json/generalRomanCalendar.json',
-      european = './data/json/europeanRomanCalendar.json',
-      french = './data/json/frenchRomanCalendar.json',
       { DateTime, Interval } = require('luxon'),
       easterDate = require('date-easter'),
       currentDate = DateTime.local()
 
 /**
  * @param {object} ISO date, optional
- * @param {string} ISO 3166-1 alpha-3 pays, optional
+ * @param {string} pays (en), optional
 */
 
-const liturgicalCalendar = (date = currentDate, country = 'FRA') => {
+const liturgicalCalendar = (date = currentDate, country = 'france') => {
 
   /**
    * Source @see https://fr.wikipedia.org/wiki/Calendrier_liturgique_romain
@@ -38,14 +35,15 @@ const liturgicalCalendar = (date = currentDate, country = 'FRA') => {
    * 14. La Mémoire de la bienheureuse Vierge Marie, Mère de l’Église étant liée à la Pentecôte, de même que la Mémoire du Cœur immaculé de la bienheureuse Vierge Marie est conjointe à la célébration du très saint Cœur de Jésus, en cas de coïncidence avec une autre Mémoire d’un saint ou d’un bienheureux, selon la tradition liturgique de la prééminence entre les personnes, c’est la Mémoire de la bienheureuse Vierge Marie qui prévaut. Congrégation pour le Culte divin et la Discipline des Sacrements, le 24 mars 2018.
   */
 
+
   const year = date.toFormat('yyyy'),
         month = date.toFormat('MM'),
         day = date.toFormat('dd'),
         dayMonth = day + month,
         // Chargement des .json et fusion des données :
-        data1 = JSON.parse(fs.readFileSync(general, 'utf8')),
-        data2 = JSON.parse(fs.readFileSync(european, 'utf8')),
-        data3 = JSON.parse(fs.readFileSync(french, 'utf8')),
+        data1 = JSON.parse(fs.readFileSync('./data/json/generalRomanCalendar.json')),
+        data2 = JSON.parse(fs.readFileSync('./data/json/europeanRomanCalendar.json')),
+        data3 = JSON.parse(fs.readFileSync('./data/json/' + country + 'RomanCalendar.json')),
         data = {...data1[dayMonth], ...data2[dayMonth], ...data3[dayMonth]},
         // Variables pour les fêtes votives :
         ge = easterDate.gregorianEaster(year),
@@ -123,7 +121,8 @@ const liturgicalCalendar = (date = currentDate, country = 'FRA') => {
   //if (data.rank === '') data.rank = ""
 
 
-  if (date.weekday === 7) data.name = "Dimanche du temps ordinaire", data.grade = "", data.color = "", data.color2 = ""
+  // Si un dimanche et si célébration en occurence inrérieure à 7 alors dimanche du temps ordinaire prioritaire :
+  if (date.weekday === 7 && data.rank > 7) data.name = "Dimanche du temps ordinaire", data.grade = "", data.color = "green", data.color2 = ""
 
 
   // Définition des fêtes votives. Ces valeurs remplacent les fêtes fixes définies à la même date dans les fichiers json.
@@ -228,7 +227,7 @@ const test1 = (() => { // @todo For test.
   const begin = 2010
   const end = 2030
   for (let i = begin; i <= end; i++) {
-    const lc = liturgicalCalendar(DateTime.fromFormat('2506' + i, 'ddMMyyyy'))
+    const lc = liturgicalCalendar(DateTime.fromFormat('0708' + i, 'ddMMyyyy'), 'france')
     console.log(i)
     console.log(lc)
   }

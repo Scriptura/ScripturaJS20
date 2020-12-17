@@ -1,0 +1,63 @@
+{
+  "3001": {
+    "name": "Saint Mutien-Marie Wiaux, religieux",
+    "color": "white",
+    "grade": 4,
+    "rank": 12
+  },
+  "0602": {
+    "name": "Saint Amand, évêque, missionnaire",
+    "color": "white",
+    "grade": 3,
+    "rank": 10
+  },
+  "1703": {
+    "name": "Sainte Gertrude de Nivelles, vierge",
+    "color": "white",
+    "grade": 4,
+    "rank": 12
+  },
+  "0804": {
+    "name": "Sainte Julie Billiart",
+    "color": "white",
+    "grade": 3,
+    "rank": 10
+  },
+  "1005": {
+    "name": "Saint Père Damien",
+    "color": "white",
+    "grade": 3,
+    "rank": 10
+  },
+  "0708": {
+    "name": "Sainte Julienne du Mont-Cornillon",
+    "color": "white",
+    "color2": "",
+    "grade": 3,
+    "rank": 10
+  },
+  "3108": {
+    "name": "Marie, Médiatrice de toute grâce",
+    "color": "white",
+    "grade": 2,
+    "rank": 8
+  },
+  "1709": {
+    "name": "Saint Lambert, évêque et martyr",
+    "color": "red",
+    "grade": 3,
+    "rank": 10
+  },
+  "0311": {
+    "name": "Saint Hubert, évêque de Liège",
+    "color": "white",
+    "grade": 3,
+    "rank": 10
+  },
+  "2611": {
+    "name": "Saint Jean Berchmans",
+    "color": "white",
+    "grade": 3,
+    "rank": 10
+  }
+}

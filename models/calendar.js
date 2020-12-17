@@ -4,9 +4,10 @@ const vv = require('../settings/variables'),
       { liturgicalCalendar } = require('../helpers/liturgicalCalendar'),
       { moonPhase } = require('../helpers/astronomy'),
       { DateTime } = require('luxon'),
-      //currentDate = DateTime.local(),
-      currentDate = DateTime.fromFormat('25122020', 'ddMMyyyy'), // @note For test.
-      lc = liturgicalCalendar(currentDate)
+      currentDate = DateTime.local(),
+      //lc = liturgicalCalendar(currentDate, 'france')
+      //lc = liturgicalCalendar(DateTime.fromFormat('07082021', 'ddMMyyyy'), 'belgium') // @note For test.
+      lc = liturgicalCalendar(DateTime.fromFormat('14122020', 'ddMMyyyy'), 'france') // @note For test.
 
 const getCalendar = {
   _title: 'Calendar | ' + vv.siteName
