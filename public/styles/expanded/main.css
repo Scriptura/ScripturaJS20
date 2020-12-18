@@ -186,8 +186,8 @@ template {
   display: none;
 }
 .main-heading {
-  text-shadow: 0.2em 0.2em 0.2em rgba(0,0,0,0.3);
   word-wrap: break-word;
+  text-shadow: 0.2em 0.2em 0.2em rgba(0,0,0,0.3);
 }
 .main-heading span {
   color: #ff6347;

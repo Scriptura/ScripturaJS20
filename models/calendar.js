@@ -19,7 +19,7 @@ const getCalendar = {
   , _calendarPeriodColor: lc.periodColor
   , _calendarPeriodRank: lc.periodRank
   , _calendarColor: lc.color
-  , _calendarColor2: lc.color2
+  , _calendarColor2: lc.color[1]
   , _calendarGrade: lc.grade
   , _calendarRank: lc.rank
   , _calendarUrl: lc.link

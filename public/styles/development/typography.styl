@@ -1,6 +1,10 @@
+$minFontSize = 2.5em
+$maxFontSize = 3em
+
 .main-heading
-  text-shadow: .2em .2em .2em rgba(0, 0, 0, .3) // offset-x | offset-y | blur-radius | color
   word-wrap break-word
+  //font-size 'clamp(%s, %s, %s)' % ($minFontSize unit($maxFontSize, 'vw') $maxFontSize)
+  text-shadow: .2em .2em .2em rgba(0, 0, 0, .3) // offset-x | offset-y | blur-radius | color
 
 .main-heading span
   color _color2
