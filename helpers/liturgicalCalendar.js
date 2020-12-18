@@ -114,8 +114,8 @@ const liturgicalCalendar = (date = currentDate, country = 'france') => {
 
 
   // Initialisation des variables si pas de données ou valeurs manquantes dans les .json :
-  if (typeof data.name === 'undefined' || data.name === '') data.name = "De la férie", data.color[0] = [], data.grade = "", data.rank = "13"
-  //if (data.color === '') data.color[0] = []
+  if (typeof data.name === 'undefined' || data.name === '') data.name = "De la férie", data.color = [], data.grade = "", data.rank = "13"
+  //if (data.color === '') data.color = []
   //if (data.grade === '') data.grade = ""
   //if (data.rank === '') data.rank = ""
 
