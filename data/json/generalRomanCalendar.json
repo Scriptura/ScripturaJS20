@@ -96,7 +96,7 @@
     "rank": 10
   },
   "0202": {
-    "name": "Présentation du Seigneur",
+    "name": "Présentation du Seigneur au Temple",
     "color": ["white"],
     "grade": 2,
     "rank": 5
@@ -625,7 +625,7 @@
   },
   "0708": {
     "name": "Saint Sixte II, pape, et ses compagnons, martyrs, ou Saint Cajetan, prêtre",
-    "color": ["red", "withe"],
+    "color": ["red", "white"],
     "grade": 4,
     "rank": 12
   },

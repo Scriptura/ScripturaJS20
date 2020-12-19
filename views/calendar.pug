@@ -10,12 +10,12 @@ block main
             if _calendarDate
               p= _calendarDate
             p
-              if _calendarPeriodColor && (!_calendarRank || _calendarRank > 9)
-                .calendar-color(class='calendar-' + _calendarPeriodColor)
-              if _calendarColor && _calendarRank < 11
+              if _calendarColor && _calendarRank < 12
                 .calendar-color(class='calendar-' + _calendarColor)
-              if _calendarColor2 && _calendarRank < 11
+              if _calendarColor2 && _calendarRank < 12
                 .calendar-color(class='calendar-' + _calendarColor2)
+              if _calendarPeriodColor && _calendarRank > 9
+                .calendar-color(class='calendar-' + _calendarPeriodColor)
               if _calendarName && _calendarUrl
                 a(href=_calendarUrl)!= _calendarName
               else if _calendarName
