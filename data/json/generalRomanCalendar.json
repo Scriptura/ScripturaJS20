@@ -203,12 +203,6 @@
     "grade": 4,
     "rank": 12
   },
-  "1903": {
-    "name": "Saint Joseph, chaste Époux de la Bienheureuse Vierge Marie",
-    "color": ["white"],
-    "grade": 1,
-    "rank": 3
-  },
   "2303": {
     "name": "Saint Toribio de Mogrovejo, évêque",
     "color": ["white"],
@@ -752,7 +746,7 @@
   "0809": {
     "name": "Nativité de la Vierge Marie",
     "color": ["white"],
-    "link": "https://www.aelf.org/2020-09-08/romain/messe",
+    "link": ["https://www.aelf.org/2020-09-08/romain/messe"],
     "grade": 2,
     "rank": 7
   },
@@ -789,7 +783,7 @@
   "1609": {
     "name": "Saints Corneille, pape, et Cyprien, évêque, martyrs",
     "color": ["red"],
-    "link": "https://www.aelf.org/2020-09-16/romain/messe",
+    "link": ["https://www.aelf.org/2020-09-16/romain/messe"],
     "grade": 3,
     "rank": 10
   },

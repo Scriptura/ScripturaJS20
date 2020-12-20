@@ -9,8 +9,16 @@ const fs = require('fs'),
 
 /**
  * @param {object} ISO date, optional
- * @param {string} pays (en), optional
-*/
+ * @param {string} country optional
+ * @return {object}
+ *
+ * @todo Option à développer :
+ * const locale = locale || 'fr'
+ * const epiphanyOnJan6 = epiphanyOnJan6 || false
+ * const christmastideIncludesTheSeasonOfEpiphany = christmastideIncludesTheSeasonOfEpiphany || true
+ * const corpusChristiOnThursday = corpusChristiOnThursday || false
+ * const ascensionOnSunday = ascensionOnSunday || false
+ */
 
 const liturgicalCalendar = (date = currentDate, country = 'france') => {
 
@@ -34,7 +42,6 @@ const liturgicalCalendar = (date = currentDate, country = 'france') => {
    * 13. Avent du 17 au 24, n'a pas la même préséance que le début du temps de l'Avent.
    * 14. La Mémoire de la bienheureuse Vierge Marie, Mère de l’Église étant liée à la Pentecôte, de même que la Mémoire du Cœur immaculé de la bienheureuse Vierge Marie est conjointe à la célébration du très saint Cœur de Jésus, en cas de coïncidence avec une autre Mémoire d’un saint ou d’un bienheureux, selon la tradition liturgique de la prééminence entre les personnes, c’est la Mémoire de la bienheureuse Vierge Marie qui prévaut. Congrégation pour le Culte divin et la Discipline des Sacrements, le 24 mars 2018.
   */
-
 
   const year = date.toFormat('yyyy'),
         month = date.toFormat('MM'),
@@ -72,7 +79,7 @@ const liturgicalCalendar = (date = currentDate, country = 'france') => {
         thirdLentSunday = easter.plus({days: -28}),
         fourthLentSunday = easter.plus({days: -21}),
         fiveLentSunday = easter.plus({days: -14}),
-        lentSundaysBoolean = (firstLentSunday || secondLentSunday || thirdLentSunday || fourthLentSunday || fiveLentSunday) ? true : false,
+        //dayInlentSundays = (firstLentSunday || secondLentSunday || thirdLentSunday || fourthLentSunday || fiveLentSunday) ? true : false,
         palmSunday = easter.plus({days: -7}),
         holyMonday = easter.plus({days: -6}),
         holyTuesday = easter.plus({days: -5}),
@@ -95,8 +102,7 @@ const liturgicalCalendar = (date = currentDate, country = 'france') => {
         pentecost = easter.plus({days: 49}),
         maryMotherOfTheChurch = easter.plus({days: 50}),
         holyTrinity = easter.plus({days: 56}),
-        //feastOfCorpusChristi = easter.plus({days: 60}), // 11
-        feastOfCorpusChristi = easter.plus({days: 63}), // 11
+        feastOfCorpusChristi = easter.plus({days: 63}), // easter.plus({days: 60}) // 11
         sacredHeart = easter.plus({days: 68}),
         immaculateHeartOfMary = easter.plus({days: 69}),
         eastertide = Interval.fromDateTimes(easter, easter.plus({days: 50})),
@@ -105,16 +111,26 @@ const liturgicalCalendar = (date = currentDate, country = 'france') => {
         octaveOfEaster = Interval.fromDateTimes(easter, easter.plus({days: 8})),
         saintsPeterAndPaul = sacredHeart.toFormat('ddMM') === '2906' ? DateTime.fromFormat('3006' + year, 'ddMMyyyy') : DateTime.fromFormat('2906' + year, 'ddMMyyyy'), // 8
         march19 = DateTime.fromFormat('1903' + year, 'ddMMyyyy'),
-        march19InHolyWeek = holyWeek.contains(march19) ? palmSunday.plus({days: -1}) : false,
-        march19InLentSunday = lentSundaysBoolean ? march19.plus({days: 1}) : false,
-        saintJoseph = march19InHolyWeek ? march19InHolyWeek : (march19InLentSunday ? march19InLentSunday : march19), // 9
+        march19InHolyWeek = holyWeek.contains(march19) ? true : false,
+        march19InLentSunday = (lent.contains(date) && march19.weekday === 7) ? true : false,
+        saintJoseph = march19InHolyWeek ? palmSunday.plus({days: -1}) : (march19InLentSunday ? march19.plus({days: 1}) : march19), // 9
         march25 = DateTime.fromFormat('2503' + year, 'ddMMyyyy'),
         annunciation = holyWeek.contains(march25) ? secondSundayEaster.plus({days: 1}) : (march25.weekday === 7 ? march25.plus({days: 1}) : march25), // 10
         nativityOfSaintJohnTheBaptist = (feastOfCorpusChristi.toFormat('ddMM') || sacredHeart.toFormat('ddMM') === '2406') ? DateTime.fromFormat('2506' + year, 'ddMMyyyy') : DateTime.fromFormat('2406' + year, 'ddMMyyyy') // 12
 
+      console.log(march19.toFormat('ddMMyyyy'))
+      console.log('march19InHolyWeek:   ' + march19InHolyWeek)
+      console.log('thirdLentSunday:     ' + thirdLentSunday)
+      console.log('march19InLentSunday: ' + march19InLentSunday)
+      console.log(fiveLentSunday.toFormat('ddMMyyyy'))
+      console.log(saintJoseph.toFormat('ddMMyyyy'))
 
-  // Valeurs par défaut si pas de données ou valeurs manquantes dans les .json :
-  if (typeof data.name === 'undefined' || data.name === '') data.name = "De la férie", data.color = [], data.grade = "", data.rank = 13
+  // Valeurs par défaut si pas de célébration fixe proposée ou si valeur name intentionnellement manquante dans les .json :
+  if (typeof data.name === 'undefined' || data.name === '') data.name = "De la férie"
+  if (typeof data.color === 'undefined') data.color = []
+  if (typeof data.link === 'undefined') data.link = []
+  if (typeof data.grade === 'undefined') data.grade = ''
+  if (typeof data.rank === 'undefined') data.rank = 13
 
 
   // Si un dimanche et si célébration en occurence inrérieure à 7 alors dimanche du temps ordinaire prioritaire :
@@ -164,7 +180,7 @@ const liturgicalCalendar = (date = currentDate, country = 'france') => {
   if (immaculateHeartOfMary.hasSame(date, 'day')) data.name = "Cœur immaculé de Marie", data.color = ["white"], data.grade = 3, data.rank = 10 // 14
   if (christKingOfTheUniverse.hasSame(date, 'day')) data.name = "Notre Seigneur Jésus Christ Roi de l'Univers", data.color = ["white"], data.grade = 1, data.rank = 3
   if (saintsPeterAndPaul.hasSame(date, 'day')) data.name = "Saints Pierre et Paul, apôtres", data.color = ["red"], data.grade = 1, data.rank = 3
-  if (saintJoseph.hasSame(date, 'day')) data.name = "Saint Joseph, époux de la Vierge Marie", data.color = ["white"], data.grade = 1, data.rank = 3
+  if (saintJoseph.hasSame(date, 'day')) data.name = "Saint Joseph, chaste Époux de la Bienheureuse Vierge Marie", data.color = ["white"], data.grade = 1, data.rank = 3
   if (annunciation.hasSame(date, 'day')) data.name = "Annonciation du Seigneur", data.color = ["white"], data.grade = 1, data.rank = 3
   if (nativityOfSaintJohnTheBaptist.hasSame(date, 'day')) data.name = "Nativité de Saint Jean-Baptiste", data.color = ["white"], data.grade = 1, data.rank = 3
 
@@ -208,7 +224,7 @@ const liturgicalCalendar = (date = currentDate, country = 'france') => {
   return data
 }
 
-
+/*
 const numFormat = (number, figures) => { // @params nombre de départ, nombre de chiffres minimum
   return new Array(figures - (number + '').length + 1).join('0') + number;
 }
@@ -219,13 +235,13 @@ const test0 = (() => { // @todo For test.
     console.log(lc)
   }
 })()
-
+*/
 /*
 const test1 = (() => { // @todo For test.
   const begin = 2010
   const end = 2030
   for (let i = begin; i <= end; i++) {
-    const lc = liturgicalCalendar(DateTime.fromFormat('0708' + i, 'ddMMyyyy'), 'france')
+    const lc = liturgicalCalendar(DateTime.fromFormat('2003' + i, 'ddMMyyyy'), 'france')
     console.log(i)
     console.log(lc)
   }
