@@ -7,18 +7,17 @@ const capitalizeFirstLetter = (str, locale) => {
 }
 
 const constructFullName = (data, id = 0) => {
-  data._full_name = 'Anonyme' + ' ' + id
-  if (data._given_name) data._full_name = data._given_name
-  if (data._middle_name) data._full_name = data._full_name + ' ' + data._middle_name
-  if (data._family_name) data._full_name = data._full_name + ' ' + data._family_name
-  if (!data._given_name && data._family_name) data._full_name = capitalizeFirstLetter(data._family_name) // Majuscule pour le noms à particules
+  if (data._given_name || data._middle_name || data._family_name) data._full_name = [data._given_name, data._middle_name, data._family_name].filter(Boolean).join(' ')
+  else data._full_name = 'Anonyme ' + id
+  if (!data._given_name && !data._middle_name && data._family_name) data._full_name = capitalizeFirstLetter(data._family_name)
   return data._full_name
 }
 
 const constructPrefixFullNameSuffix = (data, id) => {
-  data._full_name = constructFullName(data, id)
-  // push() ->         if (data._prefix) = data._prefix_full_name_suffix
-  return data._full_name
+  data._prefix_full_name_suffix = data._full_name
+  if (data._prefix && data._full_name) data._prefix_full_name_suffix = data._prefix.concat(' ', data._prefix_full_name_suffix)
+  if (data._full_name && data._suffix) data._prefix_full_name_suffix = data._prefix_full_name_suffix.concat(', ', data._suffix)
+  return data._prefix_full_name_suffix
 }
 
 module.exports = {
