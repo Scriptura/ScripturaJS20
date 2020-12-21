@@ -10,18 +10,20 @@ block main
             if _calendarDate
               p= _calendarDate
             p
-              if _calendarColor && _calendarRank < 12
-                .calendar-color(class='calendar-' + _calendarColor)
-              if _calendarColor2 && _calendarRank < 12
-                .calendar-color(class='calendar-' + _calendarColor2)
+              if _calendarColor[0] && _calendarRank < 12
+                .calendar-color(class='calendar-' + _calendarColor[0])
+              if _calendarColor[1] && _calendarRank < 12
+                .calendar-color(class='calendar-' + _calendarColor[1])
               if _calendarPeriodColor && _calendarRank > 9
                 .calendar-color(class='calendar-' + _calendarPeriodColor)
-              if _calendarName && _calendarUrl
-                a(href=_calendarUrl)!= _calendarName
+              if _calendarName && _calendarLink[0]
+                a(href=_calendarLink[0])!= _calendarName
               else if _calendarName
                 span!= _calendarName
               else
                 span no calendar
+            if _calendarCompletedName
+              p!= _calendarCompletedName
             if _calendarGrade || _calendarRank
               p
                 if _calendarGrade && !_calendarRank

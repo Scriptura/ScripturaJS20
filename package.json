@@ -42,6 +42,7 @@
     "autoprefixer-stylus": "^1.0.0",
     "browser-sync": "^2.26.12",
     "eslint": "^7.9.0",
+    "jest": "^26.6.3",
     "purgecss": "^2.3.0",
     "stylus": "^0.54.8"
   },
@@ -49,6 +50,7 @@
     "start": "NODE_ENV=production yarn go",
     "dev": "yarn js | yarn css | yarn cssexp | yarn bs | yarn go",
     "js": "uglifyjs public/scripts/development/main.js -o public/scripts/main.js -c -m",
+    "test": "jest",
     "css": "stylus -u autoprefixer-stylus -w public/styles/development/main.styl -o public/styles/main.css -c -m",
     "cssexp": "stylus -u autoprefixer-stylus -w public/styles/development/main.styl -o public/styles/expanded/main.css",
     "bs": "browser-sync start --proxy 'localhost:3000' --port 9001 --reload-debounce 2000 --files 'public' 'views' --no-notify",

@@ -7,7 +7,7 @@ const vv = require('../settings/variables'),
       currentDate = DateTime.local(),
       //lc = liturgicalCalendar(currentDate, 'france')
       //lc = liturgicalCalendar(DateTime.fromFormat('07082021', 'ddMMyyyy'), 'belgium') // @note For test.
-      lc = liturgicalCalendar(DateTime.fromFormat('19032018', 'ddMMyyyy'), 'france') // @note For test.
+      lc = liturgicalCalendar(DateTime.fromFormat('17032035', 'ddMMyyyy'), 'france') // @note For test.
 
 const getCalendar = {
   _title: 'Calendar | ' + vv.siteName
@@ -16,13 +16,13 @@ const getCalendar = {
   , _calendarPeriod: lc.period
   , _calendarDate: lc.displayDate
   , _calendarName: lc.name
+  , _calendarCompletedName: lc.completedName
   , _calendarPeriodColor: lc.periodColor
   , _calendarPeriodRank: lc.periodRank
-  , _calendarColor: lc.color[0]
-  , _calendarColor2: lc.color[1]
+  , _calendarColor: lc.color
   , _calendarGrade: lc.grade
   , _calendarRank: lc.rank
-  , _calendarUrl: lc.link[0]
+  , _calendarLink: lc.link
   , _moonPhase: moonPhase(currentDate)
 }
 

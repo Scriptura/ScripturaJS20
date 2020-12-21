@@ -1,7 +1,5 @@
 'use strict'
 
-const e = require('express')
-
 const fs = require('fs'),
       { DateTime, Interval } = require('luxon'),
       easterDate = require('date-easter'),
@@ -79,7 +77,6 @@ const liturgicalCalendar = (date = currentDate, country = 'france') => {
         thirdLentSunday = easter.plus({days: -28}),
         fourthLentSunday = easter.plus({days: -21}),
         fiveLentSunday = easter.plus({days: -14}),
-        //dayInlentSundays = (firstLentSunday || secondLentSunday || thirdLentSunday || fourthLentSunday || fiveLentSunday) ? true : false,
         palmSunday = easter.plus({days: -7}),
         holyMonday = easter.plus({days: -6}),
         holyTuesday = easter.plus({days: -5}),
@@ -118,14 +115,8 @@ const liturgicalCalendar = (date = currentDate, country = 'france') => {
         annunciation = holyWeek.contains(march25) ? secondSundayEaster.plus({days: 1}) : (march25.weekday === 7 ? march25.plus({days: 1}) : march25), // 10
         nativityOfSaintJohnTheBaptist = (feastOfCorpusChristi.toFormat('ddMM') || sacredHeart.toFormat('ddMM') === '2406') ? DateTime.fromFormat('2506' + year, 'ddMMyyyy') : DateTime.fromFormat('2406' + year, 'ddMMyyyy') // 12
 
-      console.log(march19.toFormat('ddMMyyyy'))
-      console.log('march19InHolyWeek:   ' + march19InHolyWeek)
-      console.log('thirdLentSunday:     ' + thirdLentSunday)
-      console.log('march19InLentSunday: ' + march19InLentSunday)
-      console.log(fiveLentSunday.toFormat('ddMMyyyy'))
-      console.log(saintJoseph.toFormat('ddMMyyyy'))
 
-  // Valeurs par défaut si pas de célébration fixe proposée ou si valeur name intentionnellement manquante dans les .json :
+  // Valeurs par défaut pour les variables incontournables si pas de célébration fixe proposée ou si valeur name intentionnellement manquante dans les .json :
   if (typeof data.name === 'undefined' || data.name === '') data.name = "De la férie"
   if (typeof data.color === 'undefined') data.color = []
   if (typeof data.link === 'undefined') data.link = []
@@ -167,9 +158,9 @@ const liturgicalCalendar = (date = currentDate, country = 'france') => {
   if (easterFriday.hasSame(date, 'day')) data.name = "Vendredi dans l'octave de Pâques", data.color = ["white"], data.grade = 1, data.rank = 2
   if (easterSaturday.hasSame(date, 'day')) data.name = "Samedi dans l'octave de Pâques", data.color = ["white"], data.grade = 1, data.rank = 2
   if (secondSundayEaster.hasSame(date, 'day')) data.name = "Dimanche de la divine Miséricorde, <em>in albis</em>", data.color = ["white"], data.grade = 1, data.rank = 2
-  if (thirdSundayEaster.hasSame(date, 'day')) data.name = "Troisième dimanche du Temps Pascal", data.color = ["white"], data.grade = 1, data.rank = 2
-  if (fourthSundayEaster.hasSame(date, 'day')) data.name = "Quatrième dimanche du Temps Pascal", data.color = ["white"], data.grade = 1, data.rank = 2
-  if (fiveSundayEaster.hasSame(date, 'day')) data.name = "Cinquième dimanche du Temps Pascal", data.color = ["white"], data.grade = 1, data.rank = 2
+  if (thirdSundayEaster.hasSame(date, 'day')) data.name = "Troisième dimanche du Temps Pascal, <em>Jubilate</em>", data.color = ["white"], data.grade = 1, data.rank = 2
+  if (fourthSundayEaster.hasSame(date, 'day')) data.name = "Quatrième dimanche du Temps Pascal, <em>Cantate</em>", data.completedName = "Ou dimanche \"du Bon Pasteur\"", data.color = ["white"], data.grade = 1, data.rank = 2
+  if (fiveSundayEaster.hasSame(date, 'day')) data.name = "Cinquième dimanche du Temps Pascal", data.completedName = "Ou dimanche dit \"des Rogations\"", data.color = ["white"], data.grade = 1, data.rank = 2
   if (sixSundayEaster.hasSame(date, 'day')) data.name = "Sixième dimanche du Temps Pascal", data.color = ["white"], data.grade = 1, data.rank = 2
   if (ascension.hasSame(date, 'day')) data.name = "Ascension", data.color = ["white"], data.grade = 1, data.rank = 2
   if (pentecost.hasSame(date, 'day')) data.name = "Pentecôte", data.color = ["white"], data.grade = 1, data.rank = 2
@@ -225,12 +216,12 @@ const liturgicalCalendar = (date = currentDate, country = 'france') => {
 }
 
 /*
-const numFormat = (number, figures) => { // @params nombre de départ, nombre de chiffres minimum
-  return new Array(figures - (number + '').length + 1).join('0') + number;
-}
+const { numFormat } = require('../helpers/numbers')
+
 const test0 = (() => { // @todo For test.
   for (let i = 1; i < 32; i++) {
     const d = numFormat(i, 2)
+    console.log(d)
     const lc = liturgicalCalendar(DateTime.fromFormat(d + '012020', 'ddMMyyyy'))
     console.log(lc)
   }
