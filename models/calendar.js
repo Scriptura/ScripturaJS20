@@ -5,9 +5,10 @@ const vv = require('../settings/variables'),
       { moonPhase } = require('../helpers/astronomy'),
       { DateTime } = require('luxon'),
       currentDate = DateTime.local(),
-      //lc = liturgicalCalendar(currentDate, 'france')
+      lc = liturgicalCalendar(currentDate, 'france')
       //lc = liturgicalCalendar(DateTime.fromFormat('07082021', 'ddMMyyyy'), 'belgium') // @note For test.
-      lc = liturgicalCalendar(DateTime.fromFormat('17032035', 'ddMMyyyy'), 'france') // @note For test.
+      //lc = liturgicalCalendar(DateTime.fromFormat('17032035', 'ddMMyyyy'), 'france') // @note For test.
+      //lc = liturgicalCalendar(DateTime.fromFormat('17032035', 'ddMMyyyy'), 'france') // @note St Joseph en Semaine Sainte
 
 const getCalendar = {
   _title: 'Calendar | ' + vv.siteName

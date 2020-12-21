@@ -1,6 +1,6 @@
 const { capitalizeFirstLetter, constructFullName, constructPrefixFullNameSuffix } = require('../helpers/strings.js')
 
-describe("Helpers/strings", () => {
+describe("Helpers strings", () => {
 
   it("Capitalize first letter", () => {
     expect(capitalizeFirstLetter('lorem ipsum dolor sit amet')).toBe('Lorem ipsum dolor sit amet')
