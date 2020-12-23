@@ -86,21 +86,21 @@ const liturgicalCalendar = (date = currentDate, country = 'france') => {
         pentecost = easter.plus({days: 49}),
         maryMotherOfTheChurch = easter.plus({days: 50}),
         holyTrinity = easter.plus({days: 56}),
-        feastOfCorpusChristi = easter.plus({days: 63}), // easter.plus({days: 60}) // 11
+        corpusChristi = easter.plus({days: 63}), // easter.plus({days: 60})
         sacredHeart = easter.plus({days: 68}),
         immaculateHeartOfMary = easter.plus({days: 69}),
         eastertide = Interval.fromDateTimes(easter, easter.plus({days: 50})),
         holyWeek = Interval.fromDateTimes(palmSunday, easter),
         easterTriduum = Interval.fromDateTimes(easter.plus({days: -3}), easter),
         octaveOfEaster = Interval.fromDateTimes(easter, easter.plus({days: 8})),
-        saintsPeterAndPaul = sacredHeart.toFormat('ddMM') === '2906' ? DateTime.fromFormat('3006' + year, 'ddMMyyyy') : DateTime.fromFormat('2906' + year, 'ddMMyyyy'), // 8
+        saintsPeterAndPaul = sacredHeart.toFormat('ddMM') === '2906' ? DateTime.fromFormat('3006' + year, 'ddMMyyyy') : DateTime.fromFormat('2906' + year, 'ddMMyyyy'),
         march19 = DateTime.fromFormat('1903' + year, 'ddMMyyyy'),
         march19InHolyWeek = holyWeek.contains(march19) ? true : false,
         march19InLentSunday = (lent.contains(date) && march19.weekday === 7) ? true : false,
         saintJoseph = march19InHolyWeek ? palmSunday.plus({days: -1}) : (march19InLentSunday ? march19.plus({days: 1}) : march19), // 9
         march25 = DateTime.fromFormat('2503' + year, 'ddMMyyyy'),
         annunciation = holyWeek.contains(march25) ? divineMercySunday.plus({days: 1}) : (march25.weekday === 7 ? march25.plus({days: 1}) : march25), // 10
-        nativityOfSaintJohnTheBaptist = (feastOfCorpusChristi.toFormat('ddMM') || sacredHeart.toFormat('ddMM') === '2406') ? DateTime.fromFormat('2506' + year, 'ddMMyyyy') : DateTime.fromFormat('2406' + year, 'ddMMyyyy') // 12
+        nativityOfSaintJohnTheBaptist = (corpusChristi.toFormat('ddMM') === '2406' || sacredHeart.toFormat('ddMM') === '2406') ? DateTime.fromFormat('2506' + year, 'ddMMyyyy') : DateTime.fromFormat('2406' + year, 'ddMMyyyy')
 
 
   // Valeurs par défaut pour les variables incontournables si pas de célébration fixe proposée ou si valeur name intentionnellement manquante dans les .json :
@@ -153,7 +153,7 @@ const liturgicalCalendar = (date = currentDate, country = 'france') => {
   if (pentecost.hasSame(date, 'day')) data.key = "pentecost", data.name = "Pentecôte", data.color = ["white"], data.grade = 1, data.rank = 2
   if (maryMotherOfTheChurch.hasSame(date, 'day')) data.key = "maryMotherOfTheChurch", data.name = "Bienheureuse Vierge Marie, Mère de l'Église", data.color = ["white"], data.grade = 3, data.rank = 10 // 14
   if (holyTrinity.hasSame(date, 'day')) data.key = "holyTrinity", data.name = "Sainte Trinité", data.color = ["white"], data.grade = 1, data.rank = 3
-  if (feastOfCorpusChristi.hasSame(date, 'day')) data.key = "feastOfCorpusChristi", data.name = "Le Saint Sacrement du Corps et du Sang du Christ (Fête-Dieu)", data.color = ["white"], data.grade = 1, data.rank = 3
+  if (corpusChristi.hasSame(date, 'day')) data.key = "corpusChristi", data.name = "Le Saint Sacrement du Corps et du Sang du Christ (Fête-Dieu)", data.color = ["white"], data.grade = 1, data.rank = 3
   if (sacredHeart.hasSame(date, 'day')) data.key = "sacredHeart", data.name = "Sacré-Cœur de Jésus", data.color = ["white"], data.grade = 1, data.rank = 3
   if (immaculateHeartOfMary.hasSame(date, 'day')) data.key = "immaculateHeartOfMary", data.name = "Cœur immaculé de Marie", data.color = ["white"], data.grade = 3, data.rank = 10 // 14
   if (christKingOfTheUniverse.hasSame(date, 'day')) data.key = "christKingOfTheUniverse", data.name = "Notre Seigneur Jésus Christ Roi de l'Univers", data.color = ["white"], data.grade = 1, data.rank = 3

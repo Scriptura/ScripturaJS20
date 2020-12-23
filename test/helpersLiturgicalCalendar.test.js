@@ -73,6 +73,14 @@ describe("Liturgical calendar", () => {
     expect(liturgicalCalendar(DateTime.fromFormat('10012021', 'ddMMyyyy'), 'france')).toMatchObject({key: "baptismOfTheLord"})
   })
 
+  it("Fête de St Joseph le 19 mars 2020", () => {
+    expect(liturgicalCalendar(DateTime.fromFormat('19032020', 'ddMMyyyy'), 'france')).toMatchObject({key: "saintJoseph"})
+  })
+
+  it("19 mars 2035 en Semaine Sainte, alors fête de St Joseph reportée au samedi avant les Rameaux, le 15 mars", () => {
+    expect(liturgicalCalendar(DateTime.fromFormat('17032035', 'ddMMyyyy'), 'france')).toMatchObject({key: "saintJoseph"})
+  })
+
   it("Annonciation le 25 mars 2021", () => {
     expect(liturgicalCalendar(DateTime.fromFormat('25032021', 'ddMMyyyy'), 'france')).toMatchObject({key: "annunciation"})
   })
@@ -85,33 +93,100 @@ describe("Liturgical calendar", () => {
     expect(liturgicalCalendar(DateTime.fromFormat('08042024', 'ddMMyyyy'), 'france')).toMatchObject({key: "annunciation"})
   })
 
+  it("Mercredi des Cendres le 26 février 2020", () => {
+    expect(liturgicalCalendar(DateTime.fromFormat('26022020', 'ddMMyyyy'), 'france')).toMatchObject({key: "ashWednesday"})
+  })
+
+  it("Premier dimanche de Carême le 1er mars 2020", () => {
+    expect(liturgicalCalendar(DateTime.fromFormat('01032020', 'ddMMyyyy'), 'france')).toMatchObject({key: "firstLentSunday"})
+  })
+
+  it("Deuxième dimanche de Carême", () => {
+    expect(liturgicalCalendar(DateTime.fromFormat('08032020', 'ddMMyyyy'), 'france')).toMatchObject({key: "secondLentSunday"})
+  })
+
+  it("Troisième dimanche de Carême", () => {
+    expect(liturgicalCalendar(DateTime.fromFormat('15032020', 'ddMMyyyy'), 'france')).toMatchObject({key: "thirdLentSunday"})
+  })
+
+  it("Quatrième dimanche de Carême", () => {
+    expect(liturgicalCalendar(DateTime.fromFormat('22032020', 'ddMMyyyy'), 'france')).toMatchObject({key: "fourthLentSunday"})
+  })
+
+  it("Cinquième dimanche de Carême", () => {
+    expect(liturgicalCalendar(DateTime.fromFormat('29032020', 'ddMMyyyy'), 'france')).toMatchObject({key: "fiveLentSunday"})
+  })
+
+  it("Dimanche des Rameaux", () => {
+    expect(liturgicalCalendar(DateTime.fromFormat('05042020', 'ddMMyyyy'), 'france')).toMatchObject({key: "palmSunday"})
+  })
 
 
+/*
 
+  it("", () => {
+    expect(liturgicalCalendar(DateTime.fromFormat('08042024', 'ddMMyyyy'), 'france')).toMatchObject({key: ""})
+  })
+
+        holyMonday
+        holyTuesday
+        holyWednesday
+        holyThursday
+        goodFriday
+        holySaturday
+        easterMonday
+        easterTuesday
+        easterWednesday
+        easterThursday
+        easterFriday
+        easterSaturday
+        divineMercySunday
+        thirdSundayEaster
+        fourthSundayEaster
+        fiveSundayEaster
+        sixSundayEaster
+        ascension
+        pentecost
+        maryMotherOfTheChurch
+        holyTrinity
+*/
+
+
+  it("Saint Sacrement", () => {
+    expect(liturgicalCalendar(DateTime.fromFormat('14062020', 'ddMMyyyy'), 'france')).toMatchObject({key: "corpusChristi"})
+  })
+
+  it("Sacré-Cœur de Jésus le 19 juin 2020", () => {
+    expect(liturgicalCalendar(DateTime.fromFormat('19062020', 'ddMMyyyy'), 'france')).toMatchObject({key: "sacredHeart"})
+  })
+
+  it("Sacré-Cœur de Jésus le 2 juillet 2038", () => {
+    expect(liturgicalCalendar(DateTime.fromFormat('02072038', 'ddMMyyyy'), 'france')).toMatchObject({key: "sacredHeart"})
+  })
 
   it("Nativité de Saint Jean-Baptiste le 24 juin 2020", () => {
     expect(liturgicalCalendar(DateTime.fromFormat('24062020', 'ddMMyyyy'), 'france')).toMatchObject({key: "nativityOfSaintJohnTheBaptist"})
   })
 
-  it("24 juin 20XX jour du Saint-Sacrement, alors Nativité de Saint Jean-Baptiste le 25 juin", () => {
-    //expect(liturgicalCalendar(DateTime.fromFormat('25062020', 'ddMMyyyy'), 'france')).toMatchObject({key: "nativityOfSaintJohnTheBaptist"})
+  it("24 juin 2057 jour du Saint-Sacrement, alors Nativité de Saint Jean-Baptiste le 25 juin", () => { // @todo A déterminer...
+    expect(liturgicalCalendar(DateTime.fromFormat('25062057', 'ddMMyyyy'), 'france')).toMatchObject({key: "nativityOfSaintJohnTheBaptist"})
   })
 
   it("24 juin 2022 jour du Sacré-Coeur, alors Nativité de Saint Jean-Baptiste le 25 juin", () => {
     expect(liturgicalCalendar(DateTime.fromFormat('25062022', 'ddMMyyyy'), 'france')).toMatchObject({key: "nativityOfSaintJohnTheBaptist"})
   })
-  //Nativité de Saint Jean-Baptiste : le 24 juin, reporté au 25 si le 24 juin tombe le jour de la solennité du Saint-Sacrement ou du Sacré-Coeur.
 
 
 
 
-  it("Fête de St Joseph le 19 mars 2020", () => {
-    expect(liturgicalCalendar(DateTime.fromFormat('19032020', 'ddMMyyyy'), 'france')).toMatchObject({key: "saintJoseph"})
-  })
 
-  it("19 mars 2035 en Semaine Sainte, alors fête de St Joseph reportée au samedi avant les Rameaux, le 15 mars", () => {
-    expect(liturgicalCalendar(DateTime.fromFormat('17032035', 'ddMMyyyy'), 'france')).toMatchObject({key: "saintJoseph"})
-  })
+
+
+
+
+
+
+
 
   it("En Belgique, Sainte Julienne du Mont-Cornillon le 7 août 2021", () => {
     expect(liturgicalCalendar(DateTime.fromFormat('07082021', 'ddMMyyyy'), 'belgium')).toMatchObject({key: "bel0708"})
