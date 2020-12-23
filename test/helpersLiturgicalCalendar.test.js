@@ -121,38 +121,95 @@ describe("Liturgical calendar", () => {
     expect(liturgicalCalendar(DateTime.fromFormat('05042020', 'ddMMyyyy'), 'france')).toMatchObject({key: "palmSunday"})
   })
 
-
-/*
-
-  it("", () => {
-    expect(liturgicalCalendar(DateTime.fromFormat('08042024', 'ddMMyyyy'), 'france')).toMatchObject({key: ""})
+  it("Lundi Saint le 6 avril 2020", () => {
+    expect(liturgicalCalendar(DateTime.fromFormat('06042020', 'ddMMyyyy'), 'france')).toMatchObject({key: "holyMonday"})
   })
 
-        holyMonday
-        holyTuesday
-        holyWednesday
-        holyThursday
-        goodFriday
-        holySaturday
-        easterMonday
-        easterTuesday
-        easterWednesday
-        easterThursday
-        easterFriday
-        easterSaturday
-        divineMercySunday
-        thirdSundayEaster
-        fourthSundayEaster
-        fiveSundayEaster
-        sixSundayEaster
-        ascension
-        pentecost
-        maryMotherOfTheChurch
-        holyTrinity
-*/
+  it("Mardi Saint le 7 avril 2020", () => {
+    expect(liturgicalCalendar(DateTime.fromFormat('07042020', 'ddMMyyyy'), 'france')).toMatchObject({key: "holyTuesday"})
+  })
 
+  it("Mercredi Saint le 8 avril 2020", () => {
+    expect(liturgicalCalendar(DateTime.fromFormat('08042020', 'ddMMyyyy'), 'france')).toMatchObject({key: "holyWednesday"})
+  })
 
-  it("Saint Sacrement", () => {
+  it("Jeudi Saint le 9 avril 2020", () => {
+    expect(liturgicalCalendar(DateTime.fromFormat('09042020', 'ddMMyyyy'), 'france')).toMatchObject({key: "holyThursday"})
+  })
+
+  it("Vendredi Saint le 10 avril 2020", () => {
+    expect(liturgicalCalendar(DateTime.fromFormat('10042020', 'ddMMyyyy'), 'france')).toMatchObject({key: "goodFriday"})
+  })
+
+  it("Samedi Saint le 11 avril 2020", () => {
+    expect(liturgicalCalendar(DateTime.fromFormat('11042020', 'ddMMyyyy'), 'france')).toMatchObject({key: "holySaturday"})
+  })
+
+  it("Pâques le 12 avril 2020", () => {
+    expect(liturgicalCalendar(DateTime.fromFormat('12042020', 'ddMMyyyy'), 'france')).toMatchObject({key: "easter"})
+  })
+
+  it("Lundi dans l'Octave de Pâques le 13 avril 2020", () => {
+    expect(liturgicalCalendar(DateTime.fromFormat('13042020', 'ddMMyyyy'), 'france')).toMatchObject({key: "easterMonday"})
+  })
+
+  it("Mardi dans l'Octave de Pâques le 14 avril 2020", () => {
+    expect(liturgicalCalendar(DateTime.fromFormat('14042020', 'ddMMyyyy'), 'france')).toMatchObject({key: "easterTuesday"})
+  })
+
+  it("Mercredi dans l'Octave de Pâques le 15 avril 2020", () => {
+    expect(liturgicalCalendar(DateTime.fromFormat('15042020', 'ddMMyyyy'), 'france')).toMatchObject({key: "easterWednesday"})
+  })
+
+  it("Jeudi dans l'Octave de Pâques le 16 avril 2020", () => {
+    expect(liturgicalCalendar(DateTime.fromFormat('16042020', 'ddMMyyyy'), 'france')).toMatchObject({key: "easterThursday"})
+  })
+
+  it("Vendredi dans l'Octave de Pâques le 17 avril 2020", () => {
+    expect(liturgicalCalendar(DateTime.fromFormat('17042020', 'ddMMyyyy'), 'france')).toMatchObject({key: "easterFriday"})
+  })
+
+  it("Samedi dans l'Octave de Pâques le 18 avril 2020", () => {
+    expect(liturgicalCalendar(DateTime.fromFormat('18042020', 'ddMMyyyy'), 'france')).toMatchObject({key: "easterSaturday"})
+  })
+
+  it("Dimanche de la Divine Miséricorde le 18 avril 2020", () => {
+    expect(liturgicalCalendar(DateTime.fromFormat('19042020', 'ddMMyyyy'), 'france')).toMatchObject({key: "divineMercySunday"})
+  })
+
+  it("Troisième dimanche du Temps Pascal le 26 avril 2020", () => {
+    expect(liturgicalCalendar(DateTime.fromFormat('26042020', 'ddMMyyyy'), 'france')).toMatchObject({key: "thirdSundayEaster"})
+  })
+
+  it("Quatrième dimanche du Temps Pascal le 3 mai 2020", () => {
+    expect(liturgicalCalendar(DateTime.fromFormat('03052020', 'ddMMyyyy'), 'france')).toMatchObject({key: "fourthSundayEaster"})
+  })
+
+  it("Cinquième dimanche du Temps Pascal le 10 mai 2020", () => {
+    expect(liturgicalCalendar(DateTime.fromFormat('10052020', 'ddMMyyyy'), 'france')).toMatchObject({key: "fiveSundayEaster"})
+  })
+
+  it("Sixième dimanche du Temps Pascal le 17 mai 2020", () => {
+    expect(liturgicalCalendar(DateTime.fromFormat('17052020', 'ddMMyyyy'), 'france')).toMatchObject({key: "sixSundayEaster"})
+  })
+
+  it("Ascension le 21 mai 2020", () => {
+    expect(liturgicalCalendar(DateTime.fromFormat('21052020', 'ddMMyyyy'), 'france')).toMatchObject({key: "ascension"})
+  })
+
+  it("Pentecôte le 31 mai 2020", () => {
+    expect(liturgicalCalendar(DateTime.fromFormat('31052020', 'ddMMyyyy'), 'france')).toMatchObject({key: "pentecost"})
+  })
+
+  it("Marie, Mère de l'Église le 1er juin 2020", () => {
+    expect(liturgicalCalendar(DateTime.fromFormat('01062020', 'ddMMyyyy'), 'france')).toMatchObject({key: "maryMotherOfTheChurch"})
+  })
+
+  it("Sainte Trinité le 7 juin 2020", () => {
+    expect(liturgicalCalendar(DateTime.fromFormat('07062020', 'ddMMyyyy'), 'france')).toMatchObject({key: "holyTrinity"})
+  })
+
+  it("Saint Sacrement le 14 juin 2020", () => {
     expect(liturgicalCalendar(DateTime.fromFormat('14062020', 'ddMMyyyy'), 'france')).toMatchObject({key: "corpusChristi"})
   })
 
@@ -162,6 +219,10 @@ describe("Liturgical calendar", () => {
 
   it("Sacré-Cœur de Jésus le 2 juillet 2038", () => {
     expect(liturgicalCalendar(DateTime.fromFormat('02072038', 'ddMMyyyy'), 'france')).toMatchObject({key: "sacredHeart"})
+  })
+
+  it("Cœur Immaculé de Marie le 20 juin 2020", () => {
+    expect(liturgicalCalendar(DateTime.fromFormat('20062020', 'ddMMyyyy'), 'france')).toMatchObject({key: "immaculateHeartOfMary"})
   })
 
   it("Nativité de Saint Jean-Baptiste le 24 juin 2020", () => {
@@ -176,20 +237,28 @@ describe("Liturgical calendar", () => {
     expect(liturgicalCalendar(DateTime.fromFormat('25062022', 'ddMMyyyy'), 'france')).toMatchObject({key: "nativityOfSaintJohnTheBaptist"})
   })
 
+  describe("Propre pour la Belgique", () => {
 
+    it("Sainte Julienne du Mont-Cornillon le 7 août 2021", () => {
+      expect(liturgicalCalendar(DateTime.fromFormat('07082021', 'ddMMyyyy'), 'belgium')).toMatchObject({key: "bel0708"})
+    })
 
-
-
-
-
-
-
-
-
-
-
-  it("En Belgique, Sainte Julienne du Mont-Cornillon le 7 août 2021", () => {
-    expect(liturgicalCalendar(DateTime.fromFormat('07082021', 'ddMMyyyy'), 'belgium')).toMatchObject({key: "bel0708"})
   })
 
 })
+
+
+/*
+
+  it("", () => {
+    expect(liturgicalCalendar(DateTime.fromFormat('08042020', 'ddMMyyyy'), 'france')).toMatchObject({key: ""})
+  })
+
+*/
+
+
+
+
+
+
+

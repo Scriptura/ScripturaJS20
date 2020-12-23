@@ -82,7 +82,7 @@ const liturgicalCalendar = (date = currentDate, country = 'france') => {
         fourthSundayEaster = easter.plus({days: 21}),
         fiveSundayEaster = easter.plus({days: 28}),
         sixSundayEaster = easter.plus({days: 35}),
-        ascension = easter.plus({days: 40}),
+        ascension = easter.plus({days: 39}),
         pentecost = easter.plus({days: 49}),
         maryMotherOfTheChurch = easter.plus({days: 50}),
         holyTrinity = easter.plus({days: 56}),
@@ -155,7 +155,7 @@ const liturgicalCalendar = (date = currentDate, country = 'france') => {
   if (holyTrinity.hasSame(date, 'day')) data.key = "holyTrinity", data.name = "Sainte Trinité", data.color = ["white"], data.grade = 1, data.rank = 3
   if (corpusChristi.hasSame(date, 'day')) data.key = "corpusChristi", data.name = "Le Saint Sacrement du Corps et du Sang du Christ (Fête-Dieu)", data.color = ["white"], data.grade = 1, data.rank = 3
   if (sacredHeart.hasSame(date, 'day')) data.key = "sacredHeart", data.name = "Sacré-Cœur de Jésus", data.color = ["white"], data.grade = 1, data.rank = 3
-  if (immaculateHeartOfMary.hasSame(date, 'day')) data.key = "immaculateHeartOfMary", data.name = "Cœur immaculé de Marie", data.color = ["white"], data.grade = 3, data.rank = 10 // 14
+  if (immaculateHeartOfMary.hasSame(date, 'day')) data.key = "immaculateHeartOfMary", data.name = "Cœur Immaculé de Marie", data.color = ["white"], data.grade = 3, data.rank = 10 // 14
   if (christKingOfTheUniverse.hasSame(date, 'day')) data.key = "christKingOfTheUniverse", data.name = "Notre Seigneur Jésus Christ Roi de l'Univers", data.color = ["white"], data.grade = 1, data.rank = 3
   if (saintsPeterAndPaul.hasSame(date, 'day')) data.key = "saintsPeterAndPaul", data.name = "Saints Pierre et Paul, apôtres", data.color = ["red"], data.grade = 1, data.rank = 3
   if (saintJoseph.hasSame(date, 'day')) data.key = "saintJoseph", data.name = "Saint Joseph, chaste Époux de la Bienheureuse Vierge Marie", data.color = ["white"], data.grade = 1, data.rank = 3
