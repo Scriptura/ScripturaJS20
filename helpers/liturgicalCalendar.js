@@ -7,25 +7,9 @@ const fs = require('fs'),
 
 
 /**
- * Source @see https://fr.wikipedia.org/wiki/Calendrier_liturgique_romain
- * Vérification @see https://www.aelf.org/calendrier/romain/2020/01
- * La préséance est déterminée par une valeur rank dans les fichiers .json, mais dans la pratique le calendrier romain sert de base et ses valeurs peuvent être écrasées par les propres qui sont chargés après lui, sans besoin de calcul logiciel.
- * Si une fête fixe du calendrier général devient votive dans le propre d'un pays, le .json du pays concerné mentionnera une valeur vide pour le nom en lieu et place de la date ({"name": ""}), ceci afin de permettre les traitements qui annuleront la fête, la fête votive sera au final déterminée par calcul logiciel.
- * 1. Vérification des dates de Pâques @see http://5ko.free.fr/fr/easter.php
- * 2. Immaculée Conception le 08/12, si dimanche alors célébration le lundi 09/12.
- * 3. Sainte Famille le dimanche qui suit Noël, si Noël est un dimanche alors le 30/12.
- * 4. Épiphanie le 06/01 pour le calendrier général, le dimanche après le premier janvier pour la France et les autres pays qui ne chôment pas ce jour-là.
- * 5. Baptême du Seigneur célébré à la place du 1er dimanche ordinaire, ou le lendemain de l'Épiphanie si celle-ci est célébrée le 7 ou 8 janvier.
- * 6. Période de Noël à cheval sur 2 années : en fonction de la date courante on calcule l'Octave pour la fin de l'année en cours puis pour le début de l'année suivante.
- * 7. Octave de Noël à cheval sur 2 années : en fonction de la date courante on calcule l'Octave pour la fin de l'année en cours puis pour le début de l'année suivante.
- * 8. Solennité de Saint Pierre et Saint Paul : 29 juin, reporté au 30 si le 29 tombe le jour de la solennité du Sacré-Coeur.
- * 9. Saint Joseph, époux. Si la fête tombe un dimanche, autre que le Dimanche des Rameaux, celle-ci est célébrée le jour suivant, généralement le lundi 20 mars, mais seulement si une autre solennité (par exemple, un autre Saint patron de l'Église) n'est pas célébrée durant cette journée. Depuis 2008, si le jour de la Fête de Saint Joseph tombe pendant la Semaine Sainte, la célébration de sa fête est déplacée vers le jour le plus proche possible avant le 19 mars, généralement le samedi précédant la Semaine Sainte.
- * 10. Annonciation du Seigneur à Marie. Le 25 mars. Le premier lundi qui suit le deuxième dimanche de Pâques si le 25 mars se situe pendant la Semaine Sainte. Décalée au 26, si le 25 est un dimanche.
- * 11. Fête-Dieu célébrée le jeudi qui suit la Sainte-Trinité, c'est-à-dire soixante jours après Pâques, reportée au dimanche qui suit la Sainte-Trinité dans les pays où elle n'est pas inscrite au nombre des jours fériés (France).
- * 12. Solennité de la Nativité de Saint Jean-Baptiste : 24 juin, reporté au 25 si le 24 juin tombe le jour de la solennité du Saint-Sacrement ou du Sacré-Coeur.
- * 13. Avent du 17 au 24, n'a pas la même préséance que le début du temps de l'Avent (=> 9)
- * 14. La Mémoire de la bienheureuse Vierge Marie, Mère de l’Église étant liée à la Pentecôte, de même que la Mémoire du Cœur immaculé de la bienheureuse Vierge Marie est conjointe à la célébration du très saint Cœur de Jésus, en cas de coïncidence avec une autre Mémoire d’un saint ou d’un bienheureux, selon la tradition liturgique de la prééminence entre les personnes, c’est la Mémoire de la bienheureuse Vierge Marie qui prévaut. Congrégation pour le Culte divin et la Discipline des Sacrements, le 24 mars 2018.
-*/
+ * Annontations et règles placées dans le fichier de test.
+ * @see helpersLiturgicalCalendar.test.js
+ * /
 
 /*
 * @todo Option à développer :
@@ -120,7 +104,6 @@ const liturgicalCalendar = (date = currentDate, country = 'france') => {
 
 
   // Valeurs par défaut pour les variables incontournables si pas de célébration fixe proposée ou si valeur name intentionnellement manquante dans les .json :
-  //if (typeof data.key === 'undefined') data.key = dayMonth
   if (typeof data.name === 'undefined' || data.name === '') data.name = "De la férie"
   if (typeof data.color === 'undefined') data.color = []
   if (typeof data.link === 'undefined') data.link = []
