@@ -7,7 +7,6 @@ const vv = require('../settings/variables'),
       currentDate = DateTime.local(),
       lc = liturgicalCalendar(currentDate, 'france')
       //lc = liturgicalCalendar(DateTime.fromFormat('07082021', 'ddMMyyyy'), 'belgium') // @note For test.
-      //lc = liturgicalCalendar(DateTime.fromFormat('17032035', 'ddMMyyyy'), 'france') // @note For test.
       //lc = liturgicalCalendar(DateTime.fromFormat('17032035', 'ddMMyyyy'), 'france') // @note St Joseph en Semaine Sainte
 
 const getCalendar = {
