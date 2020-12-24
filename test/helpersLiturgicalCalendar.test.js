@@ -237,6 +237,14 @@ describe("Liturgical calendar", () => {
     expect(liturgicalCalendar(DateTime.fromFormat('25062022', 'ddMMyyyy'), 'france')).toMatchObject({key: "nativityOfSaintJohnTheBaptist"})
   })
 
+  it("Saints Pierre et Paul le 29 juin 2020", () => {
+    expect(liturgicalCalendar(DateTime.fromFormat('29062020', 'ddMMyyyy'), 'france')).toMatchObject({key: "saintsPeterAndPaul"})
+  })
+
+  it("Christ Roi le 22 novembre 2020", () => {
+    expect(liturgicalCalendar(DateTime.fromFormat('22112020', 'ddMMyyyy'), 'france')).toMatchObject({key: "christKingOfTheUniverse"})
+  })
+
   describe("Propre pour la Belgique", () => {
 
     it("Sainte Julienne du Mont-Cornillon le 7 août 2021", () => {
@@ -246,19 +254,3 @@ describe("Liturgical calendar", () => {
   })
 
 })
-
-
-/*
-
-  it("", () => {
-    expect(liturgicalCalendar(DateTime.fromFormat('08042020', 'ddMMyyyy'), 'france')).toMatchObject({key: ""})
-  })
-
-*/
-
-
-
-
-
-
-

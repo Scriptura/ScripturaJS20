@@ -124,6 +124,8 @@ const liturgicalCalendar = (date = currentDate, country = 'france') => {
   if (holyFamily.hasSame(date, 'day')) data.key = "holyFamily", data.name = "La Sainte Famille", data.color = ["white"], data.grade = 2, data.rank = 5
   if (epiphany.hasSame(date, 'day')) data.key = "epiphany", data.name = "Épiphanie du Seigneur", data.color = ["white"], data.grade = 1, data.rank = 2
   if (baptismOfTheLord.hasSame(date, 'day')) data.key = "baptismOfTheLord", data.name = "Le Baptême du Seigneur", data.color = ["white"], data.grade = 2, data.rank = 5
+  if (saintJoseph.hasSame(date, 'day')) data.key = "saintJoseph", data.name = "Saint Joseph, chaste Époux de la Bienheureuse Vierge Marie", data.color = ["white"], data.grade = 1, data.rank = 3
+  if (annunciation.hasSame(date, 'day')) data.key = "annunciation", data.name = "Annonciation du Seigneur", data.color = ["white"], data.grade = 1, data.rank = 3
   if (ashWednesday.hasSame(date, 'day')) data.key = "ashWednesday", data.name = "Mercredi des Cendres", data.color = ["purple"], data.grade = "", data.rank = 2
   if (firstLentSunday.hasSame(date, 'day')) data.key = "firstLentSunday", data.name = "Premier dimanche de Carême, <em>Invocabit</em>", data.color = ["purple"], data.grade = 1, data.rank = 2
   if (secondLentSunday.hasSame(date, 'day')) data.key = "secondLentSunday", data.name = "Deuxième dimanche de Carême, <em>Reminiscere</em>", data.color = ["purple"], data.grade = 1, data.rank = 2
@@ -151,16 +153,14 @@ const liturgicalCalendar = (date = currentDate, country = 'france') => {
   if (sixSundayEaster.hasSame(date, 'day')) data.key = "sixSundayEaster", data.name = "Sixième dimanche du Temps Pascal", data.color = ["white"], data.grade = 1, data.rank = 2
   if (ascension.hasSame(date, 'day')) data.key = "ascension", data.name = "Ascension", data.color = ["white"], data.grade = 1, data.rank = 2
   if (pentecost.hasSame(date, 'day')) data.key = "pentecost", data.name = "Pentecôte", data.color = ["white"], data.grade = 1, data.rank = 2
-  if (maryMotherOfTheChurch.hasSame(date, 'day')) data.key = "maryMotherOfTheChurch", data.name = "Bienheureuse Vierge Marie, Mère de l'Église", data.color = ["white"], data.grade = 3, data.rank = 10 // 14
+  if (maryMotherOfTheChurch.hasSame(date, 'day')) data.key = "maryMotherOfTheChurch", data.name = "Bienheureuse Vierge Marie, Mère de l'Église", data.color = ["white"], data.grade = 3, data.rank = 10
   if (holyTrinity.hasSame(date, 'day')) data.key = "holyTrinity", data.name = "Sainte Trinité", data.color = ["white"], data.grade = 1, data.rank = 3
   if (corpusChristi.hasSame(date, 'day')) data.key = "corpusChristi", data.name = "Le Saint Sacrement du Corps et du Sang du Christ (Fête-Dieu)", data.color = ["white"], data.grade = 1, data.rank = 3
   if (sacredHeart.hasSame(date, 'day')) data.key = "sacredHeart", data.name = "Sacré-Cœur de Jésus", data.color = ["white"], data.grade = 1, data.rank = 3
-  if (immaculateHeartOfMary.hasSame(date, 'day')) data.key = "immaculateHeartOfMary", data.name = "Cœur Immaculé de Marie", data.color = ["white"], data.grade = 3, data.rank = 10 // 14
-  if (christKingOfTheUniverse.hasSame(date, 'day')) data.key = "christKingOfTheUniverse", data.name = "Notre Seigneur Jésus Christ Roi de l'Univers", data.color = ["white"], data.grade = 1, data.rank = 3
-  if (saintsPeterAndPaul.hasSame(date, 'day')) data.key = "saintsPeterAndPaul", data.name = "Saints Pierre et Paul, apôtres", data.color = ["red"], data.grade = 1, data.rank = 3
-  if (saintJoseph.hasSame(date, 'day')) data.key = "saintJoseph", data.name = "Saint Joseph, chaste Époux de la Bienheureuse Vierge Marie", data.color = ["white"], data.grade = 1, data.rank = 3
-  if (annunciation.hasSame(date, 'day')) data.key = "annunciation", data.name = "Annonciation du Seigneur", data.color = ["white"], data.grade = 1, data.rank = 3
+  if (immaculateHeartOfMary.hasSame(date, 'day')) data.key = "immaculateHeartOfMary", data.name = "Cœur Immaculé de Marie", data.color = ["white"], data.grade = 3, data.rank = 10
   if (nativityOfSaintJohnTheBaptist.hasSame(date, 'day')) data.key = "nativityOfSaintJohnTheBaptist", data.name = "Nativité de Saint Jean-Baptiste", data.color = ["white"], data.grade = 1, data.rank = 3
+  if (saintsPeterAndPaul.hasSame(date, 'day')) data.key = "saintsPeterAndPaul", data.name = "Saints Pierre et Paul, apôtres", data.color = ["red"], data.grade = 1, data.rank = 3
+  if (christKingOfTheUniverse.hasSame(date, 'day')) data.key = "christKingOfTheUniverse", data.name = "Notre Seigneur Jésus Christ Roi de l'Univers", data.color = ["white"], data.grade = 1, data.rank = 3
 
 
   // Périodes liturgiques, dénominations :
