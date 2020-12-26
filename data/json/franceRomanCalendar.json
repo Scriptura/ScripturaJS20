@@ -17,13 +17,6 @@
     "grade": 4,
     "rank": 12
   },
-  "1402": {
-    "key": "fra1402",
-    "name": "Saint Cyrille, moine et Saint Méthode, évêque",
-    "color": ["white"],
-    "grade": 2,
-    "rank": 8
-  },
   "1802": {
     "key": "fra1802",
     "name": "Sainte Bernadette Soubirous",
@@ -31,23 +24,17 @@
     "grade": 4,
     "rank": 12
   },
-  "2904": {
-    "key": "fra2904",
-    "name": "Sainte Catherine de Sienne, vierge et docteur de l'Église",
-    "color": ["white"],
-    "grade": 2,
-    "rank": 8
-  },
   "1905": {
     "key": "fra1905",
-    "name": "Saint Yves",
+    "name": "Saint Yves, prêtre",
     "color": ["white"],
     "grade": 4,
     "rank": 12
   },
   "3005": {
     "key": "fra3005",
-    "name": "Sainte Jeanne d'Arc",
+    "name": "Sainte Jeanne d'Arc, vierge",
+    "completedName": "patronne secondaire de la France",
     "color": ["red"],
     "grade": 3,
     "rank": 10
@@ -61,31 +48,14 @@
   },
   "0406": {
     "key": "fra0406",
-    "name": "Sainte Clotilde, reine des Francs, épouse de Clovis",
+    "name": "Sainte Clotilde",
     "color": ["white"],
     "grade": 4,
     "rank": 12
   },
-  "1107": {
-    "key": "fra1107",
-    "name": "Saint Benoît, abbé",
-    "color": ["white"],
-    "grade": 2,
-    "rank": 8
-  },
-  "2307": {
-    "key": "fra2307",
-    "name": "Sainte Brigitte de Suède, religieuse",
-    "color": ["white"],
-    "grade": 2,
-    "rank": 8
-  },
-  "0908": {
-    "key": "fra0908",
-    "name": "Sainte Thérèse-Bénédicte de la Croix (Edith Stein), vierge et martyre",
-    "color": ["red"],
-    "grade": 2,
-    "rank": 8
+  "1508": {
+    "key": "fra1508",
+    "completedName": "patronne principale de la France"
   },
   "2608": {
     "key": "fra2608",
@@ -100,5 +70,9 @@
     "color": ["white"],
     "grade": 4,
     "rank": 12
+  },
+  "0110": {
+    "key": "fra0110",
+    "completedName": "patronne secondaire de la France"
   }
 }

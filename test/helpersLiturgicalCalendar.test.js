@@ -193,6 +193,10 @@ describe("Liturgical calendar", () => {
     expect(liturgicalCalendar(DateTime.fromFormat('17052020', 'ddMMyyyy'), 'france')).toMatchObject({key: "sixSundayEaster"})
   })
 
+  it("Ascension le 30 mai 2019, à la place de Sainte Jeanne d'Arc", () => { // completedName vide permet de voir si les infos supplémentaires sur Jeanne d'Arc sont bien effacées.
+    expect(liturgicalCalendar(DateTime.fromFormat('30052019', 'ddMMyyyy'), 'france')).toMatchObject({key: "ascension", completedName: ""})
+  })
+
   it("Ascension le 21 mai 2020", () => {
     expect(liturgicalCalendar(DateTime.fromFormat('21052020', 'ddMMyyyy'), 'france')).toMatchObject({key: "ascension"})
   })
@@ -245,10 +249,35 @@ describe("Liturgical calendar", () => {
     expect(liturgicalCalendar(DateTime.fromFormat('22112020', 'ddMMyyyy'), 'france')).toMatchObject({key: "christKingOfTheUniverse"})
   })
 
+  // La vérification d'une occurance, dont on est sûr qu'elle ne se fera pas écraser par une occurence mobile, permet de vérifier l'appel du propre.
   describe("Propre pour la Belgique", () => {
 
-    it("Sainte Julienne du Mont-Cornillon le 7 août 2021", () => {
-      expect(liturgicalCalendar(DateTime.fromFormat('07082021', 'ddMMyyyy'), 'belgium')).toMatchObject({key: "bel0708"})
+    it("Saint Père Damien le 10 mai 2021", () => {
+      expect(liturgicalCalendar(DateTime.fromFormat('10052021', 'ddMMyyyy'), 'belgium')).toMatchObject({key: "bel1005"})
+    })
+
+    it("Sainte Julienne du Mont-Cornillon le 7 août 2020", () => {
+      expect(liturgicalCalendar(DateTime.fromFormat('07082020', 'ddMMyyyy'), 'belgium')).toMatchObject({key: "bel0708"})
+    })
+
+    it("Marie, Médiatrice de toute grâce le 31 août 2020", () => {
+      expect(liturgicalCalendar(DateTime.fromFormat('31082020', 'ddMMyyyy'), 'belgium')).toMatchObject({key: "bel3108"})
+    })
+
+    it("Saint Hubert, évêque de Liège le 3 novembre 2020", () => {
+      expect(liturgicalCalendar(DateTime.fromFormat('03112020', 'ddMMyyyy'), 'belgium')).toMatchObject({key: "bel0311"})
+    })
+
+  })
+
+  describe("Propre pour la France", () => {
+
+    it("Sainte Jeanne d'Arc le 30 mai 2020", () => {
+      expect(liturgicalCalendar(DateTime.fromFormat('30052020', 'ddMMyyyy'), 'france')).toMatchObject({key: "fra3005"})
+    })
+
+    it("Sainte Thérèse de l'enfant Jésus et de la Sainte Face le 1 octobre 2020", () => {
+      expect(liturgicalCalendar(DateTime.fromFormat('01102020', 'ddMMyyyy'), 'france')).toMatchObject({key: "fra0110"})
     })
 
   })

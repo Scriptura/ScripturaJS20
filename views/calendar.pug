@@ -18,12 +18,12 @@ block main
                 .calendar-color(class='calendar-' + _calendarPeriodColor)
               if _calendarName && _calendarLink[0]
                 a(href=_calendarLink[0])!= _calendarName
-              else if _calendarName
+              else if _calendarName  && !_calendarCompletedName
                 span!= _calendarName
+              else if _calendarName  && _calendarCompletedName
+                span!= _calendarName + ', ' + _calendarCompletedName
               else
                 span no calendar
-            if _calendarCompletedName
-              p!= _calendarCompletedName
             if _calendarGrade || _calendarRank
               p
                 if _calendarGrade && !_calendarRank
