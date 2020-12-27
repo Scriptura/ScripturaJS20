@@ -5,9 +5,8 @@ const vv = require('../settings/variables'),
       { moonPhase } = require('../helpers/astronomy'),
       { DateTime } = require('luxon'),
       currentDate = DateTime.local(),
-      lc = liturgicalCalendar(currentDate, 'france')
-      //lc = liturgicalCalendar(DateTime.fromFormat('07082021', 'ddMMyyyy'), 'belgium') // @note For test.
-      //lc = liturgicalCalendar(DateTime.fromFormat('30052019', 'ddMMyyyy'), 'france')
+      //lc = liturgicalCalendar(currentDate, 'france')
+      lc = liturgicalCalendar(DateTime.fromFormat('29112020', 'ddMMyyyy'), 'france')
 
 const getCalendar = {
   _title: 'Calendar | ' + vv.siteName
@@ -16,12 +15,12 @@ const getCalendar = {
   , _calendarPeriod: lc.period
   , _calendarDate: lc.displayDate
   , _calendarName: lc.name
-  , _calendarCompletedName: lc.completedName
+  , _calendarExtra: lc.extra
   , _calendarPeriodColor: lc.periodColor
-  , _calendarPeriodRank: lc.periodRank
+  , _calendarPeriodPriority: lc.periodPriority
   , _calendarColor: lc.color
-  , _calendarGrade: lc.grade
-  , _calendarRank: lc.rank
+  , _calendarType: lc.type
+  , _calendarPriority: lc.priority
   , _calendarLink: lc.link
   , _moonPhase: moonPhase(currentDate)
 }

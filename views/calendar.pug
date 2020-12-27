@@ -10,28 +10,28 @@ block main
             if _calendarDate
               p= _calendarDate
             p
-              if _calendarColor[0] && _calendarRank < 12
+              if _calendarColor[0] && _calendarPriority < 12
                 .calendar-color(class='calendar-' + _calendarColor[0])
-              if _calendarColor[1] && _calendarRank < 12
+              if _calendarColor[1] && _calendarPriority < 12
                 .calendar-color(class='calendar-' + _calendarColor[1])
-              if _calendarPeriodColor && _calendarRank > 9
+              if _calendarPeriodColor && _calendarPriority > 9
                 .calendar-color(class='calendar-' + _calendarPeriodColor)
               if _calendarName && _calendarLink[0]
                 a(href=_calendarLink[0])!= _calendarName
-              else if _calendarName  && !_calendarCompletedName
+              else if _calendarName  && !_calendarExtra
                 span!= _calendarName
-              else if _calendarName  && _calendarCompletedName
-                span!= _calendarName + ', ' + _calendarCompletedName
+              else if _calendarName  && _calendarExtra
+                span!= _calendarName + ', ' + _calendarExtra
               else
                 span no calendar
-            if _calendarGrade || _calendarRank
+            if _calendarGrade || _calendarPriority
               p
-                if _calendarGrade && !_calendarRank
+                if _calendarGrade && !_calendarPriority
                   em= _calendarGrade
-                if _calendarGrade && _calendarRank
-                  em= _calendarGrade + ', rank ' + _calendarRank
-                if !_calendarGrade && _calendarRank
-                  em= 'Rank ' + _calendarRank
+                if _calendarGrade && _calendarPriority
+                  em= _calendarGrade + ', préséance ' + _calendarPriority
+                if !_calendarGrade && _calendarPriority
+                  em= 'Préséance ' + _calendarPriority
             if _calendarPeriod
               p!= _calendarPeriod
           if (_moonPhase || _moonPhase === 0)

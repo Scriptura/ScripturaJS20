@@ -4,6 +4,7 @@ const { DateTime } = require('luxon'),
 
 /**
  * Source @see https://fr.wikipedia.org/wiki/Calendrier_liturgique_romain
+ * Inspiration @see https://github.com/romcal/romcal
  * Vérification @see https://www.aelf.org/calendrier/romain/2020/01
  * La préséance est déterminée par une valeur rank dans les fichiers .json, mais dans la pratique le calendrier romain sert de base et ses valeurs peuvent être écrasées par les propres qui sont chargés après lui, sans besoin de calcul logiciel.
  * Si une fête fixe du calendrier général devient votive dans le propre d'un pays, le .json du pays concerné mentionnera une valeur vide pour le nom en lieu et place de la date ({"name": ""}), ceci afin de permettre les traitements qui annuleront la fête, la fête votive sera au final déterminée par calcul logiciel.
@@ -194,7 +195,7 @@ describe("Liturgical calendar", () => {
   })
 
   it("Ascension le 30 mai 2019, à la place de Sainte Jeanne d'Arc", () => { // completedName vide permet de voir si les infos supplémentaires sur Jeanne d'Arc sont bien effacées.
-    expect(liturgicalCalendar(DateTime.fromFormat('30052019', 'ddMMyyyy'), 'france')).toMatchObject({key: "ascension", completedName: ""})
+    expect(liturgicalCalendar(DateTime.fromFormat('30052019', 'ddMMyyyy'), 'france')).toMatchObject({key: "ascension", extra: ""})
   })
 
   it("Ascension le 21 mai 2020", () => {
@@ -237,7 +238,7 @@ describe("Liturgical calendar", () => {
     expect(liturgicalCalendar(DateTime.fromFormat('25062057', 'ddMMyyyy'), 'france')).toMatchObject({key: "nativityOfSaintJohnTheBaptist"})
   })
 
-  it("24 juin 2022 jour du Sacré-Coeur, alors Nativité de Saint Jean-Baptiste le 25 juin", () => {
+  it("24 juin 2022 jour du Sacré-Coeur, alors Nativité de Saint Jean-Baptiste le 25 juin, qui prend le pas sur le Cœur Immaculé de Marie", () => {
     expect(liturgicalCalendar(DateTime.fromFormat('25062022', 'ddMMyyyy'), 'france')).toMatchObject({key: "nativityOfSaintJohnTheBaptist"})
   })
 
