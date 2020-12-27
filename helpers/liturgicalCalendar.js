@@ -36,7 +36,7 @@ const liturgicalCalendar = (date = currentDate, country = 'france') => {
         data1 = JSON.parse(fs.readFileSync('./data/json/generalRomanCalendar.json')),
         data2 = JSON.parse(fs.readFileSync('./data/json/europeRomanCalendar.json')),
         data3 = JSON.parse(fs.readFileSync('./data/json/' + country + 'RomanCalendar.json')),
-        dataM = JSON.parse(fs.readFileSync('./data/json/movableFeasts.json')),
+        //dataM = JSON.parse(fs.readFileSync('./data/json/movableFeasts.json')),
         data = {...data1[dayMonth], ...data2[dayMonth], ...data3[dayMonth]},
         // Variables pour les fêtes mobiles :
         ge = easterDate.gregorianEaster(year),
@@ -186,7 +186,7 @@ const liturgicalCalendar = (date = currentDate, country = 'france') => {
   else if (christmastide.contains(date)) data.periodPriority = 13, data.periodColor = "white"
   else if (lent.contains(date)) data.periodPriority = 9, data.periodColor = "purple"
   else if (eastertide.contains(date)) data.periodPriority = 13, data.periodColor = "white"
-  else data.periodColor = "green"
+  else data.periodPriority = 13, data.periodColor = "green"
 
 
   // Si période de carême, mémoires obligatoires rétrogradées en mémoires facultatives pour l'année en cours :
@@ -205,9 +205,8 @@ const liturgicalCalendar = (date = currentDate, country = 'france') => {
   return data
 }
 
-
+/*
 const { numFormat } = require('../helpers/numbers')
-
 const test0 = (() => { // @todo For test.
   for (let i = 1; i < 32; i++) {
     const d = numFormat(i, 2)
@@ -216,7 +215,7 @@ const test0 = (() => { // @todo For test.
     console.log(lc)
   }
 })()
-
+*/
 /*
 const test1 = (() => { // @todo For test.
   const begin = 2010
