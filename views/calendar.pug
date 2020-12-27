@@ -7,33 +7,33 @@ block main
       div
         .card.flex.gap
           div
-            if _calendarDate
-              p= _calendarDate
+            if _calendar.displayDate
+              p= _calendar.displayDate
             p
-              if _calendarColor[0] && _calendarPriority < 12
-                .calendar-color(class='calendar-' + _calendarColor[0])
-              if _calendarColor[1] && _calendarPriority < 12
-                .calendar-color(class='calendar-' + _calendarColor[1])
-              if _calendarPeriodColor && _calendarPriority > 9
-                .calendar-color(class='calendar-' + _calendarPeriodColor)
-              if _calendarName && _calendarLink[0]
-                a(href=_calendarLink[0])!= _calendarName
-              else if _calendarName  && !_calendarExtra
-                span!= _calendarName
-              else if _calendarName  && _calendarExtra
-                span!= _calendarName + ', ' + _calendarExtra
+              if _calendar.color[0] && _calendar.priority < 12
+                .calendar-color(class='calendar-' + _calendar.color[0])
+              if _calendar.color[1] && _calendar.priority < 12
+                .calendar-color(class='calendar-' + _calendar.color[1])
+              if _calendar.periodColor && _calendar.priority > 9
+                .calendar-color(class='calendar-' + _calendar.periodColor)
+              if _calendar.name && _calendar.link[0]
+                a(href=_calendar.link[0])!= _calendar.name
+              else if _calendar.name  && !_calendar.extra
+                span!= _calendar.name
+              else if _calendar.name  && _calendar.extra
+                span!= _calendar.name + ', ' + _calendar.extra
               else
                 span no calendar
-            if _calendarGrade || _calendarPriority
+            if _calendar.grade || _calendar.priority
               p
-                if _calendarGrade && !_calendarPriority
-                  em= _calendarGrade
-                if _calendarGrade && _calendarPriority
-                  em= _calendarGrade + ', préséance ' + _calendarPriority
-                if !_calendarGrade && _calendarPriority
-                  em= 'Préséance ' + _calendarPriority
-            if _calendarPeriod
-              p!= _calendarPeriod
+                if _calendar.grade && !_calendar.priority
+                  em= _calendar.grade
+                if _calendar.grade && _calendar.priority
+                  em= _calendar.grade + ', préséance ' + _calendar.priority
+                if !_calendar.grade && _calendar.priority
+                  em= 'Préséance ' + _calendar.priority
+            if _calendar.period
+              p!= _calendar.period
           if (_moonPhase || _moonPhase === 0)
             .center
               svg.size4.push(role='img' focusable='false')

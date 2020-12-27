@@ -36,8 +36,8 @@ const liturgicalCalendar = (date = currentDate, country = 'france') => {
         data1 = JSON.parse(fs.readFileSync('./data/json/generalRomanCalendar.json')),
         data2 = JSON.parse(fs.readFileSync('./data/json/europeRomanCalendar.json')),
         data3 = JSON.parse(fs.readFileSync('./data/json/' + country + 'RomanCalendar.json')),
-        //dataM = JSON.parse(fs.readFileSync('./data/json/movableFeasts.json')),
         data = {...data1[dayMonth], ...data2[dayMonth], ...data3[dayMonth]},
+        dataM = JSON.parse(fs.readFileSync('./data/json/movableFeasts.json')),
         // Variables pour les fêtes mobiles :
         ge = easterDate.gregorianEaster(year),
         christmas = DateTime.fromFormat('2512' + year, 'ddMMyyyy'),
@@ -201,6 +201,7 @@ const liturgicalCalendar = (date = currentDate, country = 'france') => {
 
 
   data.displayDate = `${day}/${month}/${year} {${date.weekday}}` // @todo For test.
+
 
   return data
 }

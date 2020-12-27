@@ -1,5 +1,5 @@
-const { DateTime } = require('luxon'),
-      { liturgicalCalendar } = require('../helpers/liturgicalCalendar')
+const { liturgicalCalendar } = require('../helpers/liturgicalCalendar'),
+      { DateTime } = require('luxon')
 
 
 /**

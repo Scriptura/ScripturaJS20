@@ -8,9 +8,7 @@
 // @returns {Date} computus
 // @example const computus = gregorian(1970)
 
-const integerDivision = (dividend, divider) => {
-  return Math.floor(dividend / divider)
-}
+const integerDivision = (dividend, divider) => Math.floor(dividend / divider)
 
 const gregorian = year => {
   const a = year % 19

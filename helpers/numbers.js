@@ -7,9 +7,7 @@
  * @return {string}
  */
 
-const numFormat = (number, figures) => {
-  return new Array(figures - (number + '').length + 1).join('0') + number
-}
+const numFormat = (number, figures) => new Array(figures - (number + '').length + 1).join('0') + number
 
 module.exports = {
   numFormat: numFormat

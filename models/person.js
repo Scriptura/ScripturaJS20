@@ -4,11 +4,7 @@ const db = require('../database/db'),
       { personFormat } = require('../helpers/person')
 
 const getPerson = async id => await db.one('SELECT * FROM public.__person WHERE _id = $1', id)
-  .then(data => {
-    data = personFormat(data, id)
-    //console.log(data)
-    return data
-  })
+  .then(data => personFormat(data, id))
   .catch(error => {
     console.log(error)
     return data
