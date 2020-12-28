@@ -55,6 +55,6 @@ Il existe deux dossiers de fonctions utilitaires à la racine du projet :
 - `helpers/` rassemble les fonctions travaillant sur les données,
 - `middlewares/` rassemble les fonctions modifiant les informations des routes (err, req, res, next).
 
-<img src="public/medias/images/silos/195v.svg" alt="Saint Jean, Beatus de Silos" height="150"/>
+<img src="public/medias/images/Silos195v.svg" alt="Saint Jean, Beatus de Silos" height="150"/>
 
 Bonne exploration !

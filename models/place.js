@@ -6,7 +6,7 @@ const db = require('../database/db'),
 const getPlace = async id => await db.one('SELECT * FROM public.__place WHERE _id = $1', id)
   .then(data => placeFormat(data))
   .catch(error => {
-    console.log(error)
+    console.log(error.message || error)
     return data
   })
 

@@ -6,7 +6,7 @@ const db = require('../database/db'),
 const getArticle = async id => await db.one('SELECT * FROM public.__post WHERE _id = $1', id)
   .then(data => articleFormat(data))
   .catch(error => {
-    console.log(error)
+    console.log(error.message || error)
     return data
   })
 

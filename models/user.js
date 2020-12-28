@@ -6,18 +6,18 @@ const db = require('../database/db'),
 const getUser = async username => await db.one('SELECT * FROM public.__user WHERE _username = $1', username)
   .then(data => userFormat(data))
   .catch(error => {
-    console.log(error)
+    console.log(error.message || error)
     return data
   })
 
   const postUser = async (username, password) => await db.one('INSERT INTO public.__user (_username, _password) VALUES ($1, $2) RETURNING _username', [username, password])
   .then(data => data)
   .catch(error => {
-    console.log(error)
+    console.log(error.message || error)
     return data
   })
 
 module.exports = {
-  getUser: getUser
-  , postUser: postUser
+  getUser: getUser,
+  postUser: postUser
 }
