@@ -194,8 +194,8 @@ describe("Liturgical calendar", () => {
     expect(liturgicalCalendar(DateTime.fromFormat('17052020', 'ddMMyyyy'), 'france')).toMatchObject({key: "sixSundayEaster"})
   })
 
-  it("Ascension le 30 mai 2019, à la place de Sainte Jeanne d'Arc", () => { // completedName vide permet de voir si les infos supplémentaires sur Jeanne d'Arc sont bien effacées.
-    expect(liturgicalCalendar(DateTime.fromFormat('30052019', 'ddMMyyyy'), 'france')).toMatchObject({key: "ascension", extra: ""})
+  it("Ascension le 30 mai 2019, à la place de Sainte Jeanne d'Arc", () => {
+    expect(liturgicalCalendar(DateTime.fromFormat('30052019', 'ddMMyyyy'), 'france')).toMatchObject({key: "ascension"})
   })
 
   it("Ascension le 21 mai 2020", () => {

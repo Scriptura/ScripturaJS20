@@ -3,7 +3,7 @@ const vv = require('../settings/variables'),
 
 describe("Helpers article", () => {
 
-  it("a test...", () => {
+  it("a test...", () => { // @todo En dev...
     //const data = {_name: 'Article title'}
     //expect(articleFormat(data)).toBe('Henri de Lubac')
   })

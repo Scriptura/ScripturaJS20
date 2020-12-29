@@ -5,8 +5,8 @@ const vv = require('../settings/variables'),
       { moonPhase } = require('../helpers/astronomy'),
       { DateTime } = require('luxon'),
       currentDate = DateTime.local(),
-      _calendar = liturgicalCalendar(currentDate, 'france')
-      //_calendar = liturgicalCalendar(DateTime.fromFormat('14112020', 'ddMMyyyy'), 'france')
+      //_calendar = liturgicalCalendar(currentDate, 'france')
+      _calendar = liturgicalCalendar(DateTime.fromFormat('09092020', 'ddMMyyyy'), 'france')
 
 const getCalendar = {
   _title: 'Calendar | ' + vv.siteName

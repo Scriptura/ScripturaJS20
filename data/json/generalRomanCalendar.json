@@ -524,13 +524,6 @@
     "type": 3,
     "priority": 10
   },
-  "2906": {
-    "key": "general2906",
-    "name": "Saints Pierre et Paul, apôtres",
-    "color": ["red"],
-    "type": 1,
-    "priority": 3
-  },
   "3006": {
     "key": "general3006",
     "name": "Premiers martyrs de l'Église de Rome",

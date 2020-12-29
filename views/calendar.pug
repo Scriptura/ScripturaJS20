@@ -7,14 +7,14 @@ block main
       div
         .card.flex.gap
           div
-            if _calendar.displayDate
-              p= _calendar.displayDate
+            if _calendar.date
+              p= _calendar.date
             p
               if _calendar.color[0] && _calendar.priority < 12
                 .calendar-color(class='calendar-' + _calendar.color[0])
               if _calendar.color[1] && _calendar.priority < 12
                 .calendar-color(class='calendar-' + _calendar.color[1])
-              if _calendar.periodColor && _calendar.priority > 9
+              if _calendar.p.color && _calendar.priority > 9
                 .calendar-color(class='calendar-' + _calendar.periodColor)
               if _calendar.name && _calendar.link[0]
                 a(href=_calendar.link[0])!= _calendar.name
@@ -24,16 +24,16 @@ block main
                 span!= _calendar.name + ', ' + _calendar.extra
               else
                 span no calendar
-            if _calendar.grade || _calendar.priority
+            if _calendar.type || _calendar.priority
               p
-                if _calendar.grade && !_calendar.priority
-                  em= _calendar.grade
-                if _calendar.grade && _calendar.priority
-                  em= _calendar.grade + ', préséance ' + _calendar.priority
-                if !_calendar.grade && _calendar.priority
+                if _calendar.type && !_calendar.priority
+                  em= _calendar.type
+                if _calendar.type && _calendar.priority
+                  em= _calendar.type + ', préséance ' + _calendar.priority
+                if !_calendar.type && _calendar.priority
                   em= 'Préséance ' + _calendar.priority
-            if _calendar.period
-              p!= _calendar.period
+            if _calendar.p.name
+              p!= _calendar.p.name
           if (_moonPhase || _moonPhase === 0)
             .center
               svg.size4.push(role='img' focusable='false')

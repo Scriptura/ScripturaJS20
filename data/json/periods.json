@@ -1,0 +1,9 @@
+{
+  "firstAdventSunday": {
+    "key": "firstAdventSunday",
+    "name": "Premier dimanche de l'Avent, <em>Levavi</em>",
+    "color": ["purple"],
+    "type": 1,
+    "priority": 2
+  }
+}
