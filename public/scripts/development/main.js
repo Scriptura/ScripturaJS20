@@ -268,7 +268,7 @@ const scrollToTop = (() => {
 // @see https://jqueryui.com/accordion/
 // @see http://accessibility.athena-ict.com/aria/examples/tabpanel2.shtml
 
-const accordion = () => {
+const accordion = (() => {
   const transformationOfAccordions = (() => {
     const accordions = document.querySelectorAll('.accordion')
     for (const accordion of accordions) {
@@ -363,7 +363,7 @@ const accordion = () => {
       }
     }
   }
-}
+})()
 
 
 // -----------------------------------------------------------------------------
@@ -507,12 +507,31 @@ const lineMarks = (el => {
 
 
 // -----------------------------------------------------------------------------
+// @section     Postponed footnotes
+// @description Report des notes de bas de page au côté du texte
+// -----------------------------------------------------------------------------
+/*
+const footnotes = (() => {
+  const notes = document.querySelectorAll('.footnotes > *')
+  let id = 1
+  for (const note of notes) {
+    const a = document.querySelector('#r' + id)
+    const clone = note.cloneNode(true)
+    clone.classList.add('note')
+    a.appendChild(clone)
+    //a.insertAdjacentHTML('afterEnd', clone)
+    id++
+  }
+})()
+*/
+
+// -----------------------------------------------------------------------------
 // @section     Window onload
 // @description Scripts lancés lorsque le chargement de la page est terminé
 // -----------------------------------------------------------------------------
 
-window.onload = () => {
-  accordion()
+//window.onload = () => {
+  //accordion()
   //jsDetect()
   //touchDetect()
-}
+//}
