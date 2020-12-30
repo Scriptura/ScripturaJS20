@@ -105,7 +105,7 @@ const liturgicalCalendar = (date = currentDate, country = 'france') => {
         nativityOfSaintJohnTheBaptist = (corpusChristi.toFormat('ddMM') === '2406' || sacredHeart.toFormat('ddMM') === '2406') ? DateTime.fromFormat('2506' + year, 'ddMMyyyy') : DateTime.fromFormat('2406' + year, 'ddMMyyyy')
 
 
-  data.p = {} //...dataP
+  data.p = {}
   data.f = {...dataF1[dayMonth], ...dataF2[dayMonth], ...dataF3[dayMonth]}
   data.m = {}
 
@@ -173,6 +173,21 @@ const liturgicalCalendar = (date = currentDate, country = 'france') => {
   if (christKingOfTheUniverse.hasSame(date, 'day')) data.m = dataM.christKingOfTheUniverse
 
 
+  /*
+  // Périodes liturgiques :
+  if (advent.contains(date)) data.p = dataP.advent
+  else if (advent17_24.contains(date)) data.p = dataP.advent17_24
+  else if (christmastide.contains(date)) data.p = dataP.christmastide
+  else if (octaveOfChristmas.contains(date)) data.p = dataP.octaveOfChristmas
+  else if (epiphanyTide.contains(date)) data.p = dataP.epiphanyTide
+  else if (lent.contains(date)) data.p = dataP.lent
+  else if (holyWeek.contains(date)) data.p = dataP.holyWeek
+  else if (easterTriduum.contains(date)) data.p = dataP.easterTriduum
+  else if (octaveOfEaster.contains(date)) data.p = dataP.octaveOfEaster
+  else if (eastertide.contains(date)) data.p = dataP.eastertide
+  else data.p = dataP.ordinaryTime
+  */
+
   // Périodes liturgiques, dénominations :
   if (advent.contains(date)) data.p.name = "Temps de l'Avent"
   else if (octaveOfChristmas.contains(date)) data.p.name = "Octave de la Nativité du Seigneur"
@@ -196,13 +211,6 @@ const liturgicalCalendar = (date = currentDate, country = 'france') => {
   else data.p.priority = 13, data.p.color = ["green"]
 
 
-  // Traducion des degrés de fête en language humain
-  if (data.type === 1) data.type = "Solennité"
-  else if (data.type === 2) data.type = "Fête"
-  else if (data.type === 3) data.type = "Mémoire obligatoire"
-  else if (data.type === 4) data.type = "Mémoire facultative"
-
-
   // Informations de base pour le calendrier
   data.key = (data.f.priority >= data.m.priority) ? data.m.key : data.f.key
   if (typeof data.key === 'undefined') data.key = 'default' + dayMonth // @todo En test...
@@ -219,6 +227,13 @@ const liturgicalCalendar = (date = currentDate, country = 'france') => {
   data.priority = Math.min(...arrayPriority)
   data.date = `${day}/${month}/${year}`
   data.weekday = date.weekday
+
+
+  // Traducion des degrés de fête en language humain
+  if (data.type === 1) data.type = "Solennité"
+  else if (data.type === 2) data.type = "Fête"
+  else if (data.type === 3) data.type = "Mémoire obligatoire"
+  else if (data.type === 4) data.type = "Mémoire facultative"
 
 
   return data

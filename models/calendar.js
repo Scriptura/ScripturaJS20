@@ -6,7 +6,7 @@ const vv = require('../settings/variables'),
       { DateTime } = require('luxon'),
       currentDate = DateTime.local(),
       _calendar = liturgicalCalendar(currentDate, 'france')
-      //_calendar = liturgicalCalendar(DateTime.fromFormat('08122020', 'ddMMyyyy'), 'france')
+      //_calendar = liturgicalCalendar(DateTime.fromFormat('26042020', 'ddMMyyyy'), 'france')
 
 const getCalendar = {
   _title: 'Calendar | ' + vv.siteName
