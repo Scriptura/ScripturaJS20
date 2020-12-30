@@ -34,9 +34,10 @@ const liturgicalCalendar = (date = currentDate, country = 'france') => {
         dayMonth = day + month,
         // Chargement des .json et fusion des données :
         data = {},
-        data1 = JSON.parse(fs.readFileSync('./data/json/generalRomanCalendar.json')),
-        data2 = JSON.parse(fs.readFileSync('./data/json/europeRomanCalendar.json')),
-        data3 = JSON.parse(fs.readFileSync('./data/json/' + country + 'RomanCalendar.json')),
+        dataP = JSON.parse(fs.readFileSync('./data/json/periods.json')),
+        dataF1 = JSON.parse(fs.readFileSync('./data/json/generalRomanCalendar.json')),
+        dataF2 = JSON.parse(fs.readFileSync('./data/json/europeRomanCalendar.json')),
+        dataF3 = JSON.parse(fs.readFileSync('./data/json/' + country + 'RomanCalendar.json')),
         dataM = JSON.parse(fs.readFileSync('./data/json/movableFeasts.json')),
         // Variables pour les fêtes mobiles :
         ge = easterDate.gregorianEaster(year),
@@ -104,9 +105,9 @@ const liturgicalCalendar = (date = currentDate, country = 'france') => {
         nativityOfSaintJohnTheBaptist = (corpusChristi.toFormat('ddMM') === '2406' || sacredHeart.toFormat('ddMM') === '2406') ? DateTime.fromFormat('2506' + year, 'ddMMyyyy') : DateTime.fromFormat('2406' + year, 'ddMMyyyy')
 
 
-  data.f = {...data1[dayMonth], ...data2[dayMonth], ...data3[dayMonth]}
+  data.p = {} //...dataP
+  data.f = {...dataF1[dayMonth], ...dataF2[dayMonth], ...dataF3[dayMonth]}
   data.m = {}
-  data.p = {}
 
 
   // Valeurs par défaut pour les variables incontournables si pas de célébration fixe proposée ou si valeur name vide dans les .json :
@@ -186,13 +187,13 @@ const liturgicalCalendar = (date = currentDate, country = 'france') => {
 
 
   // Périodes liturgiques, priorités et couleurs :
-  if (advent17_24.contains(date)) data.p.priority = 9, data.p.color = "purple"
-  else if (advent.contains(date)) data.p.priority = 13, data.p.color = "purple"
-  else if (octaveOfChristmas.contains(date)) data.p.priority = 9, data.p.color = "white"
-  else if (christmastide.contains(date)) data.p.priority = 13, data.p.color = "white"
-  else if (lent.contains(date)) data.p.priority = 9, data.p.color = "purple"
-  else if (eastertide.contains(date)) data.p.priority = 13, data.p.color = "white"
-  else data.p.priority = 13, data.p.color = "green"
+  if (advent17_24.contains(date)) data.p.priority = 9, data.p.color = ["purple"]
+  else if (advent.contains(date)) data.p.priority = 13, data.p.color = ["purple"]
+  else if (octaveOfChristmas.contains(date)) data.p.priority = 9, data.p.color = ["white"]
+  else if (christmastide.contains(date)) data.p.priority = 13, data.p.color = ["white"]
+  else if (lent.contains(date)) data.p.priority = 9, data.p.color = ["purple"]
+  else if (eastertide.contains(date)) data.p.priority = 13, data.p.color = ["white"]
+  else data.p.priority = 13, data.p.color = ["green"]
 
 
   // Traducion des degrés de fête en language humain
@@ -211,9 +212,11 @@ const liturgicalCalendar = (date = currentDate, country = 'france') => {
   if (typeof data.link === 'undefined') data.link = ''
   data.extra = (data.f.priority >= data.m.priority) ? data.m.extra : data.f.extra
   if (typeof data.extra === 'undefined') data.extra = ''
-  data.color = [data.p.color, data.f.color].filter(x => x !== null).filter(x => x !== '') // @todo Ne fonctionne pas, à revoir...
-  const mPriority = (typeof data.m.priority === 'undefined') ? 13 : data.m.priority // @todo Cuisine interne évitant de faire bugger Math.min() avec une valeur nulle
-  data.priority = Math.min(data.f.priority, mPriority, data.p.priority)
+  data.color = [...data.p.color.concat(data.m.color).concat(data.f.color)].filter(Boolean)
+  data.type = (data.f.priority >= data.m.priority) ? data.m.type : data.f.type
+  if (typeof data.type === 'undefined') data.type = ''
+  const arrayPriority = [data.f.priority, data.m.priority, data.p.priority].filter(Boolean)
+  data.priority = Math.min(...arrayPriority)
   data.date = `${day}/${month}/${year}`
   data.weekday = date.weekday
 
@@ -232,7 +235,7 @@ const test0 = (() => { // @todo For test.
   }
 })()
 */
-
+/*
 const test1 = (() => { // @todo For test.
   const begin = 2010
   const end = 2030
@@ -242,6 +245,10 @@ const test1 = (() => { // @todo For test.
     console.log(lc)
   }
 })()
-
+*/
+/*
+const lc = liturgicalCalendar(DateTime.fromFormat('30122020', 'ddMMyyyy'), 'france')
+console.log(lc)
+*/
 
 module.exports = { liturgicalCalendar: liturgicalCalendar }
