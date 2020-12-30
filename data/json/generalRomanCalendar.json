@@ -21,7 +21,7 @@
     "priority": 10
   },
   "0601": {
-    "key": "general0601",
+    "key": "epiphany",
     "name": "L'Épiphanie du Seigneur",
     "color": ["white"],
     "type": 1,
@@ -427,7 +427,7 @@
     "priority": 12
   },
   "3105": {
-    "key": "general3105",
+    "key": "visitation",
     "name": "Visitation de la Vierge Marie",
     "color": ["white"],
     "type": 2,
@@ -700,7 +700,7 @@
     "priority": 12
   },
   "0608": {
-    "key": "general0608",
+    "key": "transfiguration",
     "name": "Transfiguration du Seigneur",
     "color": ["white"],
     "type": 2,
@@ -763,7 +763,7 @@
     "priority": 10
   },
   "1508": {
-    "key": "general1508",
+    "key": "assumption",
     "name": "Assomption de la Bienheureuse Vierge Marie",
     "color": ["white"],
     "type": 2,
@@ -1331,7 +1331,7 @@
     "priority": 7
   },
   "2812": {
-    "key": "general2812",
+    "key": "holyInnocents",
     "name": "Les Saints Innocents, martyrs",
     "color": ["red"],
     "type": 2,

@@ -202,7 +202,11 @@ describe("Liturgical calendar", () => {
     expect(liturgicalCalendar(DateTime.fromFormat('21052020', 'ddMMyyyy'), 'france')).toMatchObject({key: "ascension"})
   })
 
-  it("Pentecôte le 31 mai 2020", () => {
+  it("Visitation de la Vierge Marie le 31 mai 2019", () => {
+    expect(liturgicalCalendar(DateTime.fromFormat('31052019', 'ddMMyyyy'), 'france')).toMatchObject({key: "visitation"})
+  })
+
+  it("Pentecôte le 31 mai 2020, remplace la fête de la Visitation qui n'a pas lieu cette année-là", () => {
     expect(liturgicalCalendar(DateTime.fromFormat('31052020', 'ddMMyyyy'), 'france')).toMatchObject({key: "pentecost"})
   })
 

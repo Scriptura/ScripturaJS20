@@ -10,12 +10,10 @@ block main
             if _calendar.date
               p= _calendar.date
             p
-              if _calendar.color[0] && _calendar.priority < 12
+              if _calendar.color[0]
                 .calendar-color(class='calendar-' + _calendar.color[0])
-              if _calendar.color[1] && _calendar.priority < 12
+              if _calendar.color[1]
                 .calendar-color(class='calendar-' + _calendar.color[1])
-              if _calendar.p.color && _calendar.priority > 9
-                .calendar-color(class='calendar-' + _calendar.periodColor)
               if _calendar.name && _calendar.link[0]
                 a(href=_calendar.link[0])!= _calendar.name
               else if _calendar.name  && !_calendar.extra

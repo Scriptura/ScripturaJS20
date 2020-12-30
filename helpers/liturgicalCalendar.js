@@ -215,7 +215,7 @@ const liturgicalCalendar = (date = currentDate, country = 'france') => {
   if (typeof data.link === 'undefined') data.link = ''
   data.extra = (data.f.priority >= data.m.priority) ? data.m.extra : data.f.extra
   if (typeof data.extra === 'undefined') data.extra = ''
-  data.color = [data.p.color, data.f.color] //.filter(el => el != null)
+  data.color = [data.p.color, data.f.color].filter(x => x !== null) // @todo Ne fonctionne pas, à revoir...
   const mPriority = (typeof data.m.priority === 'undefined') ? 13 : data.m.priority // @todo Cuisine interne évitant de faire bugger Math.min() avec une valeur nulle
   data.priority = Math.min(data.f.priority, mPriority, data.p.priority)
   data.date = `${day}/${month}/${year}`
