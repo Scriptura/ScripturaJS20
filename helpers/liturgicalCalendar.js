@@ -112,10 +112,6 @@ const liturgicalCalendar = (date = currentDate, country = 'france') => {
   // Valeurs par défaut pour les variables incontournables si pas de célébration fixe proposée ou si valeur name vide dans les .json :
   // 1. La valeur name peut-être intentionnellement vide dans un .json pour effacer une date du calendrier général ou d'un propre continental.
   if (typeof data.f.name === 'undefined' || data.f.name === '') data.f.name = "De la férie" // 1
-  if (typeof data.f.extra === 'undefined') data.f.extra = ''
-  if (typeof data.f.color === 'undefined') data.f.color = []
-  if (typeof data.f.link === 'undefined') data.f.link = []
-  if (typeof data.f.type === 'undefined') data.f.type = ''
   if (typeof data.f.priority === 'undefined') data.f.priority = 13
 
 
@@ -215,7 +211,7 @@ const liturgicalCalendar = (date = currentDate, country = 'france') => {
   if (typeof data.link === 'undefined') data.link = ''
   data.extra = (data.f.priority >= data.m.priority) ? data.m.extra : data.f.extra
   if (typeof data.extra === 'undefined') data.extra = ''
-  data.color = [data.p.color, data.f.color].filter(x => x !== null) // @todo Ne fonctionne pas, à revoir...
+  data.color = [data.p.color, data.f.color].filter(x => x !== null).filter(x => x !== '') // @todo Ne fonctionne pas, à revoir...
   const mPriority = (typeof data.m.priority === 'undefined') ? 13 : data.m.priority // @todo Cuisine interne évitant de faire bugger Math.min() avec une valeur nulle
   data.priority = Math.min(data.f.priority, mPriority, data.p.priority)
   data.date = `${day}/${month}/${year}`
@@ -236,16 +232,16 @@ const test0 = (() => { // @todo For test.
   }
 })()
 */
-/*
+
 const test1 = (() => { // @todo For test.
   const begin = 2010
   const end = 2030
   for (let i = begin; i <= end; i++) {
-    const lc = liturgicalCalendar(DateTime.fromFormat('2003' + i, 'ddMMyyyy'), 'france')
+    const lc = liturgicalCalendar(DateTime.fromFormat('0812' + i, 'ddMMyyyy'), 'france')
     console.log(i)
     console.log(lc)
   }
 })()
-*/
+
 
 module.exports = { liturgicalCalendar: liturgicalCalendar }
