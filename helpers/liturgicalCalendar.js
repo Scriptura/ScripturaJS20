@@ -205,7 +205,7 @@ const liturgicalCalendar = (date = currentDate, country = 'france') => {
 
   // Informations de base pour le calendrier
   data.key = (data.f.priority >= data.m.priority) ? data.m.key : data.f.key
-  if (typeof data.key === 'undefined') data.key = dayMonth // @todo En test...
+  if (typeof data.key === 'undefined') data.key = 'default' + dayMonth // @todo En test...
   data.name = (data.f.priority >= data.m.priority) ? data.m.name : data.f.name
   if (typeof data.name === 'undefined') data.name = ''
   data.link = (data.f.priority >= data.m.priority) ? data.m.link : data.f.link
@@ -225,12 +225,13 @@ const liturgicalCalendar = (date = currentDate, country = 'france') => {
 }
 
 /*
-const { numFormat } = require('../helpers/numbers')
 const test0 = (() => { // @todo For test.
+  const { numFormat } = require('../helpers/numbers')
+  const dateTest = DateTime.fromFormat('01122021', 'ddMMyyyy')
   for (let i = 1; i < 32; i++) {
     const d = numFormat(i, 2)
     //console.log(d)
-    const lc = liturgicalCalendar(DateTime.fromFormat(d + '122020', 'ddMMyyyy'))
+    const lc = liturgicalCalendar(dateTest.plus({days: i}))
     console.log(lc)
   }
 })()
