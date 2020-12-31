@@ -14,11 +14,10 @@ block main
                 .calendar-color(class='calendar-' + _calendar.color[0])
               if _calendar.color[1] && _calendar.color[1] !== _calendar.color[0]
                 .calendar-color(class='calendar-' + _calendar.color[1])
-              - var display = [_calendar.name, _calendar.extra.toLocaleLowerCase()].filter(Boolean).join(', ')
               if _calendar.name && _calendar.link[0]
-                a(href=_calendar.link[0])!= display
+                a(href=_calendar.link[0])!= _calendar.name
               else if _calendar.name
-                span!= display
+                span!= _calendar.name
               else
                 span no calendar
             if _calendar.type || _calendar.priority

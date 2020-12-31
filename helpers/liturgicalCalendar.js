@@ -3,7 +3,8 @@
 const fs = require('fs'),
       { DateTime, Interval } = require('luxon'),
       easterDate = require('date-easter'),
-      currentDate = DateTime.local()
+      currentDate = DateTime.local(),
+      { lowercaseToFirstLetter } = require('./strings')
 
 
 /**
@@ -35,6 +36,7 @@ const liturgicalCalendar = (date = currentDate, country = 'france') => {
         // Chargement des .json et fusion des données :
         data = {},
         dataP = JSON.parse(fs.readFileSync('./data/json/periods.json')),
+        dataSP = JSON.parse(fs.readFileSync('./data/json/subPeriods.json')),
         dataF1 = JSON.parse(fs.readFileSync('./data/json/generalRomanCalendar.json')),
         dataF2 = JSON.parse(fs.readFileSync('./data/json/europeRomanCalendar.json')),
         dataF3 = JSON.parse(fs.readFileSync('./data/json/' + country + 'RomanCalendar.json')),
@@ -106,6 +108,7 @@ const liturgicalCalendar = (date = currentDate, country = 'france') => {
 
 
   data.p = {}
+  //data.s = {}
   data.f = {...dataF1[dayMonth], ...dataF2[dayMonth], ...dataF3[dayMonth]}
   data.m = {}
 
@@ -173,59 +176,48 @@ const liturgicalCalendar = (date = currentDate, country = 'france') => {
   if (christKingOfTheUniverse.hasSame(date, 'day')) data.m = dataM.christKingOfTheUniverse
 
 
-  /*
   // Périodes liturgiques :
   if (advent.contains(date)) data.p = dataP.advent
-  else if (advent17_24.contains(date)) data.p = dataP.advent17_24
   else if (christmastide.contains(date)) data.p = dataP.christmastide
-  else if (octaveOfChristmas.contains(date)) data.p = dataP.octaveOfChristmas
-  else if (epiphanyTide.contains(date)) data.p = dataP.epiphanyTide
   else if (lent.contains(date)) data.p = dataP.lent
-  else if (holyWeek.contains(date)) data.p = dataP.holyWeek
-  else if (easterTriduum.contains(date)) data.p = dataP.easterTriduum
-  else if (octaveOfEaster.contains(date)) data.p = dataP.octaveOfEaster
   else if (eastertide.contains(date)) data.p = dataP.eastertide
   else data.p = dataP.ordinaryTime
-  */
-
-  // Périodes liturgiques, dénominations :
-  if (advent.contains(date)) data.p.name = "Temps de l'Avent"
-  else if (octaveOfChristmas.contains(date)) data.p.name = "Octave de la Nativité du Seigneur"
-  else if (epiphanyTide.contains(date)) data.p.name = "Après l'Épiphanie"
-  else if (christmastide.contains(date)) data.p.name = "Temps de Noël"
-  else if (easterTriduum.contains(date)) data.p.name = "Triduum pascal"
-  else if (holyWeek.contains(date)) data.p.name = "Semaine Sainte"
-  else if (lent.contains(date)) data.p.name = "Carême"
-  else if (octaveOfEaster.contains(date)) data.p.name = "Octave de Pâques"
-  else if (eastertide.contains(date)) data.p.name = "Temps Pascal"
-  else data.p.name = "Temps ordinaire"
 
 
-  // Périodes liturgiques, priorités et couleurs :
-  if (advent17_24.contains(date)) data.p.priority = 9, data.p.color = ["purple"]
-  else if (advent.contains(date)) data.p.priority = 13, data.p.color = ["purple"]
-  else if (octaveOfChristmas.contains(date)) data.p.priority = 9, data.p.color = ["white"]
-  else if (christmastide.contains(date)) data.p.priority = 13, data.p.color = ["white"]
-  else if (lent.contains(date)) data.p.priority = 9, data.p.color = ["purple"]
-  else if (eastertide.contains(date)) data.p.priority = 13, data.p.color = ["white"]
-  else data.p.priority = 13, data.p.color = ["green"]
+  // Sous périodes liturgiques :
+  if (advent17_24.contains(date)) data.p.priority = dataSP.advent17_24.priority
+  if (octaveOfChristmas.contains(date)) data.p.name = dataSP.octaveOfChristmas.name, data.p.subKey = dataSP.octaveOfChristmas.key
+  if (epiphanyTide.contains(date)) data.p.name = dataSP.epiphanyTide.name, data.p.subKey = dataSP.epiphanyTide.key
+  if (holyWeek.contains(date)) data.p.name = dataSP.holyWeek.name, data.p.subKey = dataSP.holyWeek.key
+  if (easterTriduum.contains(date)) data.p.name = dataSP.easterTriduum.name, data.p.subKey = dataSP.easterTriduum.key
+  if (octaveOfEaster.contains(date)) data.p.name = dataSP.octaveOfEaster.name, data.p.subKey = dataSP.octaveOfEaster.key
 
 
   // Informations de base pour le calendrier
   data.key = (data.f.priority >= data.m.priority) ? data.m.key : data.f.key
   if (typeof data.key === 'undefined') data.key = 'default' + dayMonth // @todo En test...
+
   data.name = (data.f.priority >= data.m.priority) ? data.m.name : data.f.name
   if (typeof data.name === 'undefined') data.name = ''
-  data.link = (data.f.priority >= data.m.priority) ? data.m.link : data.f.link
-  if (typeof data.link === 'undefined') data.link = ''
+
   data.extra = (data.f.priority >= data.m.priority) ? data.m.extra : data.f.extra
   if (typeof data.extra === 'undefined') data.extra = ''
+
+  data.fullName = [data.name, lowercaseToFirstLetter(data.extra)].filter(Boolean).join(', ')
+
+  data.link = (data.f.priority >= data.m.priority) ? data.m.link : data.f.link
+  if (typeof data.link === 'undefined') data.link = ''
+
   data.color = [...data.p.color.concat(data.m.color).concat(data.f.color)].filter(Boolean)
+
   data.type = (data.f.priority >= data.m.priority) ? data.m.type : data.f.type
   if (typeof data.type === 'undefined') data.type = ''
+
   const arrayPriority = [data.f.priority, data.m.priority, data.p.priority].filter(Boolean)
   data.priority = Math.min(...arrayPriority)
+
   data.date = `${day}/${month}/${year}`
+
   data.weekday = date.weekday
 
 
@@ -239,10 +231,10 @@ const liturgicalCalendar = (date = currentDate, country = 'france') => {
   return data
 }
 
-/*
+
 const test0 = (() => { // @todo For test.
   const { numFormat } = require('../helpers/numbers')
-  const dateTest = DateTime.fromFormat('01122021', 'ddMMyyyy')
+  const dateTest = DateTime.fromFormat('01122020', 'ddMMyyyy')
   for (let i = 1; i < 32; i++) {
     const d = numFormat(i, 2)
     //console.log(d)
@@ -250,7 +242,7 @@ const test0 = (() => { // @todo For test.
     console.log(lc)
   }
 })()
-*/
+
 /*
 const test1 = (() => { // @todo For test.
   const begin = 2010
