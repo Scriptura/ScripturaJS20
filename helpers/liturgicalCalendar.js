@@ -36,7 +36,6 @@ const liturgicalCalendar = (date = currentDate, country = 'france') => {
         // Chargement des .json et fusion des données :
         data = {},
         dataP = JSON.parse(fs.readFileSync('./data/json/periods.json')),
-        dataSP = JSON.parse(fs.readFileSync('./data/json/subPeriods.json')),
         dataF1 = JSON.parse(fs.readFileSync('./data/json/generalRomanCalendar.json')),
         dataF2 = JSON.parse(fs.readFileSync('./data/json/europeRomanCalendar.json')),
         dataF3 = JSON.parse(fs.readFileSync('./data/json/' + country + 'RomanCalendar.json')),
@@ -108,7 +107,6 @@ const liturgicalCalendar = (date = currentDate, country = 'france') => {
 
 
   data.p = {}
-  //data.s = {}
   data.f = {...dataF1[dayMonth], ...dataF2[dayMonth], ...dataF3[dayMonth]}
   data.m = {}
 
@@ -185,12 +183,12 @@ const liturgicalCalendar = (date = currentDate, country = 'france') => {
 
 
   // Sous périodes liturgiques :
-  if (advent17_24.contains(date)) data.p.priority = dataSP.advent17_24.priority
-  if (octaveOfChristmas.contains(date)) data.p.name = dataSP.octaveOfChristmas.name, data.p.subKey = dataSP.octaveOfChristmas.key
-  if (epiphanyTide.contains(date)) data.p.name = dataSP.epiphanyTide.name, data.p.subKey = dataSP.epiphanyTide.key
-  if (holyWeek.contains(date)) data.p.name = dataSP.holyWeek.name, data.p.subKey = dataSP.holyWeek.key
-  if (easterTriduum.contains(date)) data.p.name = dataSP.easterTriduum.name, data.p.subKey = dataSP.easterTriduum.key
-  if (octaveOfEaster.contains(date)) data.p.name = dataSP.octaveOfEaster.name, data.p.subKey = dataSP.octaveOfEaster.key
+  if (advent17_24.contains(date)) data.p.priority = dataP.sub.advent17_24.priority
+  if (octaveOfChristmas.contains(date)) data.p.name = dataP.sub.octaveOfChristmas.name, data.p.subKey = dataP.sub.octaveOfChristmas.key
+  if (epiphanyTide.contains(date)) data.p.name = dataP.sub.epiphanyTide.name, data.p.subKey = dataP.sub.epiphanyTide.key
+  if (holyWeek.contains(date)) data.p.name = dataP.sub.holyWeek.name, data.p.subKey = dataP.sub.holyWeek.key
+  if (easterTriduum.contains(date)) data.p.name = dataP.sub.easterTriduum.name, data.p.subKey = dataP.sub.easterTriduum.key
+  if (octaveOfEaster.contains(date)) data.p.name = dataP.sub.octaveOfEaster.name, data.p.subKey = dataP.sub.octaveOfEaster.key
 
 
   // Informations de base pour le calendrier
@@ -234,7 +232,7 @@ const liturgicalCalendar = (date = currentDate, country = 'france') => {
 
 const test0 = (() => { // @todo For test.
   const { numFormat } = require('../helpers/numbers')
-  const dateTest = DateTime.fromFormat('01122020', 'ddMMyyyy')
+  const dateTest = DateTime.fromFormat('01012021', 'ddMMyyyy')
   for (let i = 1; i < 32; i++) {
     const d = numFormat(i, 2)
     //console.log(d)
