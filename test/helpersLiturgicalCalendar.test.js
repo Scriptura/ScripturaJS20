@@ -63,7 +63,7 @@ describe("Liturgical calendar", () => {
   })
 
   it("Sainte Marie, Mère de Dieu le 1er janvier 2021", () => {
-    expect(liturgicalCalendar(DateTime.fromFormat('01012021', 'ddMMyyyy'), 'france')).toMatchObject({key: "holyMaryMotherOfGod"})
+    expect(liturgicalCalendar(DateTime.fromFormat('01012021', 'ddMMyyyy'), 'france')).toMatchObject({key: "maryMotherOfGod"})
   })
 
   it("Épiphanie le dimanche après le premier janvier pour la France", () => {
@@ -75,11 +75,11 @@ describe("Liturgical calendar", () => {
   })
 
   it("Fête de St Joseph le 19 mars 2020", () => {
-    expect(liturgicalCalendar(DateTime.fromFormat('19032020', 'ddMMyyyy'), 'france')).toMatchObject({key: "saintJoseph"})
+    expect(liturgicalCalendar(DateTime.fromFormat('19032020', 'ddMMyyyy'), 'france')).toMatchObject({key: "josephHusbandOfMary"})
   })
 
   it("19 mars 2035 en Semaine Sainte, alors fête de St Joseph reportée au samedi avant les Rameaux, le 15 mars", () => {
-    expect(liturgicalCalendar(DateTime.fromFormat('17032035', 'ddMMyyyy'), 'france')).toMatchObject({key: "saintJoseph"})
+    expect(liturgicalCalendar(DateTime.fromFormat('17032035', 'ddMMyyyy'), 'france')).toMatchObject({key: "josephHusbandOfMary"})
   })
 
   it("Annonciation le 25 mars 2021", () => {

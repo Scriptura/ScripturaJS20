@@ -100,7 +100,7 @@ const liturgicalCalendar = (date = currentDate, country = 'france') => {
         march19 = DateTime.fromFormat('1903' + year, 'ddMMyyyy'),
         march19InHolyWeek = holyWeek.contains(march19) ? true : false,
         march19InLentSunday = (lent.contains(date) && march19.weekday === 7) ? true : false,
-        saintJoseph = march19InHolyWeek ? palmSunday.plus({days: -1}) : (march19InLentSunday ? march19.plus({days: 1}) : march19), // 9
+        josephHusbandOfMary = march19InHolyWeek ? palmSunday.plus({days: -1}) : (march19InLentSunday ? march19.plus({days: 1}) : march19), // 9
         march25 = DateTime.fromFormat('2503' + year, 'ddMMyyyy'),
         annunciation = holyWeek.contains(march25) ? divineMercySunday.plus({days: 1}) : (march25.weekday === 7 ? march25.plus({days: 1}) : march25), // 10
         nativityOfSaintJohnTheBaptist = (corpusChristi.toFormat('ddMM') === '2406' || sacredHeart.toFormat('ddMM') === '2406') ? DateTime.fromFormat('2506' + year, 'ddMMyyyy') : DateTime.fromFormat('2406' + year, 'ddMMyyyy')
@@ -135,7 +135,7 @@ const liturgicalCalendar = (date = currentDate, country = 'france') => {
   if (holyFamily.hasSame(date, 'day')) data.m = dataM.holyFamily
   if (epiphany.hasSame(date, 'day')) data.m = dataM.epiphany
   if (baptismOfTheLord.hasSame(date, 'day')) data.m = dataM.baptismOfTheLord
-  if (saintJoseph.hasSame(date, 'day')) data.m = dataM.saintJoseph
+  if (josephHusbandOfMary.hasSame(date, 'day')) data.m = dataM.josephHusbandOfMary
   if (annunciation.hasSame(date, 'day')) data.m = dataM.annunciation
   if (ashWednesday.hasSame(date, 'day')) data.m = dataM.ashWednesday
   if (firstLentSunday.hasSame(date, 'day')) data.m = dataM.firstLentSunday
@@ -184,7 +184,7 @@ const liturgicalCalendar = (date = currentDate, country = 'france') => {
 
   // Sous périodes liturgiques :
   if (advent17_24.contains(date)) data.p.priority = dataP.sub.advent17_24.priority
-  if (octaveOfChristmas.contains(date)) data.p.name = dataP.sub.octaveOfChristmas.name, data.p.subKey = dataP.sub.octaveOfChristmas.key
+  if (octaveOfChristmas.contains(date)) data.p.name = dataP.sub.octaveOfChristmas.name, data.p.subKey = dataP.sub.octaveOfChristmas.key, data.p.priority = dataP.sub.octaveOfChristmas.priority
   if (epiphanyTide.contains(date)) data.p.name = dataP.sub.epiphanyTide.name, data.p.subKey = dataP.sub.epiphanyTide.key
   if (holyWeek.contains(date)) data.p.name = dataP.sub.holyWeek.name, data.p.subKey = dataP.sub.holyWeek.key
   if (easterTriduum.contains(date)) data.p.name = dataP.sub.easterTriduum.name, data.p.subKey = dataP.sub.easterTriduum.key
@@ -229,10 +229,10 @@ const liturgicalCalendar = (date = currentDate, country = 'france') => {
   return data
 }
 
-
+/*
 const test0 = (() => { // @todo For test.
   const { numFormat } = require('../helpers/numbers')
-  const dateTest = DateTime.fromFormat('01012021', 'ddMMyyyy')
+  const dateTest = DateTime.fromFormat('01122020', 'ddMMyyyy')
   for (let i = 1; i < 32; i++) {
     const d = numFormat(i, 2)
     //console.log(d)
@@ -240,7 +240,7 @@ const test0 = (() => { // @todo For test.
     console.log(lc)
   }
 })()
-
+*/
 /*
 const test1 = (() => { // @todo For test.
   const begin = 2010

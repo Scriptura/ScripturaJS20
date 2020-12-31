@@ -1,6 +1,6 @@
 {
   "0101": {
-    "key": "holyMaryMotherOfGod",
+    "key": "maryMotherOfGod",
     "name": "Sainte Marie, Mère de Dieu",
     "color": ["white"],
     "type": 1,
@@ -14,7 +14,7 @@
     "priority": 10
   },
   "0301": {
-    "key": "general0301",
+    "key": "holyNameOfJesus",
     "name": "Saint Nom de Jésus",
     "color": ["white"],
     "type": 4,
@@ -112,7 +112,7 @@
     "priority": 10
   },
   "0202": {
-    "key": "general0202",
+    "key": "presentationOfTheLord",
     "name": "Présentation du Seigneur au Temple",
     "color": ["white"],
     "type": 2,
@@ -154,7 +154,7 @@
     "priority": 10
   },
   "1102": {
-    "key": "general1102",
+    "key": "ourLadyOfLourdes",
     "name": "Notre-Dame de Lourdes",
     "color": ["white"],
     "type": 4,
@@ -182,7 +182,7 @@
     "priority": 12
   },
   "2202": {
-    "key": "general2202",
+    "key": "chairOfSaintPeter",
     "name": "Chaire de Saint Pierre, apôtre",
     "color": ["white"],
     "type": 2,
@@ -308,7 +308,7 @@
     "priority": 12
   },
   "2504": {
-    "key": "general2504",
+    "key": "markTheEvangelist",
     "name": "Saint Marc, évangéliste",
     "color": ["red"],
     "type": 2,
@@ -1100,14 +1100,14 @@
     "priority": 7
   },
   "0111": {
-    "key": "general0111",
+    "key": "allSaints",
     "name": "La Toussaint, fête de tous les saints",
     "color": ["white"],
     "type": 1,
     "priority": 3
   },
   "0211": {
-    "key": "general0211",
+    "key": "allSouls",
     "name": "Commémoration de tous les fidèles défunts",
     "color": ["black"],
     "type": 0,

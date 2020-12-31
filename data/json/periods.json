@@ -27,7 +27,7 @@
     "key": "ordinaryTime",
     "name": "Temps ordinaire",
     "color": ["green"],
-    "priority": 2
+    "priority": 13
   },
   "sub": {
     "advent17_24": {
@@ -44,17 +44,20 @@
       "key": "epiphanyTide",
       "name": "Après l'Épiphanie"
     },
-    "easterTriduum": {
-      "key": "easterTriduum",
-      "name": "Triduum pascal"
-    },
     "holyWeek": {
       "key": "holyWeek",
-      "name": "Semaine Sainte"
+      "name": "Semaine Sainte",
+      "priority": 2
+    },
+    "easterTriduum": {
+      "key": "easterTriduum",
+      "name": "Triduum pascal",
+      "priority": 1
     },
     "octaveOfEaster": {
       "key": "octaveOfEaster",
-      "name": "Octave de Pâques"
+      "name": "Octave de Pâques",
+      "priority": 2
     }
   }
 }
