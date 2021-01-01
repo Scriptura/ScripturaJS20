@@ -235,19 +235,19 @@ describe("Liturgical calendar", () => {
   })
 
   it("Nativité de Saint Jean-Baptiste le 24 juin 2020", () => {
-    expect(liturgicalCalendar(DateTime.fromFormat('24062020', 'ddMMyyyy'), 'france')).toMatchObject({key: "nativityOfSaintJohnTheBaptist"})
+    expect(liturgicalCalendar(DateTime.fromFormat('24062020', 'ddMMyyyy'), 'france')).toMatchObject({key: "nativityOfJohnTheBaptist"})
   })
 
   it("24 juin 2057 jour du Saint-Sacrement, alors Nativité de Saint Jean-Baptiste le 25 juin", () => { // @todo A déterminer...
-    expect(liturgicalCalendar(DateTime.fromFormat('25062057', 'ddMMyyyy'), 'france')).toMatchObject({key: "nativityOfSaintJohnTheBaptist"})
+    expect(liturgicalCalendar(DateTime.fromFormat('25062057', 'ddMMyyyy'), 'france')).toMatchObject({key: "nativityOfJohnTheBaptist"})
   })
 
   it("24 juin 2022 jour du Sacré-Coeur, alors Nativité de Saint Jean-Baptiste le 25 juin, qui prend le pas sur le Cœur Immaculé de Marie", () => {
-    expect(liturgicalCalendar(DateTime.fromFormat('25062022', 'ddMMyyyy'), 'france')).toMatchObject({key: "nativityOfSaintJohnTheBaptist"})
+    expect(liturgicalCalendar(DateTime.fromFormat('25062022', 'ddMMyyyy'), 'france')).toMatchObject({key: "nativityOfJohnTheBaptist"})
   })
 
   it("Saints Pierre et Paul le 29 juin 2020", () => {
-    expect(liturgicalCalendar(DateTime.fromFormat('29062020', 'ddMMyyyy'), 'france')).toMatchObject({key: "saintsPeterAndPaul"})
+    expect(liturgicalCalendar(DateTime.fromFormat('29062020', 'ddMMyyyy'), 'france')).toMatchObject({key: "peterAndPaul"})
   })
 
   it("Christ Roi le 22 novembre 2020", () => {

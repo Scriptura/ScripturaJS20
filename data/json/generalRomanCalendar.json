@@ -77,7 +77,7 @@
     "priority": 10
   },
   "2501": {
-    "key": "general2501",
+    "key": "conversionOfPaulApostle",
     "name": "Conversion de Saint Paul, apôtre",
     "color": ["white"],
     "type": 1,
@@ -182,7 +182,7 @@
     "priority": 12
   },
   "2202": {
-    "key": "chairOfSaintPeter",
+    "key": "chairOfPeterApostle",
     "name": "Chaire de Saint Pierre, apôtre",
     "color": ["white"],
     "type": 2,
@@ -336,7 +336,7 @@
     "priority": 12
   },
   "0105": {
-    "key": "general0105",
+    "key": "josephTheWorker",
     "name": "Saint Joseph artisan",
     "color": ["white"],
     "type": 4,
@@ -350,7 +350,7 @@
     "priority": 10
   },
   "0305": {
-    "key": "general0305",
+    "key": "philipAndJamesApostles",
     "name": "Saints Philippe et Jacques, apôtres",
     "color": ["red"],
     "type": 2,
@@ -371,7 +371,7 @@
     "priority": 12
   },
   "1405": {
-    "key": "general1405",
+    "key": "matthiasApostle",
     "name": "Saint Matthias, apôtres",
     "color": ["red"],
     "type": 2,
@@ -476,7 +476,7 @@
     "priority": 12
   },
   "1106": {
-    "key": "general1106",
+    "key": "barnabasApostle",
     "name": "Saint Barnabé, apôtre",
     "color": ["red"],
     "type": 3,
@@ -532,7 +532,7 @@
     "priority": 12
   },
   "0307": {
-    "key": "general0307",
+    "key": "thomasApostle",
     "name": "Saint Thomas, apôtre",
     "color": ["red"],
     "type": 2,
@@ -637,7 +637,7 @@
     "priority": 12
   },
   "2507": {
-    "key": "general2507",
+    "key": "jamesTheGreatApostle",
     "name": "Saint Jacques le Majeur, apôtre",
     "color": ["red"],
     "type": 2,
@@ -812,7 +812,7 @@
     "priority": 12
   },
   "2408": {
-    "key": "general2408",
+    "key": "bartholomewApostle",
     "name": "Saint Barthélemy, apôtre",
     "color": ["red"],
     "type": 2,
@@ -840,7 +840,7 @@
     "priority": 10
   },
   "2908": {
-    "key": "general2908",
+    "key": "johnTheBaptistMartyr",
     "name": "Décollation de Saint Jean-Baptiste, martyr",
     "color": ["red"],
     "type": 3,
@@ -926,7 +926,7 @@
     "priority": 10
   },
   "2109": {
-    "key": "general2109",
+    "key": "matthewEvangelist",
     "name": "Saint Matthieu, apôtre et évangéliste",
     "color": ["red"],
     "type": 2,
@@ -1058,7 +1058,7 @@
     "priority": 10
   },
   "1810": {
-    "key": "general1810",
+    "key": "lukeTheEvangelist",
     "name": "Saint Luc, évangéliste",
     "color": ["red"],
     "type": 2,
@@ -1093,7 +1093,7 @@
     "priority": 12
   },
   "2810": {
-    "key": "general2810",
+    "key": "simonAndJudeApostles",
     "name": "Saint Simon et Saint Jude, apôtres",
     "color": ["red"],
     "type": 2,
@@ -1184,7 +1184,7 @@
     "priority": 12
   },
   "2111": {
-    "key": "general2111",
+    "key": "presentationOfMary",
     "name": "Présentation de la Bienheureuse Vierge Marie au Temple",
     "color": ["white"],
     "type": 4,
@@ -1219,7 +1219,7 @@
     "priority": 12
   },
   "3011": {
-    "key": "general3011",
+    "key": "andrewApostle",
     "name": "Saint André, le premier apôtre",
     "color": ["red"],
     "type": 2,
@@ -1324,7 +1324,7 @@
     "priority": 7
   },
   "2712": {
-    "key": "general2712",
+    "key": "johnEvangelist",
     "name": "Saint Jean, apôtre et évangéliste",
     "color": ["white"],
     "type": 2,

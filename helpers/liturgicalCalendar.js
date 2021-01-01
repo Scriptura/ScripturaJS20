@@ -96,14 +96,14 @@ const liturgicalCalendar = (date = currentDate, country = 'france') => {
         holyWeek = Interval.fromDateTimes(palmSunday, easter),
         easterTriduum = Interval.fromDateTimes(easter.plus({days: -3}), easter),
         octaveOfEaster = Interval.fromDateTimes(easter, easter.plus({days: 8})),
-        saintsPeterAndPaul = sacredHeart.toFormat('ddMM') === '2906' ? DateTime.fromFormat('3006' + year, 'ddMMyyyy') : DateTime.fromFormat('2906' + year, 'ddMMyyyy'),
+        peterAndPaul = sacredHeart.toFormat('ddMM') === '2906' ? DateTime.fromFormat('3006' + year, 'ddMMyyyy') : DateTime.fromFormat('2906' + year, 'ddMMyyyy'),
         march19 = DateTime.fromFormat('1903' + year, 'ddMMyyyy'),
         march19InHolyWeek = holyWeek.contains(march19) ? true : false,
         march19InLentSunday = (lent.contains(date) && march19.weekday === 7) ? true : false,
         josephHusbandOfMary = march19InHolyWeek ? palmSunday.plus({days: -1}) : (march19InLentSunday ? march19.plus({days: 1}) : march19), // 9
         march25 = DateTime.fromFormat('2503' + year, 'ddMMyyyy'),
         annunciation = holyWeek.contains(march25) ? divineMercySunday.plus({days: 1}) : (march25.weekday === 7 ? march25.plus({days: 1}) : march25), // 10
-        nativityOfSaintJohnTheBaptist = (corpusChristi.toFormat('ddMM') === '2406' || sacredHeart.toFormat('ddMM') === '2406') ? DateTime.fromFormat('2506' + year, 'ddMMyyyy') : DateTime.fromFormat('2406' + year, 'ddMMyyyy')
+        nativityOfJohnTheBaptist = (corpusChristi.toFormat('ddMM') === '2406' || sacredHeart.toFormat('ddMM') === '2406') ? DateTime.fromFormat('2506' + year, 'ddMMyyyy') : DateTime.fromFormat('2406' + year, 'ddMMyyyy')
 
 
   data.p = {}
@@ -169,8 +169,8 @@ const liturgicalCalendar = (date = currentDate, country = 'france') => {
   if (corpusChristi.hasSame(date, 'day')) data.m = dataM.corpusChristi
   if (sacredHeart.hasSame(date, 'day')) data.m = dataM.sacredHeart
   if (immaculateHeartOfMary.hasSame(date, 'day')) data.m = dataM.immaculateHeartOfMary
-  if (nativityOfSaintJohnTheBaptist.hasSame(date, 'day')) data.m = dataM.nativityOfSaintJohnTheBaptist
-  if (saintsPeterAndPaul.hasSame(date, 'day')) data.m = dataM.saintsPeterAndPaul
+  if (nativityOfJohnTheBaptist.hasSame(date, 'day')) data.m = dataM.nativityOfJohnTheBaptist
+  if (peterAndPaul.hasSame(date, 'day')) data.m = dataM.peterAndPaul
   if (christKingOfTheUniverse.hasSame(date, 'day')) data.m = dataM.christKingOfTheUniverse
 
 

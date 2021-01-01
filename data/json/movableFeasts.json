@@ -298,15 +298,15 @@
     "type": 3,
     "priority": 10
   },
-  "nativityOfSaintJohnTheBaptist": {
-    "key": "nativityOfSaintJohnTheBaptist",
+  "nativityOfJohnTheBaptist": {
+    "key": "nativityOfJohnTheBaptist",
     "name": "Nativité de Saint Jean-Baptiste",
     "color": ["white"],
     "type": 1,
     "priority": 3
   },
-  "saintsPeterAndPaul": {
-    "key": "saintsPeterAndPaul",
+  "peterAndPaul": {
+    "key": "peterAndPaul",
     "name": "Saints Pierre et Paul, apôtres",
     "color": ["red"],
     "type": 1,
