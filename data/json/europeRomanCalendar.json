@@ -1,13 +1,13 @@
 {
   "1402": {
-    "key": "europe1402",
+    "key": "cyrilThePhilosopherAndMethodiusOfThessaloniki",
     "name": "Saint Cyrille, moine et Saint Méthode, évêque",
     "color": ["white"],
     "type": 2,
     "priority": 8
   },
   "2904": {
-    "key": "europe2904",
+    "key": "catherineOfSiena",
     "name": "Sainte Catherine de Sienne, vierge et docteur de l'Église",
     "color": ["white"],
     "type": 2,
@@ -21,16 +21,14 @@
     "priority": 8
   },
   "2307": {
-    "key": "europe2307",
+    "key": "bridgetOfSweden",
     "name": "Sainte Brigitte de Suède, religieuse",
     "color": ["white"],
     "type": 2,
     "priority": 8
   },
   "0908": {
-    "key": "europe0908",
-    "name": "Sainte Thérèse-Bénédicte de la Croix (Édith Stein), vierge et martyre, carmélite",
-    "color": ["red"],
+    "key": "teresaBenedictaOfTheCross",
     "type": 2,
     "priority": 8
   }

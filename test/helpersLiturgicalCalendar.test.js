@@ -258,19 +258,19 @@ describe("Liturgical calendar", () => {
   describe("Propre pour la Belgique", () => {
 
     it("Saint Père Damien le 10 mai 2021", () => {
-      expect(liturgicalCalendar(DateTime.fromFormat('10052021', 'ddMMyyyy'), 'belgium')).toMatchObject({key: "bel1005"})
+      expect(liturgicalCalendar(DateTime.fromFormat('10052021', 'ddMMyyyy'), 'belgium')).toMatchObject({key: "damienDeVeuster"})
     })
 
     it("Sainte Julienne du Mont-Cornillon le 7 août 2020", () => {
-      expect(liturgicalCalendar(DateTime.fromFormat('07082020', 'ddMMyyyy'), 'belgium')).toMatchObject({key: "bel0708"})
+      expect(liturgicalCalendar(DateTime.fromFormat('07082020', 'ddMMyyyy'), 'belgium')).toMatchObject({key: "julianaOfLiege"})
     })
 
     it("Marie, Médiatrice de toute grâce le 31 août 2020", () => {
-      expect(liturgicalCalendar(DateTime.fromFormat('31082020', 'ddMMyyyy'), 'belgium')).toMatchObject({key: "bel3108"})
+      expect(liturgicalCalendar(DateTime.fromFormat('31082020', 'ddMMyyyy'), 'belgium')).toMatchObject({key: "ourLadyMediatrixOfAllGrace"})
     })
 
     it("Saint Hubert, évêque de Liège le 3 novembre 2020", () => {
-      expect(liturgicalCalendar(DateTime.fromFormat('03112020', 'ddMMyyyy'), 'belgium')).toMatchObject({key: "bel0311"})
+      expect(liturgicalCalendar(DateTime.fromFormat('03112020', 'ddMMyyyy'), 'belgium')).toMatchObject({key: "hubertOfLiege"})
     })
 
   })
@@ -278,11 +278,11 @@ describe("Liturgical calendar", () => {
   describe("Propre pour la France", () => {
 
     it("Sainte Jeanne d'Arc le 30 mai 2020", () => {
-      expect(liturgicalCalendar(DateTime.fromFormat('30052020', 'ddMMyyyy'), 'france')).toMatchObject({key: "fra3005"})
+      expect(liturgicalCalendar(DateTime.fromFormat('30052020', 'ddMMyyyy'), 'france')).toMatchObject({key: "joanOfArc"})
     })
 
     it("Sainte Thérèse de l'enfant Jésus et de la Sainte Face le 1 octobre 2020", () => {
-      expect(liturgicalCalendar(DateTime.fromFormat('01102020', 'ddMMyyyy'), 'france')).toMatchObject({key: "fra0110"})
+      expect(liturgicalCalendar(DateTime.fromFormat('01102020', 'ddMMyyyy'), 'france')).toMatchObject({key: "thereseOfTheChildJesusAndTheHolyFace"})
     })
 
   })

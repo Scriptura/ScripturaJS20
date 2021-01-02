@@ -26,6 +26,8 @@ block main
                   em= [_calendar.type, _calendar.priority].filter(Boolean).join(', préséance ')
                 else if !_calendar.type && _calendar.priority
                   em= 'Préséance ' + _calendar.priority
+            if _calendar.key
+              p Mot clef : "#{_calendar.key}"
             if _calendar.p.name
               p!= _calendar.p.name
           if (_moonPhase || _moonPhase === 0)
