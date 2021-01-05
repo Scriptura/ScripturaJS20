@@ -32,20 +32,20 @@ passport.use(new LocalStrategy(
 
 router.get('/login', (req, res, next) => { // GET home page
   res.render('login', {
-    _title: 'Login | ' + vv.siteName
-    , _description: 'Page de connexion'
-    , _name: 'Connexion'
+    _title: 'Login | ' + vv.siteName,
+    _description: 'Page de connexion',
+    _name: 'Connexion',
   })
 })
 
 router.post('/login',
   passport.authenticate('local', {
-    successRedirect: '/'
-    , failureRedirect: '/login'
-    , failureFlash: false
-    , failureFlash: true
-    //, failureFlash: 'Identifiant ou mot de passe invalide.' //'Invalid username or password.'
-    //, successFlash: 'Welcome!'
+    successRedirect: '/',
+    failureRedirect: '/login',
+    failureFlash: false,
+    failureFlash: true,
+    //failureFlash: 'Identifiant ou mot de passe invalide.' //'Invalid username or password.',
+    //successFlash: 'Welcome!',
   })
 )
 

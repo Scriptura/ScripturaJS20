@@ -62,8 +62,12 @@ describe("Liturgical calendar", () => {
     expect(liturgicalCalendar(DateTime.fromFormat('30122022', 'ddMMyyyy'), 'france')).toMatchObject({key: "holyFamily"})
   })
 
-  it("Sainte Marie, Mère de Dieu le 1er janvier 2021", () => {
+  it("Sainte Marie, Mère de Dieu, le 1er janvier 2021", () => {
     expect(liturgicalCalendar(DateTime.fromFormat('01012021', 'ddMMyyyy'), 'france')).toMatchObject({key: "maryMotherOfGod"})
+  })
+
+  it("Saint Nom de Jésus ou Sainte Geneviève, le 3 janvier 2020", () => {
+    expect(liturgicalCalendar(DateTime.fromFormat('03012020', 'ddMMyyyy'), 'france')).toMatchObject({key: "mostHolyNameOfJesusOrGenevieveOfParis"})
   })
 
   it("Épiphanie le dimanche après le premier janvier pour la France", () => {
@@ -252,6 +256,17 @@ describe("Liturgical calendar", () => {
 
   it("Christ Roi le 22 novembre 2020", () => {
     expect(liturgicalCalendar(DateTime.fromFormat('22112020', 'ddMMyyyy'), 'france')).toMatchObject({key: "christKingOfTheUniverse"})
+  })
+
+  it("Noël le 25 descembre 2020", () => {
+    expect(liturgicalCalendar(DateTime.fromFormat('25122020', 'ddMMyyyy'), 'france')).toMatchObject({key: "christmas"})
+  })
+
+  it("Sortie du type de célébration en language humain", () => {
+    expect(liturgicalCalendar(DateTime.fromFormat('25122020', 'ddMMyyyy'), 'france')).toMatchObject({type: "Solennité"})
+    expect(liturgicalCalendar(DateTime.fromFormat('10012021', 'ddMMyyyy'), 'france')).toMatchObject({type: "Fête"})
+    expect(liturgicalCalendar(DateTime.fromFormat('14122020', 'ddMMyyyy'), 'france')).toMatchObject({type: "Mémoire obligatoire"})
+    expect(liturgicalCalendar(DateTime.fromFormat('13012021', 'ddMMyyyy'), 'france')).toMatchObject({type: "Mémoire facultative"})
   })
 
   // La vérification d'une occurance, dont on est sûr qu'elle ne se fera pas écraser par une occurence mobile, permet de vérifier l'appel du propre.

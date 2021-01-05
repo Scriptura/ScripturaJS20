@@ -126,104 +126,109 @@ const liturgicalCalendar = (date = currentDate, country = 'france') => {
   //if (date.weekday === 7 && data.priority > 7) data.name = "Dimanche du temps ordinaire", data.type = "", data.color = "green"
 
 
-  // Définition des fêtes mobiles. Ces valeurs remplacent les fêtes fixes définies à la même date dans les fichiers json.
-  if (firstAdventSunday.hasSame(date, 'day')) data.m = dataM.firstAdventSunday
-  if (secondAdventSunday.hasSame(date, 'day')) data.m = dataM.secondAdventSunday
-  if (thirdAdventSunday.hasSame(date, 'day')) data.m = dataM.thirdAdventSunday
-  if (fourthAdventSunday.hasSame(date, 'day')) data.m = dataM.fourthAdventSunday
-  if (immaculateConception.hasSame(date, 'day')) data.m = dataM.immaculateConception
-  if (holyFamily.hasSame(date, 'day')) data.m = dataM.holyFamily
-  if (epiphany.hasSame(date, 'day')) data.m = dataM.epiphany
-  if (baptismOfTheLord.hasSame(date, 'day')) data.m = dataM.baptismOfTheLord
-  if (josephHusbandOfMary.hasSame(date, 'day')) data.m = dataM.josephHusbandOfMary
-  if (annunciation.hasSame(date, 'day')) data.m = dataM.annunciation
-  if (ashWednesday.hasSame(date, 'day')) data.m = dataM.ashWednesday
-  if (firstLentSunday.hasSame(date, 'day')) data.m = dataM.firstLentSunday
-  if (secondLentSunday.hasSame(date, 'day')) data.m = dataM.secondLentSunday
-  if (thirdLentSunday.hasSame(date, 'day')) data.m = dataM.thirdLentSunday
-  if (fourthLentSunday.hasSame(date, 'day')) data.m = dataM.fourthLentSunday
-  if (fiveLentSunday.hasSame(date, 'day')) data.m = dataM.fiveLentSunday
-  if (palmSunday.hasSame(date, 'day')) data.m = dataM.palmSunday
-  if (holyMonday.hasSame(date, 'day')) data.m = dataM.holyMonday
-  if (holyTuesday.hasSame(date, 'day')) data.m = dataM.holyTuesday
-  if (holyWednesday.hasSame(date, 'day')) data.m = dataM.holyWednesday
-  if (holyThursday.hasSame(date, 'day')) data.m = dataM.holyThursday // @todo type=2 en journée, type=1 le soir || @todo Type ou priority ?
-  if (goodFriday.hasSame(date, 'day')) data.m = dataM.goodFriday
-  if (holySaturday.hasSame(date, 'day')) data.m = dataM.holySaturday
-  if (easter.hasSame(date, 'day')) data.m = dataM.easter
-  if (easterMonday.hasSame(date, 'day')) data.m = dataM.easterMonday
-  if (easterTuesday.hasSame(date, 'day')) data.m = dataM.easterTuesday
-  if (easterWednesday.hasSame(date, 'day')) data.m = dataM.easterWednesday
-  if (easterThursday.hasSame(date, 'day')) data.m = dataM.easterThursday
-  if (easterFriday.hasSame(date, 'day')) data.m = dataM.easterFriday
-  if (easterSaturday.hasSame(date, 'day')) data.m = dataM.easterSaturday
-  if (divineMercySunday.hasSame(date, 'day')) data.m = dataM.divineMercySunday
-  if (thirdSundayEaster.hasSame(date, 'day')) data.m = dataM.thirdSundayEaster
-  if (fourthSundayEaster.hasSame(date, 'day')) data.m = dataM.fourthSundayEaster
-  if (fiveSundayEaster.hasSame(date, 'day')) data.m = dataM.fiveSundayEaster
-  if (sixSundayEaster.hasSame(date, 'day')) data.m = dataM.sixSundayEaster
-  if (ascension.hasSame(date, 'day')) data.m = dataM.ascension
-  if (pentecost.hasSame(date, 'day')) data.m = dataM.pentecost
-  if (maryMotherOfTheChurch.hasSame(date, 'day')) data.m = dataM.maryMotherOfTheChurch
-  if (holyTrinity.hasSame(date, 'day')) data.m = dataM.holyTrinity
-  if (corpusChristi.hasSame(date, 'day')) data.m = dataM.corpusChristi
-  if (sacredHeart.hasSame(date, 'day')) data.m = dataM.sacredHeart
-  if (immaculateHeartOfMary.hasSame(date, 'day')) data.m = dataM.immaculateHeartOfMary
-  if (nativityOfJohnTheBaptist.hasSame(date, 'day')) data.m = dataM.nativityOfJohnTheBaptist
-  if (peterAndPaul.hasSame(date, 'day')) data.m = dataM.peterAndPaul
-  if (christKingOfTheUniverse.hasSame(date, 'day')) data.m = dataM.christKingOfTheUniverse
+  const movableFeast = (data => {
+    if (firstAdventSunday.hasSame(date, 'day')) data.m = dataM.firstAdventSunday
+    if (secondAdventSunday.hasSame(date, 'day')) data.m = dataM.secondAdventSunday
+    if (thirdAdventSunday.hasSame(date, 'day')) data.m = dataM.thirdAdventSunday
+    if (fourthAdventSunday.hasSame(date, 'day')) data.m = dataM.fourthAdventSunday
+    if (immaculateConception.hasSame(date, 'day')) data.m = dataM.immaculateConception
+    if (holyFamily.hasSame(date, 'day')) data.m = dataM.holyFamily
+    if (epiphany.hasSame(date, 'day')) data.m = dataM.epiphany
+    if (baptismOfTheLord.hasSame(date, 'day')) data.m = dataM.baptismOfTheLord
+    if (josephHusbandOfMary.hasSame(date, 'day')) data.m = dataM.josephHusbandOfMary
+    if (annunciation.hasSame(date, 'day')) data.m = dataM.annunciation
+    if (ashWednesday.hasSame(date, 'day')) data.m = dataM.ashWednesday
+    if (firstLentSunday.hasSame(date, 'day')) data.m = dataM.firstLentSunday
+    if (secondLentSunday.hasSame(date, 'day')) data.m = dataM.secondLentSunday
+    if (thirdLentSunday.hasSame(date, 'day')) data.m = dataM.thirdLentSunday
+    if (fourthLentSunday.hasSame(date, 'day')) data.m = dataM.fourthLentSunday
+    if (fiveLentSunday.hasSame(date, 'day')) data.m = dataM.fiveLentSunday
+    if (palmSunday.hasSame(date, 'day')) data.m = dataM.palmSunday
+    if (holyMonday.hasSame(date, 'day')) data.m = dataM.holyMonday
+    if (holyTuesday.hasSame(date, 'day')) data.m = dataM.holyTuesday
+    if (holyWednesday.hasSame(date, 'day')) data.m = dataM.holyWednesday
+    if (holyThursday.hasSame(date, 'day')) data.m = dataM.holyThursday // @todo type=2 en journée, type=1 le soir || @todo Type ou priority ?
+    if (goodFriday.hasSame(date, 'day')) data.m = dataM.goodFriday
+    if (holySaturday.hasSame(date, 'day')) data.m = dataM.holySaturday
+    if (easter.hasSame(date, 'day')) data.m = dataM.easter
+    if (easterMonday.hasSame(date, 'day')) data.m = dataM.easterMonday
+    if (easterTuesday.hasSame(date, 'day')) data.m = dataM.easterTuesday
+    if (easterWednesday.hasSame(date, 'day')) data.m = dataM.easterWednesday
+    if (easterThursday.hasSame(date, 'day')) data.m = dataM.easterThursday
+    if (easterFriday.hasSame(date, 'day')) data.m = dataM.easterFriday
+    if (easterSaturday.hasSame(date, 'day')) data.m = dataM.easterSaturday
+    if (divineMercySunday.hasSame(date, 'day')) data.m = dataM.divineMercySunday
+    if (thirdSundayEaster.hasSame(date, 'day')) data.m = dataM.thirdSundayEaster
+    if (fourthSundayEaster.hasSame(date, 'day')) data.m = dataM.fourthSundayEaster
+    if (fiveSundayEaster.hasSame(date, 'day')) data.m = dataM.fiveSundayEaster
+    if (sixSundayEaster.hasSame(date, 'day')) data.m = dataM.sixSundayEaster
+    if (ascension.hasSame(date, 'day')) data.m = dataM.ascension
+    if (pentecost.hasSame(date, 'day')) data.m = dataM.pentecost
+    if (maryMotherOfTheChurch.hasSame(date, 'day')) data.m = dataM.maryMotherOfTheChurch
+    if (holyTrinity.hasSame(date, 'day')) data.m = dataM.holyTrinity
+    if (corpusChristi.hasSame(date, 'day')) data.m = dataM.corpusChristi
+    if (sacredHeart.hasSame(date, 'day')) data.m = dataM.sacredHeart
+    if (immaculateHeartOfMary.hasSame(date, 'day')) data.m = dataM.immaculateHeartOfMary
+    if (nativityOfJohnTheBaptist.hasSame(date, 'day')) data.m = dataM.nativityOfJohnTheBaptist
+    if (peterAndPaul.hasSame(date, 'day')) data.m = dataM.peterAndPaul
+    if (christKingOfTheUniverse.hasSame(date, 'day')) data.m = dataM.christKingOfTheUniverse
+    return data
+  })(data)
 
 
-  // Périodes liturgiques :
-  if (advent.contains(date)) data.p = dataP.advent
-  else if (christmastide.contains(date)) data.p = dataP.christmastide
-  else if (lent.contains(date)) data.p = dataP.lent
-  else if (eastertide.contains(date)) data.p = dataP.eastertide
-  else data.p = dataP.ordinaryTime
+  const liturgicalTimes = (data => {
+
+    const seasons = (data => {
+      if (advent.contains(date)) data.p = dataP.advent
+      else if (christmastide.contains(date)) data.p = dataP.christmastide
+      else if (lent.contains(date)) data.p = dataP.lent
+      else if (eastertide.contains(date)) data.p = dataP.eastertide
+      else data.p = dataP.ordinaryTime
+      return data
+    })(data)
+
+    const subSeasons = (data => {
+      if (advent17_24.contains(date)) data.p.priority = dataP.sub.advent17_24.priority
+      if (octaveOfChristmas.contains(date)) data.p.name = dataP.sub.octaveOfChristmas.name, data.p.subKey = dataP.sub.octaveOfChristmas.key, data.p.priority = dataP.sub.octaveOfChristmas.priority
+      if (epiphanyTide.contains(date)) data.p.name = dataP.sub.epiphanyTide.name, data.p.subKey = dataP.sub.epiphanyTide.key
+      if (holyWeek.contains(date)) data.p.name = dataP.sub.holyWeek.name, data.p.subKey = dataP.sub.holyWeek.key
+      if (easterTriduum.contains(date)) data.p.name = dataP.sub.easterTriduum.name, data.p.subKey = dataP.sub.easterTriduum.key
+      if (octaveOfEaster.contains(date)) data.p.name = dataP.sub.octaveOfEaster.name, data.p.subKey = dataP.sub.octaveOfEaster.key
+      return data
+    })(data)
+
+    return data
+  })(data)
 
 
-  // Sous périodes liturgiques :
-  if (advent17_24.contains(date)) data.p.priority = dataP.sub.advent17_24.priority
-  if (octaveOfChristmas.contains(date)) data.p.name = dataP.sub.octaveOfChristmas.name, data.p.subKey = dataP.sub.octaveOfChristmas.key, data.p.priority = dataP.sub.octaveOfChristmas.priority
-  if (epiphanyTide.contains(date)) data.p.name = dataP.sub.epiphanyTide.name, data.p.subKey = dataP.sub.epiphanyTide.key
-  if (holyWeek.contains(date)) data.p.name = dataP.sub.holyWeek.name, data.p.subKey = dataP.sub.holyWeek.key
-  if (easterTriduum.contains(date)) data.p.name = dataP.sub.easterTriduum.name, data.p.subKey = dataP.sub.easterTriduum.key
-  if (octaveOfEaster.contains(date)) data.p.name = dataP.sub.octaveOfEaster.name, data.p.subKey = dataP.sub.octaveOfEaster.key
+  const processingOfBasicInformation = (data => {
+    data.key = (data.f.priority >= data.m.priority) ? data.m.key : data.f.key
+    if (typeof data.key === 'undefined') data.key = 'default' + dayMonth // @todo En test...
+    data.name = (data.f.priority >= data.m.priority) ? data.m.name : data.f.name
+    if (typeof data.name === 'undefined') data.name = ''
+    data.extra = (data.f.priority >= data.m.priority) ? data.m.extra : data.f.extra
+    if (typeof data.extra === 'undefined') data.extra = ''
+    data.fullName = [data.name, lowercaseToFirstLetter(data.extra)].filter(Boolean).join(', ')
+    data.link = (data.f.priority >= data.m.priority) ? data.m.link : data.f.link
+    if (typeof data.link === 'undefined') data.link = ''
+    data.color = [...data.p.color.concat(data.m.color).concat(data.f.color)].filter(Boolean)
+    data.type = (data.f.priority >= data.m.priority) ? data.m.type : data.f.type
+    if (typeof data.type === 'undefined') data.type = ''
+    const arrayPriority = [data.f.priority, data.m.priority, data.p.priority].filter(Boolean)
+    data.priority = Math.min(...arrayPriority)
+    data.date = `${day}/${month}/${year}`
+    data.weekday = date.weekday
+    return data
+  })(data)
 
 
-  // Informations de base pour le calendrier
-  data.key = (data.f.priority >= data.m.priority) ? data.m.key : data.f.key
-  if (typeof data.key === 'undefined') data.key = 'default' + dayMonth // @todo En test...
-
-  data.name = (data.f.priority >= data.m.priority) ? data.m.name : data.f.name
-  if (typeof data.name === 'undefined') data.name = ''
-
-  data.extra = (data.f.priority >= data.m.priority) ? data.m.extra : data.f.extra
-  if (typeof data.extra === 'undefined') data.extra = ''
-
-  data.fullName = [data.name, lowercaseToFirstLetter(data.extra)].filter(Boolean).join(', ')
-
-  data.link = (data.f.priority >= data.m.priority) ? data.m.link : data.f.link
-  if (typeof data.link === 'undefined') data.link = ''
-
-  data.color = [...data.p.color.concat(data.m.color).concat(data.f.color)].filter(Boolean)
-
-  data.type = (data.f.priority >= data.m.priority) ? data.m.type : data.f.type
-  if (typeof data.type === 'undefined') data.type = ''
-
-  const arrayPriority = [data.f.priority, data.m.priority, data.p.priority].filter(Boolean)
-  data.priority = Math.min(...arrayPriority)
-
-  data.date = `${day}/${month}/${year}`
-
-  data.weekday = date.weekday
-
-
-  // Traducion des degrés de fête en language humain
-  if (data.type === 1) data.type = "Solennité"
-  else if (data.type === 2) data.type = "Fête"
-  else if (data.type === 3) data.type = "Mémoire obligatoire"
-  else if (data.type === 4) data.type = "Mémoire facultative"
+  const feastsInHumanLanguage = (data => {
+    if (data.type === 1) data.type = "Solennité"
+    else if (data.type === 2) data.type = "Fête"
+    else if (data.type === 3) data.type = "Mémoire obligatoire"
+    else if (data.type === 4) data.type = "Mémoire facultative"
+    return data.type
+  })(data)
 
 
   return data
@@ -232,7 +237,7 @@ const liturgicalCalendar = (date = currentDate, country = 'france') => {
 /*
 const test0 = (() => { // @todo For test.
   const { numFormat } = require('../helpers/numbers')
-  const dateTest = DateTime.fromFormat('01122020', 'ddMMyyyy')
+  const dateTest = DateTime.fromFormat('01012020', 'ddMMyyyy')
   for (let i = 1; i < 32; i++) {
     const d = numFormat(i, 2)
     //console.log(d)

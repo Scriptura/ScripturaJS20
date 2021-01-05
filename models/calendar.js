@@ -6,14 +6,14 @@ const vv = require('../settings/variables'),
       { DateTime } = require('luxon'),
       currentDate = DateTime.local(),
       _calendar = liturgicalCalendar(currentDate, 'france')
-      //_calendar = liturgicalCalendar(DateTime.fromFormat('26042020', 'ddMMyyyy'), 'france')
+      //_calendar = liturgicalCalendar(DateTime.fromFormat('03012020', 'ddMMyyyy'), 'france')
 
 const getCalendar = {
-  _title: 'Calendar | ' + vv.siteName
-  , _name: 'Calendrier liturgique'
-  , _description: 'Informations disponibles pour les fonctions de calendrier'
-  , _calendar
-  , _moonPhase: moonPhase(currentDate)
+  _title: 'Calendar | ' + vv.siteName,
+  _name: 'Calendrier liturgique',
+  _description: 'Informations disponibles pour les fonctions de calendrier',
+  _calendar,
+  _moonPhase: moonPhase(currentDate),
 }
 
 module.exports = { getCalendar: getCalendar }
