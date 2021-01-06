@@ -5,6 +5,7 @@ const fs = require('fs'),
       easterDate = require('date-easter'),
       currentDate = DateTime.local(),
       { lowercaseToFirstLetter } = require('./strings')
+      //{ moveableFeasts } = require('./moveableFeasts')
 
 
 /**
@@ -113,7 +114,7 @@ const liturgicalCalendar = (date = currentDate, country = 'france') => {
 
   // Valeurs par défaut pour les variables incontournables si pas de célébration fixe proposée ou si valeur name vide dans les .json :
   // 1. La valeur name peut-être intentionnellement vide dans un .json pour effacer une date du calendrier général ou d'un propre continental.
-  if (typeof data.f.name === 'undefined' || data.f.name === '') data.f.name = "De la férie" // 1
+  if (typeof data.f.name === 'undefined' || data.f.name === '') data.f.key = "undefined", data.f.name = "De la férie", data.f.extra = "", data.f.color = "",  data.f.type = "",  data.f.priority = 13 // 1
   if (typeof data.f.priority === 'undefined') data.f.priority = 13
 
 
@@ -126,7 +127,7 @@ const liturgicalCalendar = (date = currentDate, country = 'france') => {
   //if (date.weekday === 7 && data.priority > 7) data.name = "Dimanche du temps ordinaire", data.type = "", data.color = "green"
 
 
-  const movableFeast = (data => {
+  const moveableFeasts = (data => {
     if (firstAdventSunday.hasSame(date, 'day')) data.m = dataM.firstAdventSunday
     if (secondAdventSunday.hasSame(date, 'day')) data.m = dataM.secondAdventSunday
     if (thirdAdventSunday.hasSame(date, 'day')) data.m = dataM.thirdAdventSunday
