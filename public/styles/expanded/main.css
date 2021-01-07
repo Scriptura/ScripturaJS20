@@ -228,6 +228,7 @@ body {
 main {
   grid-area: main;
   padding: 1em;
+  word-break: break-word;
 }
 .header {
   grid-area: header;

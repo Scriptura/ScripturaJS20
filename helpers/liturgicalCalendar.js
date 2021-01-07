@@ -114,7 +114,7 @@ const liturgicalCalendar = (date = currentDate, country = 'france') => {
 
   // Valeurs par défaut pour les variables incontournables si pas de célébration fixe proposée ou si valeur name vide dans les .json :
   // 1. La valeur name peut-être intentionnellement vide dans un .json pour effacer une date du calendrier général ou d'un propre continental.
-  if (typeof data.f.name === 'undefined' || data.f.name === '') data.f.key = "undefined", data.f.name = "De la férie", data.f.extra = "", data.f.color = "",  data.f.type = "",  data.f.priority = 13 // 1
+  if (typeof data.f.name === 'undefined' || data.f.name === '') data.f.key = "defaultKey", data.f.name = "De la férie", data.f.extra = "", data.f.color = "",  data.f.type = "",  data.f.priority = 13 // 1
   if (typeof data.f.priority === 'undefined') data.f.priority = 13
 
 
@@ -127,7 +127,7 @@ const liturgicalCalendar = (date = currentDate, country = 'france') => {
   //if (date.weekday === 7 && data.priority > 7) data.name = "Dimanche du temps ordinaire", data.type = "", data.color = "green"
 
 
-  const moveableFeasts = (data => {
+  const moveableFeasts = (() => {
     if (firstAdventSunday.hasSame(date, 'day')) data.m = dataM.firstAdventSunday
     if (secondAdventSunday.hasSame(date, 'day')) data.m = dataM.secondAdventSunday
     if (thirdAdventSunday.hasSame(date, 'day')) data.m = dataM.thirdAdventSunday
@@ -174,21 +174,21 @@ const liturgicalCalendar = (date = currentDate, country = 'france') => {
     if (peterAndPaul.hasSame(date, 'day')) data.m = dataM.peterAndPaul
     if (christKingOfTheUniverse.hasSame(date, 'day')) data.m = dataM.christKingOfTheUniverse
     return data
-  })(data)
+  })()
 
 
-  const liturgicalTimes = (data => {
+  const liturgicalTimes = (() => {
 
-    const seasons = (data => {
+    const seasons = (() => {
       if (advent.contains(date)) data.p = dataP.advent
       else if (christmastide.contains(date)) data.p = dataP.christmastide
       else if (lent.contains(date)) data.p = dataP.lent
       else if (eastertide.contains(date)) data.p = dataP.eastertide
       else data.p = dataP.ordinaryTime
       return data
-    })(data)
+    })()
 
-    const subSeasons = (data => {
+    const subSeasons = (() => {
       if (advent17_24.contains(date)) data.p.priority = dataP.sub.advent17_24.priority
       if (octaveOfChristmas.contains(date)) data.p.name = dataP.sub.octaveOfChristmas.name, data.p.subKey = dataP.sub.octaveOfChristmas.key, data.p.priority = dataP.sub.octaveOfChristmas.priority
       if (epiphanyTide.contains(date)) data.p.name = dataP.sub.epiphanyTide.name, data.p.subKey = dataP.sub.epiphanyTide.key
@@ -199,10 +199,10 @@ const liturgicalCalendar = (date = currentDate, country = 'france') => {
     })(data)
 
     return data
-  })(data)
+  })()
 
 
-  const processingOfBasicInformation = (data => {
+  const processingOfBasicInformation = (() => {
     data.key = (data.f.priority >= data.m.priority) ? data.m.key : data.f.key
     if (typeof data.key === 'undefined') data.key = 'default' + dayMonth // @todo En test...
     data.name = (data.f.priority >= data.m.priority) ? data.m.name : data.f.name
@@ -220,16 +220,16 @@ const liturgicalCalendar = (date = currentDate, country = 'france') => {
     data.date = `${day}/${month}/${year}`
     data.weekday = date.weekday
     return data
-  })(data)
+  })()
 
 
-  const feastsInHumanLanguage = (data => {
+  const feastsInHumanLanguage = (() => {
     if (data.type === 1) data.type = "Solennité"
     else if (data.type === 2) data.type = "Fête"
     else if (data.type === 3) data.type = "Mémoire obligatoire"
     else if (data.type === 4) data.type = "Mémoire facultative"
     return data.type
-  })(data)
+  })()
 
 
   return data

@@ -74,6 +74,11 @@ describe("Liturgical calendar", () => {
     expect(liturgicalCalendar(DateTime.fromFormat('03012021', 'ddMMyyyy'), 'france')).toMatchObject({key: "epiphany"})
   })
 
+  it("Informations de l'Épiphanie le 6 janvier 2020 écrasées pour la France au profit de la férie", () => {
+    expect(liturgicalCalendar(DateTime.fromFormat('06012021', 'ddMMyyyy'), 'france')).toMatchObject({key: "defaultKey"})
+    expect(liturgicalCalendar(DateTime.fromFormat('06012021', 'ddMMyyyy'), 'france')).toMatchObject({priority: 13})
+  })
+
   it("Baptême du Seigneur le 10 janvier 2021", () => {
     expect(liturgicalCalendar(DateTime.fromFormat('10012021', 'ddMMyyyy'), 'france')).toMatchObject({key: "baptismOfTheLord"})
   })
