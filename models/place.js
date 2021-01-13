@@ -7,7 +7,7 @@ const getPlace = async id => await db.one('SELECT * FROM public.__place WHERE _i
   .then(data => placeFormat(data))
   .catch(error => {
     console.log(error.message || error)
-    return data
+    return todo
   })
 
 module.exports = { getPlace: getPlace }

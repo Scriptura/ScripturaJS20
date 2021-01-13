@@ -7,14 +7,14 @@ const getUser = async username => await db.one('SELECT * FROM public.__user WHER
   .then(data => userFormat(data))
   .catch(error => {
     console.log(error.message || error)
-    return data
+    return todo
   })
 
   const postUser = async (username, password) => await db.one('INSERT INTO public.__user (_username, _password) VALUES ($1, $2) RETURNING _username', [username, password])
   .then(data => data)
   .catch(error => {
     console.log(error.message || error)
-    return data
+    return todo
   })
 
 module.exports = {

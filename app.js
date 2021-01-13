@@ -60,8 +60,10 @@ app.use(useragent.express())
 
 app.use('/', routesDispatcher) // Redirige vers le répartiteur des routes
 
-app.use((req, res, next) => { // catch 404 and forward to error handler
-  next(createError(404))
+app.use((req, res, next) => {
+  res.status(404)
+  res.render('404', {_title: 'Error 404 | ' + vv.siteName})
+  //next(createError(404)) // catch 404 and forward to error handler
 })
 
 app.use((err, req, res, next) => { // Gestionnaire d'erreurs.
@@ -69,9 +71,8 @@ app.use((err, req, res, next) => { // Gestionnaire d'erreurs.
   res.locals.message = err.message
   res.locals.error = req.app.get('env') === 'development' ? err : {}
 
-  // Render the error page.
   res.status(err.status || 500)
-  res.render('error', {_title: '404 | ' + vv.siteName})
+  res.render('error', {_title: 'Error 500 | ' + vv.siteName})
 })
 
 module.exports = app

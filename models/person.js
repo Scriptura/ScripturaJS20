@@ -7,7 +7,7 @@ const getPerson = async id => await db.one('SELECT * FROM public.__person WHERE 
   .then(data => personFormat(data, id))
   .catch(error => {
     console.log(error.message || error)
-    return data
+    return todo
   })
 
 module.exports = { getPerson: getPerson }

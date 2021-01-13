@@ -19,10 +19,7 @@ router.post('/register', async (req, res, next) => {
     .then(data => {
       //res.send({}) ?
     })
-    .catch(error => {
-      console.log(error)
-      next()
-    })
+    .catch(error => next())
 })
 
 module.exports = router

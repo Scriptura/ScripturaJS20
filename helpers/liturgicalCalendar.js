@@ -30,6 +30,12 @@ const fs = require('fs'),
 
 const liturgicalCalendar = (date = currentDate, country = 'france') => {
 
+  if (!date.isValid) {
+    console.log('Error: date is not valid')
+    return todo // -> error 404
+    //return false // -> error 500
+  }
+
   const year = date.toFormat('yyyy'),
         month = date.toFormat('MM'),
         day = date.toFormat('dd'),

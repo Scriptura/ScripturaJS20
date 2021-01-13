@@ -2,10 +2,9 @@ extends layout
 
 block main
   main
-    h1.main-heading Error #{error.status} 
+    h1.main-heading Error 500
+      //-#{error.status}
       //-span #{error.message}
-    svg.size25.decorative-svg(role='img' focusable='false')
-      use(xlink:href='/medias/sprites/silos/131v-d1.svg#1')
     pre
       code(translate='no' data-select='Select and copy') #{error.stack}
     hr
