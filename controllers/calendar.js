@@ -4,9 +4,13 @@ const express = require('express'),
       router = express.Router(),
       { getCalendar } = require('../models/calendar')
 
-// @example '/calendar/2020/12/06'
-router.get('/calendar/:year([0-9]{1,4})/:month([0-9]{1,2})/:day([0-9]{1,2})', async (req, res, next) => {
-  res.render('calendar', getCalendar)
+router.get('/calendar/:year([0-9]{1,4})/:month([0-9]{1,2})/:day([0-9]{1,2})', async (req, res, next) => { // @example '/calendar/2020'
+  const data = await getCalendar(req.params.year, req.params.month, req.params.day)
+    .then(data => res.render('calendar', data))
+    .catch(error => {
+      console.log(error)
+      next()
+    })
 })
 
 module.exports = router
