@@ -34,6 +34,14 @@ router.use(
 )
 router.use(
   '/',
+  require(path.join(__dirname, 'calendarMonth'))
+)
+router.use(
+  '/',
+  require(path.join(__dirname, 'calendarDay'))
+)
+router.use(
+  '/',
   require(path.join(__dirname, 'calendar'))
 )
   router.use(

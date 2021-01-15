@@ -62,7 +62,7 @@ app.use('/', routesDispatcher) // Redirige vers le répartiteur des routes
 
 app.use((req, res, next) => {
   res.status(404)
-  res.render('404', {_title: 'Error 404 | ' + vv.siteName})
+  res.render('404', {_title: 'Error 404 | ' + vv.siteName, _description: 'Erreur 404, page non trouvée'})
   //next(createError(404)) // catch 404 and forward to error handler
 })
 
