@@ -2,9 +2,9 @@
 
 const vv = require('../settings/variables'),
       db = require('../database/db'),
+      { DateTime } = require('luxon'),
       { liturgicalCalendar } = require('../helpers/liturgicalCalendar'),
       { moonPhase } = require('../helpers/astronomy'),
-      { DateTime } = require('luxon'),
       { humanDateForMonths } = require('../helpers/dates'),
       { uppercaseToFirstLetter } = require('../helpers/strings')
 
@@ -15,7 +15,7 @@ const getCalendarDay = async (year, month, day) => await db.one('SELECT * FROM p
   data._title = `Le ${date.join('.')} | ${vv.siteName}`
   data._description = `Date du ${date.join('/')}, ${lc.name}, ${lc.type.toLowerCase()}`
   data._calendar = lc
-  data._moonPhase = moonPhase
+  data._moonPhase = moonPhase()
   //console.log(data)
   return data
 })
@@ -32,8 +32,8 @@ const getCalendarMonth = async (year, month) => await db.one('SELECT * FROM publ
   data._title = `${uppercaseToFirstLetter(humanDateForMonths(month))} ${year} | ${vv.siteName}`
   data._description = `Pour le mois de ${humanDateForMonths(month)} de l'année ${year}`
   data._calendar = lc
-  data._moonPhase = moonPhase
-  //console.log(data)
+  data._moonPhase = moonPhase()
+  console.log(data)
   return data
 })
 .catch(error => {
