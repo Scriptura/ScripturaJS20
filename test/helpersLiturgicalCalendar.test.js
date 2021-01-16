@@ -263,6 +263,10 @@ describe("Liturgical calendar", () => {
     expect(liturgicalCalendar(DateTime.fromFormat('22112020', 'ddMMyyyy'), 'france')).toMatchObject({key: "christKingOfTheUniverse"})
   })
 
+  it("Christ Roi le 21 novembre 2021, à la place de la Présentation de Marie pour cette année-là", () => {
+    expect(liturgicalCalendar(DateTime.fromFormat('21112021', 'ddMMyyyy'), 'france')).toMatchObject({key: "christKingOfTheUniverse"})
+  })
+
   it("Noël le 25 descembre 2020", () => {
     expect(liturgicalCalendar(DateTime.fromFormat('25122020', 'ddMMyyyy'), 'france')).toMatchObject({key: "christmas"})
   })

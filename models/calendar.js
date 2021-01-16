@@ -8,7 +8,7 @@ const vv = require('../settings/variables'),
       { monthsInHumanLanguage } = require('../helpers/dates'),
       { uppercaseToFirstLetter } = require('../helpers/strings')
 
-const getCalendarDay = async (year, month, day) => await db.one('SELECT * FROM public.__post WHERE _id = $1', '1')
+const getCalendarDay = async (year, month, day) => await db.oneOrNone('SELECT * FROM public.__post WHERE _id = $1', '1')
 .then(data => {
   const date = [day, month, year]
   const lc = liturgicalCalendar(DateTime.fromFormat(day + month + year, 'ddMMyyyy'), 'france')
@@ -19,12 +19,9 @@ const getCalendarDay = async (year, month, day) => await db.one('SELECT * FROM p
   console.log(data)
   return data
 })
-.catch(error => {
-  console.log(error.message || error)
-  return todo
-})
+.catch(error => console.log(error.message || error))
 
-const getCalendarMonth = async (year, month) => await db.one('SELECT * FROM public.__post WHERE _id = $1', '1')
+const getCalendarMonth = async (year, month) => await db.oneOrNone('SELECT * FROM public.__post WHERE _id = $1', '1')
 .then(data => {
   const day = '01' // @todo A itérer sur un mois complet.
   const date = [month, year]
@@ -36,10 +33,7 @@ const getCalendarMonth = async (year, month) => await db.one('SELECT * FROM publ
   //console.log(data)
   return data
 })
-.catch(error => {
-  console.log(error.message || error)
-  return todo
-})
+.catch(error => console.log(error.message || error))
 
 module.exports = {
   getCalendarDay: getCalendarDay,

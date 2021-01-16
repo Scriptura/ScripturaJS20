@@ -32,8 +32,7 @@ const liturgicalCalendar = (date = currentDate, country = 'france') => {
 
   if (!date.isValid) {
     console.log('Error: date is not valid')
-    return todo // -> error 404
-    //return false // -> error 500
+    return false
   }
 
   const year = date.toFormat('yyyy'),
