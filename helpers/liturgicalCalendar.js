@@ -242,11 +242,10 @@ const liturgicalCalendar = (date = currentDate, country = 'france') => {
 
 /*
 const test0 = (() => { // @todo For test.
-  const { numFormat } = require('../helpers/numbers')
-  const dateTest = DateTime.fromFormat('01012020', 'ddMMyyyy')
-  for (let i = 1; i < 32; i++) {
-    const d = numFormat(i, 2)
-    //console.log(d)
+  const dayMonthYear = '01012020'
+  const dateTest = DateTime.fromFormat(dayMonthYear, 'ddMMyyyy')
+  const daysInMonth = dateTest.daysInMonth
+  for (let i = 1; i < daysInMonth; i++) {
     const lc = liturgicalCalendar(dateTest.plus({days: i}))
     console.log(lc)
   }
@@ -264,7 +263,7 @@ const test1 = (() => { // @todo For test.
 })()
 */
 /*
-const lc = liturgicalCalendar(DateTime.fromFormat('30122020', 'ddMMyyyy'), 'france')
+const lc = liturgicalCalendar(DateTime.fromFormat('32032021', 'ddMMyyyy'), 'france')
 console.log(lc)
 */
 
