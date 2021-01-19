@@ -2,28 +2,28 @@
   "1402": {
     "key": "cyrilThePhilosopherAndMethodiusOfThessaloniki",
     "name": "Saint Cyrille, moine et Saint Méthode, évêque",
-    "color": ["white"],
+    "color": "white",
     "type": 2,
     "priority": 8
   },
   "2904": {
     "key": "catherineOfSiena",
     "name": "Sainte Catherine de Sienne, vierge et docteur de l'Église",
-    "color": ["white"],
+    "color": "white",
     "type": 2,
     "priority": 8
   },
   "1107": {
     "key": "europe1107",
     "name": "Saint Benoît, abbé",
-    "color": ["white"],
+    "color": "white",
     "type": 2,
     "priority": 8
   },
   "2307": {
     "key": "bridgetOfSweden",
     "name": "Sainte Brigitte de Suède, religieuse",
-    "color": ["white"],
+    "color": "white",
     "type": 2,
     "priority": 8
   },

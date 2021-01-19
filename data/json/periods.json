@@ -2,31 +2,31 @@
   "advent": {
     "key": "advent",
     "name": "Temps de l'Avent",
-    "color": ["purple"],
+    "color": "purple",
     "priority": 13
   },
   "christmastide": {
     "key": "christmastide",
     "name": "Temps de Noël",
-    "color": ["white"],
+    "color": "white",
     "priority": 13
   },
   "lent": {
     "key": "lent",
     "name": "Carême",
-    "color": ["purple"],
+    "color": "purple",
     "priority": 9
   },
   "eastertide": {
     "key": "eastertide",
     "name": "Temps Pascal",
-    "color": ["white"],
+    "color": "white",
     "priority": 13
   },
   "ordinaryTime": {
     "key": "ordinaryTime",
     "name": "Temps ordinaire",
-    "color": ["green"],
+    "color": "green",
     "priority": 13
   },
   "sub": {
