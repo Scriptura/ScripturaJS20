@@ -30,14 +30,12 @@ const getCalendarMonth = async (year, month) => await db.one('SELECT * FROM publ
   .then(data => {
     const dateTest = DateTime.fromFormat(month + year, 'MMyyyy')
     const daysInMonth = dateTest.daysInMonth
-    const calendarItem = {}
-    const moonPhaseItem = {}
+    let moonPhaseItem = []
     for (let i = 1; i < daysInMonth + 1; i++) {
-      calendarItem[i] = liturgicalCalendar(dateTest.plus({days: i - 1}))
-      moonPhaseItem[i] = moonPhase(new Date(year, month - 1, i - 1, 0, 0, 0, 0))
+      data._calendar = liturgicalCalendar(dateTest.plus({days: i - 1}))
+      //moonPhaseItem[i] = moonPhase(new Date(year, month - 1, i - 1, 0, 0, 0, 0))
     }
-    data._calendar = calendarItem
-    data._moonPhase = moonPhaseItem
+    //data._moonPhase = moonPhaseItem
     data._title = `${uppercaseToFirstLetter(monthsInHumanLanguage(month))} ${year} | ${vv.siteName}`
     data._description = `Pour le mois de ${monthsInHumanLanguage(month)} de l'année ${year}`
     console.log(data)
