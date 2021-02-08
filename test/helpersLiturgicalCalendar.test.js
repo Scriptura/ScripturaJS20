@@ -255,6 +255,10 @@ describe("Liturgical calendar", () => {
     expect(liturgicalCalendar(DateTime.fromFormat('25062022', 'ddMMyyyy'), 'france')).toMatchObject({key: "nativityOfJohnTheBaptist"})
   })
 
+  it("Saints Pierre et Paul le 29 juillet 2021", () => {
+    expect(liturgicalCalendar(DateTime.fromFormat('29072021', 'ddMMyyyy'), 'france')).toMatchObject({key: "marthaAndMaryAndLazarusOfBethany"})
+  })
+
   it("Saints Pierre et Paul le 29 juin 2020", () => {
     expect(liturgicalCalendar(DateTime.fromFormat('29062020', 'ddMMyyyy'), 'france')).toMatchObject({key: "peterAndPaul"})
   })

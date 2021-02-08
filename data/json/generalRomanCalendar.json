@@ -651,7 +651,7 @@
     "priority": 10
   },
   "2907": {
-    "key": "marthaMaryAndLazarusOfBethany",
+    "key": "marthaAndMaryAndLazarusOfBethany",
     "name": "Sainte Marthe, sainte Marie et saint Lazare",
     "color": "white",
     "type": 3,
@@ -847,14 +847,14 @@
     "priority": 10
   },
   "0309": {
-    "key": "general0309",
+    "key": "gregoryTheGreat",
     "name": "Saint Grégoire le Grand, pape et docteur de l'Église",
     "color": "white",
     "type": 3,
     "priority": 10
   },
   "0809": {
-    "key": "gregoryITheGreat",
+    "key": "birthOfMary",
     "name": "Nativité de la Vierge Marie",
     "color": "white",
     "link": "https://www.aelf.org/2020-09-08/romain/messe",
@@ -1024,14 +1024,14 @@
     "priority": 12
   },
   "1110": {
-    "key": "johnXXIII",
+    "key": "john23",
     "name": "Saint Jean XXIII, pape",
     "color": "white",
     "type": 4,
     "priority": 12
   },
   "1410": {
-    "key": "callistusI",
+    "key": "callistus1",
     "name": "Saint Callixte <abbr title=\"premier\">I<sup>er</sup></abbr>, pape et martyr",
     "color": "red",
     "type": 4,
@@ -1073,7 +1073,7 @@
     "priority": 12
   },
   "2210": {
-    "key": "johnPaulII",
+    "key": "johnPaul2",
     "name": "Saint Jean-Paul II, pape",
     "color": "white",
     "type": 4,
@@ -1192,7 +1192,7 @@
     "priority": 12
   },
   "2211": {
-    "key": "general2211",
+    "key": "ceciliaOfRome",
     "name": "Sainte Cécile, vierge et martyr",
     "color": "red",
     "type": 3,
