@@ -45,8 +45,6 @@ app.use(
 app.use(morgan('dev')) // Info sur les logs en console.
 app.set('views', path.join(__dirname, 'views')) // Racine pour les vues.
 app.set('view engine', 'pug') // Choix du moteur de template.
-// Option 'pretty' dépréciée par Pug, en effet l'identation peut créer des espaces blancs conduisant à des différences d'interprétation subtiles. @see https://pugjs.org/api/reference.html#options @toto Option utilisée pour l'instant car pratique pour contrôler le code de sortie.
-if(vv.dev) app.locals.pretty = true
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
