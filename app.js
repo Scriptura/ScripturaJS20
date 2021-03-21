@@ -8,7 +8,6 @@ const vv = require('./settings/variables'),
       cookieParser = require('cookie-parser'),
       morgan = require('morgan'),
       compression = require('compression'),
-      bodyParser = require('body-parser'),
       favicon = require('serve-favicon'),
       robots = require('express-robots-txt'),
       useragent = require('express-useragent'),
@@ -52,8 +51,6 @@ app.use(express.static(path.join(__dirname, 'public'))) // Gestion des fichiers 
 app.use(favicon(path.join(__dirname, 'public', 'medias', 'favicons', 'favicon.ico'))) // addresse de la favicon
 app.use(robots({UserAgent: '*', Disallow: '/', CrawlDelay: '10', Sitemap: hostname + '/sitemap.xml'})) // Génération dynanique d'un fichier robots.txt
 app.use(compression()) // Compression deflate et gzip.
-app.use(bodyParser.urlencoded({ extended: false })) // parse application/x-www-form-urlencoded
-app.use(bodyParser.json()) // parse application/json
 app.use(useragent.express())
 
 app.use('/', routesDispatcher) // Redirige vers le répartiteur des routes
