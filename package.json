@@ -30,7 +30,7 @@
     "os": "^0.1.1",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
-    "pg-promise": "^10.8.6",
+    "pg-promise": "^10.9.5",
     "pug": "^3.0.2",
     "serve-favicon": "^2.5.0",
     "suncalc": "^1.8.0",

@@ -317,7 +317,7 @@
   "2804": {
     "key": "peterChanel",
     "name": "Saint Pierre Chanel, prêtre et martyr et Saint Louis-Marie Grignion de Montfort, prêtre",
-    "color": "red, white",
+    "color": ["red", "white"],
     "type": 4,
     "priority": 12
   },

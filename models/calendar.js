@@ -17,7 +17,7 @@ const getCalendarDay = async (year, month, day) => await db.one('SELECT * FROM p
     data._title = `Le ${date.join('.')} | ${vv.siteName}`
     data._description = `Date du ${date.join('/')}. ${[lc.name, lc.type].filter(Boolean).join(', ')}`
     data._description = data._description.replace(/<[^>]*>?/gm, '') // @todo Regex à convertir éventuellement à l'avenir par npm sanitize-html
-    console.log(lc)
+    //console.log(lc) // retourne les données du calendrier
     data._calendar = lc
     data._moonPhase = moonPhase(new Date(year, month - 1, day, 0, 0, 0, 0))
     //console.log(data)

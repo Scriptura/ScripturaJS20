@@ -23,10 +23,7 @@ block main
             if _calendar.p.name
               p!= _calendar.p.name
             if _calendar.type || _calendar.priority
-              if _calendar.type
-                p= [_calendar.type, _calendar.priority].filter(Boolean).join(', degré de préséance : ')
-              else if !_calendar.type && _calendar.priority
-                p= 'Degré de préséance : ' + _calendar.priority
+              p= [_calendar.type.charAt(0).toUpperCase() + _calendar.type.slice(1), 'Degré de préséance ' + _calendar.priority].filter(Boolean).join('. ')
             if _calendar.key
               p= 'Mots clefs : ' + [_calendar.key, _calendar.p.key].filter(Boolean).join(', ')
           if (_moonPhase || _moonPhase === 0)
