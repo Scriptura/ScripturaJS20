@@ -20,7 +20,10 @@ const getCalendarDay = async (year, month, day) => await db.one('SELECT * FROM p
     //console.log(lc) // retourne les données du calendrier
     data._calendar = lc
     data._moonPhase = moonPhase(new Date(year, month - 1, day, 0, 0, 0, 0))
-    //console.log(data)
+    //const testDate = new Date()
+    //data._day = ('0' + testDate.getDate()).slice(-2)
+    //data._month = ('0' + (testDate.getMonth() + 1)).slice(-2)
+    //console.log(data._month)
     return data
   })
   .catch(error => console.log(error.message || error))

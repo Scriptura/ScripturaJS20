@@ -217,7 +217,8 @@ const liturgicalCalendar = (date = currentDate, country = 'france') => {
     data.fullName = [data.name, lowercaseToFirstLetter(data.extra)].filter(Boolean).join(', ')
     data.link = (data.f.priority >= data.m.priority) ? data.m.link : data.f.link
     if (typeof data.link === 'undefined') data.link = ''
-    data.color = [...[data.p.color].concat([data.m.color]).concat([data.f.color[0]])].filter(Boolean)
+    if (Array.isArray(data.f.color)) data.f.color = data.f.color[0] // si valeurs en tableau seule la première couleur sera prise en compte
+    data.color = [...[data.p.color].concat([data.m.color]).concat([data.f.color])].filter(Boolean)
     data.type = (data.f.priority >= data.m.priority) ? data.m.type : data.f.type
     if (typeof data.type === 'undefined') data.type = ''
     const arrayPriority = [data.f.priority, data.m.priority, data.p.priority].filter(Boolean)
