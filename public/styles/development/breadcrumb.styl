@@ -13,6 +13,7 @@ _breadcrumbColor2 = _color2
   padding 0
 
 .breadcrumb li
+  margin-right -1em
   list-style none
   filter drop-shadow(_shadow4)
 
@@ -32,27 +33,17 @@ _breadcrumbColor2 = _color2
   display block
   //height _breadcrumbSize
   line-height _breadcrumbSize // @todo enlever les unités
-  padding 0 (_breadcrumbSize / 4) 0 _breadcrumbSize
+  padding 0 (_breadcrumbSize * .75)
   font-size 1em //(_breadcrumbSize / 3)
+  text-decoration none
   background-size cover
   background-repeat no-repeat
   color _breadcrumbColor
-  text-decoration none
-
-.breadcrumb a::after
-  content ''
-  position absolute
-  z-index -1
-  top 0
-  right -(_breadcrumbSize / 2)
-  display block
-  width _breadcrumbSize
-  height _breadcrumbSize
-  //clip-path polygon(0 0, 0 0, 100% 50%, 0 100%, 0 100%)
-  clip-path polygon(0% 0%, 50% 0, 100% 50%, 50% 100%, 0% 100%)
+  background-color _breadcrumbColor1
+  transition background-color .3s ease-in-out
+  clip-path polygon(0 0, calc(100% - 1em) 0, 100% 50%, calc(100% - 1em) 100%, 0 100%)
 
 .breadcrumb a
-.breadcrumb a::after
   background-color _breadcrumbColor1
   transition background-color .3s ease-in-out
 

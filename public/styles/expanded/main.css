@@ -607,6 +607,7 @@ main {
   padding: 0;
 }
 .breadcrumb li {
+  margin-right: -1em;
   list-style: none;
   filter: drop-shadow(0.5rem 0.5rem 0.5rem rgba(0,0,0,0.25));
 }
@@ -625,27 +626,18 @@ main {
   position: relative;
   display: block;
   line-height: 2.5em;
-  padding: 0 0.625em 0 2.5em;
+  padding: 0 1.875em;
   font-size: 1em;
+  text-decoration: none;
   background-size: cover;
   background-repeat: no-repeat;
   color: #d2b48c;
-  text-decoration: none;
+  background-color: #2d2d2d;
+  transition: background-color 0.3s ease-in-out;
+  -webkit-clip-path: polygon(0 0, calc(100% - 1em) 0, 100% 50%, calc(100% - 1em) 100%, 0 100%);
+          clip-path: polygon(0 0, calc(100% - 1em) 0, 100% 50%, calc(100% - 1em) 100%, 0 100%);
 }
-.breadcrumb a::after {
-  content: '';
-  position: absolute;
-  z-index: -1;
-  top: 0;
-  right: -1.25em;
-  display: block;
-  width: 2.5em;
-  height: 2.5em;
-  -webkit-clip-path: polygon(0% 0%, 50% 0, 100% 50%, 50% 100%, 0% 100%);
-          clip-path: polygon(0% 0%, 50% 0, 100% 50%, 50% 100%, 0% 100%);
-}
-.breadcrumb a,
-.breadcrumb a::after {
+.breadcrumb a {
   background-color: #2d2d2d;
   transition: background-color 0.3s ease-in-out;
 }
@@ -1120,7 +1112,6 @@ video[poster] {
     box-shadow: inset 0 0 1px #222;
   }
   .table thead th {
-    position: -webkit-sticky;
     position: sticky;
     top: 0;
     z-index: 1;
@@ -1568,6 +1559,22 @@ form fieldset > [class*=input] {
     box-shadow: 0 0 1.5rem rgba(0,0,0,0.15);
   }
 }
+.keywords {
+  display: flex;
+  gap: 0.5em;
+  padding: 0;
+}
+.keywords li {
+  list-style: none;
+  filter: drop-shadow(0.5rem 0.5rem 0.5rem rgba(0,0,0,0.25));
+}
+.keywords a {
+  padding: 0.5em 1em 0.5em 1.5em;
+  background-color: #444;
+  -webkit-clip-path: polygon(1em 0, 100% 0, 100% 100%, 1em 100%, 0 50%);
+          clip-path: polygon(1em 0, 100% 0, 100% 100%, 1em 100%, 0 50%);
+  box-shadow: inset 0 0 0.1em rgba(0,0,0,0.3), 0 0.5rem 2rem rgba(0,0,0,0.3);
+}
 .drop-cap,
 .no-js .add-drop-cap > p:first-child::first-letter {
   float: left;
@@ -1658,7 +1665,7 @@ html,
 .cmd-nav:hover,
 .breadcrumb ol,
 .breadcrumb a,
-.breadcrumb a::after,
+.keywords a,
 .footer,
 .card,
 .article,
