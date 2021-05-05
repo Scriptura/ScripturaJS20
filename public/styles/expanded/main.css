@@ -534,8 +534,8 @@ main {
     width: 2em;
     height: 1em;
     background-color: #ff6347;
-    -webkit-clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
-            clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
+    -webkit-clip-path: polygon(0 0, 100% 0, 50% 100%);
+            clip-path: polygon(0 0, 100% 0, 50% 100%);
   }
   .nav ul > :last-child {
     margin-left: auto;
@@ -637,10 +637,6 @@ main {
   -webkit-clip-path: polygon(0 0, calc(100% - 1em) 0, 100% 50%, calc(100% - 1em) 100%, 0 100%);
           clip-path: polygon(0 0, calc(100% - 1em) 0, 100% 50%, calc(100% - 1em) 100%, 0 100%);
 }
-.breadcrumb a {
-  background-color: #2d2d2d;
-  transition: background-color 0.3s ease-in-out;
-}
 .breadcrumb li:first-child a {
   padding-left: 1em;
 }
@@ -649,10 +645,7 @@ main {
 }
 .breadcrumb li a:focus,
 .breadcrumb li a:hover,
-.breadcrumb li a:active,
-.breadcrumb li a:focus::after,
-.breadcrumb li a:hover::after,
-.breadcrumb li a:active::after {
+.breadcrumb li a:active {
   color: #fff;
   background-color: #ff6347;
 }

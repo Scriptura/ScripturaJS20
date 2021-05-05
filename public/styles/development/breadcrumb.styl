@@ -43,10 +43,6 @@ _breadcrumbColor2 = _color2
   transition background-color .3s ease-in-out
   clip-path polygon(0 0, calc(100% - 1em) 0, 100% 50%, calc(100% - 1em) 100%, 0 100%)
 
-.breadcrumb a
-  background-color _breadcrumbColor1
-  transition background-color .3s ease-in-out
-
 .breadcrumb li:first-child a
   padding-left 1em
 
@@ -61,8 +57,5 @@ _breadcrumbColor2 = _color2
 .breadcrumb li a:focus
 .breadcrumb li a:hover
 .breadcrumb li a:active
-.breadcrumb li a:focus::after
-.breadcrumb li a:hover::after
-.breadcrumb li a:active::after
   color #fff
   background-color _breadcrumbColor2

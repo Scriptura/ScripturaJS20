@@ -9,7 +9,7 @@ Scriptura est une application web sous Node.js utilisant :
 ## Configuration requise :
 
 * PostgreSQL 12.2
-* Node.js 15.4.0
+* Node.js 16.0.0
 * Yarn 1.22.5
 
 ## Pour démarer
