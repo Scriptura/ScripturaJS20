@@ -9,7 +9,6 @@ const vv = require('./settings/variables'),
       morgan = require('morgan'),
       compression = require('compression'),
       favicon = require('serve-favicon'),
-      robots = require('express-robots-txt'),
       useragent = require('express-useragent'),
       //flash = require('connect-flash'), // @todo en test. En lien avec Passeport.js
       //session = require('express-session'), // @todo idem
@@ -22,9 +21,7 @@ const vv = require('./settings/variables'),
       // sharp
       // svgo
       // imagemin-webp
-      app = express(), // Instantiation
-      hostname = 'http://localhost:3000', // @todo À requêter dynamiquement...
-      routesDispatcher = require(path.join(__dirname, 'controllers', 'routesDispatcher'))
+      app = express() // Instantiation
 
 // Protection des en-têtes HTTP
 //@see https://helmetjs.github.io/
@@ -49,11 +46,10 @@ app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public'))) // Gestion des fichiers statiques.
 app.use(favicon(path.join(__dirname, 'public', 'medias', 'favicons', 'favicon.ico'))) // addresse de la favicon
-app.use(robots({UserAgent: '*', Disallow: '/', CrawlDelay: '10', Sitemap: hostname + '/sitemap.xml'})) // Génération dynanique d'un fichier robots.txt
 app.use(compression()) // Compression deflate et gzip.
 app.use(useragent.express())
 
-app.use('/', routesDispatcher) // Redirige vers le répartiteur des routes
+app.use('/', require(path.join(__dirname, 'controllers', 'routesDispatcher'))) // Redirige vers le répartiteur des routes
 
 app.use((req, res, next) => {
   res.status(404)

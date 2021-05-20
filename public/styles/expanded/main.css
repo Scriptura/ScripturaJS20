@@ -1423,9 +1423,6 @@ form fieldset > [class*=input] {
   cursor: pointer;
   outline: none;
 }
-.accordion summary::-webkit-details-marker {
-  display: none;
-}
 .accordion .accordion-summary {
   display: block;
   width: 100%;
@@ -1556,7 +1553,7 @@ form fieldset > [class*=input] {
 .no-js .add-drop-cap > p:first-child::first-letter {
   float: left;
   margin-right: 0.2em;
-  padding: 0.2em;
+  padding: 0.28em 0.2em 0.12em;
   line-height: 1;
   font-size: 3em;
   font-weight: bold;
