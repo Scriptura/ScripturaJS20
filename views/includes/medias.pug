@@ -1,5 +1,32 @@
-.grid2
-  .video
-    iframe(src="https://www.youtube.com/embed/tr4dkk5ThTk" title="YouTube video player" frameborder="0" allowfullscreen)
-    //- Option de l'iframe :
-    //- allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+.grid2.gap
+  div
+    p
+      code audio
+    audio(controls='controls')
+      source(src='/medias/audios/BagdadCafe.mp3')
+      p.message-error This media is not supported by your browser.
+  div
+    p
+      code audio
+    audio#player
+      source(src='/medias/audios/BagdadCafe.mp3')
+      p.message-error This media is not supported by your browser.
+    div
+      button(onclick="document.getElementById('player').play()") Play
+      button(onclick="document.getElementById('player').pause()") Pause
+      button(onclick="document.getElementById('player').volume += 0.1") Vol +
+      button(onclick="document.getElementById('player').volume -= 0.1") Vol -
+  div
+    p
+      code video
+    video(controls='controls', poster='/medias/images/posters/LeRetourDuRoi.png')
+      source(src='/medias/videos/LeRetourDuRoi.mp4', type='video/mp4')
+      p.message-warning HTML5 video codec proposed is not supported by your browser.
+  //-
+    div
+      p
+        code .video
+      .video
+        iframe(src="https://www.youtube.com/embed/tr4dkk5ThTk" title="YouTube video player" frameborder="0" allowfullscreen)
+        //- Option de l'iframe :
+        //- allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
