@@ -1,3 +1,5 @@
+_audioPlayerColor = _colorT2
+
 // @description Audio, vidéo et Caneva
 
 // @note Classe `video` prévue pour les sources vidéos extérieures au site
@@ -41,3 +43,53 @@ audio:not([controls])
 .video embed
 .video object
   position absolute
+
+// BEGIN test
+
+.audio-player
+  display flex
+  justify-content space-between
+  align-items center
+  min-width 16em
+  height 4em
+  color _audioPlayerColor
+  background-color #222
+  box-shadow _shadow15
+  border-radius 2em
+
+.audio-player *
+  color _audioPlayerColor
+
+.audio-player button
+  width 3em
+  height 3em
+  padding .5em
+  background-color transparent
+  border none
+  outline none
+  cursor pointer
+
+.audio-player button:focus
+.audio-player button:hover
+.audio-player button:active
+  background-color #333
+
+.audio-player .audio-play-pause
+  margin-left 1em
+  border-radius 50%
+
+.audio-player svg
+  width 1.5em
+  height 1.5em
+  fill _audioPlayerColor
+
+.audio-player output
+  margin 0 .5em
+  //font-size 1em
+
+.audio-player .progress
+  flex-grow 1
+  height .3em
+  background-color _audioPlayerColor
+
+// END test

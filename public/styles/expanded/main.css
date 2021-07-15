@@ -951,6 +951,51 @@ audio:not([controls]) {
 .video object {
   position: absolute;
 }
+.audio-player {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-width: 16em;
+  height: 4em;
+  color: #d2b48c;
+  background-color: #222;
+  box-shadow: 0.5rem 0.5rem 2rem rgba(0,0,0,0.25);
+  border-radius: 2em;
+}
+.audio-player * {
+  color: #d2b48c;
+}
+.audio-player button {
+  width: 3em;
+  height: 3em;
+  padding: 0.5em;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+.audio-player button:focus,
+.audio-player button:hover,
+.audio-player button:active {
+  background-color: #333;
+}
+.audio-player .audio-play-pause {
+  margin-left: 1em;
+  border-radius: 50%;
+}
+.audio-player svg {
+  width: 1.5em;
+  height: 1.5em;
+  fill: #d2b48c;
+}
+.audio-player output {
+  margin: 0 0.5em;
+}
+.audio-player .progress {
+  flex-grow: 1;
+  height: 0.3em;
+  background-color: #d2b48c;
+}
 .map {
   width: 100%;
   height: 100vh;
